@@ -1,0 +1,839 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>💪 체력 증진 프로그램</title>
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;700;800;900&display=swap" rel="stylesheet" />
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: 'Nunito', sans-serif; background: #FFFBF4; min-height: 100vh; }
+    .wrap { display: flex; flex-direction: column; align-items: center; padding: 24px 16px 60px; min-height: 100vh; }
+    .card { background: #fff; border-radius: 22px; box-shadow: 0 4px 28px rgba(0,0,0,0.08); padding: 26px 22px; width: 100%; max-width: 540px; margin-top: 8px; }
+    .card-wide { max-width: 700px; }
+    button { font-family: 'Nunito', sans-serif; cursor: pointer; }
+    .btn { display: block; width: 100%; border: none; border-radius: 14px; padding: 16px 20px; font-size: 15px; font-weight: 800; color: #fff; margin-bottom: 10px; transition: opacity 0.15s; }
+    .btn:hover { opacity: 0.88; }
+    .btn:disabled { background: #DDD !important; color: #AAA; cursor: not-allowed; }
+    .btn-red { background: #E8534A; }
+    .btn-blue { background: #2C3E7A; }
+    .btn-green { background: #4CAF50; }
+    .btn-teal { background: #2196F3; }
+    .btn-orange { background: #FF9800; }
+    .btn-gray { background: #F0F0F0; color: #444 !important; }
+    .btn-selected-red { background: #E8534A; }
+    .btn-selected-blue { background: #2C3E7A; }
+    .inp { width: 100%; border: 2px solid #EEE; border-radius: 12px; padding: 13px 15px; font-size: 15px; font-family: 'Nunito', sans-serif; outline: none; margin-bottom: 10px; }
+    .inp:focus { border-color: #6366F1; }
+    .tag { border-radius: 8px; padding: 2px 8px; font-size: 11px; font-weight: 800; display: inline-block; vertical-align: middle; }
+    .back-btn { background: none; border: none; color: #999; font-size: 13px; font-weight: 800; padding: 0 0 14px; display: block; }
+    .grid2 { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin-bottom: 14px; }
+    .flex-wrap { display: flex; gap: 6px; flex-wrap: wrap; margin-bottom: 18px; }
+    .label { font-size: 12px; font-weight: 800; color: #555; margin: 0 0 7px; }
+    .section-title { font-size: 14px; font-weight: 900; margin: 0 0 10px; color: #1A1A2E; }
+    .info-box { border-radius: 12px; padding: 12px 14px; margin-bottom: 16px; }
+    .overlay { position: fixed; inset: 0; background: rgba(0,0,0,0.5); display: flex; align-items: center; justify-content: center; z-index: 999; }
+    .popup { background: #fff; border-radius: 22px; padding: 30px 26px; text-align: center; max-width: 300px; animation: popIn 0.4s cubic-bezier(0.34,1.56,0.64,1) both; }
+    @keyframes popIn { from { transform: scale(0.6); opacity: 0; } to { transform: scale(1); opacity: 1; } }
+    .progress-bar-bg { height: 8px; background: #F0F0F0; border-radius: 4px; }
+    .progress-bar { height: 8px; border-radius: 4px; transition: width 0.4s; }
+    .radar-wrap { width: 100%; height: 200px; position: relative; }
+    .spinner { width: 40px; height: 40px; border: 4px solid #EEE; border-top: 4px solid #E8534A; border-radius: 50%; animation: spin 0.8s linear infinite; margin: 0 auto 16px; }
+    @keyframes spin { to { transform: rotate(360deg); } }
+    .badge-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+    .badge-item { border-radius: 14px; padding: 16px 14px; text-align: center; transition: all 0.3s; border: 2px solid transparent; }
+    .stat-box { border-radius: 12px; padding: 12px; text-align: center; flex: 1; }
+    .act-btn { display: flex; align-items: center; gap: 9px; width: 100%; border-radius: 10px; padding: 11px 13px; cursor: pointer; margin-bottom: 5px; font-family: 'Nunito', sans-serif; text-align: left; transition: all 0.2s; border: 2px solid transparent; }
+    .check-circle { width: 24px; height: 24px; border-radius: 50%; display: flex; align-items: center; justify-content: center; flex-shrink: 0; color: #fff; font-weight: 900; font-size: 13px; }
+    .level-dots { display: flex; justify-content: center; gap: 5px; }
+    .level-dot { width: 34px; height: 34px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 16px; }
+    .chart-container { width: 100%; overflow-x: auto; }
+    table.data-table { width: 100%; border-collapse: collapse; font-size: 12px; }
+    table.data-table th { background: #F8F9FA; padding: 8px 10px; text-align: left; font-weight: 800; color: #555; border-bottom: 2px solid #EEE; }
+    table.data-table td { padding: 10px; border-bottom: 1px solid #F5F5F5; vertical-align: middle; }
+  </style>
+</head>
+<body>
+<div id="app"></div>
+
+<script>
+// ══════════════════════════════════════════
+// ⚠️  여기 두 줄만 수정하세요!
+// ══════════════════════════════════════════
+const SUPABASE_URL = 'https://mrwhtgecmfvmgxtadgve.supabase.co';         // Settings > Data API > API URL
+const SUPABASE_KEY = 'sb_publishable_sGgKm6dNr76mGqUsV9nN9Q_1-tYy6wQ';      // Settings > API Keys > Publishable key
+// ══════════════════════════════════════════
+
+const { createClient } = supabase;
+const db = createClient(SUPABASE_URL, SUPABASE_KEY);
+
+const TEACHER_PW = '1234';
+const SEMESTERS = ['2026-1학기', '2026-2학기', '2025-1학기', '2025-2학기'];
+const GRADES = ['3학년', '4학년', '5학년', '6학년'];
+
+const SURVEY = [
+  { id: 'cardio', label: '심폐지구력', emoji: '🫀', color: '#FF6B6B',
+    question: '달리기를 할 때 얼마나 오래 뛸 수 있나요?',
+    options: [{ label: '금방 숨이 차요', emoji: '😮‍💨', score: 1 }, { label: '조금 힘들지만 뛰어요', emoji: '😊', score: 3 }, { label: '오래 달려도 거뜬해요!', emoji: '🏃', score: 5 }] },
+  { id: 'strength', label: '근력', emoji: '💪', color: '#FF9500',
+    question: '팔굽혀펴기나 윗몸일으키기를 몇 개 할 수 있나요?',
+    options: [{ label: '5개도 어려워요', emoji: '😅', score: 1 }, { label: '5~15개 할 수 있어요', emoji: '😌', score: 3 }, { label: '20개 이상 할 수 있어요!', emoji: '💪', score: 5 }] },
+  { id: 'flex', label: '유연성', emoji: '🤸', color: '#34C759',
+    question: '앉아서 앞으로 손을 뻗으면 어디까지 닿나요?',
+    options: [{ label: '발목도 힘들어요', emoji: '😬', score: 1 }, { label: '발목 정도 닿아요', emoji: '🙂', score: 3 }, { label: '발끝 너머까지 닿아요!', emoji: '🤸', score: 5 }] },
+  { id: 'speed', label: '순발력', emoji: '⚡', color: '#5856D6',
+    question: '50m 달리기를 하면 어느 정도 걸리나요?',
+    options: [{ label: '12초보다 느려요', emoji: '🐢', score: 1 }, { label: '9~12초 사이예요', emoji: '🐇', score: 3 }, { label: '9초보다 빨라요!', emoji: '⚡', score: 5 }] },
+  { id: 'body', label: '체성분', emoji: '⚖️', color: '#007AFF',
+    question: '평소 내 몸 상태가 어떻게 느껴지나요?',
+    options: [{ label: '좀 무겁고 피곤해요', emoji: '😴', score: 1 }, { label: '그냥 보통이에요', emoji: '😐', score: 3 }, { label: '가볍고 활기차요!', emoji: '🌟', score: 5 }] },
+];
+
+const LEVELS = [
+  { n: 1, emoji: '🌱', name: '씨앗', color: '#795548', bg: '#FFF8E1', desc: '시작이 반! 꾸준히 하면 달라져요' },
+  { n: 2, emoji: '🌿', name: '새싹', color: '#388E3C', bg: '#E8F5E9', desc: '조금씩 자라고 있어요. 파이팅!' },
+  { n: 3, emoji: '🌳', name: '나무', color: '#1976D2', bg: '#E3F2FD', desc: '균형 잡힌 체력이에요!' },
+  { n: 4, emoji: '💪', name: '활동가', color: '#E65100', bg: '#FFF3E0', desc: '건강한 체력의 소유자!' },
+  { n: 5, emoji: '⚡', name: '챔피언', color: '#6A1B9A', bg: '#F3E5F5', desc: '최고의 체력이에요!' },
+];
+
+const ACTIVITIES = {
+  cardio: { label: '심폐지구력', emoji: '🫀', items: [
+    { id: 'c1', label: '셔틀런(왕복오래달리기) 도전!', type: '교과' },
+    { id: 'c2', label: '줄넘기 2분 연속 뛰기', type: '교과' },
+    { id: 'c3', label: 'GoNoodle 댄스 3곡 따라하기', type: '앱' },
+    { id: 'c4', label: 'Just Dance Now 빠른 곡 2개', type: '앱' },
+    { id: 'c5', label: '등하교 시 빠르게 걷기 10분', type: '일상' },
+  ]},
+  strength: { label: '근력', emoji: '💪', items: [
+    { id: 's1', label: '윗몸일으키기 10개 × 3세트', type: '교과' },
+    { id: 's2', label: '팔굽혀펴기 5개 도전!', type: '교과' },
+    { id: 's3', label: 'Sworkit Kids 근력 루틴 따라하기', type: '앱' },
+    { id: 's4', label: '공원 철봉 매달리기 연습', type: '일상' },
+  ]},
+  flex: { label: '유연성', emoji: '🤸', items: [
+    { id: 'f1', label: '체조 스트레칭 10분', type: '교과' },
+    { id: 'f2', label: '앉아 윗몸앞으로굽히기 연습', type: '교과' },
+    { id: 'f3', label: 'GoNoodle 요가 영상 따라하기', type: '앱' },
+    { id: 'f4', label: '잠들기 전 5분 스트레칭', type: '일상' },
+  ]},
+  speed: { label: '순발력', emoji: '⚡', items: [
+    { id: 'sp1', label: '50m 달리기 연습 3회', type: '교과' },
+    { id: 'sp2', label: '제자리멀리뛰기 5번 도전', type: '교과' },
+    { id: 'sp3', label: 'Just Dance Now 빠른 곡 도전', type: '앱' },
+    { id: 'sp4', label: '술래잡기 놀이 적극 참여', type: '일상' },
+  ]},
+  body: { label: '체성분', emoji: '⚖️', items: [
+    { id: 'b1', label: '체육 시간 모든 활동 참여하기', type: '교과' },
+    { id: 'b2', label: 'Apple Fitness 활동링 채우기', type: '앱' },
+    { id: 'b3', label: 'Nike Training Club 입문 루틴', type: '앱' },
+    { id: 'b4', label: '물 하루 6잔 마시기', type: '일상' },
+    { id: 'b5', label: '과자 대신 과일 먹기', type: '일상' },
+  ]},
+};
+
+const BADGES = [
+  { id: 'first_survey', emoji: '🎯', name: '첫 측정!', desc: '처음으로 체력을 측정했어요' },
+  { id: 'multi_sem', emoji: '📅', name: '꾸준함의 힘', desc: '2학기 이상 기록했어요' },
+  { id: 'all_acts', emoji: '🏆', name: '완벽한 활동가', desc: '활동 80% 이상 완료' },
+  { id: 'level5', emoji: '⚡', name: '챔피언 달성!', desc: '체력 5단계에 도달했어요' },
+  { id: 'level_up', emoji: '📈', name: '성장하는 중!', desc: '이전 학기보다 레벨이 올랐어요' },
+  { id: 'cardio_star', emoji: '🫀', name: '달리기 스타', desc: '심폐지구력 5점!' },
+  { id: 'strength_star', emoji: '💪', name: '근력 스타', desc: '근력 5점!' },
+  { id: 'all_star', emoji: '🌟', name: '올스타!', desc: '모든 요소 4점 이상' },
+];
+
+const ALL_ACTS_TOTAL = Object.values(ACTIVITIES).reduce((a, c) => a + c.items.length, 0);
+
+function calcLevel(scores) {
+  const avg = Object.values(scores).reduce((a, b) => a + b, 0) / Object.values(scores).length;
+  if (avg < 2) return 1; if (avg < 3) return 2; if (avg < 4) return 3; if (avg < 4.5) return 4; return 5;
+}
+function getWeakCats(scores) {
+  return Object.entries(scores).filter(([, v]) => v <= 3).sort(([, a], [, b]) => a - b).map(([k]) => k);
+}
+function calcBadges(allRecords, rec) {
+  const earned = [];
+  if (allRecords.length >= 1) earned.push('first_survey');
+  if (allRecords.length >= 2) earned.push('multi_sem');
+  if (rec) {
+    const done = Object.values(rec.activities || {}).filter(Boolean).length;
+    if (done / ALL_ACTS_TOTAL >= 0.8) earned.push('all_acts');
+    if (rec.level === 5) earned.push('level5');
+    if (rec.scores?.cardio === 5) earned.push('cardio_star');
+    if (rec.scores?.strength === 5) earned.push('strength_star');
+    if (rec.scores && Object.values(rec.scores).every(v => v >= 4)) earned.push('all_star');
+    if (allRecords.length >= 2) {
+      const sorted = [...allRecords].sort((a, b) => new Date(a.survey_date) - new Date(b.survey_date));
+      if (sorted[sorted.length - 1].level > sorted[0].level) earned.push('level_up');
+    }
+  }
+  return earned;
+}
+
+// ── Supabase API ──
+async function loadRecord(grade, name, semester) {
+  const { data } = await db.from('fitness_records').select('*').eq('grade', grade).eq('name', name).eq('semester', semester).single();
+  return data;
+}
+async function loadAllRecords(grade, name) {
+  const { data } = await db.from('fitness_records').select('*').eq('grade', grade).eq('name', name);
+  return data || [];
+}
+async function saveRecord(grade, name, semester, scores, level, activities) {
+  const payload = { grade, name, semester, scores, level, activities, survey_date: new Date().toISOString().split('T')[0], updated_at: new Date().toISOString() };
+  await db.from('fitness_records').upsert(payload, { onConflict: 'grade,name,semester' });
+}
+async function updateActivities(grade, name, semester, activities) {
+  await db.from('fitness_records').update({ activities, updated_at: new Date().toISOString() }).eq('grade', grade).eq('name', name).eq('semester', semester);
+}
+async function loadAllForTeacher(semester) {
+  let q = db.from('fitness_records').select('*');
+  if (semester !== '전체') q = q.eq('semester', semester);
+  const { data } = await q;
+  return data || [];
+}
+
+// ── State ──
+let state = {
+  sc: 'home', grade: '', name: '', sem: '2026-1학기',
+  step: 0, ans: {}, tpw: '', tErr: false,
+  fg: '전체', fs: '2026-1학기',
+  rec: null, allRecs: [], saving: false,
+  lvUpAnim: null, newBadges: [], showBadgeAnim: false,
+  teacherData: [], teacherLoading: false,
+};
+
+function setState(patch) { Object.assign(state, patch); render(); }
+
+// ── RENDER ──
+function render() {
+  const app = document.getElementById('app');
+  app.innerHTML = '';
+
+  // Overlays
+  if (state.lvUpAnim) { app.appendChild(renderLvUpOverlay()); }
+  if (state.showBadgeAnim && state.newBadges.length) { app.appendChild(renderBadgeOverlay()); }
+
+  const screens = {
+    home: renderHome, sl: renderStudentLogin, sm: renderStudentMenu,
+    sv: renderSurvey, result: renderResult, al: renderActivityLog,
+    badges: renderBadges, tl: renderTeacherLogin, td: renderTeacherDashboard,
+    loading: renderLoading,
+  };
+  const fn = screens[state.sc];
+  if (fn) app.appendChild(fn());
+}
+
+function el(tag, attrs, ...children) {
+  const e = document.createElement(tag);
+  if (attrs) Object.entries(attrs).forEach(([k, v]) => {
+    if (k === 'style' && typeof v === 'object') Object.assign(e.style, v);
+    else if (k.startsWith('on')) e[k] = v;
+    else if (k === 'class') e.className = v;
+    else e.setAttribute(k, v);
+  });
+  children.flat().forEach(c => { if (c == null) return; e.appendChild(typeof c === 'string' ? document.createTextNode(c) : c); });
+  return e;
+}
+
+function wrap(wide, ...children) {
+  return el('div', { class: 'wrap' },
+    el('div', { class: wide ? 'card card-wide' : 'card' }, ...children)
+  );
+}
+
+function backBtn(to, label = '← 뒤로') {
+  const b = el('button', { class: 'back-btn', onclick: () => setState({ sc: to }) }, label);
+  return b;
+}
+
+function semFilterBtns(selected, setter) {
+  return el('div', { class: 'flex-wrap' },
+    ...SEMESTERS.map(s => {
+      const b = el('button', { class: s === selected ? 'btn btn-selected-red' : 'btn btn-gray', style: { width: 'auto', padding: '9px 12px', borderRadius: '9px', fontSize: '12px', marginBottom: '0' } }, s);
+      b.onclick = () => setter(s);
+      return b;
+    })
+  );
+}
+
+// ── HOME ──
+function renderHome() {
+  const btnS = el('button', { class: 'btn btn-red', style: { padding: '22px 24px', borderRadius: '18px', textAlign: 'center' } },
+    el('div', { style: { fontSize: '36px' } }, '🧒'),
+    el('div', { style: { fontSize: '18px' } }, '학생 모드'),
+    el('div', { style: { fontSize: '12px', opacity: '0.85', fontWeight: '600' } }, '체력 측정 & 활동 기록 & 배지')
+  );
+  btnS.onclick = () => setState({ sc: 'sl' });
+
+  const btnT = el('button', { class: 'btn btn-blue', style: { padding: '22px 24px', borderRadius: '18px', textAlign: 'center' } },
+    el('div', { style: { fontSize: '36px' } }, '👩‍🏫'),
+    el('div', { style: { fontSize: '18px' } }, '선생님 모드'),
+    el('div', { style: { fontSize: '12px', opacity: '0.85', fontWeight: '600' } }, '학급 현황 & 데이터 조회')
+  );
+  btnT.onclick = () => setState({ sc: 'tl' });
+
+  const info = el('div', { style: { marginTop: '12px', padding: '12px 16px', background: '#EEF2FF', borderRadius: '12px', borderLeft: '4px solid #6366F1' } },
+    el('p', { style: { margin: '0', fontSize: '11px', color: '#4338CA', fontWeight: '700' } }, '📡 데이터 저장: Supabase DB · 모든 기기에서 실시간 공유됩니다')
+  );
+
+  return wrap(false,
+    el('div', { style: { textAlign: 'center', marginBottom: '24px' } },
+      el('div', { style: { fontSize: '68px' } }, '💪'),
+      el('h1', { style: { fontSize: '26px', fontWeight: '900', margin: '6px 0 4px', color: '#1A1A2E' } }, '체력 증진 프로그램'),
+      el('p', { style: { color: '#888', fontSize: '13px', margin: '0', fontWeight: '600' } }, '나의 체력을 키우고 학기별로 기록해요!')
+    ),
+    btnS, btnT, info
+  );
+}
+
+// ── STUDENT LOGIN ──
+function renderStudentLogin() {
+  const gradeGrid = el('div', { class: 'grid2' },
+    ...GRADES.map(g => {
+      const b = el('button', {
+        class: g === state.grade ? 'btn btn-red' : 'btn btn-gray',
+        style: { marginBottom: '0', borderRadius: '10px', padding: '13px 8px', fontSize: '14px' }
+      }, g);
+      b.onclick = () => setState({ grade: g });
+      return b;
+    })
+  );
+
+  const nameInp = el('input', { class: 'inp', placeholder: '이름을 입력하세요', value: state.name });
+  nameInp.oninput = e => { state.name = e.target.value; };
+
+  const semRow = el('div', { class: 'flex-wrap' },
+    ...SEMESTERS.map(s => {
+      const b = el('button', {
+        class: s === state.sem ? 'btn btn-selected-blue' : 'btn btn-gray',
+        style: { width: 'auto', padding: '9px 12px', borderRadius: '9px', fontSize: '12px', marginBottom: '0' }
+      }, s);
+      b.onclick = () => setState({ sem: s });
+      return b;
+    })
+  );
+
+  const enterBtn = el('button', { class: 'btn btn-red' }, '입장하기 →');
+  enterBtn.onclick = async () => {
+    if (!state.grade || !state.name.trim()) return;
+    setState({ sc: 'loading' });
+    const rec = await loadRecord(state.grade, state.name, state.sem);
+    const allRecs = await loadAllRecords(state.grade, state.name);
+    setState({ sc: 'sm', rec, allRecs });
+  };
+
+  return wrap(false,
+    backBtn('home'),
+    el('h2', { style: { fontSize: '21px', fontWeight: '900', margin: '0 0 6px', color: '#1A1A2E' } }, '👋 안녕하세요!'),
+    el('p', { style: { color: '#888', fontSize: '13px', margin: '0 0 20px', fontWeight: '600' } }, '학년과 이름을 입력해주세요'),
+    el('p', { class: 'label' }, '학년 선택'), gradeGrid,
+    el('p', { class: 'label' }, '이름'), nameInp,
+    el('p', { class: 'label' }, '학기'), semRow,
+    enterBtn
+  );
+}
+
+// ── STUDENT MENU ──
+function renderStudentMenu() {
+  const { rec, allRecs, grade, name, sem } = state;
+  const lv = rec ? LEVELS[rec.level - 1] : null;
+  const done = rec ? Object.values(rec.activities || {}).filter(Boolean).length : 0;
+  const badges = calcBadges(allRecs, rec);
+
+  const profileBox = el('div', { style: { display: 'flex', alignItems: 'center', gap: '12px', background: '#F8F9FA', borderRadius: '14px', padding: '12px 15px', marginBottom: '18px' } },
+    el('div', { style: { fontSize: '34px' } }, '🧒'),
+    el('div', null,
+      el('p', { style: { margin: '0', fontWeight: '900', fontSize: '17px', color: '#1A1A2E' } }, `${grade} ${name}`),
+      el('p', { style: { margin: '0', fontSize: '11px', color: '#888', fontWeight: '600' } }, sem)
+    ),
+    badges.length > 0 ? el('div', { style: { marginLeft: 'auto', display: 'flex', gap: '2px' } },
+      ...badges.slice(0, 4).map(id => el('span', { style: { fontSize: '20px' } }, BADGES.find(b => b.id === id)?.emoji || ''))
+    ) : el('span', null)
+  );
+
+  const statusBox = lv
+    ? el('div', { style: { background: lv.bg, borderRadius: '14px', padding: '14px 16px', marginBottom: '16px', display: 'flex', alignItems: 'center', gap: '12px' } },
+        el('span', { style: { fontSize: '34px' } }, lv.emoji),
+        el('div', null,
+          el('p', { style: { margin: '0', fontWeight: '900', color: lv.color, fontSize: '15px' } }, `${lv.name} 단계 (Lv.${lv.n})`),
+          el('p', { style: { margin: '0', fontSize: '11px', color: '#666' } }, `측정일: ${rec.survey_date} · 활동 ${done}/${ALL_ACTS_TOTAL}개 · 배지 ${badges.length}개`)
+        )
+      )
+    : el('div', { style: { background: '#FFF3CD', borderRadius: '12px', padding: '12px 14px', marginBottom: '16px', borderLeft: '4px solid #FFC107' } },
+        el('p', { style: { margin: '0', fontSize: '13px', color: '#856404', fontWeight: '700' } }, '📋 이번 학기 체력 측정을 아직 하지 않았어요!')
+      );
+
+  const btn1 = el('button', { class: 'btn btn-red' }, rec ? '🔄 체력 재측정' : '📋 체력 측정 시작');
+  btn1.onclick = () => setState({ sc: 'sv', step: 0, ans: rec?.scores || {} });
+
+  const btns = [btn1];
+  if (rec) {
+    const b2 = el('button', { class: 'btn btn-green' }, '📊 내 결과 & 성장그래프');
+    b2.onclick = () => setState({ sc: 'result' });
+    const b3 = el('button', { class: 'btn btn-teal' }, '✅ 활동 기록하기');
+    b3.onclick = () => setState({ sc: 'al' });
+    const b4 = el('button', { class: 'btn btn-orange' }, `🏅 배지 보기 (${badges.length}/${BADGES.length})`);
+    b4.onclick = () => setState({ sc: 'badges' });
+    btns.push(b2, b3, b4);
+  }
+
+  return wrap(false, backBtn('sl'), profileBox, statusBox, ...btns);
+}
+
+// ── SURVEY ──
+function renderSurvey() {
+  const { step, ans } = state;
+  const q = SURVEY[step];
+  const pct = (step / SURVEY.length) * 100;
+
+  const header = el('div', { style: { display: 'flex', justifyContent: 'space-between', marginBottom: '6px' } },
+    el('span', { style: { fontSize: '12px', color: '#888', fontWeight: '700' } }, `${step + 1} / ${SURVEY.length}`),
+    el('span', { style: { fontSize: '12px', color: q.color, fontWeight: '800' } }, `${q.emoji} ${q.label}`)
+  );
+
+  const bar = el('div', { class: 'progress-bar-bg', style: { marginBottom: '24px' } },
+    el('div', { class: 'progress-bar', style: { background: q.color, width: `${pct}%` } })
+  );
+
+  const optBtns = q.options.map(opt => {
+    const b = el('button', {
+      class: 'btn',
+      style: { background: ans[q.id] === opt.score ? q.color : '#F5F5F5', color: ans[q.id] === opt.score ? '#fff' : '#333', display: 'flex', alignItems: 'center', gap: '12px', textAlign: 'left', padding: '16px 18px', borderRadius: '12px', fontSize: '14px' }
+    }, el('span', { style: { fontSize: '28px' } }, opt.emoji), el('span', null, opt.label));
+    b.onclick = async () => {
+      const na = { ...ans, [q.id]: opt.score };
+      if (step < SURVEY.length - 1) {
+        setState({ step: step + 1, ans: na });
+      } else {
+        setState({ sc: 'loading' });
+        const scores = {};
+        SURVEY.forEach(x => { scores[x.id] = na[x.id] || 1; });
+        const newLevel = calcLevel(scores);
+        const prevLevel = state.rec?.level;
+        const prevBadges = calcBadges(state.allRecs, state.rec);
+        await saveRecord(state.grade, state.name, state.sem, scores, newLevel, state.rec?.activities || {});
+        const rec = await loadRecord(state.grade, state.name, state.sem);
+        const allRecs = await loadAllRecords(state.grade, state.name);
+        const newBadgeIds = calcBadges(allRecs, rec);
+        const justEarned = newBadgeIds.filter(id => !prevBadges.includes(id));
+        const lvUpAnim = prevLevel && newLevel > prevLevel ? { prevLevel, newLevel } : null;
+        setState({ sc: 'result', rec, allRecs, ans: na,
+          lvUpAnim, newBadges: BADGES.filter(b => justEarned.includes(b.id)),
+          showBadgeAnim: justEarned.length > 0 });
+      }
+    };
+    return b;
+  });
+
+  const prevBtn = step > 0 ? el('button', { style: { background: 'none', border: 'none', color: '#999', fontSize: '13px', fontWeight: '800', padding: '6px 0 0', cursor: 'pointer', fontFamily: 'Nunito,sans-serif' }, onclick: () => setState({ step: step - 1 }) }, '← 이전 질문') : null;
+
+  return wrap(false, backBtn('sm', '× 그만하기'), header, bar,
+    el('h2', { style: { fontSize: '19px', fontWeight: '900', lineHeight: '1.5', margin: '0 0 22px', color: '#1A1A2E' } }, q.question),
+    ...optBtns, prevBtn
+  );
+}
+
+// ── RESULT ──
+function renderResult() {
+  const { rec, allRecs } = state;
+  if (!rec) { setState({ sc: 'sm' }); return el('div'); }
+  const lv = LEVELS[rec.level - 1];
+  const wk = getWeakCats(rec.scores);
+  const sorted = [...allRecs].sort((a, b) => new Date(a.survey_date) - new Date(b.survey_date));
+  const myIdx = sorted.findIndex(r => r.semester === state.sem);
+  const prevRec = myIdx > 0 ? sorted[myIdx - 1] : null;
+
+  const lvBox = el('div', { style: { textAlign: 'center', background: lv.bg, borderRadius: '18px', padding: '24px 18px', marginBottom: '20px' } },
+    el('div', { style: { fontSize: '60px', marginBottom: '6px' } }, lv.emoji),
+    el('h2', { style: { fontSize: '24px', fontWeight: '900', color: lv.color, margin: '0 0 4px' } }, `${lv.name} 단계!`),
+    el('p', { style: { margin: '0 0 12px', color: '#555', fontWeight: '700', fontSize: '13px' } }, lv.desc),
+    el('div', { class: 'level-dots' },
+      ...LEVELS.map(l => el('div', { class: 'level-dot', style: { background: l.n <= rec.level ? lv.color : '#DDD' } }, l.n <= rec.level ? l.emoji : ''))
+    ),
+    prevRec ? el('p', { style: { margin: '10px 0 0', fontSize: '12px', color: lv.color, fontWeight: '700' } },
+      prevRec.level < rec.level ? `📈 ${LEVELS[prevRec.level-1].name}에서 성장했어요!` :
+      prevRec.level === rec.level ? '→ 지난 학기와 같은 단계예요' : `📉 이전보다 변화했어요`) : el('span')
+  );
+
+  const barSection = el('div', null,
+    el('p', { class: 'section-title' }, '📊 체력 요소별 결과'),
+    ...SURVEY.map(q => {
+      const s = rec.scores?.[q.id] || 1;
+      return el('div', { style: { marginBottom: '12px' } },
+        el('div', { style: { display: 'flex', justifyContent: 'space-between', marginBottom: '4px' } },
+          el('span', { style: { fontSize: '14px', fontWeight: '700' } }, `${q.emoji} ${q.label}`),
+          el('span', { style: { fontSize: '13px', color: q.color, fontWeight: '800' } }, s === 1 ? '노력 필요' : s === 3 ? '보통' : '우수')
+        ),
+        el('div', { class: 'progress-bar-bg' },
+          el('div', { class: 'progress-bar', style: { background: q.color, width: `${(s/5)*100}%` } })
+        )
+      );
+    })
+  );
+
+  const weakSection = wk.length > 0 ? el('div', null,
+    el('p', { class: 'section-title', style: { marginTop: '16px' } }, '🎯 집중 추천 활동'),
+    ...wk.slice(0, 2).map(cat => {
+      const info = ACTIVITIES[cat];
+      return el('div', { style: { background: '#F8F9FA', borderRadius: '12px', padding: '12px 14px', marginBottom: '8px' } },
+        el('p', { style: { margin: '0 0 7px', fontWeight: '900', fontSize: '13px' } }, `${info.emoji} ${info.label} 강화`),
+        ...info.items.slice(0, 2).map(item => el('div', { style: { display: 'flex', alignItems: 'center', gap: '7px', marginBottom: '4px' } },
+          el('span', { class: 'tag', style: { background: (item.type === '교과' ? '#4CAF50' : item.type === '앱' ? '#2196F3' : '#FF9800') + '22', color: item.type === '교과' ? '#4CAF50' : item.type === '앱' ? '#2196F3' : '#FF9800' } }, item.type),
+          el('span', { style: { fontSize: '12px' } }, item.label)
+        ))
+      );
+    })
+  ) : el('span');
+
+  // Growth chart (simple SVG)
+  let growthSection = el('span');
+  if (allRecs.length >= 2) {
+    const sortedR = [...allRecs].sort((a, b) => new Date(a.survey_date) - new Date(b.survey_date));
+    growthSection = el('div', { style: { marginBottom: '16px' } },
+      el('p', { class: 'section-title', style: { marginTop: '14px' } }, '📈 학기별 성장 그래프'),
+      renderSimpleChart(sortedR)
+    );
+  }
+
+  const actBtn = el('button', { class: 'btn btn-green', style: { marginTop: '8px' } }, '✅ 활동 기록하러 가기 →');
+  actBtn.onclick = () => setState({ sc: 'al' });
+
+  return wrap(false, backBtn('sm'), lvBox, barSection, growthSection, weakSection, actBtn);
+}
+
+function renderSimpleChart(records) {
+  const W = 460, H = 120, PAD = 30;
+  const levels = records.map(r => r.level);
+  const labels = records.map(r => r.semester.replace('20', "'"));
+  const n = records.length;
+  const xStep = (W - PAD * 2) / (n - 1);
+  const yScale = v => H - PAD - ((v - 1) / 4) * (H - PAD * 2);
+
+  const pts = levels.map((v, i) => [PAD + i * xStep, yScale(v)]);
+  const pathD = pts.map((p, i) => `${i === 0 ? 'M' : 'L'}${p[0]},${p[1]}`).join(' ');
+
+  const svg = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
+  svg.setAttribute('viewBox', `0 0 ${W} ${H}`);
+  svg.style.width = '100%';
+  svg.style.height = '120px';
+  svg.style.overflow = 'visible';
+
+  // grid lines
+  [1,2,3,4,5].forEach(v => {
+    const y = yScale(v);
+    const line = document.createElementNS('http://www.w3.org/2000/svg', 'line');
+    line.setAttribute('x1', PAD); line.setAttribute('x2', W - PAD);
+    line.setAttribute('y1', y); line.setAttribute('y2', y);
+    line.setAttribute('stroke', '#F0F0F0'); line.setAttribute('stroke-width', '1');
+    svg.appendChild(line);
+    const txt = document.createElementNS('http://www.w3.org/2000/svg', 'text');
+    txt.setAttribute('x', PAD - 4); txt.setAttribute('y', y + 4);
+    txt.setAttribute('text-anchor', 'end'); txt.setAttribute('font-size', '10'); txt.setAttribute('fill', '#CCC');
+    txt.textContent = v;
+    svg.appendChild(txt);
+  });
+
+  // path
+  const path = document.createElementNS('http://www.w3.org/2000/svg', 'path');
+  path.setAttribute('d', pathD); path.setAttribute('fill', 'none');
+  path.setAttribute('stroke', '#E8534A'); path.setAttribute('stroke-width', '2.5');
+  svg.appendChild(path);
+
+  // dots + labels
+  pts.forEach(([x, y], i) => {
+    const circle = document.createElementNS('http://www.w3.org/2000/svg', 'circle');
+    circle.setAttribute('cx', x); circle.setAttribute('cy', y); circle.setAttribute('r', '5');
+    circle.setAttribute('fill', '#E8534A');
+    svg.appendChild(circle);
+    const lbl = document.createElementNS('http://www.w3.org/2000/svg', 'text');
+    lbl.setAttribute('x', x); lbl.setAttribute('y', H - 4);
+    lbl.setAttribute('text-anchor', 'middle'); lbl.setAttribute('font-size', '10'); lbl.setAttribute('fill', '#888');
+    lbl.textContent = labels[i];
+    svg.appendChild(lbl);
+    const vlbl = document.createElementNS('http://www.w3.org/2000/svg', 'text');
+    vlbl.setAttribute('x', x); vlbl.setAttribute('y', y - 8);
+    vlbl.setAttribute('text-anchor', 'middle'); vlbl.setAttribute('font-size', '11'); vlbl.setAttribute('fill', '#E8534A'); vlbl.setAttribute('font-weight', '800');
+    vlbl.textContent = `Lv.${levels[i]}`;
+    svg.appendChild(vlbl);
+  });
+
+  return el('div', { style: { padding: '8px 0' } }, svg);
+}
+
+// ── ACTIVITY LOG ──
+function renderActivityLog() {
+  const { rec } = state;
+  if (!rec) { setState({ sc: 'sm' }); return el('div'); }
+  const wk = getWeakCats(rec.scores);
+  const ord = [...wk, ...Object.keys(ACTIVITIES).filter(k => !wk.includes(k))];
+  const done = Object.values(rec.activities || {}).filter(Boolean).length;
+
+  const progressBox = el('div', { style: { background: '#E8F5E9', borderRadius: '12px', padding: '12px 14px', marginBottom: '18px', display: 'flex', alignItems: 'center', gap: '10px' } },
+    el('span', { style: { fontSize: '26px' } }, '🏅'),
+    el('div', { style: { flex: '1' } },
+      el('p', { style: { margin: '0 0 5px', fontWeight: '900', color: '#388E3C', fontSize: '14px' } }, `${done} / ${ALL_ACTS_TOTAL} 완료`),
+      el('div', { class: 'progress-bar-bg' },
+        el('div', { class: 'progress-bar', style: { background: '#4CAF50', width: `${(done/ALL_ACTS_TOTAL)*100}%` } })
+      )
+    )
+  );
+
+  const actSections = ord.map(cat => {
+    const info = ACTIVITIES[cat];
+    const isWk = wk.includes(cat);
+    const items = info.items.map(item => {
+      const dn = !!rec.activities?.[item.id];
+      const tc = item.type === '교과' ? '#4CAF50' : item.type === '앱' ? '#2196F3' : '#FF9800';
+      const btn = el('button', {
+        class: 'act-btn',
+        style: { background: dn ? '#E8F5E9' : '#F8F9FA', borderColor: dn ? '#4CAF50' : 'transparent' }
+      },
+        el('div', { class: 'check-circle', style: { background: dn ? '#4CAF50' : '#DDD' } }, dn ? '✓' : ''),
+        el('div', { style: { flex: '1' } },
+          el('span', { style: { fontSize: '12px', fontWeight: '700', color: dn ? '#388E3C' : '#333', textDecoration: dn ? 'line-through' : 'none' } }, item.label),
+          el('span', { class: 'tag', style: { background: tc + '22', color: tc, marginLeft: '7px' } }, item.type)
+        )
+      );
+      btn.onclick = async () => {
+        const newActs = { ...state.rec.activities, [item.id]: !state.rec.activities?.[item.id] };
+        await updateActivities(state.grade, state.name, state.sem, newActs);
+        const prevBadges = calcBadges(state.allRecs, state.rec);
+        const newRec = { ...state.rec, activities: newActs };
+        const newBadgeIds = calcBadges(state.allRecs, newRec);
+        const justEarned = newBadgeIds.filter(id => !prevBadges.includes(id));
+        setState({ rec: newRec,
+          newBadges: BADGES.filter(b => justEarned.includes(b.id)),
+          showBadgeAnim: justEarned.length > 0 });
+      };
+      return btn;
+    });
+
+    return el('div', { style: { marginBottom: '16px' } },
+      el('div', { style: { display: 'flex', alignItems: 'center', gap: '7px', marginBottom: '7px' } },
+        el('span', { style: { fontSize: '16px' } }, info.emoji),
+        el('span', { style: { fontWeight: '900', fontSize: '13px', color: '#1A1A2E' } }, info.label),
+        isWk ? el('span', { class: 'tag', style: { background: '#E8534A22', color: '#E8534A' } }, '집중 추천') : el('span')
+      ),
+      ...items
+    );
+  });
+
+  return wrap(false, backBtn('sm'),
+    el('h2', { style: { fontSize: '20px', fontWeight: '900', margin: '0 0 14px', color: '#1A1A2E' } }, '✅ 활동 기록'),
+    progressBox, ...actSections
+  );
+}
+
+// ── BADGES ──
+function renderBadges() {
+  const { rec, allRecs } = state;
+  const earned = calcBadges(allRecs, rec);
+  const grid = el('div', { class: 'badge-grid' },
+    ...BADGES.map(b => {
+      const have = earned.includes(b.id);
+      return el('div', {
+        class: 'badge-item',
+        style: { background: have ? '#FFFBF0' : '#F5F5F5', borderColor: have ? '#FFC107' : '#EEE', opacity: have ? '1' : '0.45' }
+      },
+        el('div', { style: { fontSize: '36px', filter: have ? 'none' : 'grayscale(1)', marginBottom: '6px' } }, b.emoji),
+        el('div', { style: { fontWeight: '900', fontSize: '14px', color: have ? '#333' : '#999' } }, b.name),
+        el('div', { style: { fontSize: '11px', color: '#888', marginTop: '3px', lineHeight: '1.4' } }, b.desc),
+        have ? el('div', { style: { marginTop: '6px', fontSize: '10px', color: '#FFA000', fontWeight: '800' } }, '✓ 획득 완료!') : el('span')
+      );
+    })
+  );
+  return wrap(false, backBtn('sm'),
+    el('h2', { style: { fontSize: '20px', fontWeight: '900', margin: '0 0 6px', color: '#1A1A2E' } }, '🏅 나의 배지'),
+    el('p', { style: { color: '#888', fontSize: '12px', margin: '0 0 18px', fontWeight: '600' } }, '활동하면 배지를 획득해요!'),
+    grid
+  );
+}
+
+// ── TEACHER LOGIN ──
+function renderTeacherLogin() {
+  const pwInp = el('input', { type: 'password', class: 'inp', placeholder: '비밀번호 (기본값: 1234)', style: { borderColor: state.tErr ? '#E8534A' : '#EEE' } });
+  pwInp.oninput = e => { state.tpw = e.target.value; state.tErr = false; };
+
+  const loginBtn = el('button', { class: 'btn btn-blue' }, '입장하기 →');
+  const tryLogin = async () => {
+    if (state.tpw === TEACHER_PW) {
+      setState({ sc: 'loading', tErr: false });
+      const teacherData = await loadAllForTeacher(state.fs);
+      setState({ sc: 'td', teacherData });
+    } else {
+      setState({ tErr: true });
+    }
+  };
+  loginBtn.onclick = tryLogin;
+  pwInp.onkeydown = e => { if (e.key === 'Enter') tryLogin(); };
+
+  const errMsg = state.tErr ? el('p', { style: { color: '#E8534A', fontSize: '12px', margin: '-6px 0 8px', fontWeight: '700' } }, '비밀번호가 틀렸어요') : el('span');
+
+  return wrap(false, backBtn('home'),
+    el('div', { style: { textAlign: 'center', marginBottom: '18px' } },
+      el('div', { style: { fontSize: '52px' } }, '👩‍🏫'),
+      el('h2', { style: { fontSize: '21px', fontWeight: '900', margin: '6px 0 0', color: '#1A1A2E' } }, '선생님 대시보드')
+    ),
+    el('p', { class: 'label' }, '비밀번호'), pwInp, errMsg, loginBtn
+  );
+}
+
+// ── TEACHER DASHBOARD ──
+function renderTeacherDashboard() {
+  const { teacherData, fg, fs } = state;
+  const filt = teacherData.filter(r => (fg === '전체' || r.grade === fg));
+  const lvCnt = [0,0,0,0,0];
+  filt.forEach(r => { if (r.level) lvCnt[r.level - 1]++; });
+  const avgLv = filt.length ? (filt.reduce((a, r) => a + (r.level || 0), 0) / filt.length).toFixed(1) : 0;
+
+  const refreshBtn = el('button', {
+    class: 'btn', style: { width: 'auto', padding: '8px 14px', borderRadius: '9px', fontSize: '12px', marginBottom: '0', background: '#6366F1' }
+  }, '🔄 새로고침');
+  refreshBtn.onclick = async () => {
+    setState({ sc: 'loading' });
+    const teacherData = await loadAllForTeacher(state.fs);
+    setState({ sc: 'td', teacherData });
+  };
+
+  const gradeFilter = el('div', { class: 'flex-wrap' },
+    ...['전체', ...GRADES].map(g => {
+      const b = el('button', { class: g === fg ? 'btn btn-selected-blue' : 'btn btn-gray', style: { width: 'auto', padding: '7px 11px', borderRadius: '8px', fontSize: '12px', marginBottom: '0' } }, g);
+      b.onclick = () => setState({ fg: g });
+      return b;
+    })
+  );
+
+  const semFilter = el('div', { class: 'flex-wrap' },
+    ...SEMESTERS.map(s => {
+      const b = el('button', { class: s === fs ? 'btn btn-selected-red' : 'btn btn-gray', style: { width: 'auto', padding: '7px 11px', borderRadius: '8px', fontSize: '12px', marginBottom: '0' } }, s);
+      b.onclick = async () => {
+        setState({ sc: 'loading', fs: s });
+        const teacherData = await loadAllForTeacher(s);
+        setState({ sc: 'td', teacherData, fs: s });
+      };
+      return b;
+    })
+  );
+
+  const lvBoxes = el('div', { style: { display: 'grid', gridTemplateColumns: 'repeat(5,1fr)', gap: '7px', marginBottom: '18px' } },
+    ...LEVELS.map((l, i) => el('div', { style: { background: l.bg, borderRadius: '12px', padding: '10px 4px', textAlign: 'center' } },
+      el('div', { style: { fontSize: '22px' } }, l.emoji),
+      el('div', { style: { fontWeight: '900', fontSize: '20px', color: l.color } }, lvCnt[i]),
+      el('div', { style: { fontSize: '10px', fontWeight: '700', color: '#888' } }, l.name)
+    ))
+  );
+
+  const stats = el('div', { style: { display: 'flex', gap: '10px', marginBottom: '20px' } },
+    el('div', { class: 'stat-box', style: { background: '#F0FDF4' } },
+      el('div', { style: { fontSize: '22px', fontWeight: '900', color: '#16A34A' } }, avgLv),
+      el('div', { style: { fontSize: '11px', color: '#888', fontWeight: '700' } }, '평균 레벨')
+    ),
+    el('div', { class: 'stat-box', style: { background: '#EEF2FF' } },
+      el('div', { style: { fontSize: '22px', fontWeight: '900', color: '#4338CA' } }, filt.length),
+      el('div', { style: { fontSize: '11px', color: '#888', fontWeight: '700' } }, '측정 완료')
+    ),
+    el('div', { class: 'stat-box', style: { background: '#FFF7ED' } },
+      el('div', { style: { fontSize: '22px', fontWeight: '900', color: '#C2410C' } }, filt.filter(r => (r.level || 0) <= 2).length),
+      el('div', { style: { fontSize: '11px', color: '#888', fontWeight: '700' } }, '집중 관리')
+    )
+  );
+
+  const studentList = filt.length === 0
+    ? el('div', { style: { textAlign: 'center', padding: '36px 0', color: '#CCC' } },
+        el('p', { style: { fontSize: '40px', margin: '0 0 8px' } }, '📭'),
+        el('p', { style: { fontWeight: '700', margin: '0' } }, '데이터가 없어요')
+      )
+    : el('div', null,
+        el('p', { class: 'section-title' }, '👥 학생 목록'),
+        ...filt.sort((a, b) => (b.level || 0) - (a.level || 0)).map(r => {
+          const lv = LEVELS[(r.level || 1) - 1];
+          const dn = Object.values(r.activities || {}).filter(Boolean).length;
+          const wk = getWeakCats(r.scores || {});
+          return el('div', { style: { display: 'flex', alignItems: 'center', gap: '10px', padding: '12px 0', borderBottom: '1px solid #F5F5F5' } },
+            el('div', { style: { width: '40px', height: '40px', borderRadius: '10px', background: lv.bg, display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '21px', flexShrink: '0' } }, lv.emoji),
+            el('div', { style: { flex: '1', minWidth: '0' } },
+              el('div', { style: { display: 'flex', alignItems: 'center', gap: '7px', flexWrap: 'wrap' } },
+                el('span', { style: { fontWeight: '900', fontSize: '14px', color: '#1A1A2E' } }, `${r.grade} ${r.name}`),
+                el('span', { class: 'tag', style: { background: lv.color + '22', color: lv.color } }, lv.name)
+              ),
+              el('div', { style: { fontSize: '11px', color: '#999', marginTop: '2px' } },
+                `측정: ${r.survey_date} · 활동 ${dn}/${ALL_ACTS_TOTAL}개`,
+                wk.length > 0 ? el('span', { style: { color: '#E8534A' } }, ` · 약점: ${wk.map(k => ACTIVITIES[k].label).join(', ')}`) : ''
+              )
+            ),
+            el('div', { style: { display: 'flex', gap: '3px', flexShrink: '0' } },
+              ...SURVEY.map(q => {
+                const sv = r.scores?.[q.id] || 1;
+                return el('div', { title: q.label, style: { width: '12px', height: '12px', borderRadius: '50%', background: sv === 5 ? '#4CAF50' : sv === 3 ? '#FF9800' : '#E8534A' } });
+              })
+            )
+          );
+        }),
+        el('p', { style: { fontSize: '10px', color: '#CCC', textAlign: 'center', marginTop: '12px' } }, '● 초록: 우수 · 주황: 보통 · 빨강: 노력 필요')
+      );
+
+  const homeBtn = el('button', { style: { background: 'none', border: 'none', color: '#999', fontSize: '13px', fontWeight: '800', cursor: 'pointer', fontFamily: 'Nunito,sans-serif' } }, '← 홈으로');
+  homeBtn.onclick = () => setState({ sc: 'home' });
+
+  return wrap(true,
+    el('div', { style: { display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', marginBottom: '16px' } },
+      el('div', null,
+        el('h2', { style: { fontSize: '21px', fontWeight: '900', margin: '0', color: '#1A1A2E' } }, '👩‍🏫 학급 현황'),
+        el('p', { style: { margin: '3px 0 0', color: '#888', fontSize: '12px', fontWeight: '600' } }, `총 ${filt.length}명`)
+      ),
+      el('div', { style: { display: 'flex', gap: '8px' } }, refreshBtn, homeBtn)
+    ),
+    gradeFilter, semFilter, lvBoxes, stats, studentList
+  );
+}
+
+// ── LOADING ──
+function renderLoading() {
+  return wrap(false,
+    el('div', { style: { textAlign: 'center', padding: '40px 0' } },
+      el('div', { class: 'spinner' }),
+      el('p', { style: { color: '#888', fontWeight: '700' } }, '불러오는 중...')
+    )
+  );
+}
+
+// ── OVERLAYS ──
+function renderLvUpOverlay() {
+  const { lvUpAnim } = state;
+  const lv = LEVELS[lvUpAnim.newLevel - 1];
+  const overlay = el('div', { class: 'overlay' },
+    el('div', { class: 'popup', style: { background: lv.bg, border: `3px solid ${lv.color}` } },
+      el('div', { style: { fontSize: '72px', marginBottom: '8px' } }, lv.emoji),
+      el('div', { style: { fontSize: '13px', fontWeight: '800', color: lv.color, marginBottom: '4px' } }, 'LEVEL UP! 🎉'),
+      el('div', { style: { fontSize: '26px', fontWeight: '900', color: '#1A1A2E', marginBottom: '8px' } }, `${LEVELS[lvUpAnim.prevLevel-1].name} → ${lv.name}`),
+      el('p', { style: { color: '#555', fontWeight: '700', margin: '0 0 20px' } }, lv.desc),
+      el('button', { class: 'btn', style: { background: lv.color, width: 'auto', padding: '12px 28px' }, onclick: () => setState({ lvUpAnim: null }) }, '🎉 확인!')
+    )
+  );
+  return overlay;
+}
+
+function renderBadgeOverlay() {
+  const { newBadges } = state;
+  const overlay = el('div', { class: 'overlay', onclick: () => setState({ showBadgeAnim: false, newBadges: [] }) },
+    el('div', { class: 'popup' },
+      el('div', { style: { fontSize: '56px' } }, '🏅'),
+      el('div', { style: { fontSize: '19px', fontWeight: '900', margin: '8px 0' } }, '새 배지 획득!'),
+      ...newBadges.map(b => el('div', { style: { background: '#FFF9E6', border: '2px solid #FFC107', borderRadius: '10px', padding: '8px 12px', margin: '6px 0' } },
+        el('span', { style: { fontSize: '22px' } }, b.emoji),
+        el('div', { style: { fontWeight: '800', fontSize: '14px' } }, b.name)
+      )),
+      el('button', { class: 'btn', style: { background: '#FFC107', width: 'auto', padding: '10px 24px', marginTop: '8px' }, onclick: () => setState({ showBadgeAnim: false, newBadges: [] }) }, '축하해요!')
+    )
+  );
+  return overlay;
+}
+
+// ── INIT ──
+render();
+</script>
+</body>
+</html>
