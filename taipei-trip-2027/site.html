@@ -1,0 +1,710 @@
+<title>타이베이 여섯 사나이</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@400;600;900&family=IBM+Plex+Sans+KR:wght@300;400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap">
+<style>
+:root{
+  --bg:#F1F5F3; --surface:#FFFFFF; --surface-2:#E8EEEB; --line:#D3DEDA; --line-2:#BECBC6;
+  --tx:#10262B; --tx-2:#4C6469; --tx-3:#7A8F93;
+  --jade:#1B7A69; --jade-soft:#DCEDE8; --lantern:#BC3B2C; --lantern-soft:#F7E3DF;
+  --gold:#9A741B; --gold-soft:#F4EBD4;
+  --shadow:0 1px 2px rgba(16,38,43,.06), 0 8px 24px rgba(16,38,43,.05);
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --bg:#0C2025; --surface:#112C32; --surface-2:#16373E; --line:#22474E; --line-2:#2E5A62;
+    --tx:#E7E1D4; --tx-2:#9FB6BA; --tx-3:#7A9297;
+    --jade:#4FBBA1; --jade-soft:#14383A; --lantern:#E9604D; --lantern-soft:#3A2320;
+    --gold:#E0B455; --gold-soft:#332A16;
+    --shadow:0 1px 2px rgba(0,0,0,.3), 0 10px 28px rgba(0,0,0,.28);
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#0C2025; --surface:#112C32; --surface-2:#16373E; --line:#22474E; --line-2:#2E5A62;
+  --tx:#E7E1D4; --tx-2:#9FB6BA; --tx-3:#7A9297;
+  --jade:#4FBBA1; --jade-soft:#14383A; --lantern:#E9604D; --lantern-soft:#3A2320;
+  --gold:#E0B455; --gold-soft:#332A16;
+  --shadow:0 1px 2px rgba(0,0,0,.3), 0 10px 28px rgba(0,0,0,.28);
+}
+*{box-sizing:border-box;}
+body{
+  background:var(--bg); color:var(--tx);
+  font-family:"IBM Plex Sans KR","Apple SD Gothic Neo","Malgun Gothic",sans-serif;
+  font-size:15px; line-height:1.6; -webkit-font-smoothing:antialiased;
+}
+.mono{font-family:"IBM Plex Mono","IBM Plex Sans KR",monospace;}
+h1,h2,h3{font-family:"Noto Serif KR",serif;letter-spacing:-.015em;text-wrap:balance;margin:0;}
+p{margin:0;}
+a{color:var(--jade);}
+:focus-visible{outline:2px solid var(--jade);outline-offset:2px;border-radius:3px;}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important;}}
+
+.wrap{max-width:1000px;margin:0 auto;padding:0 20px 80px;}
+
+/* ---------- identity bar ---------- */
+.idbar{position:sticky;top:0;z-index:40;background:var(--surface);
+  border-bottom:1px solid var(--line);box-shadow:var(--shadow);}
+.idbar .in{max-width:1000px;margin:0 auto;padding:9px 20px;display:flex;gap:12px;
+  align-items:center;flex-wrap:wrap;}
+.idbar .brand{font-family:"IBM Plex Mono",monospace;font-size:11px;letter-spacing:.2em;
+  color:var(--jade);text-transform:uppercase;margin-right:auto;}
+.idbar .who{font-size:13.5px;color:var(--tx-2);}
+.idbar .who b{color:var(--tx);font-weight:600;}
+.slotpick{display:flex;gap:6px;flex-wrap:wrap;}
+.chip{border:1px solid var(--line-2);background:transparent;color:var(--tx-2);
+  font:inherit;font-size:12.5px;padding:4px 10px;border-radius:999px;cursor:pointer;
+  font-family:"IBM Plex Mono",monospace;transition:.15s;}
+.chip:hover{border-color:var(--jade);color:var(--jade);}
+.chip[aria-pressed="true"]{background:var(--jade);border-color:var(--jade);color:#fff;}
+.linkbtn{background:none;border:none;color:var(--jade);font:inherit;font-size:12.5px;
+  cursor:pointer;text-decoration:underline;text-underline-offset:3px;padding:2px;}
+
+/* ---------- hero ---------- */
+.hero{padding:44px 0 34px;border-bottom:2px solid var(--line);}
+.eyebrow{font-family:"IBM Plex Mono",monospace;font-size:11.5px;letter-spacing:.26em;
+  color:var(--jade);text-transform:uppercase;}
+.hero h1{font-size:clamp(34px,6vw,58px);font-weight:900;line-height:1.06;margin:14px 0 0;}
+.hero h1 em{font-style:normal;color:var(--lantern);}
+.hero .lede{margin-top:16px;color:var(--tx-2);font-size:16px;max-width:60ch;font-weight:300;}
+.herostat{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));
+  gap:1px;background:var(--line);border:1px solid var(--line);margin-top:26px;}
+.herostat > div{background:var(--surface);padding:14px 16px;}
+.herostat dt{font-family:"IBM Plex Mono",monospace;font-size:10.5px;letter-spacing:.18em;
+  color:var(--tx-3);text-transform:uppercase;}
+.herostat dd{margin:6px 0 0;font-size:17px;font-weight:600;}
+.herostat dd small{display:block;font-size:12.5px;font-weight:300;color:var(--tx-3);margin-top:2px;}
+.dday{color:var(--lantern);font-variant-numeric:tabular-nums;}
+
+/* ---------- section ---------- */
+section{padding-top:52px;}
+.shead{display:flex;align-items:baseline;gap:14px;margin-bottom:6px;}
+.shead h2{font-size:27px;font-weight:900;}
+.shead .n{font-family:"IBM Plex Mono",monospace;font-size:11.5px;color:var(--jade);
+  letter-spacing:.18em;}
+.shead .rule{flex:1;height:1px;background:var(--line);}
+.sdesc{color:var(--tx-2);font-size:14.5px;margin-bottom:22px;font-weight:300;max-width:62ch;}
+
+/* ---------- roster ---------- */
+.roster{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:10px;}
+.person{border:1px solid var(--line);background:var(--surface);padding:13px 14px;border-radius:4px;}
+.person.me{border-color:var(--jade);box-shadow:0 0 0 1px var(--jade) inset;}
+.person .age{font-family:"IBM Plex Mono",monospace;font-size:11px;color:var(--tx-3);letter-spacing:.12em;}
+.person .nm{font-size:17px;font-weight:600;margin-top:4px;min-height:26px;}
+.person .nm.empty{color:var(--tx-3);font-weight:300;}
+.person .st{margin-top:8px;font-size:11.5px;font-family:"IBM Plex Mono",monospace;}
+.st.done{color:var(--jade);} .st.wait{color:var(--tx-3);}
+
+/* ---------- plans ---------- */
+.plans{display:grid;grid-template-columns:repeat(auto-fit,minmax(268px,1fr));gap:14px;}
+.plan{border:1px solid var(--line);background:var(--surface);border-radius:4px;
+  padding:20px;display:flex;flex-direction:column;gap:12px;}
+.plan.top{border-color:var(--jade);}
+.plan .pk{font-family:"IBM Plex Mono",monospace;font-size:11px;letter-spacing:.2em;color:var(--tx-3);}
+.plan.top .pk{color:var(--jade);}
+.plan h3{font-size:22px;font-weight:900;}
+.plan .who{font-size:13.5px;color:var(--gold);font-weight:500;}
+.plan ul{margin:0;padding:0;list-style:none;display:flex;flex-direction:column;gap:6px;}
+.plan li{font-size:14px;color:var(--tx-2);font-weight:300;padding-left:14px;position:relative;line-height:1.45;}
+.plan li::before{content:"—";position:absolute;left:0;color:var(--line-2);}
+.plan .cost{font-family:"IBM Plex Mono",monospace;font-size:12.5px;color:var(--tx-3);
+  border-top:1px dashed var(--line);padding-top:11px;}
+.plan .cost b{color:var(--tx);}
+.votebar{height:7px;background:var(--surface-2);border-radius:99px;overflow:hidden;}
+.votebar i{display:block;height:100%;background:var(--jade);width:0;transition:width .4s;}
+.voterow{display:flex;justify-content:space-between;align-items:center;font-size:12.5px;
+  font-family:"IBM Plex Mono",monospace;color:var(--tx-3);}
+.voterow b{color:var(--tx);font-size:15px;}
+.voters{font-size:12px;color:var(--tx-3);min-height:16px;font-family:"IBM Plex Sans KR",sans-serif;}
+
+/* ---------- forms ---------- */
+.card{border:1px solid var(--line);background:var(--surface);border-radius:4px;padding:22px;}
+.notice{border:1px dashed var(--line-2);background:var(--surface-2);border-radius:4px;
+  padding:12px 15px;font-size:13.5px;color:var(--tx-2);margin-bottom:18px;}
+.notice b{color:var(--lantern);}
+.field{padding:16px 0;border-bottom:1px solid var(--line);}
+.field:first-child{padding-top:0;}
+.field:last-child{border-bottom:none;padding-bottom:0;}
+.field > label, .flabel{display:block;font-size:14.5px;font-weight:600;margin-bottom:9px;}
+.flabel small{font-weight:300;color:var(--tx-3);margin-left:8px;font-size:12.5px;}
+.opts{display:flex;gap:7px;flex-wrap:wrap;}
+.opt{border:1px solid var(--line-2);background:transparent;color:var(--tx-2);font:inherit;
+  font-size:13.5px;padding:7px 13px;border-radius:3px;cursor:pointer;transition:.15s;}
+.opt:hover{border-color:var(--jade);color:var(--jade);}
+.opt[aria-pressed="true"]{background:var(--jade-soft);border-color:var(--jade);color:var(--jade);font-weight:600;}
+input[type=text], textarea{width:100%;background:var(--bg);border:1px solid var(--line-2);
+  color:var(--tx);font:inherit;font-size:14.5px;padding:9px 12px;border-radius:3px;}
+textarea{resize:vertical;min-height:64px;line-height:1.5;}
+input::placeholder,textarea::placeholder{color:var(--tx-3);}
+.btn{background:var(--jade);border:1px solid var(--jade);color:#fff;font:inherit;font-weight:600;
+  font-size:14.5px;padding:10px 22px;border-radius:3px;cursor:pointer;transition:.15s;}
+.btn:hover{filter:brightness(1.08);}
+.btn[disabled]{opacity:.45;cursor:not-allowed;}
+.btn.ghost{background:transparent;color:var(--jade);}
+.btn.sm{font-size:13px;padding:7px 14px;}
+.saverow{display:flex;align-items:center;gap:14px;margin-top:20px;flex-wrap:wrap;}
+.savemsg{font-size:13px;color:var(--jade);font-family:"IBM Plex Mono",monospace;}
+
+/* ---------- tally ---------- */
+.tally{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:16px;}
+.tblock{border:1px solid var(--line);background:var(--surface);border-radius:4px;padding:16px 18px;}
+.tblock h4{margin:0 0 12px;font-size:14px;font-weight:600;font-family:inherit;}
+.trow{display:grid;grid-template-columns:1fr 46px;gap:10px;align-items:center;
+  font-size:13px;color:var(--tx-2);margin-bottom:7px;}
+.tmeter{height:16px;background:var(--surface-2);border-radius:2px;position:relative;overflow:hidden;}
+.tmeter i{position:absolute;inset:0 auto 0 0;background:var(--jade);opacity:.85;width:0;transition:width .4s;}
+.tmeter span{position:relative;padding:0 7px;font-size:12px;line-height:16px;display:block;
+  color:var(--tx);white-space:nowrap;}
+.tcount{font-family:"IBM Plex Mono",monospace;font-size:12.5px;color:var(--tx-3);text-align:right;}
+.tlist{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:9px;}
+.tlist li{font-size:13.5px;color:var(--tx-2);line-height:1.45;}
+.tlist li b{color:var(--jade);font-weight:600;font-size:12.5px;
+  font-family:"IBM Plex Mono",monospace;display:block;}
+.empty{font-size:13px;color:var(--tx-3);font-weight:300;}
+
+/* ---------- questions ---------- */
+.q{border:1px solid var(--line);background:var(--surface);border-radius:4px;
+  padding:18px 20px;margin-bottom:12px;}
+.q .qh{display:flex;justify-content:space-between;gap:14px;align-items:flex-start;}
+.q .qt{font-size:16px;font-weight:600;line-height:1.4;}
+.q .qmeta{font-family:"IBM Plex Mono",monospace;font-size:11px;color:var(--tx-3);
+  white-space:nowrap;padding-top:4px;}
+.q .ans{margin-top:14px;display:flex;flex-direction:column;gap:8px;}
+.ansrow{display:grid;grid-template-columns:78px 1fr;gap:12px;font-size:13.5px;
+  padding:7px 0;border-top:1px solid var(--line);}
+.ansrow .an{font-weight:600;color:var(--jade);font-size:12.5px;}
+.ansrow .av{color:var(--tx-2);}
+.qform{display:flex;gap:8px;margin-top:14px;flex-wrap:wrap;}
+.qform input{flex:1;min-width:200px;}
+
+/* ---------- itinerary ---------- */
+.day{border:1px solid var(--line);background:var(--surface);border-radius:4px;
+  margin-bottom:12px;overflow:hidden;}
+.dhead{display:flex;gap:16px;align-items:baseline;padding:16px 20px;
+  background:var(--surface-2);border-bottom:1px solid var(--line);flex-wrap:wrap;}
+.dhead .dn{font-family:"IBM Plex Mono",monospace;font-size:11px;letter-spacing:.18em;color:var(--jade);}
+.dhead .dd{font-family:"Noto Serif KR",serif;font-size:24px;font-weight:900;}
+.dhead .dt{font-size:14.5px;color:var(--gold);font-weight:600;}
+.dhead .dm{margin-left:auto;font-family:"IBM Plex Mono",monospace;font-size:11.5px;color:var(--tx-3);}
+.slot{display:grid;grid-template-columns:66px 1fr;gap:14px;padding:11px 20px;
+  border-bottom:1px solid var(--line);}
+.slot:last-child{border-bottom:none;}
+.slot .t{font-family:"IBM Plex Mono",monospace;font-size:13.5px;font-weight:600;
+  color:var(--jade);font-variant-numeric:tabular-nums;padding-top:2px;}
+.slot .w{font-size:15px;font-weight:500;line-height:1.45;}
+.slot .w em{font-style:normal;color:var(--gold);}
+.slot .w span{display:block;font-size:13px;color:var(--tx-3);font-weight:300;margin-top:2px;line-height:1.45;}
+.tagx{display:inline-block;font-family:"IBM Plex Mono",monospace;font-size:10.5px;
+  border:1px solid var(--lantern);color:var(--lantern);padding:1px 6px;border-radius:2px;
+  margin-left:7px;vertical-align:2px;letter-spacing:.06em;}
+
+/* ---------- food ---------- */
+.foods{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:0 32px;}
+.frow{display:grid;grid-template-columns:26px 1fr;gap:10px;padding:12px 0;
+  border-bottom:1px solid var(--line);}
+.frow .no{font-family:"IBM Plex Mono",monospace;font-size:12px;color:var(--line-2);padding-top:3px;}
+.frow .nm{font-size:15.5px;font-weight:600;line-height:1.35;}
+.frow .nm i{font-style:normal;font-weight:300;color:var(--tx-3);font-size:13px;}
+.frow .ds{font-size:13px;color:var(--tx-2);font-weight:300;margin-top:3px;line-height:1.45;}
+.frow .mt{margin-top:6px;font-family:"IBM Plex Mono",monospace;font-size:11.5px;color:var(--tx-3);}
+.frow .mt b{color:var(--gold);}
+
+/* ---------- checklist ---------- */
+.checks{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:8px;}
+.chk{display:flex;gap:11px;align-items:flex-start;border:1px solid var(--line);
+  background:var(--surface);border-radius:3px;padding:11px 13px;cursor:pointer;transition:.15s;}
+.chk:hover{border-color:var(--jade);}
+.chk.on{background:var(--jade-soft);border-color:var(--jade);}
+.chk .box{width:17px;height:17px;border:1.5px solid var(--line-2);border-radius:3px;
+  flex:0 0 auto;margin-top:2px;position:relative;}
+.chk.on .box{background:var(--jade);border-color:var(--jade);}
+.chk.on .box::after{content:"";position:absolute;left:5px;top:1.5px;width:5px;height:10px;
+  border:solid #fff;border-width:0 2px 2px 0;transform:rotate(42deg);}
+.chk .lb{font-size:14px;line-height:1.4;}
+.chk .by{display:block;font-size:11.5px;color:var(--tx-3);font-family:"IBM Plex Mono",monospace;margin-top:3px;}
+
+/* ---------- board ---------- */
+.msg{border-left:2px solid var(--line-2);padding:9px 0 9px 14px;margin-bottom:12px;}
+.msg .mh{font-size:12.5px;color:var(--tx-3);font-family:"IBM Plex Mono",monospace;}
+.msg .mh b{color:var(--jade);font-weight:600;}
+.msg .mb{font-size:14.5px;margin-top:3px;line-height:1.5;white-space:pre-wrap;}
+
+footer{margin-top:64px;padding-top:22px;border-top:2px solid var(--line);
+  display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;
+  font-size:12.5px;color:var(--tx-3);font-family:"IBM Plex Mono",monospace;letter-spacing:.06em;}
+</style>
+
+<div class="idbar">
+  <div class="in">
+    <div class="brand">TAIPEI 2027.01.14–17</div>
+    <div class="who" id="whoTx">본인을 선택하세요 →</div>
+    <div class="slotpick" id="slotPick"></div>
+    <button class="linkbtn" id="resetId" hidden>변경</button>
+  </div>
+</div>
+
+<div class="wrap">
+
+<div class="hero">
+  <div class="eyebrow">3 NIGHTS 4 DAYS · 6 MEN · TAIWAN</div>
+  <h1>사나이 여섯,<br><em>타이베이</em> 3박 4일</h1>
+  <p class="lede">40대~50대 후반 남자 여섯 명 기준으로 짠 동선입니다. 많이 걷지 않고, 잘 먹고, 온천과 마사지로 마무리합니다. 아래에서 각자 본인을 고르고 투표·설문을 남기면 실시간으로 집계됩니다.</p>
+  <dl class="herostat">
+    <div><dt>Departure</dt><dd>2027.01.14 <small>목요일 오전 출발</small></dd></div>
+    <div><dt>Return</dt><dd>2027.01.17 <small>일요일 저녁 도착</small></dd></div>
+    <div><dt>D-day</dt><dd class="dday mono" id="dday">–</dd></div>
+    <div><dt>Base</dt><dd>타이베이역 <small>공항MRT 직결</small></dd></div>
+    <div><dt>Weather</dt><dd>13–19℃ <small>안개비 잦음</small></dd></div>
+  </dl>
+</div>
+
+<section id="roster">
+  <div class="shead"><span class="n">01</span><h2>참가자</h2><div class="rule"></div></div>
+  <p class="sdesc">본인 칸을 선택하고 이름을 넣어 주세요. 설문을 마치면 초록색으로 바뀝니다.</p>
+  <div class="roster" id="rosterBox"></div>
+</section>
+
+<section id="vote">
+  <div class="shead"><span class="n">02</span><h2>일정 3안 투표</h2><div class="rule"></div></div>
+  <p class="sdesc">공통 뼈대(도착일 마사지 · 마지막 날 쇼핑)는 고정입니다. DAY 2와 DAY 3을 통째로 바꾸는 세 가지 안 중에서 고릅니다.</p>
+  <div class="plans" id="plansBox"></div>
+</section>
+
+<section id="survey">
+  <div class="shead"><span class="n">03</span><h2>개인 설문</h2><div class="rule"></div></div>
+  <p class="sdesc">예약을 잡으려면 아래 항목이 필요합니다. 특히 <b>못 먹는 음식</b>과 <b>골프 여부</b>는 식당·라운딩 예약에 바로 반영됩니다.</p>
+  <div class="notice" id="idNotice"><b>먼저 맨 위에서 본인을 선택하세요.</b> 선택해야 입력이 저장됩니다.</div>
+  <div class="card"><div id="formBox"></div>
+    <div class="saverow">
+      <button class="btn" id="saveBtn" disabled>내 답변 저장</button>
+      <span class="savemsg" id="saveMsg"></span>
+    </div>
+  </div>
+</section>
+
+<section id="tally">
+  <div class="shead"><span class="n">04</span><h2>실시간 집계</h2><div class="rule"></div></div>
+  <p class="sdesc">여섯 명이 다 넣으면 최종안을 확정합니다. 누가 무엇을 골랐는지 모두에게 보입니다.</p>
+  <div class="tally" id="tallyBox"><p class="empty">집계를 불러오는 중…</p></div>
+</section>
+
+<section id="questions">
+  <div class="shead"><span class="n">05</span><h2>추가 질문</h2><div class="rule"></div></div>
+  <p class="sdesc">물어보고 싶은 게 생기면 여기에 질문을 올리세요. 나머지 다섯 명이 각자 답을 답니다. (예: "골프채 대여할 사람?", "면세점에서 뭐 사올까?")</p>
+  <div class="qform">
+    <input type="text" id="qInput" placeholder="새 질문을 적어주세요" maxlength="140">
+    <button class="btn sm" id="qAdd" disabled>질문 올리기</button>
+  </div>
+  <div id="qBox" style="margin-top:18px;"><p class="empty">아직 올라온 질문이 없습니다.</p></div>
+</section>
+
+<section id="plan">
+  <div class="shead"><span class="n">06</span><h2>전체 일정 — 추천안(A)</h2><div class="rule"></div></div>
+  <p class="sdesc">투표 결과에 따라 DAY 2·DAY 3이 바뀝니다. 아래는 현재 1순위인 A안 기준입니다.</p>
+  <div id="dayBox"></div>
+</section>
+
+<section id="food">
+  <div class="shead"><span class="n">07</span><h2>맛집 14곳</h2><div class="rule"></div></div>
+  <p class="sdesc">한국인 여행 블로그와 현지 미쉐린 빕구르망에서 반복적으로 걸리는 곳 위주입니다. 기준은 별점이 아니라 "한국 아저씨 여섯 명이 만족할 확률"입니다.</p>
+  <div class="foods" id="foodBox"></div>
+</section>
+
+<section id="check">
+  <div class="shead"><span class="n">08</span><h2>예약·준비 체크리스트</h2><div class="rule"></div></div>
+  <p class="sdesc">누구든 처리한 사람이 체크하면 전원에게 실시간으로 보입니다.</p>
+  <div class="checks" id="checkBox"></div>
+</section>
+
+<section id="board">
+  <div class="shead"><span class="n">09</span><h2>단톡 대신 남기는 말</h2><div class="rule"></div></div>
+  <p class="sdesc">일정 관련 의견이나 공지를 남겨두면 흘러가지 않습니다.</p>
+  <div class="qform">
+    <input type="text" id="mInput" placeholder="한 줄 남기기" maxlength="300">
+    <button class="btn sm" id="mAdd" disabled>남기기</button>
+  </div>
+  <div id="boardBox" style="margin-top:20px;"><p class="empty">아직 남긴 말이 없습니다.</p></div>
+</section>
+
+<footer>
+  <div>TAIPEI 2027.01.14–17 · 6 MEN · 3 PLANS</div>
+  <div id="conn">연결 상태 확인 중…</div>
+</footer>
+</div>
+
+<script>
+(function(){
+"use strict";
+
+/* ============ 데이터 ============ */
+var SLOTS=[{id:"m1",age:"59세 ①"},{id:"m2",age:"59세 ②"},{id:"m3",age:"53세"},
+           {id:"m4",age:"51세"},{id:"m5",age:"44세"},{id:"m6",age:"42세"}];
+
+var PLANS=[
+ {k:"A",name:"클래식 완주형",who:"대만이 처음이거나, 온 김에 다 보고 싶은 팀",
+  li:["DAY2 예류 + 스펀 천등 + 지우펀 밴 대절","DAY3 고궁박물원 + 101 + 베이터우 온천",
+      "야시장 2곳(라오허제 · 닝샤)","하루 8,000–11,000보"],cost:"1인 <b>115–135만원</b> · 체력 ★★☆"},
+ {k:"B",name:"온천·미식 힐링형",who:"걷기 싫고 먹고 쉬는 게 목적인 팀",
+  li:["DAY2 우라이 온천마을 종일(협궤열차 · 폭포)","DAY3 베이터우 반나절 온천 재방문",
+      "예류·스펀 전면 삭제, 이동 시간 절반","마사지 2회 · 훠궈 2회로 재편"],cost:"1인 <b>110–130만원</b> · 체력 ★☆☆"},
+ {k:"C",name:"골프 + 미식형",who:"여섯 중 넷 이상이 골프를 칠 때",
+  li:["DAY2 타오위안·린커우 18홀 라운딩","캐디 동반 필수 · 카트 규정 사전 확인",
+      "DAY3 지우펀 반일 + 온천 + 훠궈","비골퍼는 시내 자유일정으로 분리"],cost:"1인 <b>140–165만원</b> · 체력 ★★☆"}];
+
+var FIELDS=[
+ {k:"plan",t:"일정 안",type:"choice",o:[["A","A안 클래식"],["B","B안 힐링"],["C","C안 골프"]]},
+ {k:"airport",t:"출발 공항",type:"choice",o:[["GMP","김포–쑹산"],["ICN","인천–타오위안"],["ANY","상관없음"]]},
+ {k:"golf",t:"골프 라운딩",type:"choice",o:[["YES","친다"],["NO","안 친다"],["ANY","다수 따름"]]},
+ {k:"budget",t:"1인 예산 상한",hint:"항공·숙박 포함",type:"choice",
+  o:[["B1","110만 이하"],["B2","110–140만"],["B3","140–170만"],["B4","상관없음"]]},
+ {k:"walk",t:"걷기 체력",type:"choice",o:[["W1","많이 걸어도 OK"],["W2","적당히"],["W3","최소화"]]},
+ {k:"spa",t:"온천 방식",hint:"대중탕은 수영복 필수",type:"choice",
+  o:[["S1","개별탕(수영복 X)"],["S2","대중 노천탕"],["S3","온천 패스"]]},
+ {k:"drink",t:"주량",type:"choice",o:[["D1","매일 달린다"],["D2","적당히"],["D3","거의 안 함"]]},
+ {k:"noeat",t:"못 먹는 음식 · 알레르기",hint:"식당 예약에 직접 반영",type:"text",
+  ph:"예: 고수 절대 안 됨 / 갑각류 알레르기 / 향신료 약함"},
+ {k:"must",t:"꼭 하고 싶은 것",type:"text",ph:"예: 마사지 두 번, 온천 길게, 야시장 술"},
+ {k:"room",t:"방 같이 쓰고 싶은 사람",type:"text",ph:"예: 아무나 / OOO 형이랑"},
+ {k:"free",t:"하고 싶은 말",type:"text",ph:"자유롭게",big:true}];
+
+var DAYS=[
+ {n:"DAY 01",d:"1/14",dow:"목",th:"도착하자마자 몸부터 푼다",mv:"밴 1회 · MRT 2회 · 걷기 ★☆☆",s:[
+  ["08:00","김포공항 국제선 집결","김포–쑹산이면 시내까지 20분. 인천 출발이면 도착 후 밴 40분.",""],
+  ["12:00","점심 · <em>유산동 우육면 劉山東</em>","미쉐린 빕구르망. 첫 끼는 국물로. 청탕·홍소 반반.","한국인 취향 A+"],
+  ["14:00","호텔 체크인 · 짐 정리","이지카드 6장 일괄 구매 + 충전.",""],
+  ["15:30","용산사 → 보피랴오 옛거리","대만 최고 기도터. 향 냄새와 홍등.",""],
+  ["17:00","시먼딩 산책 + 아종면선","서서 먹는 굴·곱창 국수. 맛보기용.",""],
+  ["19:00","저녁 · <em>딩왕마라궈 鼎王麻辣鍋</em>","대만 마라훠궈 대표. 한국인 적중률 최상.","2주 전 예약"],
+  ["21:15","발마사지 90분","첫날 밤에 넣어야 남은 3일이 편하다. 6인 단체 예약.","필수 배치"],
+  ["23:00","호텔 복귀 · 편의점 대만맥주","진먼가오량 소용량 한 병이면 분위기 완성.",""]]},
+ {n:"DAY 02",d:"1/15",dow:"금",th:"북부 해안 + 산속 홍등마을",mv:"9인승 밴 1일 대절 · 약 160km · 걷기 ★★☆",s:[
+  ["08:00","조식 · <em>푸항더우장 阜杭豆漿</em>","두유 + 허우빙유탸오. 7:40 도착 권장.",""],
+  ["09:00","밴 픽업 · 북부 해안 출발","9인승 1일 대절 NT$5,500–6,500 / 6명 분담.","사전 예약"],
+  ["10:00","예류 지질공원","여왕머리 바위. 바닷바람 강함 — 바람막이 필수.",""],
+  ["12:30","점심 · 진산/예류 해산물","새우·게·조개 시가 주문. 6명이면 한 상 제대로.",""],
+  ["14:00","스펀 천등 날리기 + 기찻길","4색 천등 하나에 여섯 소원. 사진 원톱.",""],
+  ["16:00","지우펀 옛거리","해 지고 홍등 켜질 때가 절정. 아메이차루에서 차.","일몰 17:20"],
+  ["19:30","시내 복귀 → 라오허제 야시장","후추떡·꼬치·굴전. 야시장 안주로 2차.",""],
+  ["22:00","호텔 · 자유","체력 남으면 쑹산츠유궁 야경.",""]]},
+ {n:"DAY 03",d:"1/16",dow:"토",th:"랜드마크 낮, 온천 저녁",mv:"MRT 중심 · 약 5km · 걷기 ★★☆",s:[
+  ["09:00","국립고궁박물원","취옥백채·육형석 둘만 봐도 본전. 한국어 오디오가이드.",""],
+  ["12:00","점심 · <em>딘타이펑 (101/신이점)</em>","샤오롱바오·새우볶음밥·훙유차오서우.","앱 대기등록"],
+  ["13:40","타이베이 101 전망대 + 쇼핑몰","비 오면 실내 대안으로 최적. 89층.",""],
+  ["15:30","신베이터우 이동 (MRT 40분)","온천 마을 도착. 지열곡 산책 15분.",""],
+  ["16:00","베이터우 온천 90분","개별탕 2인×3실이 편함. 대중 노천탕은 수영복 필수.","하이라이트"],
+  ["18:30","저녁 · <em>KIKI 레스토랑</em>","사천요리. 라오피넌러우·창잉터우. 재방문율 1위.","예약 권장"],
+  ["21:00","동취 술집 or 닝샤야시장 2차","마지막 밤 회포.",""]]},
+ {n:"DAY 04",d:"1/17",dow:"일",th:"쇼핑하고 깔끔하게 마무리",mv:"밴 공항 이동 · 약 3km · 걷기 ★☆☆",s:[
+  ["08:30","조식 · 톈진충좌빙 + 융캉제 산책","파전병에 계란 추가. 골목 자체가 코스.",""],
+  ["10:00","쇼핑 · 까르푸 구이린점 / 신광미쓰코시","펑리수·누가크래커·우롱차. 짐 무게 미리 계산.","선물 일괄"],
+  ["12:00","점심 · <em>진펑루러우판 金峰魯肉飯</em>","마지막은 로컬로. 루러우판+죽순탕+삶은계란.",""],
+  ["13:30","호텔 짐 픽업 → 공항 이동","일요일 오후 도로 혼잡 고려.",""],
+  ["15:30","공항 도착 · 체크인 · 면세","남은 대만달러는 공항에서 소진.",""],
+  ["17:40","출발 → 21:00 김포/인천 도착","귀국 후 해장은 각자.",""]]}];
+
+var FOODS=[
+ ["딘타이펑","鼎泰豐","샤오롱바오·새우볶음밥. 실패 확률 0%. 101점은 대기가 김.","확실한 한 방","NT$600–800 · 앱 대기등록"],
+ ["딩왕마라궈","鼎王麻辣鍋","대만식 마라훠궈. 오리선지·두부 무한리필. 한국 매운맛과 결이 같음.","단체 최적","NT$900–1,200 · 2주 전 예약"],
+ ["유산동 우육면","劉山東","미쉐린 빕구르망. 홍소 국물이 진해 해장으로도 통함.","해장용","NT$180–230 · 타이베이역"],
+ ["린동방 우육면","林東芳","소고기 힘줄이 통째로. 우육면 취향 갈릴 때 2순위 카드.","","NT$200–280 · 중샤오푸싱"],
+ ["KIKI 레스토랑","KIKI餐廳","사천요리. 라오피넌러우·창잉터우. 술안주 최고, 밥도둑.","술자리 1순위","NT$700–900 · 예약 권장"],
+ ["삼미식당","三味食堂","얼굴만 한 연어초밥·사시미. 가성비 충격. 웨이팅 40분 각오.","","NT$500–800 · 시먼 도보"],
+ ["마라훠궈","馬辣","훠궈+초밥+하겐다즈 무한리필. 남자 여섯 가성비 폭발.","가성비","NT$800–1,000"],
+ ["진펑루러우판","金峰魯肉飯","루러우판 한 그릇 NT$40. 중정기념당 옆. 로컬 그 자체.","","NT$150 · 현금만"],
+ ["푸항더우장","阜杭豆漿","두유·허우빙·유탸오. 대만식 아침의 정석. 7:40 도착 권장.","조식 1순위","NT$100 · 선다오사역"],
+ ["첨호점","添好運 Tim Ho Wan","홍콩 딤섬. BBQ 번은 여섯 다 좋아함. 비 오는 날 실내 대안.","","NT$400–600"],
+ ["아종면선","阿宗麵線","서서 먹는 곱창국수. 한 그릇 나눠 먹는 간식용.","","NT$70 · 시먼딩"],
+ ["톈진충좌빙","天津蔥抓餅","융캉제 파전병. 계란+바질 추가가 정답. 줄 빨리 빠짐.","","NT$45"],
+ ["라오허제 야시장","饒河街","입구 후추떡(후자오빙) 필수. 굴전·꼬치로 야식 2차.","야식 본진","NT$300–500"],
+ ["스무시하우스","思慕昔","1월엔 망고 대신 딸기빙수 시즌. 융캉제 마무리용.","","NT$250"]];
+
+var CHECKS=[
+ ["c1","항공권 6인 예약","D-60"],["c2","호텔 트윈 3실 예약","D-60"],
+ ["c3","9인승 밴 1일 대절 예약","D-30"],["c4","딩왕마라궈 저녁 예약","D-21"],
+ ["c5","KIKI 레스토랑 예약","D-21"],["c6","베이터우 개별탕 3실 예약","D-14"],
+ ["c7","발마사지 6인 예약","D-14"],["c8","타이베이101 전망대 티켓","D-7"],
+ ["c9","eSIM / 유심 6개","D-7"],["c10","여행자보험 6인","D-7"],
+ ["c11","이지카드 준비","D-3"],["c12","입국카드 온라인 사전작성","D-3"],
+ ["c13","여권 유효기간 6개월 확인","전원"],["c14","방수 바람막이·접이우산","개인"],
+ ["c15","수영복(대중 노천탕 선택 시)","개인"]];
+
+/* ============ 상태 ============ */
+var db=null, me=null, members={}, responses={}, questions=[], checkState={}, board=[];
+var draft={};
+var $=function(s){return document.querySelector(s);};
+var esc=function(v){return String(v==null?"":v).replace(/[&<>"]/g,function(c){
+  return {"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c];});};
+function nameOf(id){var m=members[id];return (m&&m.name)?m.name:(slotOf(id)?slotOf(id).age:id);}
+function slotOf(id){for(var i=0;i<SLOTS.length;i++){if(SLOTS[i].id===id)return SLOTS[i];}return null;}
+function store(k,v){try{if(v===undefined)return localStorage.getItem(k);localStorage.setItem(k,v);}catch(e){return null;}}
+
+/* ============ D-day ============ */
+(function(){
+  var t=new Date(2027,0,14), now=new Date();
+  var d=Math.ceil((t-now)/86400000);
+  $("#dday").textContent = d>0 ? "D-"+d : (d===0?"D-DAY":"여행 종료");
+})();
+
+/* ============ 정적 렌더 ============ */
+function renderPlans(){
+  $("#plansBox").innerHTML=PLANS.map(function(p,i){
+    return '<div class="plan'+(i===0?' top':'')+'" data-plan="'+p.k+'">'+
+      '<div class="pk">PLAN '+p.k+(i===0?' · 기본':'')+'</div>'+
+      '<h3>'+esc(p.name)+'</h3><div class="who">'+esc(p.who)+'</div>'+
+      '<ul>'+p.li.map(function(x){return '<li>'+esc(x)+'</li>';}).join('')+'</ul>'+
+      '<div class="cost">'+p.cost+'</div>'+
+      '<div class="voterow"><span>득표</span><b data-c="'+p.k+'">0</b></div>'+
+      '<div class="votebar"><i data-b="'+p.k+'"></i></div>'+
+      '<div class="voters" data-v="'+p.k+'"></div>'+
+      '<button class="btn ghost sm" data-vote="'+p.k+'" disabled>이 안에 투표</button></div>';
+  }).join('');
+  $("#plansBox").addEventListener("click",function(e){
+    var b=e.target.closest("[data-vote]"); if(!b||!me)return;
+    draft.plan=b.getAttribute("data-vote"); renderForm(); save();
+    document.getElementById("survey").scrollIntoView({behavior:"smooth",block:"start"});
+  });
+}
+function renderDays(){
+  $("#dayBox").innerHTML=DAYS.map(function(d){
+    return '<div class="day"><div class="dhead"><span class="dn">'+d.n+'</span>'+
+      '<span class="dd">'+d.d+'</span><span class="dt">'+esc(d.th)+'</span>'+
+      '<span class="dm">'+esc(d.mv)+'</span></div>'+
+      d.s.map(function(s){
+        return '<div class="slot"><div class="t">'+s[0]+'</div><div class="w">'+s[1]+
+          (s[3]?'<span class="tagx">'+esc(s[3])+'</span>':'')+
+          '<span>'+esc(s[2])+'</span></div></div>';}).join('')+'</div>';
+  }).join('');
+}
+function renderFoods(){
+  $("#foodBox").innerHTML=FOODS.map(function(f,i){
+    return '<div class="frow"><div class="no">'+(i<9?'0':'')+(i+1)+'</div><div>'+
+      '<div class="nm">'+esc(f[0])+' <i>'+esc(f[1])+'</i></div>'+
+      '<div class="ds">'+esc(f[2])+'</div>'+
+      '<div class="mt">'+(f[3]?'<b>'+esc(f[3])+'</b> · ':'')+esc(f[4])+'</div></div></div>';
+  }).join('');
+}
+function renderSlotPick(){
+  $("#slotPick").innerHTML=SLOTS.map(function(s){
+    return '<button class="chip" data-slot="'+s.id+'" aria-pressed="false">'+s.age+'</button>';}).join('');
+}
+renderPlans(); renderDays(); renderFoods(); renderSlotPick();
+
+/* ============ 신원 ============ */
+function setMe(id){
+  if(id&&!slotOf(id)) id=null;
+  me=id; store("taipei27.me",id||"");
+  Array.prototype.forEach.call(document.querySelectorAll("[data-slot]"),function(b){
+    b.setAttribute("aria-pressed", b.getAttribute("data-slot")===id ? "true":"false");});
+  $("#resetId").hidden=!id;
+  $("#idNotice").style.display = id ? "none":"block";
+  $("#whoTx").innerHTML = id ? ('나 = <b>'+esc(nameOf(id))+'</b> ('+slotOf(id).age+')') : '본인을 선택하세요 →';
+  draft = Object.assign({}, responses[id]||{});
+  renderForm(); enable(); renderRoster();
+}
+function enable(){
+  var on = !!(me&&db);
+  $("#saveBtn").disabled=!on; $("#qAdd").disabled=!on; $("#mAdd").disabled=!on;
+  Array.prototype.forEach.call(document.querySelectorAll("[data-vote]"),function(b){b.disabled=!on;});
+}
+$("#slotPick").addEventListener("click",function(e){
+  var b=e.target.closest("[data-slot]"); if(!b)return;
+  var id=b.getAttribute("data-slot");
+  setMe(id);
+  if(!members[id]||!members[id].name){
+    var nm=prompt(slotOf(id).age+" — 이름을 적어주세요");
+    if(nm&&nm.trim()&&db){ db.doc("members/"+id).set({name:nm.trim().slice(0,20),at:Date.now()})
+      .catch(function(){ toast("이름 저장 실패"); }); }
+  }
+});
+$("#resetId").addEventListener("click",function(){ setMe(null); });
+
+/* ============ 참가자 ============ */
+function renderRoster(){
+  $("#rosterBox").innerHTML=SLOTS.map(function(s){
+    var m=members[s.id], r=responses[s.id];
+    var done=r&&r.plan;
+    return '<div class="person'+(me===s.id?' me':'')+'">'+
+      '<div class="age">'+s.age+'</div>'+
+      '<div class="nm'+(m&&m.name?'':' empty')+'">'+esc(m&&m.name?m.name:"이름 미입력")+'</div>'+
+      '<div class="st '+(done?'done':'wait')+'">'+(done?'설문 완료 · '+r.plan+'안':'설문 대기')+'</div></div>';
+  }).join('');
+}
+renderRoster();
+
+/* ============ 설문 폼 ============ */
+function renderForm(){
+  $("#formBox").innerHTML=FIELDS.map(function(f){
+    var head='<div class="flabel">'+esc(f.t)+(f.hint?'<small>'+esc(f.hint)+'</small>':'')+'</div>';
+    if(f.type==="choice"){
+      return '<div class="field">'+head+'<div class="opts">'+f.o.map(function(o){
+        return '<button class="opt" data-f="'+f.k+'" data-o="'+o[0]+'" aria-pressed="'+
+          (draft[f.k]===o[0]?'true':'false')+'">'+esc(o[1])+'</button>';}).join('')+'</div></div>';
+    }
+    return '<div class="field">'+head+(f.big
+      ? '<textarea data-t="'+f.k+'" placeholder="'+esc(f.ph)+'" maxlength="400">'+esc(draft[f.k]||"")+'</textarea>'
+      : '<input type="text" data-t="'+f.k+'" placeholder="'+esc(f.ph)+'" maxlength="200" value="'+esc(draft[f.k]||"")+'">')
+      +'</div>';
+  }).join('');
+}
+renderForm();
+$("#formBox").addEventListener("click",function(e){
+  var b=e.target.closest("[data-f]"); if(!b)return;
+  var k=b.getAttribute("data-f"), v=b.getAttribute("data-o");
+  draft[k] = (draft[k]===v ? "" : v);
+  renderForm();
+});
+$("#formBox").addEventListener("input",function(e){
+  var t=e.target.closest("[data-t]"); if(!t)return;
+  draft[t.getAttribute("data-t")]=t.value;
+});
+function toast(msg){ var m=$("#saveMsg"); m.textContent=msg;
+  setTimeout(function(){ if(m.textContent===msg) m.textContent=""; },3500); }
+function save(){
+  if(!me||!db) return;
+  var body=Object.assign({},draft); body.at=Date.now();
+  db.doc("responses/"+me).set(body)
+    .then(function(){ toast("저장했습니다 · "+new Date().toLocaleTimeString("ko-KR")); })
+    .catch(function(err){ toast(err&&err.code==="revoked"?"권한이 없어 저장하지 못했습니다":"저장 실패 — 다시 눌러주세요"); });
+}
+$("#saveBtn").addEventListener("click",save);
+
+/* ============ 집계 ============ */
+function renderTally(){
+  var ids=Object.keys(responses);
+  if(!ids.length){ $("#tallyBox").innerHTML='<p class="empty">아직 아무도 설문을 넣지 않았습니다.</p>'; return; }
+  var html=FIELDS.map(function(f){
+    if(f.type==="choice"){
+      var rows=f.o.map(function(o){
+        var who=ids.filter(function(i){return responses[i][f.k]===o[0];});
+        var pct=ids.length?Math.round(who.length/ids.length*100):0;
+        return '<div class="trow"><div class="tmeter"><i style="width:'+pct+'%"></i>'+
+          '<span>'+esc(o[1])+(who.length?' · '+who.map(nameOf).join(", "):'')+'</span></div>'+
+          '<div class="tcount">'+who.length+'명</div></div>';}).join('');
+      return '<div class="tblock"><h4>'+esc(f.t)+'</h4>'+rows+'</div>';
+    }
+    var list=ids.filter(function(i){return (responses[i][f.k]||"").trim();})
+      .map(function(i){return '<li><b>'+esc(nameOf(i))+'</b>'+esc(responses[i][f.k])+'</li>';}).join('');
+    return '<div class="tblock"><h4>'+esc(f.t)+'</h4>'+
+      (list?'<ul class="tlist">'+list+'</ul>':'<p class="empty">입력 없음</p>')+'</div>';
+  }).join('');
+  $("#tallyBox").innerHTML=html;
+
+  var total=ids.length;
+  PLANS.forEach(function(p){
+    var who=ids.filter(function(i){return responses[i].plan===p.k;});
+    var c=$('[data-c="'+p.k+'"]'), b=$('[data-b="'+p.k+'"]'), v=$('[data-v="'+p.k+'"]');
+    if(c)c.textContent=who.length;
+    if(b)b.style.width=(total?Math.round(who.length/total*100):0)+"%";
+    if(v)v.textContent=who.map(nameOf).join(", ");
+  });
+}
+
+/* ============ 질문 ============ */
+function renderQuestions(){
+  if(!questions.length){ $("#qBox").innerHTML='<p class="empty">아직 올라온 질문이 없습니다.</p>'; return; }
+  $("#qBox").innerHTML=questions.map(function(q){
+    var ans=q.answers||{};
+    var rows=Object.keys(ans).map(function(k){
+      return '<div class="ansrow"><div class="an">'+esc(nameOf(k))+'</div><div class="av">'+esc(ans[k])+'</div></div>';}).join('');
+    var mine=me?esc(ans[me]||""):"";
+    return '<div class="q"><div class="qh"><div class="qt">'+esc(q.text)+'</div>'+
+      '<div class="qmeta">'+esc(nameOf(q.by))+' · '+Object.keys(ans).length+'/6</div></div>'+
+      '<div class="ans">'+(rows||'<p class="empty">아직 답이 없습니다.</p>')+'</div>'+
+      (me?'<div class="qform"><input type="text" data-qa="'+q.id+'" maxlength="200" placeholder="내 답변" value="'+mine+'">'+
+      '<button class="btn sm" data-qs="'+q.id+'">답변</button></div>':'')+'</div>';
+  }).join('');
+}
+$("#qBox").addEventListener("click",function(e){
+  var b=e.target.closest("[data-qs]"); if(!b||!me||!db)return;
+  var id=b.getAttribute("data-qs");
+  var inp=$('[data-qa="'+id+'"]'); if(!inp||!inp.value.trim())return;
+  var patch={}; patch[me]=inp.value.trim();
+  db.doc("questions/"+id).update({answers:patch}).catch(function(){alert("답변 저장에 실패했습니다.");});
+});
+$("#qAdd").addEventListener("click",function(){
+  if(!me||!db)return;
+  var v=$("#qInput").value.trim(); if(!v)return;
+  db.collection("questions").add({text:v,by:me,at:Date.now(),answers:{}})
+    .then(function(){ $("#qInput").value=""; })
+    .catch(function(){ alert("질문 등록에 실패했습니다."); });
+});
+
+/* ============ 체크리스트 ============ */
+function renderChecks(){
+  $("#checkBox").innerHTML=CHECKS.map(function(c){
+    var s=checkState[c[0]];
+    return '<div class="chk'+(s?' on':'')+'" data-chk="'+c[0]+'" role="button" tabindex="0">'+
+      '<div class="box"></div><div class="lb">'+esc(c[1])+
+      '<span class="by">'+esc(c[2])+(s?' · '+nameOf(s.by)+' 완료':'')+'</span></div></div>';
+  }).join('');
+}
+renderChecks();
+function toggleCheck(id){
+  if(!me||!db)return;
+  var patch={}; patch[id]= checkState[id] ? null : {by:me,at:Date.now()};
+  db.doc("checklist/shared").set(Object.assign({},checkState,patch))
+    .catch(function(){ alert("체크 저장에 실패했습니다."); });
+}
+$("#checkBox").addEventListener("click",function(e){
+  var c=e.target.closest("[data-chk]"); if(c)toggleCheck(c.getAttribute("data-chk"));});
+$("#checkBox").addEventListener("keydown",function(e){
+  if(e.key!=="Enter"&&e.key!==" ")return;
+  var c=e.target.closest("[data-chk]"); if(c){e.preventDefault();toggleCheck(c.getAttribute("data-chk"));}});
+
+/* ============ 게시판 ============ */
+function renderBoard(){
+  if(!board.length){ $("#boardBox").innerHTML='<p class="empty">아직 남긴 말이 없습니다.</p>'; return; }
+  $("#boardBox").innerHTML=board.map(function(m){
+    return '<div class="msg"><div class="mh"><b>'+esc(nameOf(m.by))+'</b> · '+
+      new Date(m.at||0).toLocaleString("ko-KR",{month:"numeric",day:"numeric",hour:"2-digit",minute:"2-digit"})+
+      '</div><div class="mb">'+esc(m.text)+'</div></div>';}).join('');
+}
+$("#mAdd").addEventListener("click",function(){
+  if(!me||!db)return;
+  var v=$("#mInput").value.trim(); if(!v)return;
+  db.collection("board").add({text:v,by:me,at:Date.now()})
+    .then(function(){ $("#mInput").value=""; })
+    .catch(function(){ alert("등록에 실패했습니다."); });
+});
+
+/* ============ db 연결 ============ */
+function offline(msg){ $("#conn").textContent=msg; }
+offline("연결 상태 확인 중…");
+
+claude.use("db").then(function(x){
+  if(!x){ offline("읽기 전용 — 저장 기능 없음"); enable(); return; }
+  db=x; offline("실시간 동기화 중"); enable();
+
+  var fail=function(e){ offline("동기화 중단 ("+(e&&e.code||"unknown")+") — 새로고침하세요"); };
+
+  db.collection("members").onSnapshot(function(s){
+    members={}; s.docs.forEach(function(d){ members[d.id]=d.data()||{}; });
+    renderRoster(); renderTally(); renderQuestions(); renderChecks(); renderBoard();
+    if(me) $("#whoTx").innerHTML='나 = <b>'+esc(nameOf(me))+'</b> ('+slotOf(me).age+')';
+  },fail);
+
+  db.collection("responses").onSnapshot(function(s){
+    responses={}; s.docs.forEach(function(d){ responses[d.id]=d.data()||{}; });
+    if(me&&responses[me]&&!Object.keys(draft).length){ draft=Object.assign({},responses[me]); renderForm(); }
+    renderRoster(); renderTally();
+  },fail);
+
+  db.collection("questions").orderBy("at","asc").limit(60).onSnapshot(function(s){
+    questions=s.docs.map(function(d){ var o=d.data()||{}; o.id=d.id; return o; });
+    renderQuestions();
+  },fail);
+
+  db.doc("checklist/shared").onSnapshot(function(d){
+    var o=d.exists?(d.data()||{}):{};
+    checkState={}; Object.keys(o).forEach(function(k){ if(o[k]) checkState[k]=o[k]; });
+    renderChecks();
+  },fail);
+
+  db.collection("board").orderBy("at","desc").limit(60).onSnapshot(function(s){
+    board=s.docs.map(function(d){ return d.data()||{}; });
+    renderBoard();
+  },fail);
+
+  var saved=store("taipei27.me"); if(saved&&slotOf(saved)) setMe(saved);
+});
+})();
+</script>
