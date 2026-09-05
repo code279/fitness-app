@@ -2,204 +2,269 @@
 <html lang="ko">
 <head>
 <meta charset="utf-8">
-<title>타이베이 3박4일 한장 일정표</title>
+<title>타이베이 3박4일 일정표</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@600;900&family=IBM+Plex+Sans+KR:wght@300;400;500;600;700&family=IBM+Plex+Mono:wght@500;600&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@700;900&family=IBM+Plex+Sans+KR:wght@300;400;500;600;700&family=IBM+Plex+Mono:wght@500;600&display=swap">
 <style>
   *{box-sizing:border-box;margin:0;padding:0;}
-  body{width:1600px;height:2416px;background:#0D2126;color:#EDE6D8;overflow:hidden;
+  body{width:1980px;background:#fff;color:#1A2226;
     font-family:"IBM Plex Sans KR","Apple SD Gothic Neo",sans-serif;-webkit-font-smoothing:antialiased;}
-  .sheet{height:100%;padding:52px 56px 44px;display:flex;flex-direction:column;gap:26px;}
-  .mono{font-family:"IBM Plex Mono",monospace;}
+  .sheet{padding:44px 40px 40px;}
 
-  /* ============ HEADER ============ */
-  header{display:flex;align-items:flex-end;gap:44px;padding-bottom:26px;
-    border-bottom:5px solid #E0503F;}
-  .ttl{flex:1;}
-  .eyebrow{font-family:"IBM Plex Mono",monospace;font-size:24px;letter-spacing:.3em;
-    color:#46B39A;margin-bottom:14px;}
-  h1{font-family:"Noto Serif KR",serif;font-weight:900;font-size:112px;line-height:.98;
-    letter-spacing:-.035em;word-break:keep-all;}
-  h1 em{font-style:normal;color:#E0503F;}
-  .hbox{display:flex;gap:14px;}
-  .hcell{border:2px solid #2A5158;padding:16px 22px;text-align:center;min-width:172px;background:#102A30;}
-  .hcell .k{font-family:"IBM Plex Mono",monospace;font-size:17px;letter-spacing:.16em;color:#7F9AA0;}
-  .hcell .v{font-size:38px;font-weight:700;line-height:1.15;margin-top:8px;}
-  .hcell .v small{display:block;font-size:19px;font-weight:400;color:#9BB2B6;margin-top:4px;}
-  .hcell.hot{border-color:#E3B455;}
-  .hcell.hot .v{color:#E3B455;}
+  /* ---------- title ---------- */
+  .top{display:flex;align-items:flex-end;gap:30px;margin-bottom:20px;}
+  h1{font-family:"Noto Serif KR",serif;font-size:60px;font-weight:900;letter-spacing:-.03em;
+     white-space:nowrap;}
+  .top .meta{display:flex;gap:10px;margin-left:auto;}
+  .mtag{border:2px solid #1A2226;padding:8px 18px;text-align:center;min-width:150px;}
+  .mtag .k{font-family:"IBM Plex Mono",monospace;font-size:14px;letter-spacing:.14em;color:#6B7A80;}
+  .mtag .v{font-size:25px;font-weight:700;margin-top:2px;white-space:nowrap;}
+  .mtag.hot{border-color:#C0392B;} .mtag.hot .v{color:#C0392B;}
+  .subline{font-size:21px;color:#5A6A70;font-weight:300;padding-bottom:9px;white-space:nowrap;}
 
-  /* ============ DAYS ============ */
-  .days{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;}
-  .day{border:2px solid #2A5158;background:#102A30;display:flex;flex-direction:column;}
-  .dh{padding:18px 20px 16px;background:#16383F;border-bottom:2px solid #2A5158;}
-  .dh .dn{font-family:"IBM Plex Mono",monospace;font-size:18px;letter-spacing:.2em;color:#46B39A;}
-  .dh .dd{font-family:"Noto Serif KR",serif;font-size:60px;font-weight:900;line-height:1;margin:6px 0 2px;}
-  .dh .dd i{font-style:normal;font-size:28px;color:#9BB2B6;margin-left:8px;}
-  .dh .dt{font-size:25px;font-weight:700;color:#E3B455;margin-top:8px;line-height:1.25;}
-  .items{padding:6px 20px 16px;display:flex;flex-direction:column;}
-  .it{padding:15px 0 14px;border-bottom:1px solid #24484F;}
-  .it:last-child{border-bottom:none;}
-  .it .t{font-family:"IBM Plex Mono",monospace;font-size:21px;font-weight:600;color:#46B39A;
-    font-variant-numeric:tabular-nums;}
-  .it .w{font-size:29px;font-weight:600;line-height:1.28;margin-top:5px;letter-spacing:-.02em;}
-  .it.meal .w{color:#FFD98A;}
-  .it .n{font-size:19px;color:#8FA9AD;margin-top:5px;font-weight:300;line-height:1.35;}
-  .it .n b{color:#E0503F;font-weight:600;}
+  /* ---------- table ---------- */
+  table{width:100%;border-collapse:collapse;table-layout:fixed;
+        border:3px solid #1A2226;}
+  col.c-time{width:132px;} col.c-day{width:335px;} col.c-note{width:438px;}
+  th,td{border:1px solid #BFC9CD;vertical-align:middle;padding:10px 12px;}
+  thead th{background:#E9EEEC;border-color:#1A2226;border-width:0 1px 3px 1px;
+    font-size:28px;font-weight:700;padding:14px 10px;letter-spacing:-.02em;}
+  thead th .dow{font-size:21px;color:#5A6A70;font-weight:400;margin-left:4px;}
+  thead th.tm,thead th.nt{font-size:25px;}
+  td.tm{background:#F4F7F6;text-align:center;font-family:"IBM Plex Mono",monospace;
+    font-size:21px;font-weight:600;color:#41545B;white-space:nowrap;}
+  td.ev{text-align:center;line-height:1.3;}
+  td.ev .h{font-size:26px;font-weight:600;letter-spacing:-.02em;}
+  td.ev .s{font-size:19px;color:#5A6A70;font-weight:300;margin-top:5px;line-height:1.35;}
+  td.ev .s b{color:#C0392B;font-weight:600;}
+  td.ev .s em{font-style:normal;color:#0F6E5C;font-weight:600;}
+  td.meal{background:#FCF4E4;}
+  td.meal .h{color:#8A5A0B;}
+  td.move{background:#F7F9F9;}
+  td.move .h{font-size:21px;font-weight:400;color:#6B7A80;}
+  td.fly{background:#EDF3F7;}
+  td.fly .h{color:#1F5C7A;}
+  td.spa{background:#E7F3EF;}
+  td.spa .h{color:#0F6E5C;}
+  td.blank{background:#FAFBFB;}
 
-  /* ============ PLANS ============ */
-  .band{display:flex;align-items:center;gap:18px;margin-bottom:14px;}
-  .band h2{font-family:"Noto Serif KR",serif;font-size:42px;font-weight:900;letter-spacing:-.02em;}
-  .band .rule{flex:1;height:2px;background:#2A5158;}
-  .band .sub{font-size:22px;color:#8FA9AD;font-weight:300;}
-  .plans{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;}
-  .plan{border:2px solid #2A5158;background:#102A30;padding:20px 22px;}
-  .plan.lead{border-color:#46B39A;background:#123338;}
-  .plan .pk{font-family:"IBM Plex Mono",monospace;font-size:18px;letter-spacing:.18em;color:#7F9AA0;}
-  .plan.lead .pk{color:#46B39A;}
-  .plan h3{font-family:"Noto Serif KR",serif;font-size:40px;font-weight:900;margin:8px 0 10px;letter-spacing:-.025em;}
-  .plan .d{font-size:24px;color:#C5D3D5;font-weight:300;line-height:1.4;min-height:68px;}
-  .plan .c{margin-top:14px;padding-top:12px;border-top:1px solid #2A5158;font-size:26px;font-weight:700;color:#E3B455;}
-  .plan .c i{font-style:normal;font-size:19px;color:#8FA9AD;font-weight:400;margin-left:10px;}
+  /* ---------- note column ---------- */
+  td.note{vertical-align:top;padding:16px 18px;background:#FDFDFC;}
+  .chk{border:2px solid #1A2226;padding:11px 13px;margin-bottom:15px;line-height:1.75;font-size:19px;}
+  .chk b{display:block;font-family:"IBM Plex Mono",monospace;font-size:13px;letter-spacing:.16em;
+    color:#0F6E5C;margin-bottom:5px;}
+  .chk .on{font-weight:600;} .chk .off{color:#8A979C;}
+  .notes{list-style:none;display:flex;flex-direction:column;gap:11px;}
+  .notes li{font-size:19px;line-height:1.45;padding-left:34px;position:relative;color:#3A4A50;font-weight:300;}
+  .notes li b{color:#1A2226;font-weight:600;}
+  .notes li i{font-style:normal;color:#C0392B;font-weight:600;}
+  .notes li::before{content:attr(data-n);position:absolute;left:0;top:0;
+    font-family:"IBM Plex Mono",monospace;font-size:17px;font-weight:600;color:#0F6E5C;}
 
-  /* ============ FOOD ============ */
-  .foods{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;}
-  .f{border:2px solid #2A5158;background:#102A30;padding:18px 20px;}
-  .f .fn{font-size:32px;font-weight:700;letter-spacing:-.025em;line-height:1.2;}
-  .f .fd{font-size:22px;color:#9BB2B6;font-weight:300;margin-top:7px;line-height:1.35;}
-  .f .fx{display:inline-block;margin-top:10px;font-family:"IBM Plex Mono",monospace;font-size:17px;
-    border:1px solid #E0503F;color:#E0503F;padding:2px 9px;}
-  .f .fx.g{border-color:#46B39A;color:#46B39A;}
-
-  /* ============ FOOTER ============ */
-  footer{margin-top:auto;display:grid;grid-template-columns:1fr 1fr 1.15fr;gap:0;
-    border:2px solid #2A5158;}
-  footer > div{padding:20px 24px;border-right:2px solid #2A5158;background:#102A30;}
-  footer > div:last-child{border-right:none;background:#123338;}
-  footer .k{font-family:"IBM Plex Mono",monospace;font-size:17px;letter-spacing:.18em;color:#46B39A;margin-bottom:10px;}
-  footer .big{font-size:38px;font-weight:700;line-height:1.2;}
-  footer .sm{font-size:21px;color:#9BB2B6;font-weight:300;margin-top:7px;line-height:1.4;}
-  footer .sm b{color:#EDE6D8;font-weight:600;}
+  /* ---------- bottom ---------- */
+  .btm{display:grid;grid-template-columns:repeat(3,1fr) 1.25fr;gap:0;margin-top:16px;
+    border:3px solid #1A2226;}
+  .btm > div{padding:16px 20px;border-right:1px solid #BFC9CD;}
+  .btm > div:last-child{border-right:none;background:#F4F7F6;}
+  .btm .k{font-family:"IBM Plex Mono",monospace;font-size:14px;letter-spacing:.16em;color:#0F6E5C;}
+  .btm h3{font-family:"Noto Serif KR",serif;font-size:30px;font-weight:900;margin:6px 0 5px;letter-spacing:-.02em;}
+  .btm .d{font-size:19px;color:#4A5A60;font-weight:300;line-height:1.4;}
+  .btm .c{font-size:22px;font-weight:700;color:#C0392B;margin-top:8px;}
+  .btm .c i{font-style:normal;font-size:17px;color:#6B7A80;font-weight:400;margin-left:8px;}
+  .btm .plead h3{color:#0F6E5C;}
+  .legend{margin-top:12px;display:flex;gap:22px;font-size:17px;color:#5A6A70;align-items:center;flex-wrap:wrap;}
+  .legend i{font-style:normal;display:inline-block;width:26px;height:15px;border:1px solid #BFC9CD;
+    vertical-align:-2px;margin-right:7px;}
 </style>
 </head>
 <body>
 <div class="sheet">
 
-<header>
-  <div class="ttl">
-    <div class="eyebrow">TAIPEI · TAIWAN</div>
-    <h1>사나이 여섯,<br><em>타이베이</em></h1>
-  </div>
-  <div class="hbox">
-    <div class="hcell"><div class="k">DATE</div><div class="v">1/14 – 1/17<small>목 → 일 · 3박 4일</small></div></div>
-    <div class="hcell"><div class="k">PARTY</div><div class="v">남자 6명<small>42 – 59세</small></div></div>
-    <div class="hcell hot"><div class="k">BUDGET</div><div class="v">115–135만<small>1인 · 항공 포함</small></div></div>
-  </div>
-</header>
-
-<div class="days">
-
-  <div class="day">
-    <div class="dh"><div class="dn">DAY 01</div><div class="dd">1/14<i>목</i></div>
-      <div class="dt">도착하자마자<br>몸부터 푼다</div></div>
-    <div class="items">
-      <div class="it"><div class="t">10:20</div><div class="w">타이베이 도착</div><div class="n">밴으로 시내 이동</div></div>
-      <div class="it meal"><div class="t">12:00</div><div class="w">유산동 우육면</div><div class="n">미쉐린 · 첫 끼는 국물</div></div>
-      <div class="it"><div class="t">15:30</div><div class="w">용산사 · 시먼딩</div><div class="n">홍등 · 아종면선 간식</div></div>
-      <div class="it meal"><div class="t">19:00</div><div class="w">딩왕 마라훠궈</div><div class="n"><b>★ 2주 전 예약</b></div></div>
-      <div class="it"><div class="t">21:15</div><div class="w">발마사지 90분</div><div class="n"><b>★ 첫날에 꼭</b></div></div>
-      <div class="it"><div class="t">23:00</div><div class="w">대만맥주 한잔</div><div class="n">호텔 · 편의점</div></div>
-    </div>
-  </div>
-
-  <div class="day">
-    <div class="dh"><div class="dn">DAY 02</div><div class="dd">1/15<i>금</i></div>
-      <div class="dt">북부 해안 +<br>산속 홍등마을</div></div>
-    <div class="items">
-      <div class="it meal"><div class="t">08:00</div><div class="w">푸항더우장</div><div class="n">대만식 아침 · 7:40 도착</div></div>
-      <div class="it"><div class="t">10:00</div><div class="w">예류 지질공원</div><div class="n">여왕머리 · 바람막이</div></div>
-      <div class="it meal"><div class="t">12:30</div><div class="w">진산 해산물</div><div class="n">새우 · 게 한 상</div></div>
-      <div class="it"><div class="t">14:00</div><div class="w">스펀 천등</div><div class="n">사진 원톱</div></div>
-      <div class="it"><div class="t">16:00</div><div class="w">지우펀 옛거리</div><div class="n">일몰 17:20 홍등</div></div>
-      <div class="it"><div class="t">19:30</div><div class="w">라오허제 야시장</div><div class="n">후추떡 · 야식 2차</div></div>
-    </div>
-  </div>
-
-  <div class="day">
-    <div class="dh"><div class="dn">DAY 03</div><div class="dd">1/16<i>토</i></div>
-      <div class="dt">랜드마크 낮,<br>온천 저녁</div></div>
-    <div class="items">
-      <div class="it"><div class="t">09:00</div><div class="w">고궁박물원</div><div class="n">취옥백채 · 한국어 안내</div></div>
-      <div class="it meal"><div class="t">12:00</div><div class="w">딘타이펑</div><div class="n">샤오롱바오 · 앱 대기</div></div>
-      <div class="it"><div class="t">13:40</div><div class="w">타이베이 101</div><div class="n">전망대 · 비 오면 최적</div></div>
-      <div class="it"><div class="t">16:00</div><div class="w">베이터우 온천</div><div class="n"><b>★ 하이라이트 90분</b></div></div>
-      <div class="it meal"><div class="t">18:30</div><div class="w">KIKI 사천요리</div><div class="n">술안주 1순위 · 예약</div></div>
-      <div class="it"><div class="t">21:00</div><div class="w">동취 술집 2차</div><div class="n">마지막 밤 회포</div></div>
-    </div>
-  </div>
-
-  <div class="day">
-    <div class="dh"><div class="dn">DAY 04</div><div class="dd">1/17<i>일</i></div>
-      <div class="dt">쇼핑하고<br>깔끔하게 마무리</div></div>
-    <div class="items">
-      <div class="it meal"><div class="t">08:30</div><div class="w">톈진충좌빙</div><div class="n">융캉제 파전병</div></div>
-      <div class="it"><div class="t">10:00</div><div class="w">까르푸 쇼핑</div><div class="n">펑리수 · 누가크래커</div></div>
-      <div class="it meal"><div class="t">12:00</div><div class="w">진펑 루러우판</div><div class="n">마지막은 로컬로</div></div>
-      <div class="it"><div class="t">13:30</div><div class="w">공항 이동</div><div class="n">밴 · 도로 혼잡 고려</div></div>
-      <div class="it"><div class="t">17:40</div><div class="w">타이베이 출발</div><div class="n">면세 · 잔돈 소진</div></div>
-      <div class="it"><div class="t">21:00</div><div class="w">한국 도착</div><div class="n">해장은 각자</div></div>
-    </div>
-  </div>
-
-</div>
-
-<div>
-  <div class="band"><h2>일정 3안</h2><div class="rule"></div><span class="sub">DAY 2 · DAY 3만 통째로 교체</span></div>
-  <div class="plans">
-    <div class="plan lead"><div class="pk">PLAN A · 추천</div><h3>클래식 완주</h3>
-      <div class="d">예류 · 스펀 · 지우펀 하루 밴 대절<br>+ 고궁 · 101 · 베이터우 온천</div>
-      <div class="c">115–135만원 <i>체력 ★★☆</i></div></div>
-    <div class="plan"><div class="pk">PLAN B</div><h3>온천 힐링</h3>
-      <div class="d">우라이 온천마을 종일 + 베이터우<br>예류 · 스펀 삭제, 이동 절반</div>
-      <div class="c">110–130만원 <i>체력 ★☆☆</i></div></div>
-    <div class="plan"><div class="pk">PLAN C</div><h3>골프 + 미식</h3>
-      <div class="d">DAY2 타오위안 · 린커우 18홀<br>비골퍼 2명은 시내 자유일정</div>
-      <div class="c">140–165만원 <i>체력 ★★☆</i></div></div>
+<div class="top">
+  <h1>타이베이 남자 6명 여행</h1>
+  <div class="subline">2027. 1. 14(목) ~ 1. 17(일) · 3박 4일 · 추천 A안 기준</div>
+  <div class="meta">
+    <div class="mtag"><div class="k">PARTY</div><div class="v">남자 6명</div></div>
+    <div class="mtag"><div class="k">AGE</div><div class="v">42 ~ 59세</div></div>
+    <div class="mtag hot"><div class="k">1인 예산</div><div class="v">115~135만원</div></div>
   </div>
 </div>
 
-<div>
-  <div class="band"><h2>한국인 입맛 검증 맛집</h2><div class="rule"></div><span class="sub">아저씨 여섯이 만족할 확률 기준</span></div>
-  <div class="foods">
-    <div class="f"><div class="fn">딘타이펑</div><div class="fd">샤오롱바오 · 새우볶음밥<br>실패 확률 0%</div><div class="fx">앱 대기등록</div></div>
-    <div class="f"><div class="fn">딩왕 마라훠궈</div><div class="fd">대만식 마라훠궈<br>한국 매운맛과 같은 결</div><div class="fx">2주 전 예약</div></div>
-    <div class="f"><div class="fn">유산동 우육면</div><div class="fd">미쉐린 빕구르망<br>진한 홍소 국물</div><div class="fx g">해장 1순위</div></div>
-    <div class="f"><div class="fn">KIKI 레스토랑</div><div class="fd">사천요리 · 라오피넌러우<br>밥도둑이자 술도둑</div><div class="fx">예약 권장</div></div>
-    <div class="f"><div class="fn">마라훠궈 馬辣</div><div class="fd">훠궈 · 초밥 · 하겐다즈<br>전부 무한리필</div><div class="fx g">가성비 폭발</div></div>
-    <div class="f"><div class="fn">삼미식당</div><div class="fd">얼굴만 한 연어초밥<br>웨이팅 40분 각오</div><div class="fx g">가성비</div></div>
-    <div class="f"><div class="fn">푸항더우장</div><div class="fd">두유 · 허우빙 · 유탸오<br>대만식 아침의 정석</div><div class="fx">7:40 도착</div></div>
-    <div class="f"><div class="fn">라오허제 야시장</div><div class="fd">입구 후추떡은 필수<br>굴전 · 꼬치로 2차</div><div class="fx g">야식 본진</div></div>
-  </div>
+<table>
+<colgroup><col class="c-time"><col class="c-day"><col class="c-day"><col class="c-day"><col class="c-day"><col class="c-note"></colgroup>
+<thead><tr>
+  <th class="tm">시간</th>
+  <th>1월 14일<span class="dow">(목)</span></th>
+  <th>1월 15일<span class="dow">(금)</span></th>
+  <th>1월 16일<span class="dow">(토)</span></th>
+  <th>1월 17일<span class="dow">(일)</span></th>
+  <th class="nt">비고</th>
+</tr></thead>
+<tbody>
+
+<tr>
+  <td class="tm">7시~8시</td>
+  <td class="ev"><div class="h">김포공항 집결</div><div class="s">07:00 · 수속 및 탑승</div></td>
+  <td class="ev meal"><div class="h">조식 · 푸항더우장</div><div class="s">두유·유탸오 <b>7:40 도착</b></div></td>
+  <td class="ev meal"><div class="h">조식 (호텔)</div><div class="s">여유 있게</div></td>
+  <td class="ev meal"><div class="h">조식 · 톈진충좌빙</div><div class="s">융캉제 파전병</div></td>
+  <td class="note" rowspan="17">
+    <div class="chk"><b>예약 · 준비 현황</b>
+      <span class="on">☑ 항공권</span> &nbsp; <span class="on">☑ 호텔(트윈3)</span> &nbsp; <span class="off">☐ 밴 대절</span><br>
+      <span class="off">☐ 딩왕 예약</span> &nbsp; <span class="off">☐ KIKI 예약</span> &nbsp; <span class="off">☐ 온천 개별탕</span><br>
+      <span class="off">☐ 마사지 6인</span> &nbsp; <span class="off">☐ eSIM</span> &nbsp; <span class="off">☐ 여행자보험</span>
+    </div>
+    <ul class="notes">
+      <li data-n="1."><b>숙소 — 타이베이역 일대</b><br>공항MRT 직결, 어디든 30분. 2인 1실 트윈 3개.</li>
+      <li data-n="2."><b>밴 대절 (1/15 하루)</b><br>예류·스펀·지우펀 9인승 NT$5,500~6,500. 6명 나누면 1인 2만원대. <i>KKday·클룩 D-30 예약</i></li>
+      <li data-n="3."><b>딩왕 마라훠궈</b><br>대만식 마라훠궈, 한국인 적중률 최상. 1인 NT$900~1,200. <i>2주 전 예약 필수</i></li>
+      <li data-n="4."><b>베이터우 온천</b><br>개별탕 2인×3실 NT$1,200~1,800/실 (수영복 불필요). 대중 노천탕 이용 시 <i>수영복 필수</i></li>
+      <li data-n="5."><b>딘타이펑 101점</b><br>앱으로 원격 대기 등록. 샤오롱바오·새우볶음밥·훙유차오서우.</li>
+      <li data-n="6."><b>KIKI 레스토랑</b><br>사천요리. 라오피넌러우·창잉터우가 술안주 1순위. <i>예약 권장</i></li>
+      <li data-n="7."><b>발마사지 — 첫날 밤 배치</b><br>90분 NT$1,000~1,400. 마지막 날로 미루면 2·3일차가 힘들다.</li>
+      <li data-n="8."><b>1월 날씨 13~19℃</b><br>기온은 온화하나 안개비가 며칠씩. <i>방수 바람막이·접이우산·발수 신발</i></li>
+      <li data-n="9."><b>교통</b><br>이지카드 6장 일괄 구매. 시내는 MRT, 근교는 밴.</li>
+      <li data-n="10."><b>일정 변경 (하단 참고)</b><br>1/15·1/16은 B안(온천) 또는 C안(골프)으로 통째 교체 가능. <i>투표는 공유 웹페이지에서</i></li>
+    </ul>
+  </td>
+</tr>
+
+<tr>
+  <td class="tm">8시~9시</td>
+  <td class="ev fly" rowspan="2"><div class="h">08:40 김포 출발<br>→ 10:30 쑹산 도착</div><div class="s">2시간 50분 비행</div></td>
+  <td class="ev move"><div class="h">밴 픽업 · 출발</div></td>
+  <td class="ev move"><div class="h">이동 · MRT 스린</div></td>
+  <td class="ev"><div class="h">융캉제 산책</div><div class="s">골목 자체가 코스</div></td>
+</tr>
+
+<tr>
+  <td class="tm">9시~10시</td>
+  <td class="ev" rowspan="2"><div class="h">예류 지질공원</div><div class="s">여왕머리 바위<br>바닷바람 강함</div></td>
+  <td class="ev" rowspan="2"><div class="h">국립고궁박물원</div><div class="s">취옥백채·육형석<br>한국어 오디오가이드</div></td>
+  <td class="ev"><div class="h">호텔 체크아웃</div><div class="s">짐은 프런트 보관</div></td>
+</tr>
+
+<tr>
+  <td class="tm">10시~11시</td>
+  <td class="ev"><div class="h">입국 · 이지카드</div><div class="s">환전 · 유심 개통</div></td>
+  <td class="ev" rowspan="2"><div class="h">까르푸 구이린점<br>쇼핑</div><div class="s">펑리수·누가크래커<br>우롱차 <b>짐 무게 확인</b></div></td>
+</tr>
+
+<tr>
+  <td class="tm">11시~12시</td>
+  <td class="ev"><div class="h">호텔 체크인</div><div class="s">타이베이역 도보권</div></td>
+  <td class="ev move"><div class="h">이동 · 진산</div></td>
+  <td class="ev move"><div class="h">이동 · 타이베이101</div></td>
+</tr>
+
+<tr>
+  <td class="tm">12시~1시</td>
+  <td class="ev meal"><div class="h">점심 · 유산동 우육면</div><div class="s">미쉐린 빕구르망<br>첫 끼는 국물로</div></td>
+  <td class="ev meal"><div class="h">점심 · 진산 해산물</div><div class="s">새우·게·조개 시가<br>6명이면 한 상</div></td>
+  <td class="ev meal"><div class="h">점심 · 딘타이펑</div><div class="s">101점 · <b>앱 대기등록</b></div></td>
+  <td class="ev meal"><div class="h">점심 · 진펑 루러우판</div><div class="s">마지막은 로컬로</div></td>
+</tr>
+
+<tr>
+  <td class="tm">1시~2시</td>
+  <td class="ev" rowspan="2"><div class="h">용산사 · 보피랴오</div><div class="s">대만 최고 기도터<br>향 냄새와 홍등</div></td>
+  <td class="ev move"><div class="h">이동 · 스펀</div></td>
+  <td class="ev" rowspan="2"><div class="h">타이베이 101<br>전망대 · 쇼핑몰</div><div class="s">89층 · 비 오면 최적</div></td>
+  <td class="ev" rowspan="2"><div class="h">공항 이동 · 체크인</div><div class="s">밴 · 도로 혼잡 고려</div></td>
+</tr>
+
+<tr>
+  <td class="tm">2시~3시</td>
+  <td class="ev" rowspan="2"><div class="h">스펀 천등 · 기찻길</div><div class="s">4색 천등에 여섯 소원<br>여행 사진 원톱</div></td>
+</tr>
+
+<tr>
+  <td class="tm">3시~4시</td>
+  <td class="ev" rowspan="3"><div class="h">시먼딩 구경</div><div class="s">아종면선 간식<br>서서 먹는 곱창국수</div></td>
+  <td class="ev move"><div class="h">이동 · 신베이터우</div><div class="s">MRT 40분</div></td>
+  <td class="ev" rowspan="2"><div class="h">면세 · 탑승 대기</div><div class="s">남은 대만달러 소진</div></td>
+</tr>
+
+<tr>
+  <td class="tm">4시~5시</td>
+  <td class="ev" rowspan="3"><div class="h">지우펀 옛거리</div><div class="s"><em>일몰 17:20 홍등 점등</em><br>아메이차루에서 차 한 잔</div></td>
+  <td class="ev spa" rowspan="2"><div class="h">베이터우 온천 90분</div><div class="s"><em>★ 이번 여행 하이라이트</em><br>개별탕 2인×3실</div></td>
+</tr>
+
+<tr>
+  <td class="tm">5시~6시</td>
+  <td class="ev fly" rowspan="3"><div class="h">17:40 쑹산 출발<br>→ 21:00 김포 도착</div><div class="s">2시간 50분 비행</div></td>
+</tr>
+
+<tr>
+  <td class="tm">6시~7시</td>
+  <td class="ev"><div class="h">호텔 휴식</div><div class="s">샤워 · 잠깐 눈 붙이기</div></td>
+  <td class="ev meal" rowspan="2"><div class="h">저녁 · KIKI 레스토랑</div><div class="s">사천요리 · 술안주 1순위<br><b>예약 권장</b></div></td>
+</tr>
+
+<tr>
+  <td class="tm">7시~8시</td>
+  <td class="ev meal" rowspan="2"><div class="h">저녁 · 딩왕 마라훠궈</div><div class="s">대만식 마라훠궈<br><b>★ 2주 전 예약 필수</b></div></td>
+  <td class="ev move"><div class="h">시내 복귀</div></td>
+</tr>
+
+<tr>
+  <td class="tm">8시~9시</td>
+  <td class="ev" rowspan="2"><div class="h">라오허제 야시장</div><div class="s">후추떡(후자오빙) 필수<br>굴전·꼬치로 2차</div></td>
+  <td class="ev" rowspan="3"><div class="h">동취 술집 2차</div><div class="s">또는 닝샤야시장<br>마지막 밤 회포</div></td>
+  <td class="ev blank" rowspan="4"><div class="h">도착 · 해산</div><div class="s">귀국 후 해장은 각자</div></td>
+</tr>
+
+<tr>
+  <td class="tm">9시~10시</td>
+  <td class="ev spa" rowspan="2"><div class="h">발마사지 90분</div><div class="s"><em>★ 첫날 밤에 꼭</em><br>6인 단체 예약</div></td>
+</tr>
+
+<tr>
+  <td class="tm">10시~11시</td>
+  <td class="ev move"><div class="h">호텔 복귀</div></td>
+</tr>
+
+<tr>
+  <td class="tm">11시 이후</td>
+  <td class="ev"><div class="h">야식 · 대만맥주</div><div class="s">편의점 · 진먼가오량</div></td>
+  <td class="ev blank"><div class="h">자유</div></td>
+  <td class="ev move"><div class="h">호텔 복귀</div></td>
+</tr>
+
+</tbody>
+</table>
+
+<div class="legend">
+  <span><i style="background:#FCF4E4"></i>식사</span>
+  <span><i style="background:#E7F3EF"></i>온천·마사지</span>
+  <span><i style="background:#EDF3F7"></i>항공</span>
+  <span><i style="background:#F7F9F9"></i>이동</span>
+  <span style="color:#C0392B;font-weight:600;">빨간 글씨 = 사전 예약 또는 반드시 지킬 것</span>
 </div>
 
-<footer>
-  <div>
-    <div class="k">WEATHER · 1월 타이베이</div>
-    <div class="big">13 – 19℃</div>
-    <div class="sm">기온은 온화하지만 <b>안개비가 며칠씩</b> 이어짐<br>습도 높아 체감은 한국 초겨울</div>
+<div class="btm">
+  <div class="plead">
+    <div class="k">PLAN A · 위 표 기준</div><h3>클래식 완주</h3>
+    <div class="d">예류·스펀·지우펀 밴 대절<br>+ 고궁 · 101 · 베이터우 온천</div>
+    <div class="c">115~135만원 <i>체력 ★★☆</i></div>
   </div>
   <div>
-    <div class="k">필수 준비물</div>
-    <div class="big">방수 바람막이</div>
-    <div class="sm"><b>접이우산 · 발수 신발 · 이지카드</b><br>수영복(대중 노천탕 이용 시)</div>
+    <div class="k">PLAN B · 1/15~16 교체</div><h3>온천 힐링</h3>
+    <div class="d">우라이 온천마을 종일<br>예류·스펀 삭제, 이동 절반</div>
+    <div class="c">110~130만원 <i>체력 ★☆☆</i></div>
   </div>
   <div>
-    <div class="k">지금 할 일</div>
-    <div class="big">공유 웹페이지에서 투표</div>
-    <div class="sm">A · B · C 일정 투표 + 개인 설문<br><b>못 먹는 음식 · 골프 · 예산</b> 각자 입력</div>
+    <div class="k">PLAN C · 1/15 교체</div><h3>골프 + 미식</h3>
+    <div class="d">타오위안·린커우 18홀 라운딩<br>비골퍼 2명은 시내 자유일정</div>
+    <div class="c">140~165만원 <i>체력 ★★☆</i></div>
   </div>
-</footer>
+  <div>
+    <div class="k">지금 할 일</div><h3>공유 웹페이지에서 투표</h3>
+    <div class="d">A · B · C 일정 투표 + 개인 설문<br><b>못 먹는 음식 · 골프 여부 · 예산 상한</b>을 각자 입력하면 실시간으로 집계되어 최종안이 확정됩니다.</div>
+  </div>
+</div>
 
 </div>
 </body>
