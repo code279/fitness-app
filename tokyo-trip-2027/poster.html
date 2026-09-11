@@ -1,0 +1,294 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<title>도쿄 4박5일 일정표</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@700;900&family=IBM+Plex+Sans+KR:wght@300;400;500;600;700&family=IBM+Plex+Mono:wght@500;600&display=swap">
+<style>
+  *{box-sizing:border-box;margin:0;padding:0;}
+  body{width:2180px;background:#fff;color:#1A2226;
+    font-family:"IBM Plex Sans KR","Apple SD Gothic Neo",sans-serif;-webkit-font-smoothing:antialiased;}
+  .sheet{padding:44px 40px 40px;}
+
+  /* ---------- title ---------- */
+  .top{display:flex;align-items:flex-end;gap:30px;margin-bottom:20px;}
+  h1{font-family:"Noto Serif KR",serif;font-size:60px;font-weight:900;letter-spacing:-.03em;
+     white-space:nowrap;}
+  .top .meta{display:flex;gap:10px;margin-left:auto;}
+  .mtag{border:2px solid #1A2226;padding:8px 18px;text-align:center;min-width:150px;}
+  .mtag .k{font-family:"IBM Plex Mono",monospace;font-size:14px;letter-spacing:.14em;color:#6B7A80;}
+  .mtag .v{font-size:25px;font-weight:700;margin-top:2px;white-space:nowrap;}
+  .mtag.hot{border-color:#C0392B;} .mtag.hot .v{color:#C0392B;}
+  .subline{font-size:21px;color:#5A6A70;font-weight:300;padding-bottom:9px;white-space:nowrap;}
+
+  /* ---------- table ---------- */
+  table{width:100%;border-collapse:collapse;table-layout:fixed;
+        border:3px solid #1A2226;}
+  col.c-time{width:126px;} col.c-day{width:314px;} col.c-note{width:404px;}
+  th,td{border:1px solid #BFC9CD;vertical-align:middle;padding:9px 11px;}
+  thead th{background:#E9EEEC;border-color:#1A2226;border-width:0 1px 3px 1px;
+    font-size:28px;font-weight:700;padding:14px 10px;letter-spacing:-.02em;}
+  thead th .dow{font-size:21px;color:#5A6A70;font-weight:400;margin-left:4px;}
+  thead th.tm,thead th.nt{font-size:25px;}
+  td.tm{background:#F4F7F6;text-align:center;font-family:"IBM Plex Mono",monospace;
+    font-size:20px;font-weight:600;color:#41545B;white-space:nowrap;}
+  td.ev{text-align:center;line-height:1.3;}
+  td.ev .h{font-size:24px;font-weight:600;letter-spacing:-.02em;}
+  td.ev .s{font-size:17.5px;color:#5A6A70;font-weight:300;margin-top:5px;line-height:1.35;}
+  td.ev .s b{color:#C0392B;font-weight:600;}
+  td.ev .s em{font-style:normal;color:#0F6E5C;font-weight:600;}
+  td.meal{background:#FCF4E4;}
+  td.meal .h{color:#8A5A0B;}
+  td.move{background:#F7F9F9;}
+  td.move .h{font-size:19px;font-weight:400;color:#6B7A80;}
+  td.fly{background:#EDF3F7;}
+  td.fly .h{color:#1F5C7A;}
+  td.spa{background:#E7F3EF;}
+  td.spa .h{color:#0F6E5C;}
+  td.blank{background:#FAFBFB;}
+
+  /* ---------- note column ---------- */
+  td.note{vertical-align:top;padding:16px 18px;background:#FDFDFC;}
+  .chk{border:2px solid #1A2226;padding:11px 13px;margin-bottom:14px;line-height:1.7;font-size:18px;}
+  .chk b{display:block;font-family:"IBM Plex Mono",monospace;font-size:13px;letter-spacing:.16em;
+    color:#0F6E5C;margin-bottom:5px;}
+  .chk .on{font-weight:600;} .chk .off{color:#8A979C;}
+  .notes{list-style:none;display:flex;flex-direction:column;gap:11px;}
+  .notes li{font-size:18px;line-height:1.45;padding-left:34px;position:relative;color:#3A4A50;font-weight:300;}
+  .notes li b{color:#1A2226;font-weight:600;}
+  .notes li i{font-style:normal;color:#C0392B;font-weight:600;}
+  .notes li::before{content:attr(data-n);position:absolute;left:0;top:0;
+    font-family:"IBM Plex Mono",monospace;font-size:17px;font-weight:600;color:#0F6E5C;}
+
+  /* ---------- bottom ---------- */
+  .btm{display:grid;grid-template-columns:repeat(3,1fr) 1.25fr;gap:0;margin-top:16px;
+    border:3px solid #1A2226;}
+  .btm > div{padding:16px 20px;border-right:1px solid #BFC9CD;}
+  .btm > div:last-child{border-right:none;background:#F4F7F6;}
+  .btm .k{font-family:"IBM Plex Mono",monospace;font-size:14px;letter-spacing:.16em;color:#0F6E5C;}
+  .btm h3{font-family:"Noto Serif KR",serif;font-size:30px;font-weight:900;margin:6px 0 5px;letter-spacing:-.02em;}
+  .btm .d{font-size:19px;color:#4A5A60;font-weight:300;line-height:1.4;}
+  .btm .c{font-size:22px;font-weight:700;color:#C0392B;margin-top:8px;}
+  .btm .c i{font-style:normal;font-size:17px;color:#6B7A80;font-weight:400;margin-left:8px;}
+  .btm .plead h3{color:#0F6E5C;}
+  .legend{margin-top:12px;display:flex;gap:22px;font-size:17px;color:#5A6A70;align-items:center;flex-wrap:wrap;}
+  .legend i{font-style:normal;display:inline-block;width:26px;height:15px;border:1px solid #BFC9CD;
+    vertical-align:-2px;margin-right:7px;}
+  td.ev .sf{display:inline-block;font-family:"IBM Plex Mono",monospace;font-size:12.5px;
+    border:1px solid #1F7A4A;color:#1F7A4A;background:#EAF6EF;padding:1px 6px;border-radius:2px;
+    margin-top:6px;letter-spacing:.04em;}
+  td.ev .sfc{display:inline-block;font-family:"IBM Plex Mono",monospace;font-size:12.5px;
+    border:1px solid #B07407;color:#B07407;background:#FDF3E0;padding:1px 6px;border-radius:2px;
+    margin-top:6px;letter-spacing:.04em;}
+  .cn{font-family:"Noto Serif KR",serif;font-weight:700;}
+  .banx{border:2px solid #C0392B;background:#FDF0EE;padding:11px 13px;margin-bottom:14px;
+    font-size:17px;line-height:1.55;}
+  .banx b{display:block;font-family:"IBM Plex Mono",monospace;font-size:13px;letter-spacing:.16em;
+    color:#C0392B;margin-bottom:5px;}
+</style>
+</head>
+<body>
+<div class="sheet">
+
+<div class="top">
+  <h1>도쿄 남자 6명 여행</h1>
+  <div class="subline">2027. 1. 14(목) ~ 1. 18(월) · 4박 5일 · 인천–하네다 · <b style="color:#1F7A4A">향신료 걱정이 전혀 없는 안</b> · 하코네 료칸 1박 포함</div>
+  <div class="meta">
+    <div class="mtag"><div class="k">PARTY</div><div class="v">남자 6명</div></div>
+    <div class="mtag"><div class="k">AGE</div><div class="v">42 ~ 59세</div></div>
+    <div class="mtag hot"><div class="k">1인 예산</div><div class="v">160~200만원</div></div>
+  </div>
+</div>
+
+<table>
+<colgroup><col class="c-time"><col class="c-day"><col class="c-day"><col class="c-day"><col class="c-day"><col class="c-day"><col class="c-note"></colgroup>
+<thead><tr>
+  <th class="tm">시간</th>
+  <th>1월 14일<span class="dow">(목)</span></th>
+  <th>1월 15일<span class="dow">(금)</span></th>
+  <th>1월 16일<span class="dow">(토)</span></th>
+  <th>1월 17일<span class="dow">(일)</span></th>
+  <th>1월 18일<span class="dow">(월)</span></th>
+  <th class="nt">비고</th>
+</tr></thead>
+<tbody>
+
+<tr>
+  <td class="tm">06–07</td>
+  <td class="ev"><div class="h">인천공항 집결</div><div class="s">06:30 · 수속</div></td>
+  <td class="ev move"><div class="h">츠키지 이동</div><div class="s">일찍 갈수록 좋음</div></td>
+  <td class="ev blank"></td>
+  <td class="ev spa"><div class="h">아침 노천온천</div><div class="s">해 뜰 때 혼자 한 번 더<span class="sf">료칸의 진짜 값</span></div></td>
+  <td class="ev blank"></td>
+  <td class="note" rowspan="17">
+    <div class="chk" style="border-color:#1F7A4A;"><b style="color:#1F7A4A">음식 — 고민할 게 없습니다</b>
+      오향·팔각·고수가 등장하지 않습니다. 스시, 라멘, 야키니쿠, 텐푸라, 소바, 가이세키 전부
+      <b style="display:inline;font-family:inherit;font-size:18px;letter-spacing:0;color:#1F7A4A">여섯 명 전원 안전</b>합니다.
+      대만안처럼 주문 문구를 외울 필요가 없다는 게 이 안의 핵심 값어치입니다.
+    </div>
+    <div class="chk"><b>예약 · 준비 현황</b>
+      <span class="on">☑ 항공권</span> &nbsp; <span class="off">☐ 도쿄 호텔 3박</span> &nbsp; <span class="off">☐ 하코네 료칸 1박</span><br>
+      <span class="off">☐ 로망스카 좌석</span> &nbsp; <span class="off">☐ 하코네 프리패스</span> &nbsp; <span class="off">☐ 시부야 스카이</span><br>
+      <span class="off">☐ 스카이트리</span> &nbsp; <span class="off">☐ eSIM</span> &nbsp; <span class="off">☐ 여행자보험</span>
+    </div>
+    <ul class="notes">
+      <li data-n="1."><b>항공 — 하네다로</b><br>인천–하네다 2시간 20분, 시차 없음. 나리타보다 시내 접근이 1시간 빠릅니다. 짧은 일정일수록 차이가 큽니다.</li>
+      <li data-n="2."><b>하코네 료칸 — 이 안의 하이라이트</b><br>2인 3~5만엔에 가이세키 석식 + 조식 포함. 노천온천 딸린 방이면 더. <i>예산의 최대 변수이자 가장 값어치 있는 지출</i></li>
+      <li data-n="3."><b>로망스카는 전석 예약제</b><br>신주쿠→하코네유모토 75~80분. <i>좌석을 먼저 잡고 료칸을 잡으세요</i>. 특급요금은 프리패스와 별도.</li>
+      <li data-n="4."><b>짐은 도쿄에 두고 갑니다</b><br>하코네는 1박 짐만. 캐리어는 도쿄 호텔에 보관(대부분 무료). 료칸엔 유카타가 있어 잠옷도 불필요.</li>
+      <li data-n="5."><b>1월 날씨 — 춥고 아주 건조</b><br>도쿄 2~10℃, 하코네 1~9℃. 눈은 거의 없고 맑습니다. <i>히트텍 · 경량패딩 · 립밤 · 핸드크림</i></li>
+      <li data-n="6."><b>교통 — JR패스는 사지 마세요</b><br>이 동선에서는 본전이 안 나옵니다. 스이카/파스모 충전이 답. 하코네는 프리패스로 따로 해결.</li>
+      <li data-n="7."><b>시부야 스카이는 사전 예약</b><br>1/17이 일요일이라 일몰 시간대는 빨리 찹니다. 날짜·시간 지정권입니다.</li>
+      <li data-n="8."><b>술자리 — 오모이데요코초</b><br>신주쿠 뒷골목 꼬치집 골목. 자리가 좁아 6명은 나눠 앉게 됩니다. <i>흡연 가능 점포가 많으니 비흡연자 확인</i></li>
+      <li data-n="9."><b>예산 1인 160~200만원</b><br>대만안보다 30~45만원 비쌉니다. 료칸과 도쿄 호텔값이 대부분입니다.</li>
+      <li data-n="10."><b>대만안과 비교 (하단 참고)</b><br>음식 걱정이 없는 대신 춥고 비쌉니다. <i>투표는 공유 웹페이지에서</i></li>
+    </ul>
+  </td>
+</tr>
+
+<tr>
+  <td class="tm">07–08</td>
+  <td class="ev fly" rowspan="4"><div class="h">09:00 인천 출발<br>→ 11:20 하네다 도착</div><div class="s">비행 2시간 20분<br>시차 없음</div></td>
+  <td class="ev meal" rowspan="2"><div class="h">츠키지 장외시장 아침</div><div class="s">참치덮밥 · 계란말이 · 굴구이<br>서서 먹고 돌아다니기<span class="sf">완전 안전</span></div></td>
+  <td class="ev meal"><div class="h">조식 · 체크아웃</div><div class="s">1박 짐만 들고</div></td>
+  <td class="ev meal"><div class="h">료칸 조식</div><div class="s">일본식 정식</div></td>
+  <td class="ev meal"><div class="h">조식 · 체크아웃</div></td>
+</tr>
+
+<tr>
+  <td class="tm">08–09</td>
+  <td class="ev move"><div class="h">신주쿠역 이동</div></td>
+  <td class="ev" rowspan="2"><div class="h">조각의 숲 미술관</div><div class="s">야외 조각 + 족욕탕<br>비 와도 괜찮음</div></td>
+  <td class="ev" rowspan="2"><div class="h">우에노 아메요코 시장</div><div class="s">건어물 · 과자 · 잡화<br>아침 일찍이 한산</div></td>
+</tr>
+
+<tr>
+  <td class="tm">09–10</td>
+  <td class="ev"><div class="h">하마리큐 정원</div><div class="s">도심 속 에도 정원<br>고층빌딩과 대비</div></td>
+  <td class="ev fly" rowspan="2"><div class="h">09:10 로망스카<br>신주쿠 → 하코네유모토</div><div class="s">80분 · <b>전석 예약제</b></div></td>
+</tr>
+
+<tr>
+  <td class="tm">10–11</td>
+  <td class="ev"><div class="h">도쿄역 · 마루노우치</div><div class="s">붉은 벽돌 역사 건물</div></td>
+  <td class="ev fly" rowspan="2"><div class="h">로망스카<br>하코네 → 신주쿠</div><div class="s">80분</div></td>
+  <td class="ev"><div class="h">돈키호테 · 드럭스토어</div><div class="s">약 · 과자 일괄</div></td>
+</tr>
+
+<tr>
+  <td class="tm">11–12</td>
+  <td class="ev"><div class="h">입국 · 스이카 구매</div><div class="s">eSIM 개통 · 시내 이동</div></td>
+  <td class="ev meal" rowspan="2"><div class="h">점심 · 텐푸라 or 우나기</div><div class="s">긴자 노포<br>튀김덮밥 · 장어덮밥<span class="sf">완전 안전</span></div></td>
+  <td class="ev"><div class="h">등산철도 · 케이블카</div><div class="s">스위치백 구간</div></td>
+  <td class="ev meal" rowspan="2"><div class="h">점심 · 마지막 한 끼</div><div class="s">우에노 돈카츠 or 소바<span class="sf">완전 안전</span></div></td>
+</tr>
+
+<tr>
+  <td class="tm">12–13</td>
+  <td class="ev meal"><div class="h">점심 · 라멘</div><div class="s">첫 끼는 뜨끈하게<span class="sf">완전 안전</span></div></td>
+  <td class="ev meal"><div class="h">점심 · 하코네 소바</div><div class="s">산속 메밀집</div></td>
+  <td class="ev meal"><div class="h">점심 · 신주쿠 라멘</div><div class="s">도쿄 복귀 직후<span class="sf">완전 안전</span></div></td>
+</tr>
+
+<tr>
+  <td class="tm">13–14</td>
+  <td class="ev"><div class="h">호텔 체크인</div><div class="s">신주쿠 or 긴자</div></td>
+  <td class="ev" rowspan="2"><div class="h">긴자 산책 · 쇼핑</div><div class="s">유니클로 · 이토야<br>백화점 식품관</div></td>
+  <td class="ev" rowspan="2"><div class="h">오와쿠다니</div><div class="s">유황 연기 화산지대<br>검은 달걀 하나에 7년<span class="sf">날 맑으면 후지산</span></div></td>
+  <td class="ev"><div class="h">호텔 재체크인</div><div class="s">짐 찾고 정비</div></td>
+  <td class="ev move"><div class="h">하네다 이동</div></td>
+</tr>
+
+<tr>
+  <td class="tm">14–15</td>
+  <td class="ev" rowspan="2"><div class="h">아사쿠사 센소지<br>+ 나카미세 거리</div><div class="s">도쿄에서 가장 오래된 절<br>인력거 · 기념품</div></td>
+  <td class="ev" rowspan="2"><div class="h">시부야 스크램블<br>+ 하라주쿠</div><div class="s">세계에서 제일 붐비는 교차로</div></td>
+  <td class="ev" rowspan="2"><div class="h">공항 체크인 · 면세</div><div class="s">남은 엔화 소진</div></td>
+</tr>
+
+<tr>
+  <td class="tm">15–16</td>
+  <td class="ev" rowspan="2"><div class="h">황궁 동어원<br>또는 아키하바라</div><div class="s">취향 따라 갈라져도 됨</div></td>
+  <td class="ev" rowspan="2"><div class="h">아시노호 해적선<br>+ 하코네신사</div><div class="s">호수 위 붉은 도리이<br>겨울이 가장 맑음</div></td>
+</tr>
+
+<tr>
+  <td class="tm">16–17</td>
+  <td class="ev" rowspan="2"><div class="h">도쿄 스카이트리</div><div class="s">634m 전망대<br>일몰 16:50</div></td>
+  <td class="ev" rowspan="2"><div class="h">시부야 스카이</div><div class="s"><em>★ 옥상 노천 전망대</em><br>일몰~야경 <b>사전 예약</b></div></td>
+  <td class="ev fly" rowspan="4"><div class="h">16:30 하네다 출발<br>→ 19:00 인천 도착</div><div class="s">비행 2시간 20분</div></td>
+</tr>
+
+<tr>
+  <td class="tm">17–18</td>
+  <td class="ev"><div class="h">호텔 휴식</div><div class="s">긴자에서 걸은 다리 풀기</div></td>
+  <td class="ev spa"><div class="h">료칸 체크인 · 첫 탕</div><div class="s">유카타 갈아입고 바로<span class="sf">하이라이트</span></div></td>
+</tr>
+
+<tr>
+  <td class="tm">18–19</td>
+  <td class="ev meal" rowspan="2"><div class="h">저녁 · 이자카야</div><div class="s">꼬치 · 사시미 · 나마비루<br>첫날 가볍게<span class="sf">완전 안전</span></div></td>
+  <td class="ev meal" rowspan="2"><div class="h">저녁 · 야키니쿠</div><div class="s">와규 모둠 + 소금구이<br>여섯 명이 가장 좋아할 한 끼<span class="sf">완전 안전</span></div></td>
+  <td class="ev meal" rowspan="2"><div class="h">석식 · 가이세키 정식</div><div class="s">방으로 차려 나오는 코스<br>지역 사케 한 병<span class="sf">료칸 요금 포함</span></div></td>
+  <td class="ev meal" rowspan="2"><div class="h">저녁 · 스시</div><div class="s">오마카세 or 회전초밥<br>예산 따라 선택<span class="sf">완전 안전</span></div></td>
+</tr>
+
+<tr><td class="tm">19–20</td></tr>
+
+<tr>
+  <td class="tm">20–21</td>
+  <td class="ev" rowspan="2"><div class="h">우에노 or 신주쿠 2차</div><div class="s">서서 마시는 다치노미</div></td>
+  <td class="ev" rowspan="2"><div class="h">에비스 · 신주쿠 2차</div><div class="s">하이볼 · 우메슈</div></td>
+  <td class="ev spa" rowspan="2"><div class="h">노천온천 · 별 보기</div><div class="s">겨울 하코네는 공기가 맑음<br>탕에서 사케 한 잔</div></td>
+  <td class="ev" rowspan="2"><div class="h">오모이데요코초 2차</div><div class="s">신주쿠 뒷골목 꼬치집<br><b>자리 좁아 나눠 앉음</b></div></td>
+  <td class="ev" rowspan="3"><div class="h">귀가 · 해산</div><div class="s">다음날 출근은 각자 알아서</div></td>
+</tr>
+
+<tr><td class="tm">21–22</td></tr>
+
+<tr>
+  <td class="tm">22시 이후</td>
+  <td class="ev move"><div class="h">호텔 복귀</div></td>
+  <td class="ev move"><div class="h">호텔 복귀</div></td>
+  <td class="ev blank"><div class="h">료칸 취침</div><div class="s">이불은 깔아줍니다</div></td>
+  <td class="ev move"><div class="h">호텔 복귀</div></td>
+</tr>
+
+</tbody>
+</table>
+
+<div class="legend">
+  <span><i style="background:#FCF4E4"></i>식사</span>
+  <span><i style="background:#E7F3EF"></i>온천</span>
+  <span><i style="background:#EDF3F7"></i>항공·로망스카</span>
+  <span><i style="background:#F7F9F9"></i>이동</span>
+  <span style="color:#1F7A4A;font-weight:600;">모든 끼니가 향신료 걱정 없음</span>
+  <span style="color:#C0392B;font-weight:600;">빨간 글씨 = 사전 예약 또는 반드시 지킬 것</span>
+</div>
+
+<div class="btm">
+  <div class="plead">
+    <div class="k">PLAN B · 위 표 기준</div><h3>도쿄 4박 5일</h3>
+    <div class="d">향신료 문제가 아예 없음<br>하코네 료칸 온천 1박 포함</div>
+    <div class="c">160~200만원 <i>2~10℃ · 건조</i></div>
+  </div>
+  <div>
+    <div class="k">PLAN A · 별지 참고</div><h3>대만 4박 5일</h3>
+    <div class="d">식당을 향신료 기준으로 재선별<br>온천 · 야경 트레킹 · 근교 하루</div>
+    <div class="c">130~155만원 <i>13~19℃ · 비 잦음</i></div>
+  </div>
+  <div>
+    <div class="k">갈리는 지점</div><h3>기온 · 예산 · 음식</h3>
+    <div class="d">도쿄는 아무 고민 없이 먹지만 춥고 비싸고,<br>대만은 따뜻하고 싸지만 주문에 신경 써야 합니다.</div>
+  </div>
+  <div>
+    <div class="k">지금 할 일</div><h3>공유 웹페이지에서 투표</h3>
+    <div class="d">대만 · 도쿄 2안 투표 + 개인 설문<br><b>못 먹는 음식 · 예산 상한 · 기온 기준</b>을 각자 입력하면 실시간 집계됩니다.</div>
+  </div>
+</div>
+
+</div>
+</body>
+</html>
