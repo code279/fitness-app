@@ -1,0 +1,287 @@
+<title>6~9번 집중 비교</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700;900&display=swap">
+<style>
+:root{
+  --bg:#FFFFFF; --fill:#F2F4F6; --fill2:#E8EBED; --line:#E5E8EB;
+  --ink:#191F28; --gray:#6B7684; --gray2:#8B95A1;
+  --pt:#3182F6; --pt-w:#E8F3FF; --warn:#C0392B; --warn-w:#FDEDEA; --ok:#0E8A5F; --ok-w:#E4F5EE;
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
+  --bg:#17171C; --fill:#232329; --fill2:#2E2E36; --line:#33333B;
+  --ink:#F4F4F6; --gray:#9DA3AE; --gray2:#7C818B;
+  --pt:#4E93F7; --pt-w:#1B2740; --warn:#E8695A; --warn-w:#3A211D; --ok:#3FBF8F; --ok-w:#163026;
+}}
+:root[data-theme="dark"]{
+  --bg:#17171C; --fill:#232329; --fill2:#2E2E36; --line:#33333B;
+  --ink:#F4F4F6; --gray:#9DA3AE; --gray2:#7C818B;
+  --pt:#4E93F7; --pt-w:#1B2740; --warn:#E8695A; --warn-w:#3A211D; --ok:#3FBF8F; --ok-w:#163026;
+}
+*{box-sizing:border-box;}
+body{background:var(--bg);color:var(--ink);font-family:"Noto Sans KR","Apple SD Gothic Neo",sans-serif;
+  font-size:17px;line-height:1.55;font-weight:500;-webkit-font-smoothing:antialiased;
+  font-variant-numeric:tabular-nums;}
+h1,h2{margin:0;font-weight:900;letter-spacing:-.03em;line-height:1.25;text-wrap:balance;}
+p{margin:0;} img,svg{max-width:100%;}
+.wrap{max-width:720px;margin:0 auto;padding:0 20px 100px;}
+
+.hero{padding:40px 0 10px;}
+.eb{font-size:15px;color:var(--gray2);font-weight:700;}
+.hero h1{font-size:34px;margin-top:10px;}
+.hero .s{margin-top:14px;color:var(--gray);font-size:17px;}
+
+figure{margin:30px 0 0;background:var(--fill);border-radius:16px;padding:20px 16px 16px;}
+figcaption{margin-top:14px;font-size:15px;color:var(--gray);line-height:1.6;}
+figcaption b{color:var(--ink);font-weight:700;}
+
+section{padding-top:46px;}
+.sh{display:flex;align-items:baseline;justify-content:space-between;gap:12px;margin-bottom:18px;}
+.sh h2{font-size:26px;}
+.sh .c{font-size:15px;color:var(--gray2);font-weight:700;}
+
+.scroll{overflow-x:auto;margin:0 -20px;padding:0 20px 6px;}
+table{border-collapse:collapse;font-size:15px;min-width:620px;width:100%;}
+th,td{padding:12px 10px;text-align:center;border-bottom:1px solid var(--line);white-space:nowrap;}
+thead th{font-size:14px;font-weight:700;color:var(--gray);}
+thead th.win{color:var(--pt);}
+tbody th{text-align:left;font-weight:700;color:var(--gray);padding-left:0;}
+td.g{color:var(--ok);font-weight:700;}
+td.b{color:var(--warn);font-weight:700;}
+td.n{color:var(--gray2);}
+td.win{background:var(--pt-w);font-weight:700;}
+
+.card{background:var(--fill);border-radius:16px;padding:20px;margin-bottom:10px;}
+.card.top{background:var(--pt-w);}
+.card .r{font-size:15px;color:var(--gray);font-weight:700;}
+.card.top .r{color:var(--pt);}
+.card h3{margin:6px 0 0;font-size:21px;font-weight:900;letter-spacing:-.02em;}
+.card .m{margin-top:10px;font-size:16px;color:var(--gray);line-height:1.6;}
+.card .m b{color:var(--ink);font-weight:700;}
+.card .tags{display:flex;gap:6px;flex-wrap:wrap;margin-top:12px;}
+.tag{font-size:14px;font-weight:700;padding:5px 11px;border-radius:99px;background:var(--bg);color:var(--gray);}
+.tag.g{background:var(--ok-w);color:var(--ok);}
+.tag.b{background:var(--warn-w);color:var(--warn);}
+
+.note{background:var(--fill);border-radius:16px;padding:20px;margin-top:12px;font-size:16px;line-height:1.65;}
+.note.warn{background:var(--warn-w);}
+.note.pt{background:var(--pt-w);}
+.note b{font-weight:900;}
+.note ul{margin:10px 0 0;padding-left:20px;}
+.note li{margin-bottom:7px;}
+.foot{margin-top:56px;padding-top:20px;border-top:1px solid var(--line);font-size:14px;color:var(--gray2);}
+</style>
+
+<div class="wrap">
+
+<div class="hero">
+  <div class="eb">에어비앤비 6 · 7 · 8 · 9번 · 2027.01.14~17 · 6명</div>
+  <h1>새로 찾은 네 곳,<br>집중 비교</h1>
+  <p class="s">앞서 본 1~5번은 이 넷에 밀렸습니다. 실제 선택은 여기서 납니다. 기준점은 <b>오다큐 신주쿠역</b> — 1/15 아침 하코네행 로망스카가 여기서 출발합니다.</p>
+</div>
+
+<figure>
+<svg viewBox="0 0 820 600" role="img"
+     aria-label="네 숙소의 위치 개념도. 6번만 신주쿠역 북쪽 오쿠보역 근처에 있고, 7·8·9번은 남서쪽 하츠다이·시부야구 혼마치 일대에 있다. 7번은 하츠다이역에서 도보 3분이지만 9번은 서쪽으로 더 떨어져 있다.">
+  <!-- 노선 -->
+  <line x1="620" y1="300" x2="430" y2="105" stroke="currentColor" stroke-width="3" opacity=".28"/>
+  <line x1="620" y1="300" x2="300" y2="435" stroke="currentColor" stroke-width="3" opacity=".28"/>
+  <line x1="300" y1="435" x2="110" y2="520" stroke="currentColor" stroke-width="3" opacity=".28"/>
+  <text x="530" y="175" font-size="13" fill="currentColor" opacity=".55">JR 츄오소부선</text>
+  <text x="425" y="392" font-size="13" fill="currentColor" opacity=".55">게이오신선 · 도에이 신주쿠선</text>
+
+  <!-- 신주쿠역 -->
+  <circle cx="620" cy="300" r="21" fill="#3182F6"/>
+  <text x="620" y="307" font-size="16" font-weight="700" fill="#fff" text-anchor="middle">新</text>
+  <text x="620" y="344" font-size="17" font-weight="700" fill="currentColor" text-anchor="middle">신주쿠역</text>
+  <text x="620" y="365" font-size="13" font-weight="700" fill="#3182F6" text-anchor="middle">오다큐 로망스카 출발</text>
+  <text x="620" y="384" font-size="12" fill="currentColor" opacity=".55" text-anchor="middle">1/15 아침 하코네</text>
+
+  <!-- 역 -->
+  <circle cx="430" cy="105" r="11" fill="currentColor" opacity=".75"/>
+  <text x="452" y="102" font-size="14" font-weight="700" fill="currentColor">오쿠보역</text>
+  <text x="452" y="121" font-size="12" fill="currentColor" opacity=".55">신주쿠 1정거장 2분</text>
+
+  <circle cx="300" cy="435" r="11" fill="currentColor" opacity=".75"/>
+  <text x="322" y="432" font-size="14" font-weight="700" fill="currentColor">하츠다이역</text>
+  <text x="322" y="451" font-size="12" fill="currentColor" opacity=".55">신주쿠 1정거장 3분</text>
+
+  <circle cx="110" cy="520" r="11" fill="currentColor" opacity=".5"/>
+  <text x="110" y="556" font-size="13" font-weight="700" fill="currentColor" opacity=".6" text-anchor="middle">하타가야역</text>
+
+  <!-- 6번 -->
+  <path d="M 335 175 L 430 105" stroke="currentColor" stroke-width="1.5" stroke-dasharray="4 4" opacity=".5"/>
+  <text x="356" y="126" font-size="12" fill="currentColor" opacity=".6">도보 4분</text>
+  <circle cx="335" cy="175" r="21" fill="none" stroke="currentColor" stroke-width="2.5"/>
+  <text x="335" y="182" font-size="16" font-weight="900" fill="currentColor" text-anchor="middle">6</text>
+  <text x="335" y="216" font-size="13" fill="currentColor" opacity=".7" text-anchor="middle">오쿠보 · 햐쿠닌초</text>
+  <text x="335" y="235" font-size="12" fill="currentColor" opacity=".45" text-anchor="middle">저지대 · 침실 6개</text>
+
+  <!-- 7번 -->
+  <path d="M 352 498 L 300 435" stroke="#3182F6" stroke-width="1.5" stroke-dasharray="4 4" opacity=".7"/>
+  <text x="358" y="462" font-size="12" font-weight="700" fill="#3182F6">도보 3분</text>
+  <circle cx="352" cy="498" r="21" fill="#3182F6"/>
+  <text x="352" y="505" font-size="16" font-weight="900" fill="#fff" text-anchor="middle">7</text>
+  <text x="352" y="539" font-size="13" font-weight="700" fill="#3182F6" text-anchor="middle">하츠다이 1초메</text>
+  <text x="352" y="558" font-size="12" fill="currentColor" opacity=".45" text-anchor="middle">고지대 · 148만원</text>
+
+  <!-- 9번 -->
+  <path d="M 168 462 L 300 435" stroke="currentColor" stroke-width="1.5" stroke-dasharray="4 4" opacity=".5"/>
+  <text x="182" y="428" font-size="12" fill="currentColor" opacity=".6">도보 8~10분?</text>
+  <circle cx="168" cy="462" r="21" fill="none" stroke="currentColor" stroke-width="2.5"/>
+  <text x="168" y="469" font-size="16" font-weight="900" fill="currentColor" text-anchor="middle">9</text>
+  <text x="168" y="503" font-size="13" fill="currentColor" opacity=".7" text-anchor="middle">혼마치 2초메</text>
+  <text x="168" y="522" font-size="12" fill="currentColor" opacity=".45" text-anchor="middle">고지대 · 상위 1%</text>
+
+  <!-- 8번 -->
+  <circle cx="92" cy="345" r="21" fill="none" stroke="currentColor" stroke-width="2.5" opacity=".45"/>
+  <text x="92" y="352" font-size="16" font-weight="900" fill="currentColor" opacity=".45" text-anchor="middle">8</text>
+  <text x="92" y="386" font-size="13" fill="currentColor" opacity=".4" text-anchor="middle">혼마치 서쪽</text>
+  <text x="92" y="405" font-size="12" fill="currentColor" opacity=".35" text-anchor="middle">탈락 · 평점 4.0</text>
+
+  <!-- 구역 -->
+  <text x="40" y="60" font-size="14" font-weight="700" fill="currentColor" opacity=".55">신주쿠역 북쪽</text>
+  <text x="40" y="80" font-size="12" fill="currentColor" opacity=".4">저지대 · 번화가</text>
+  <text x="620" y="480" font-size="14" font-weight="700" fill="#3182F6" opacity=".8" text-anchor="middle">신주쿠역 남서쪽</text>
+  <text x="620" y="500" font-size="12" fill="currentColor" opacity=".45" text-anchor="middle">시부야구 고지대 주택가</text>
+  <text x="620" y="519" font-size="12" fill="currentColor" opacity=".45" text-anchor="middle">7 · 8 · 9번</text>
+</svg>
+<figcaption><b>네 곳이 신주쿠역을 사이에 두고 정반대로 갈립니다.</b> 6번만 북쪽 오쿠보이고 7·8·9번은 남서쪽 시부야구 고지대입니다. <b>같은 "하츠다이"라도 거리가 다릅니다</b> — 7번은 역에서 도보 3분인데 9번은 서쪽으로 더 나가 있어 8~10분으로 보입니다. 에어비앤비는 예약 전 대략 위치만 공개하므로 <b>9번 도보 시간은 추정치이고, 호스트에게 직접 물어봐야 합니다.</b></figcaption>
+</figure>
+
+<figure>
+<svg viewBox="0 0 820 400" role="img"
+     aria-label="1월 15일 아침 오다큐 신주쿠역까지 도어투도어 소요 시간 비교. 6번 13분, 7번 16분, 9번 22분, 8번은 확인 불가. 걷는 시간과 역 안에서 환승하는 시간이 대부분을 차지한다.">
+  <!-- 범례 -->
+  <rect x="150" y="26" width="16" height="16" fill="currentColor" opacity=".75"/>
+  <text x="174" y="39" font-size="13" fill="currentColor" opacity=".7">집→역 도보</text>
+  <rect x="290" y="26" width="16" height="16" fill="#3182F6"/>
+  <text x="314" y="39" font-size="13" fill="currentColor" opacity=".7">대기 + 전철</text>
+  <rect x="430" y="26" width="16" height="16" fill="currentColor" opacity=".3"/>
+  <text x="454" y="39" font-size="13" fill="currentColor" opacity=".7">신주쿠역 안 환승 도보</text>
+
+  <!-- 6번 -->
+  <text x="132" y="106" font-size="16" font-weight="900" fill="currentColor" text-anchor="end">6번</text>
+  <rect x="150" y="86" width="88" height="26" fill="currentColor" opacity=".75"/>
+  <rect x="238" y="86" width="110" height="26" fill="#3182F6"/>
+  <rect x="348" y="86" width="88" height="26" fill="currentColor" opacity=".3"/>
+  <text x="452" y="105" font-size="16" font-weight="900" fill="currentColor">약 13분</text>
+
+  <!-- 7번 -->
+  <text x="132" y="176" font-size="16" font-weight="900" fill="#3182F6" text-anchor="end">7번</text>
+  <rect x="150" y="156" width="66" height="26" fill="currentColor" opacity=".75"/>
+  <rect x="216" y="156" width="154" height="26" fill="#3182F6"/>
+  <rect x="370" y="156" width="132" height="26" fill="currentColor" opacity=".3"/>
+  <text x="518" y="175" font-size="16" font-weight="900" fill="currentColor">약 16분</text>
+
+  <!-- 9번 -->
+  <text x="132" y="246" font-size="16" font-weight="900" fill="currentColor" text-anchor="end">9번</text>
+  <rect x="150" y="226" width="198" height="26" fill="currentColor" opacity=".75"/>
+  <rect x="348" y="226" width="154" height="26" fill="#3182F6"/>
+  <rect x="502" y="226" width="132" height="26" fill="currentColor" opacity=".3"/>
+  <text x="650" y="245" font-size="16" font-weight="900" fill="#C0392B">약 22분</text>
+
+  <!-- 8번 -->
+  <text x="132" y="316" font-size="16" font-weight="900" fill="currentColor" opacity=".45" text-anchor="end">8번</text>
+  <rect x="150" y="296" width="352" height="26" fill="none" stroke="currentColor"
+        stroke-width="2" stroke-dasharray="6 5" opacity=".4"/>
+  <text x="518" y="315" font-size="15" font-weight="700" fill="currentColor" opacity=".45">확인 불가</text>
+
+  <text x="150" y="368" font-size="13" fill="currentColor" opacity=".5">캐리어를 끌고 가는 1/15 아침 기준. 눈이 오면 걷는 구간이 더 길어집니다.</text>
+</svg>
+<figcaption><b>"신주쿠역 한 정거장"이 실제로는 13분에서 22분까지 벌어집니다.</b> 전철 타는 시간은 2~3분으로 다 비슷한데, <b>집에서 역까지 걷는 시간과 신주쿠역 안에서 환승하는 시간</b>이 전체를 좌우합니다. 게이오신선·도에이 신주쿠선의 신주쿠역은 JR·오다큐 신주쿠역과 다른 지하 승강장이라 통로로 5~7분을 더 걸어야 합니다(7·8·9번에 공통). <b>9번이 가장 불리하고, 이 값이 9번의 유일한 약점입니다.</b> 도보 시간은 지도 위치 기준 추정이므로 호스트 확인이 필요합니다.</figcaption>
+</figure>
+
+<section>
+  <div class="sh"><h2>네 곳 직접 대조</h2><span class="c">← 옆으로 밀어보세요</span></div>
+  <div class="scroll">
+  <table>
+    <thead><tr><th></th><th>6번</th><th class="win">7번</th><th>8번</th><th>9번</th></tr></thead>
+    <tbody>
+      <tr><th>동네</th><td>오쿠보</td><td class="win">하츠다이 1초메</td><td class="n">혼마치 서쪽</td><td>혼마치 2초메</td></tr>
+      <tr><th>3박 총액</th><td>200.5만</td><td class="win g">147.6만</td><td class="n">133.7만</td><td class="b">207.0만</td></tr>
+      <tr><th>1인 부담</th><td>33.4만</td><td class="win g">24.6만</td><td class="n">22.3만</td><td class="b">34.5만</td></tr>
+      <tr><th>평점</th><td>4.87</td><td class="win">4.87</td><td class="b">4.0</td><td class="g">4.99</td></tr>
+      <tr><th>후기 수</th><td>60</td><td class="win b">15</td><td class="b">3</td><td class="g">203</td></tr>
+      <tr><th>등급</th><td>게스트 선호</td><td class="win">게스트 선호</td><td class="b">없음</td><td class="g">상위 1%</td></tr>
+      <tr><th>침실</th><td class="g">6 (1인 1실)</td><td class="win">3 (2인 1실)</td><td>3 (2인 1실)</td><td>3 (2인 1실)</td></tr>
+      <tr><th>침대</th><td>6</td><td class="win">6</td><td>6</td><td>6</td></tr>
+      <tr><th>욕실</th><td>2</td><td class="win">2</td><td class="b">화장실 2 · 샤워 1</td><td>2</td></tr>
+      <tr><th>정원</th><td>12명</td><td class="win">10명</td><td>8명</td><td>8명</td></tr>
+      <tr><th>역까지 도보</th><td class="g">4분</td><td class="win g">3분</td><td class="n">미확인</td><td class="b">8~10분?</td></tr>
+      <tr><th>신주쿠역 도어투도어</th><td class="g">약 13분</td><td class="win">약 16분</td><td class="n">미확인</td><td class="b">약 22분</td></tr>
+      <tr><th>지반</th><td class="b">저지대</td><td class="win g">고지대</td><td class="g">고지대</td><td class="g">고지대</td></tr>
+      <tr><th>건물</th><td class="g">신축</td><td class="win g">최신식</td><td>3층 빌라</td><td class="n">미확인</td></tr>
+      <tr><th>밤 소음</th><td>보통</td><td class="win g">조용</td><td class="g">조용</td><td class="g">조용</td></tr>
+      <tr><th>짐 보관</th><td class="n">미확인</td><td class="win n">미확인</td><td class="n">미확인</td><td class="g">가능</td></tr>
+    </tbody>
+  </table>
+  </div>
+</section>
+
+<section>
+  <div class="sh"><h2>항목별로 누가 이기나</h2></div>
+
+  <div class="card">
+    <div class="r">가격</div>
+    <h3>7번 (8번 제외)</h3>
+    <p class="m">8번이 133.7만으로 가장 싸지만 탈락이므로 실질 1등은 <b>7번 147.6만(1인 24.6만)</b>입니다. 9번보다 <b>59.4만원, 1인 9.9만원</b> 쌉니다. 6번·9번은 200만대로 사실상 동급입니다.</p>
+  </div>
+
+  <div class="card">
+    <div class="r">신뢰도</div>
+    <h3>9번 — 압도적</h3>
+    <p class="m"><b>4.99 × 후기 203개 × 상위 1%.</b> 이 조합은 나머지 셋이 근처도 못 갑니다. 6번은 4.87/60개로 무난하고, 7번은 4.87이지만 <b>후기가 15개</b>라 표본이 모자랍니다. 8번의 4.0/3개는 경고 신호입니다.</p>
+  </div>
+
+  <div class="card">
+    <div class="r">잠자리</div>
+    <h3>6번 — 유일하게 1인 1실</h3>
+    <p class="m">침실 6개. 나머지 셋은 전부 <b>침실 3개에 침대 6개 = 2인 1실</b>입니다. 42~59세 남자 여섯이 3박을 붙어 자는 구성에서 코골이는 실제 문제이고, <b>이걸 없애는 건 6번뿐</b>입니다.</p>
+  </div>
+
+  <div class="card">
+    <div class="r">동선</div>
+    <h3>6번 · 7번</h3>
+    <p class="m">6번이 도어투도어 13분으로 가장 빠르고 7번이 16분입니다. <b>9번은 22분으로 가장 느립니다.</b> 6명이 캐리어를 끌고 다니고 1/15 아침엔 로망스카 시간을 맞춰야 하니, 9분 차이는 무시할 수준이 아닙니다.</p>
+  </div>
+
+  <div class="card">
+    <div class="r">지진 안전</div>
+    <h3>7 · 8 · 9번 (6번 열세)</h3>
+    <p class="m">7·8·9번은 시부야구 서쪽 <b>고지대</b>라 흔들림과 액상화 조건이 낫습니다. 6번은 신축이라 건물 붕괴 위험은 낮지만, <b>오쿠보 일대의 진짜 리스크는 목조주택 밀집지의 화재 연소 확대</b>라 내 집 한 채가 새것이어도 상쇄되지 않습니다.</p>
+  </div>
+</section>
+
+<section>
+  <div class="sh"><h2>그래서 결론</h2></div>
+  <div class="note pt">
+    <b>항목 수로만 세면 7번이 이깁니다. 가격 1등, 동선 공동 1등, 지반 1등, 건물 1등 — 다섯 중 넷입니다.</b><br><br>
+    <b>9번이 이기는 항목은 딱 하나, 신뢰도입니다.</b> 그런데 그 하나가 무겁습니다. 후기 203개에 상위 1%는 "이 집은 실패하지 않는다"는 뜻이고, 7번의 후기 15개는 "아직 모른다"는 뜻이니까요. 게다가 <b>9번은 동선에서 22분으로 확실히 불리합니다.</b> 앞 페이지에서 제가 9번을 1순위로 올렸을 때는 이 도보 거리를 보기 전이었습니다.
+    <ul>
+      <li><b>7번</b> — 조건은 가장 좋고 59만원 싸다. 리스크는 후기 15개.</li>
+      <li><b>9번</b> — 실패 확률은 없다. 대신 59만원 비싸고 매일 아침저녁 9분 더 걷는다.</li>
+      <li><b>6번</b> — 잠자리 하나로 버틴다. 지진 조건에서 밀린다.</li>
+      <li><b>8번</b> — 탈락.</li>
+    </ul>
+    <b>현재로선 7번을 권합니다.</b> 9번의 유일한 우위였던 "확실성"이 도보 22분이라는 비용을 달고 나왔기 때문입니다. 다만 <b>아래 두 가지를 확인하기 전까지는 확정하지 마세요.</b> 둘 다 5분이면 됩니다.
+  </div>
+
+  <div class="note warn" style="margin-top:12px">
+    <b>확정 전에 이 두 가지</b>
+    <ul>
+      <li><b>① 7번과 9번의 호스트가 같은 사람인지 확인</b> — 둘 다 하츠다이, 침실 3·침대 6·욕실 2, 사진 74장, 셀프 체크인으로 구성이 지나치게 닮았습니다. <b>같은 호스트면</b> 7번의 후기 15개는 "부실"이 아니라 "최근 오픈"이라는 뜻이고, 그러면 7번으로 확정입니다. <b>다른 호스트면</b> 7번 후기 15개를 전부 읽으세요.</li>
+      <li><b>② 9번 호스트에게 "가장 가까운 역까지 도보 몇 분인지" 질문</b> — 제목의 "신주쿠까지 2분"은 전철 시간이지 집에서 나가는 시간이 아닙니다. <b>답이 5분 이내면</b> 동선 열세가 사라지고 9번이 다시 1순위가 됩니다. <b>8분 이상이면</b> 7번입니다.</li>
+    </ul>
+    <b>추가로 확인할 것</b>
+    <ul>
+      <li><b>M13 신고번호</b> — 네 곳 전부 아직 확인 안 됐습니다. 리스팅 하단에 M13으로 시작하는 번호가 없으면 합법 숙소가 아니고, 예약 직전에 취소될 수 있습니다.</li>
+      <li><b>"욕실 2개"가 정말 샤워 2개인지</b> — 8번은 요약이 "욕실 2개"였지만 실제로는 화장실 2 + 샤워 1이었습니다. 6·7·9번도 사진에서 샤워부스를 직접 세어보세요.</li>
+      <li><b>2인 1실 방의 침대 형태</b> — 7·8·9번 모두 침실 3개에 침대 6개입니다. 매트리스를 붙여놓은 방이면 성인 남자 둘이 한 침대에 눕는 구조입니다.</li>
+      <li><b>취소 수수료 없음 · 오늘 결제 ₩0</b> — 7번과 9번 모두 해당합니다. 둘 다 "보통 예약이 가득 찬다"고 뜨니, <b>일단 7번을 잡아두고</b> 위 두 가지를 확인한 뒤 바꾸셔도 손해가 없습니다.</li>
+    </ul>
+  </div>
+</section>
+
+<div class="foot">숙소 위치와 도보 시간은 에어비앤비가 예약 전 대략 위치만 공개하므로 지도 기준 추정치입니다. 도어투도어 시간은 대기 시간을 포함한 개략값이고, 평점·가격은 캡처 시점 기준입니다.</div>
+</div>
