@@ -7,12 +7,27 @@
       "checkIn": "2027-01-14",
       "checkOut": "2027-01-17",
       "nights": 3,
-      "party": { "count": 6, "ages": [59, 59, 53, 51, 44, 42], "note": "남자 6명" },
+      "party": {
+        "count": 6,
+        "ages": [
+          59,
+          59,
+          53,
+          51,
+          44,
+          42
+        ],
+        "note": "남자 6명"
+      },
       "anchor": "오다큐 신주쿠역 (1/15 아침 하코네행 로망스카 출발)",
       "flights": "에어로케이 청주 09:45 → 나리타 11:55 / 나리타 12:55 → 청주 15:25"
     },
     "criteria": {
-      "order": ["안전성", "접근성", "편의성"],
+      "order": [
+        "안전성",
+        "접근성",
+        "편의성"
+      ],
       "budget": "제약 없음 — 가격은 순위에 반영하지 않는다",
       "안전성": "지반(무사시노 대지 고지대 > 신주쿠구 저지대) + 건물 구조·연식 + 주변 목조밀집도 + 야간 환경",
       "접근성": "집 → 가장 가까운 역 도보 + 대기·전철 + 신주쿠역 내 오다큐 환승 도보. 게이오신선·도에이 신주쿠선은 오다큐와 별개 승강장이라 지하통로 5~7분이 더 붙는다",
@@ -24,176 +39,673 @@
       "d2dMin": "오다큐 신주쿠역까지 도어투도어 분. 도보 + 대기 + 전철 + 역내 환승 도보 합계."
     },
     "openQuestions": [
-      "9곳 전부 M13 신고번호 미확인 — 없으면 합법 숙소가 아니고 예약 직전 취소될 수 있다",
-      "7번 준공 연도 — 2000년 이후면 개정 내진기준 적용. 7번을 1순위로 둔 핵심 근거",
-      "7번·6번·9번 샤워부스 실제 개수 — 8번이 '욕실 2개' 표기로 실제 샤워 1개였다",
-      "9번 역까지 도보 시간 — 5분 이내면 7번과 다시 경합",
+      "7번 외 8곳은 M13 신고번호·여관업 허가번호 모두 미확인 — 없으면 합법 숙소가 아니고 예약 직전 취소될 수 있다",
+      "7번 준공 연도 — 호스트 원문은 '신축', 허가 취득은 2025년이지만 준공 연도 자체는 끝내 미표기. 2000년 이후 개정 내진기준 적용 여부는 호스트에게 직접 물어야 한다",
+      "6번·9번 샤워부스 실제 개수 — 7번이 '욕실 2개' 표기로 실제 샤워 1개였다. 8번에 이어 두 번째 사례이니 나머지도 사진 투어로 확인해야 한다",
+      "7번 샤워 1개로 6명이 1/15 아침 로망스카 출발 시각을 맞출 수 있는가 — 1인 10분이면 60분이 필요하다",
+      "4번 건물 정보(준공 연도·구조) — 채워지면 7번과 1순위 경합",
+      "9번 역까지 도보 시간 — 5분 이내면 다시 경합",
       "3번 6인 유닛 실제 가격과 정원 — '아파트 선택'을 눌러야 나온다",
-      "7번과 9번 호스트 동일 여부 — 같으면 7번의 후기 15개는 '최근 오픈'이라는 뜻"
-    ],
-    "pendingRerank": "4번에서 샤워 2개·침실 4개·짐 보관·슈퍼호스트 7년이 확인되어 상향이 필요하다. rank 값은 아직 갱신 전 상태다."
+      "9번 호스트가 7번의 千夏와 동일인인지 — 7번 호스트는 22개월·후기 1214개의 전문 운영자로 확인됐다"
+    ]
   },
-
   "stays": [
     {
-      "id": 1, "rank": 4, "status": "후보",
+      "id": 1,
+      "rank": 5,
+      "status": "후보",
       "name": "새틀라이트 호텔 기타신주쿠 301+401",
       "area": "신주쿠구 기타신주쿠 (오쿠보)",
-      "safety": { "ground": "저지대", "building": "철근콘크리트 5층", "surroundings": "상가·대로", "night": "보통",
-                  "plus": ["RC 구조라 주변 목조 소형 건물보다 구조적으로 안전", "숙박업체 운영 — 여관업 기준 소방설비(스프링클러·유도등·방화문) 적용 가능성"] },
-      "access": { "station": "오쿠보", "line": "JR 츄오소부", "walkMin": 5, "d2dMin": 14, "tochoWalkMin": 20 },
-      "comfort": { "guests": 16, "bedrooms": 6, "beds": 7, "baths": null, "showers": null, "areaSqm": 101,
-                   "wholeUnit": false, "wholeUnitNote": "301호와 401호로 층이 갈린다. 방 구성 표기 6LDDKK — 거실·부엌이 두 벌",
-                   "luggage": null, "nearby": "코리아타운 도보권, 1층 상가" },
-      "trust": { "rating": 4.66, "reviews": 47, "badges": [], "host": "Satellite Hotel", "hostYears": 2 },
-      "price": { "total3n": 2375416, "perPerson": 395903, "isFloor": true, "freeCancel": true },
-      "scores": { "safety": 3.3, "access": 4.0, "comfort": 2.8 },
-      "est": ["d2dMin", "tochoWalkMin"],
+      "safety": {
+        "ground": "저지대",
+        "building": "철근콘크리트 5층",
+        "surroundings": "상가·대로",
+        "night": "보통",
+        "plus": [
+          "RC 구조라 주변 목조 소형 건물보다 구조적으로 안전",
+          "숙박업체 운영 — 여관업 기준 소방설비(스프링클러·유도등·방화문) 적용 가능성"
+        ]
+      },
+      "access": {
+        "station": "오쿠보",
+        "line": "JR 츄오소부",
+        "walkMin": 5,
+        "d2dMin": 14,
+        "tochoWalkMin": 20
+      },
+      "comfort": {
+        "guests": 16,
+        "bedrooms": 6,
+        "beds": 7,
+        "baths": null,
+        "showers": null,
+        "areaSqm": 101,
+        "wholeUnit": false,
+        "wholeUnitNote": "301호와 401호로 층이 갈린다. 방 구성 표기 6LDDKK — 거실·부엌이 두 벌",
+        "luggage": null,
+        "nearby": "코리아타운 도보권, 1층 상가"
+      },
+      "trust": {
+        "rating": 4.66,
+        "reviews": 47,
+        "badges": [],
+        "host": "Satellite Hotel",
+        "hostYears": 2
+      },
+      "price": {
+        "total3n": 2375416,
+        "perPerson": 395903,
+        "isFloor": true,
+        "freeCancel": true
+      },
+      "scores": {
+        "safety": 3.3,
+        "access": 4.0,
+        "comfort": 2.8
+      },
+      "est": [
+        "d2dMin",
+        "tochoWalkMin"
+      ],
       "verdict": "가격을 빼면 안전성(RC·소방)과 접근성은 상위권. 두 호실 분리가 결정적 약점."
     },
     {
-      "id": 2, "rank": null, "status": "탈락",
+      "id": 2,
+      "rank": null,
+      "status": "탈락",
       "name": "신주쿠 1정거장 / 신오쿠보역 5분 / 한국 거리·카부키초",
       "area": "신주쿠구 신오쿠보 (카부키초 인접)",
-      "safety": { "ground": "저지대", "building": "콘도미니엄", "surroundings": "유흥가", "night": "매우 낮음",
-                  "minus": ["카부키초 인접 — 좁은 골목·유흥가 밀집·야간 인구밀도. 지진 대피 조건으로 도쿄에서 가장 나쁜 유형"] },
-      "access": { "station": "신오쿠보", "line": "JR 야마노테", "walkMin": 5, "d2dMin": 14, "tochoWalkMin": 20 },
-      "comfort": { "guests": 12, "bedrooms": 3, "beds": 6, "baths": 2.5, "showers": 2,
-                   "wholeUnit": true, "luggage": null,
-                   "amenities": ["전용 파티오", "에어컨", "난방", "세탁기", "셀프 체크인"],
-                   "nearby": "코리아타운" },
-      "trust": { "rating": 4.42, "reviews": 26, "badges": [], "host": null, "hostYears": null },
-      "price": { "total3n": 1853636, "perPerson": 308939, "isFloor": false, "freeCancel": true },
-      "scores": { "safety": 1.5, "access": 4.0, "comfort": 3.0 },
-      "est": ["d2dMin", "tochoWalkMin"],
+      "safety": {
+        "ground": "저지대",
+        "building": "콘도미니엄",
+        "surroundings": "유흥가",
+        "night": "매우 낮음",
+        "minus": [
+          "카부키초 인접 — 좁은 골목·유흥가 밀집·야간 인구밀도. 지진 대피 조건으로 도쿄에서 가장 나쁜 유형"
+        ]
+      },
+      "access": {
+        "station": "신오쿠보",
+        "line": "JR 야마노테",
+        "walkMin": 5,
+        "d2dMin": 14,
+        "tochoWalkMin": 20
+      },
+      "comfort": {
+        "guests": 12,
+        "bedrooms": 3,
+        "beds": 6,
+        "baths": 2.5,
+        "showers": 2,
+        "wholeUnit": true,
+        "luggage": null,
+        "amenities": [
+          "전용 파티오",
+          "에어컨",
+          "난방",
+          "세탁기",
+          "셀프 체크인"
+        ],
+        "nearby": "코리아타운"
+      },
+      "trust": {
+        "rating": 4.42,
+        "reviews": 26,
+        "badges": [],
+        "host": null,
+        "hostYears": null
+      },
+      "price": {
+        "total3n": 1853636,
+        "perPerson": 308939,
+        "isFloor": false,
+        "freeCancel": true
+      },
+      "scores": {
+        "safety": 1.5,
+        "access": 4.0,
+        "comfort": 3.0
+      },
+      "est": [
+        "d2dMin",
+        "tochoWalkMin"
+      ],
       "verdict": "욕실 2.5개를 '욕실 2 + 화장실 2'로 정확히 표기한 건 정직하다. 그래도 안전성 최하위이고 같은 신오쿠보에 5번이 4.98·역 2분으로 있다."
     },
     {
-      "id": 3, "rank": 7, "status": "후보",
+      "id": 3,
+      "rank": 7,
+      "status": "후보",
       "name": "MeiJon의 콘도",
       "area": "신주쿠구 햐쿠닌초",
-      "safety": { "ground": "저지대", "building": "3층 소형 (외부 철제 계단)", "surroundings": "좁은 골목", "night": "보통",
-                  "minus": ["좁은 골목 + 외부 철제 계단 — 지진 시 대피와 짐 운반 둘 다 불리"] },
-      "access": { "station": "오쿠보", "line": "JR 츄오소부", "walkMin": 5, "d2dMin": 14, "tochoWalkMin": 20 },
-      "comfort": { "guests": null, "bedrooms": null, "beds": null, "baths": null, "showers": null,
-                   "wholeUnit": true, "wholeUnitNote": "아파트 1개",
-                   "luggage": null, "amenities": ["청소 서비스", "유료 주차", "주방", "세탁기"],
-                   "nearby": "코리아타운" },
-      "trust": { "rating": 4.8, "reviews": 54, "badges": ["슈퍼호스트"], "host": "MeiJon", "hostYears": 9 },
-      "price": { "total3n": 1680738, "perPerson": 280123, "isFloor": true, "freeCancel": true },
-      "scores": { "safety": 2.0, "access": 4.0, "comfort": 2.5 },
-      "est": ["walkMin", "d2dMin", "tochoWalkMin"],
+      "safety": {
+        "ground": "저지대",
+        "building": "3층 소형 (외부 철제 계단)",
+        "surroundings": "좁은 골목",
+        "night": "보통",
+        "minus": [
+          "좁은 골목 + 외부 철제 계단 — 지진 시 대피와 짐 운반 둘 다 불리"
+        ]
+      },
+      "access": {
+        "station": "오쿠보",
+        "line": "JR 츄오소부",
+        "walkMin": 5,
+        "d2dMin": 14,
+        "tochoWalkMin": 20
+      },
+      "comfort": {
+        "guests": null,
+        "bedrooms": null,
+        "beds": null,
+        "baths": null,
+        "showers": null,
+        "wholeUnit": true,
+        "wholeUnitNote": "아파트 1개",
+        "luggage": null,
+        "amenities": [
+          "청소 서비스",
+          "유료 주차",
+          "주방",
+          "세탁기"
+        ],
+        "nearby": "코리아타운"
+      },
+      "trust": {
+        "rating": 4.8,
+        "reviews": 54,
+        "badges": [
+          "슈퍼호스트"
+        ],
+        "host": "MeiJon",
+        "hostYears": 9
+      },
+      "price": {
+        "total3n": 1680738,
+        "perPerson": 280123,
+        "isFloor": true,
+        "freeCancel": true
+      },
+      "scores": {
+        "safety": 2.0,
+        "access": 4.0,
+        "comfort": 2.5
+      },
+      "est": [
+        "walkMin",
+        "d2dMin",
+        "tochoWalkMin"
+      ],
       "verdict": "슈퍼호스트 9년은 9곳 중 최장 이력. 그러나 구성이 전부 미확인이고 '아파트 선택' 방식이라 6인 유닛 가격도 모른다."
     },
     {
-      "id": 4, "rank": 6, "status": "후보 · 상향 필요",
+      "id": 4,
+      "rank": 2,
+      "status": "후보",
       "name": "신주쿠 1역 · 4BR 집 전체 · 고급 지역 · 98㎡",
       "area": "시부야구 하츠다이",
-      "safety": { "ground": "고지대", "building": null, "surroundings": "주택가", "night": "조용",
-                  "plus": ["후기에서 '조용함' 37회 언급 — 주변 환경이 실제로 조용하다는 게 검증됨"] },
-      "access": { "station": "하츠다이", "line": "게이오신선", "walkMin": 5, "d2dMin": 17, "tochoWalkMin": 15,
-                  "listingClaim": "Reach Shinjuku Station in just 7 minutes (walk 5 min + train 2 min)" },
-      "comfort": { "guests": 8, "bedrooms": 4, "beds": 6, "baths": 2, "showers": 2, "areaSqm": 98,
-                   "wholeUnit": true, "luggage": true,
-                   "amenities": ["샤워 2 + 화장실 2 (설명문 명시)", "세탁기 + 건조기", "전용 파티오 또는 발코니",
-                                 "Smart TV", "WiFi", "주방", "셀프 체크인", "슈퍼마켓 1분"],
-                   "nearby": "로컬 주택가 · 슈퍼마켓 1분" },
-      "trust": { "rating": 4.99, "reviews": 207, "badges": ["상위 5%", "한국인 인기 숙소", "게스트 선호"],
-                 "host": "Asawa", "hostYears": 7, "hostBadge": "슈퍼호스트",
-                 "reviewKeywords": { "위치": 100, "청결": 94, "친절한 환대": 93, "교통 편의성": 74, "인근 시설": 72,
-                                     "가족 친화": 58, "편안함": 49, "조용함": 37, "도보 이동 편리": 36, "편의시설": 26 } },
-      "price": { "total3n": 2505172, "perPerson": 417529, "isFloor": false, "freeCancel": true },
-      "scores": { "safety": 4.3, "access": 3.4, "comfort": 4.8 },
-      "est": ["d2dMin", "tochoWalkMin"],
-      "verdict": "샤워 2개·침실 4개·짐 보관·슈퍼호스트 7년이 전부 확인됐다. 7번과 같은 고지대에 도어투도어도 1분 차이인데 확인된 항목이 훨씬 많다. 7번의 유일한 우위는 '최신식'이라는 자기 표기 하나."
+      "safety": {
+        "ground": "고지대",
+        "building": null,
+        "surroundings": "주택가",
+        "night": "조용",
+        "plus": [
+          "후기에서 '조용함' 37회 언급 — 주변 환경이 실제로 조용하다는 게 검증됨"
+        ]
+      },
+      "access": {
+        "station": "하츠다이",
+        "line": "게이오신선",
+        "walkMin": 5,
+        "d2dMin": 18,
+        "tochoWalkMin": 15,
+        "listingClaim": "Reach Shinjuku Station in just 7 minutes (walk 5 min + train 2 min)",
+        "note": "원장에 17분으로 적혀 있었으나 d2d 계산식(도보 5 + 대기 3~4 + 전철 2 + 신주쿠역 지하통로 5~7)과 두 비교 페이지 모두 18분이었다. 18분으로 통일한다."
+      },
+      "comfort": {
+        "guests": 8,
+        "bedrooms": 4,
+        "beds": 6,
+        "baths": 2,
+        "showers": 2,
+        "areaSqm": 98,
+        "wholeUnit": true,
+        "luggage": true,
+        "amenities": [
+          "샤워 2 + 화장실 2 (설명문 명시)",
+          "세탁기 + 건조기",
+          "전용 파티오 또는 발코니",
+          "Smart TV",
+          "WiFi",
+          "주방",
+          "셀프 체크인",
+          "슈퍼마켓 1분"
+        ],
+        "nearby": "로컬 주택가 · 슈퍼마켓 1분"
+      },
+      "trust": {
+        "rating": 4.99,
+        "reviews": 207,
+        "badges": [
+          "상위 5%",
+          "한국인 인기 숙소",
+          "게스트 선호"
+        ],
+        "host": "Asawa",
+        "hostYears": 7,
+        "hostBadge": "슈퍼호스트",
+        "reviewKeywords": {
+          "위치": 100,
+          "청결": 94,
+          "친절한 환대": 93,
+          "교통 편의성": 74,
+          "인근 시설": 72,
+          "가족 친화": 58,
+          "편안함": 49,
+          "조용함": 37,
+          "도보 이동 편리": 36,
+          "편의시설": 26
+        }
+      },
+      "price": {
+        "total3n": 2505172,
+        "perPerson": 417529,
+        "isFloor": false,
+        "freeCancel": true
+      },
+      "scores": {
+        "safety": 4.3,
+        "access": 3.4,
+        "comfort": 4.8
+      },
+      "est": [
+        "d2dMin",
+        "tochoWalkMin"
+      ],
+      "verdict": "샤워 2개·침실 4개·짐 보관·슈퍼호스트 7년·후기 207개가 전부 확인됐다. 7번과 같은 고지대에 도어투도어 1분 차이인데 샤워는 두 배다. 7번이 여관업 허가로 안전성 우위를 지켜 2순위지만, 건물 정보(준공·구조)가 null인 것만 채워지면 1순위를 다툰다."
     },
     {
-      "id": 5, "rank": 3, "status": "후보",
+      "id": 5,
+      "rank": 4,
+      "status": "후보",
       "name": "새로 단장! JR 신오쿠보역 2분 / 욕실 2 · 화장실 2 · 세면대 3",
       "area": "신주쿠구 신오쿠보 북쪽",
-      "safety": { "ground": "저지대", "building": "새로 단장(리노베이션)", "surroundings": "번화가 인근", "night": "낮음",
-                  "minus": ["1/16이 토요일 — 신오쿠보 번화가 소음", "리노베이션은 신축과 달리 내진 성능을 보장하지 않는다"] },
-      "access": { "station": "신오쿠보", "line": "JR 야마노테", "walkMin": 2, "d2dMin": 11, "tochoWalkMin": 22,
-                  "listingClaim": "JR 신오쿠보역 2분! JR 신주쿠역 15분!" },
-      "comfort": { "guests": 8, "bedrooms": 3, "beds": 7, "baths": 3, "showers": 2, "sinks": 3,
-                   "wholeUnit": true, "luggage": null,
-                   "amenities": ["욕실 2 + 화장실 2 + 세면대 3 (제목 명시)", "전용 파티오", "커피메이커"],
-                   "nearby": "코리아타운" },
-      "trust": { "rating": 4.98, "reviews": 59, "badges": ["게스트 선호"], "host": null, "hostYears": null },
-      "price": { "total3n": 2004335, "perPerson": 334056, "isFloor": false, "freeCancel": true, "discount": 554118 },
-      "scores": { "safety": 2.4, "access": 5.0, "comfort": 4.6 },
-      "est": ["d2dMin", "tochoWalkMin"],
+      "safety": {
+        "ground": "저지대",
+        "building": "새로 단장(리노베이션)",
+        "surroundings": "번화가 인근",
+        "night": "낮음",
+        "minus": [
+          "1/16이 토요일 — 신오쿠보 번화가 소음",
+          "리노베이션은 신축과 달리 내진 성능을 보장하지 않는다"
+        ]
+      },
+      "access": {
+        "station": "신오쿠보",
+        "line": "JR 야마노테",
+        "walkMin": 2,
+        "d2dMin": 11,
+        "tochoWalkMin": 22,
+        "listingClaim": "JR 신오쿠보역 2분! JR 신주쿠역 15분!"
+      },
+      "comfort": {
+        "guests": 8,
+        "bedrooms": 3,
+        "beds": 7,
+        "baths": 3,
+        "showers": 2,
+        "sinks": 3,
+        "wholeUnit": true,
+        "luggage": null,
+        "amenities": [
+          "욕실 2 + 화장실 2 + 세면대 3 (제목 명시)",
+          "전용 파티오",
+          "커피메이커"
+        ],
+        "nearby": "코리아타운"
+      },
+      "trust": {
+        "rating": 4.98,
+        "reviews": 59,
+        "badges": [
+          "게스트 선호"
+        ],
+        "host": null,
+        "hostYears": null
+      },
+      "price": {
+        "total3n": 2004335,
+        "perPerson": 334056,
+        "isFloor": false,
+        "freeCancel": true,
+        "discount": 554118
+      },
+      "scores": {
+        "safety": 2.4,
+        "access": 5.0,
+        "comfort": 4.6
+      },
+      "est": [
+        "d2dMin",
+        "tochoWalkMin"
+      ],
       "verdict": "접근성 1등(도어투도어 11분, 9곳 최단). 아침 세면 속도도 최강. 저지대와 주말 소음이 대가."
     },
     {
-      "id": 6, "rank": 2, "status": "후보",
+      "id": 6,
+      "rank": 3,
+      "status": "후보",
       "name": "신주쿠 고급 빌라 6베드룸 1거실(신축)",
       "area": "신주쿠구 오쿠보",
-      "safety": { "ground": "저지대", "building": "신축", "surroundings": "주택 · 상가", "night": "보통",
-                  "plus": ["신축이라 건물 붕괴 위험은 9곳 중 가장 낮다"],
-                  "minus": ["오쿠보의 진짜 리스크는 목조주택 밀집지의 화재 연소 확대 — 내 집이 새것이어도 상쇄되지 않는다"] },
-      "access": { "station": "오쿠보", "line": "JR 츄오소부", "walkMin": 4, "d2dMin": 13, "tochoWalkMin": 20 },
-      "comfort": { "guests": 12, "bedrooms": 6, "beds": 6, "baths": 2, "showers": null,
-                   "wholeUnit": true, "wholeUnitNote": "저택 전체", "luggage": null,
-                   "amenities": ["셀프 체크인", "에어컨", "세탁기", "TV"],
-                   "nearby": "코리아타운 도보권 — 야식·술·한식 조달 최강",
-                   "highlight": "침실 6개 = 여섯 명 전원 1인 1실. 9곳 중 유일" },
-      "trust": { "rating": 4.87, "reviews": 60, "badges": ["게스트 선호"], "host": null, "hostYears": null },
-      "price": { "total3n": 2005016, "perPerson": 334169, "isFloor": false, "freeCancel": true, "discount": 191202 },
-      "scores": { "safety": 3.0, "access": 4.6, "comfort": 4.8 },
-      "est": ["walkMin", "d2dMin", "tochoWalkMin"],
+      "safety": {
+        "ground": "저지대",
+        "building": "신축",
+        "surroundings": "주택 · 상가",
+        "night": "보통",
+        "plus": [
+          "신축이라 건물 붕괴 위험은 9곳 중 가장 낮다"
+        ],
+        "minus": [
+          "오쿠보의 진짜 리스크는 목조주택 밀집지의 화재 연소 확대 — 내 집이 새것이어도 상쇄되지 않는다"
+        ]
+      },
+      "access": {
+        "station": "오쿠보",
+        "line": "JR 츄오소부",
+        "walkMin": 4,
+        "d2dMin": 13,
+        "tochoWalkMin": 20
+      },
+      "comfort": {
+        "guests": 12,
+        "bedrooms": 6,
+        "beds": 6,
+        "baths": 2,
+        "showers": null,
+        "wholeUnit": true,
+        "wholeUnitNote": "저택 전체",
+        "luggage": null,
+        "amenities": [
+          "셀프 체크인",
+          "에어컨",
+          "세탁기",
+          "TV"
+        ],
+        "nearby": "코리아타운 도보권 — 야식·술·한식 조달 최강",
+        "highlight": "침실 6개 = 여섯 명 전원 1인 1실. 9곳 중 유일"
+      },
+      "trust": {
+        "rating": 4.87,
+        "reviews": 60,
+        "badges": [
+          "게스트 선호"
+        ],
+        "host": null,
+        "hostYears": null
+      },
+      "price": {
+        "total3n": 2005016,
+        "perPerson": 334169,
+        "isFloor": false,
+        "freeCancel": true,
+        "discount": 191202
+      },
+      "scores": {
+        "safety": 3.0,
+        "access": 4.6,
+        "comfort": 4.8
+      },
+      "est": [
+        "walkMin",
+        "d2dMin",
+        "tochoWalkMin"
+      ],
       "verdict": "편의성 1등. 42~59세 남자 여섯이 3박을 보내는 데 1인 1실은 실질적 차이. 안전성을 2순위로 내리면 여기가 1순위."
     },
     {
-      "id": 7, "rank": 1, "status": "후보 · 현재 1순위",
+      "id": 7,
+      "rank": 1,
+      "status": "후보 · 현재 1순위",
       "name": "신주쿠 1정거장 / 하츠다이역까지 3분 / 침실 3개, 최신식 주택",
       "area": "시부야구 하츠다이 1초메",
-      "safety": { "ground": "고지대", "building": "최신식 주택 (준공 연도 미확인)", "surroundings": "주택가", "night": "조용",
-                  "plus": ["지반과 건물 양쪽을 동시에 확인할 수 있는 유일한 집 — 단 '최신식'은 리스팅 자기 표기이고 준공 연도는 미확인"] },
-      "access": { "station": "하츠다이", "line": "게이오신선", "walkMin": 3, "d2dMin": 16, "tochoWalkMin": 15 },
-      "comfort": { "guests": 10, "bedrooms": 3, "beds": 6, "baths": 2, "showers": null,
-                   "wholeUnit": true, "luggage": null,
-                   "amenities": ["셀프 체크인"],
-                   "nearby": "로손 · 마이바스켓 · 빵집 도보 1~2분" },
-      "trust": { "rating": 4.87, "reviews": 15, "badges": ["게스트 선호"], "host": null, "hostYears": null },
-      "price": { "total3n": 1475901, "perPerson": 245984, "isFloor": false, "freeCancel": true },
-      "scores": { "safety": 5.0, "access": 4.0, "comfort": 3.6 },
-      "est": ["d2dMin", "tochoWalkMin"],
-      "verdict": "안전성 1등이라 현재 1순위. 약점은 후기 15개와 샤워부스 개수 미확인. 4번이 같은 동네에서 확인된 항목을 더 많이 들고 올라오는 중."
+      "safety": {
+        "ground": "고지대",
+        "building": "3층 단독주택 — 호스트 원문(중국어) '日式新建独栋别墅'(일본식 신축 단독주택). 준공 연도는 여전히 미표기",
+        "surroundings": "주택가",
+        "night": "조용",
+        "plus": [
+          "여관업법 허가번호 확인(渋谷区保健所 7渋保生環第1370号) — 소방법상 숙박시설 기준과 보건소 검사를 통과한 합법 영업. 9곳 중 유일하게 검증된 항목",
+          "화재경보기·일산화탄소 경보기·소화기가 편의시설 목록에 명시 — 허가 조건과 일치",
+          "무사시노 대지 고지대 + 시부야구 주택가"
+        ],
+        "minus": [
+          "준공 연도는 끝내 미표기. '신축'은 호스트 자기 표기이고 허가 취득년(2025)이 준공년을 뜻하지는 않는다",
+          "3층 계단 구조 — 지진 시 3층 취침자의 대피 동선이 1층보다 길다"
+        ]
+      },
+      "access": {
+        "station": "하츠다이",
+        "line": "게이오신선",
+        "walkMin": 3,
+        "d2dMin": 16,
+        "tochoWalkMin": 15,
+        "listingClaim": "하츠다이역 도보 3분 / 신주쿠 1정거장 2분 (호스트 원문 확인)",
+        "note": "게이오신선 신주쿠역은 지하 5층이라 오다큐 승강장까지 지하통로 5~7분이 더 붙는다. 리스팅의 '2분'은 전철 소요시간일 뿐이다"
+      },
+      "comfort": {
+        "guests": 10,
+        "bedrooms": 3,
+        "beds": 6,
+        "baths": 2,
+        "showers": 1,
+        "halfBaths": 2,
+        "toiletsTotal": 3,
+        "floors": 3,
+        "wholeUnit": true,
+        "wholeUnitNote": "3층 단독주택 한 채 통째",
+        "luggage": null,
+        "bedrooms_detail": [
+          "침실 1: 퀸사이즈 침대 2개",
+          "침실 2: 퀸사이즈 침대 2개",
+          "침실 3: 싱글 침대 1개 + 슈퍼싱글 1개"
+        ],
+        "amenities": [
+          "셀프 체크인",
+          "스마트 도어록",
+          "세탁기 + 건조기",
+          "주방(전자레인지·전기밥솥·전기 주전자)",
+          "에어컨",
+          "난방",
+          "와이파이",
+          "업무 전용 공간",
+          "암막 커튼",
+          "욕조"
+        ],
+        "nearby": "로손 · 마이바스켓 · 빵집 도보 1~2분",
+        "highlight": "침대 6개가 모두 실제 침대라 6명 전원 1인 1침대. 침실은 3개뿐이라 2인 1실",
+        "minus": [
+          "샤워 가능한 곳은 1곳뿐. 사진 투어가 '욕실 1 / 간이 욕실 1 / 간이 욕실 2'로 구분하고 욕실 편의시설에 '욕조'만 있다. 요약의 '욕실 2개'는 풀배스 1 + 하프배스 2를 합산한 에어비앤비식 표기다",
+          "설명문은 1층 구조만 '욕실 1개 + 화장실 1개'로 적고 나머지 화장실 1개는 언급하지 않는다",
+          "샤워가 1층에만 있어 3층 침실 2개(4명)는 매번 계단으로 내려와야 한다",
+          "한국어 리스팅이 중국어 원문의 기계번역이다. 1층 침실을 '더블 2개'로 적었지만 사진 투어는 '퀸 2개', '하츠다이역'을 '하치오지역'으로 오역한 대목도 있다"
+        ]
+      },
+      "trust": {
+        "rating": 4.87,
+        "reviews": 15,
+        "badges": [
+          "게스트 선호"
+        ],
+        "ratingDistribution": {
+          "5": "87%",
+          "4": "13%",
+          "3": "0%",
+          "2": "0%",
+          "1": "0%"
+        },
+        "host": "千夏 (Chinatsu)",
+        "hostBadge": "슈퍼호스트",
+        "hostYears": 2,
+        "hostMonths": 22,
+        "hostTotalReviews": 1214,
+        "hostRating": 4.81,
+        "note": "호스트는 22개월 만에 후기 1214개를 쌓은 다물건 전문 운영자다. 이 리스팅의 후기 15개는 호스트가 미숙해서가 아니라 이 집이 최근에 열렸다는 뜻이다"
+      },
+      "price": {
+        "total3n": 1475901,
+        "perPerson": 245984,
+        "isFloor": false,
+        "freeCancel": true
+      },
+      "scores": {
+        "safety": 5.0,
+        "access": 4.0,
+        "comfort": 2.4
+      },
+      "est": [
+        "d2dMin",
+        "tochoWalkMin",
+        "준공연도"
+      ],
+      "verdict": "안전성 근거가 '최신식'이라는 자기 표기에서 여관업법 허가번호(渋谷区保健所 7渋保生環第1370号)로 바뀌었다 — 9곳 중 유일하게 검증 가능한 합법 영업이고 소방 기준도 함께 붙는다. 대신 샤워부스가 1개뿐인 것이 확인됐다. 남자 6명이 3박, 그것도 1/15 아침 로망스카를 타야 하는 일정에서 샤워 1개는 실질 리스크다. 편의성 3.6 → 2.4. 안전성 우선 원칙상 1순위는 유지하지만 4번과의 격차는 사실상 사라졌다.",
+      "sourceUrl": "https://www.airbnb.co.kr/rooms/1706427922093171198",
+      "license": {
+        "type": "여관업법 허가 (旅館業法) — 민박(M13 住宅宿泊事業) 신고가 아니다",
+        "authority": "渋谷区保健所 (시부야구 보건소)",
+        "number": "7渋保生環第1370号",
+        "issuedEra": "令和7年(2025년) 취득 — 번호 앞자리 '7'이 연호",
+        "note": "M13 민박신고보다 상위 허가다. 연 180일 영업제한이 없고, 소방법상 숙박시설 기준(자동화재탐지설비·유도등·소화기)과 보건소 현장검사가 적용된다. 9곳 중 허가번호가 원문에서 확인된 유일한 집."
+      }
     },
     {
-      "id": 8, "rank": null, "status": "탈락",
+      "id": 8,
+      "rank": null,
+      "status": "탈락",
       "name": "도심 속 오아시스 시부야 빌라 / 침실 3개 / 역까지 2분",
       "area": "시부야구 혼마치 서쪽",
-      "safety": { "ground": "고지대", "building": "3층 빌라", "surroundings": "주택가", "night": "조용" },
-      "access": { "station": null, "line": null, "walkMin": 2, "d2dMin": null, "tochoWalkMin": 15,
-                  "listingClaim": "2 mins to station / 4 mins to Shinjuku station (역 이름 미상)" },
-      "comfort": { "guests": 8, "guestsBanner": 10, "bedrooms": 3, "beds": 6, "baths": 2, "showers": 1,
-                   "wholeUnit": true, "luggage": null,
-                   "amenities": ["무료 주차", "전용 파티오 또는 발코니", "셀프 체크인", "무료 WiFi"],
-                   "minus": ["요약은 '욕실 2개'인데 배너는 '2 toilet 1 bathroom' — 여섯 명이 샤워 하나",
-                             "정원 표기 8명/10명 불일치"] },
-      "trust": { "rating": 4.0, "reviews": 3, "badges": [], "host": null, "hostYears": null },
-      "price": { "total3n": 1336940, "perPerson": 222823, "isFloor": false, "freeCancel": false, "discount": 212817 },
-      "scores": { "safety": 4.0, "access": null, "comfort": 1.2 },
-      "est": ["d2dMin", "tochoWalkMin"],
+      "safety": {
+        "ground": "고지대",
+        "building": "3층 빌라",
+        "surroundings": "주택가",
+        "night": "조용"
+      },
+      "access": {
+        "station": null,
+        "line": null,
+        "walkMin": 2,
+        "d2dMin": null,
+        "tochoWalkMin": 15,
+        "listingClaim": "2 mins to station / 4 mins to Shinjuku station (역 이름 미상)"
+      },
+      "comfort": {
+        "guests": 8,
+        "guestsBanner": 10,
+        "bedrooms": 3,
+        "beds": 6,
+        "baths": 2,
+        "showers": 1,
+        "wholeUnit": true,
+        "luggage": null,
+        "amenities": [
+          "무료 주차",
+          "전용 파티오 또는 발코니",
+          "셀프 체크인",
+          "무료 WiFi"
+        ],
+        "minus": [
+          "요약은 '욕실 2개'인데 배너는 '2 toilet 1 bathroom' — 여섯 명이 샤워 하나",
+          "정원 표기 8명/10명 불일치"
+        ]
+      },
+      "trust": {
+        "rating": 4.0,
+        "reviews": 3,
+        "badges": [],
+        "host": null,
+        "hostYears": null
+      },
+      "price": {
+        "total3n": 1336940,
+        "perPerson": 222823,
+        "isFloor": false,
+        "freeCancel": false,
+        "discount": 212817
+      },
+      "scores": {
+        "safety": 4.0,
+        "access": null,
+        "comfort": 1.2
+      },
+      "est": [
+        "d2dMin",
+        "tochoWalkMin"
+      ],
       "verdict": "안전성은 괜찮지만 편의성 최하위. 에어비앤비에서 4.0은 실제로 문제가 있었다는 신호이고 후기 3개로는 확인할 방법도 없다."
     },
     {
-      "id": 9, "rank": 5, "status": "후보",
+      "id": 9,
+      "rank": 6,
+      "status": "후보",
       "name": "풀하우스 / 신주쿠까지 2분 / 조용한 지역",
       "area": "시부야구 혼마치 2초메 (하츠다이 서쪽)",
-      "safety": { "ground": "고지대", "building": null, "surroundings": "주택가", "night": "조용" },
-      "access": { "station": "하츠다이", "line": "게이오신선", "walkMin": 9, "walkMinRange": [8, 10], "d2dMin": 22, "tochoWalkMin": 20,
-                  "listingClaim": "제목의 '신주쿠까지 2분'은 전철 시간이며 집에서 나가는 시간이 아니다" },
-      "comfort": { "guests": 8, "bedrooms": 3, "beds": 6, "baths": 2, "showers": null,
-                   "wholeUnit": true, "luggage": true,
-                   "amenities": ["여행 가방 보관 가능", "셀프 체크인"],
-                   "nearby": "천원샵 · 세븐일레븐" },
-      "trust": { "rating": 4.99, "reviews": 203, "badges": ["상위 1%", "게스트 선호"], "host": null, "hostYears": null },
-      "price": { "total3n": 2069755, "perPerson": 344959, "isFloor": false, "freeCancel": true },
-      "scores": { "safety": 4.3, "access": 1.5, "comfort": 4.8 },
-      "est": ["walkMin", "d2dMin", "tochoWalkMin"],
+      "safety": {
+        "ground": "고지대",
+        "building": null,
+        "surroundings": "주택가",
+        "night": "조용"
+      },
+      "access": {
+        "station": "하츠다이",
+        "line": "게이오신선",
+        "walkMin": 9,
+        "walkMinRange": [
+          8,
+          10
+        ],
+        "d2dMin": 22,
+        "tochoWalkMin": 20,
+        "listingClaim": "제목의 '신주쿠까지 2분'은 전철 시간이며 집에서 나가는 시간이 아니다"
+      },
+      "comfort": {
+        "guests": 8,
+        "bedrooms": 3,
+        "beds": 6,
+        "baths": 2,
+        "showers": null,
+        "wholeUnit": true,
+        "luggage": true,
+        "amenities": [
+          "여행 가방 보관 가능",
+          "셀프 체크인"
+        ],
+        "nearby": "천원샵 · 세븐일레븐"
+      },
+      "trust": {
+        "rating": 4.99,
+        "reviews": 203,
+        "badges": [
+          "상위 1%",
+          "게스트 선호"
+        ],
+        "host": null,
+        "hostYears": null
+      },
+      "price": {
+        "total3n": 2069755,
+        "perPerson": 344959,
+        "isFloor": false,
+        "freeCancel": true
+      },
+      "scores": {
+        "safety": 4.3,
+        "access": 1.5,
+        "comfort": 4.8
+      },
+      "est": [
+        "walkMin",
+        "d2dMin",
+        "tochoWalkMin"
+      ],
       "verdict": "편의성·신뢰도 최고(상위 1%·후기 203). 그런데 도어투도어 22분으로 9곳 중 최악이고 건물 정보가 없다. 도보 시간이 5분 이내로 확인되면 7번과 재경합."
     }
   ]
