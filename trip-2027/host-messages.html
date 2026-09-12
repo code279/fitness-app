@@ -68,6 +68,14 @@ h1{font-family:"Noto Serif KR",serif;font-weight:800;font-size:clamp(28px,6vw,40
 .rk.top{background:var(--ac);color:#fff;}
 .num{font-family:"Noto Serif KR",serif;font-size:21px;font-weight:800;letter-spacing:-.02em;}
 .host{font-size:14.5px;font-weight:700;color:var(--gray);}
+a.listing{display:flex;flex-direction:column;gap:3px;padding:11px 13px;text-decoration:none;
+  color:inherit;background:var(--surf2);border:1px solid var(--line2);border-radius:10px;
+  transition:border-color .12s;}
+a.listing:hover{border-color:var(--ac);}
+a.listing:focus-visible{outline:2px solid var(--ac);outline-offset:2px;}
+.lt{font-size:14.5px;font-weight:700;color:var(--ac);line-height:1.4;}
+.lm{font-size:13px;font-weight:500;color:var(--gray2);}
+.ext{font-size:11px;margin-left:3px;vertical-align:2px;}
 .why{font-size:15px;color:var(--gray);}
 .why b{color:var(--ink);font-weight:700;}
 .asks{display:flex;flex-wrap:wrap;gap:5px;}
@@ -112,7 +120,7 @@ pre.krt{margin:0;font-family:inherit;font-size:14.5px;line-height:1.75;color:var
 <header class="hero">
   <div class="eb">도쿄 3박 4일 · 2027.01.14~17 · 남자 6명</div>
   <h1>호스트에게 물을 것,<br>일곱 통</h1>
-  <p class="lede">아홉 곳 리스팅을 전부 원문으로 훑고 남은 빈칸입니다. <b>일본어 원문을 복사해 그대로 보내시고</b>, 아래 한국어는 무슨 말인지 확인용입니다. 탈락한 2번·8번은 뺐습니다.</p>
+  <p class="lede">아홉 곳 리스팅을 전부 원문으로 훑고 남은 빈칸입니다. <b>카드마다 숙소 링크를 붙여 두었으니 눌러서 리스팅을 연 다음, 일본어 원문을 복사해 그대로 보내세요.</b> 아래 한국어는 무슨 말인지 확인용입니다. 탈락한 2번·8번은 뺐습니다.</p>
 
   <div class="brief">
     <b>순서대로 보내실 필요는 없지만, 값어치는 확실히 다릅니다.</b>
@@ -134,6 +142,10 @@ pre.krt{margin:0;font-family:inherit;font-size:14.5px;line-height:1.75;color:var
     <div class="card-h">
       <div class="who"><span class="rk top">1순위</span><span class="num">4번</span>
         <span class="host">시부야구 하츠다이 98㎡ · 호스트 Asawa</span></div>
+      <a class="listing" href="https://www.airbnb.co.kr/rooms/909834219389134686" target="_blank" rel="noopener">
+        <span class="lt">신주쿠 1역 · 4BR 집 전체 · 고급 지역 · 98㎡<span class="ext">↗</span></span>
+        <span class="lm">3박 250.5만 · ★4.99 후기 207 · 호스트 Asawa</span>
+      </a>
       <p class="why">허가(2023)·샤워 2개·침실 4개는 확인됐습니다. <b>준공 연도가 확인되면 1순위가 굳고, 안 되면 9번·7번과 동률로 남습니다.</b> 짐 보관이 현관 밖이라는 점과 주방 표기 불일치도 같이 묻습니다.</p>
       <div class="asks"><span class="ask hot">준공 연도</span><span class="ask">짐 보관 위치</span><span class="ask">주방</span><span class="ask">일시집합장소</span></div>
     </div>
@@ -171,6 +183,10 @@ pre.krt{margin:0;font-family:inherit;font-size:14.5px;line-height:1.75;color:var
     <div class="card-h">
       <div class="who"><span class="rk">2순위</span><span class="num">9번</span>
         <span class="host">시부야구 혼마치 2초메 · 3층 아파트</span></div>
+      <a class="listing" href="https://www.airbnb.co.kr/rooms/46201691" target="_blank" rel="noopener">
+        <span class="lt">풀하우스 / 신주쿠까지 2분 / 조용한 지역<span class="ext">↗</span></span>
+        <span class="lm">3박 207.0만 · ★4.99 후기 203 · 상위 1%</span>
+      </a>
       <p class="why">허가(2026)·샤워 2개·도보 8분까지 확인됐습니다. 약점이 <b>도어투도어 21분 하나</b>로 좁혀졌는데, 엘리베이터가 없으면 그 21분이 체감상 더 길어집니다.</p>
       <div class="asks"><span class="ask hot">준공 연도</span><span class="ask">엘리베이터</span><span class="ask">일시집합장소</span></div>
     </div>
@@ -204,6 +220,10 @@ pre.krt{margin:0;font-family:inherit;font-size:14.5px;line-height:1.75;color:var
     <div class="card-h">
       <div class="who"><span class="rk">3순위</span><span class="num">7번</span>
         <span class="host">시부야구 하츠다이 1초메 · 호스트 千夏(치나쓰)</span></div>
+      <a class="listing" href="https://www.airbnb.co.kr/rooms/1706427922093171198" target="_blank" rel="noopener">
+        <span class="lt">신주쿠 1정거장 / 하츠다이역까지 3분 / 침실 3개, 최신식 주택<span class="ext">↗</span></span>
+        <span class="lm">3박 147.6만 · ★4.87 후기 15 · 호스트 千夏</span>
+      </a>
       <p class="why">허가(2025)는 확인됐고 <b>도어투도어 16분으로 셋 중 가장 가깝습니다.</b> 발목을 잡는 건 샤워 1개인데, 이건 사진 투어로 읽은 값이라 호스트 입으로 확인받을 값어치가 있습니다. <b>준공 연도가 2000년 이후로 나오고 4·9번은 못 받으면 1순위로 돌아옵니다.</b></p>
       <div class="asks"><span class="ask hot">준공 연도</span><span class="ask mid">샤워 개수 확인</span><span class="ask">일시집합장소</span></div>
     </div>
@@ -244,6 +264,10 @@ pre.krt{margin:0;font-family:inherit;font-size:14.5px;line-height:1.75;color:var
     <div class="card-h">
       <div class="who"><span class="rk">6순위</span><span class="num">1번</span>
         <span class="host">오쿠보 새틀라이트 호텔 · 301호+401호</span></div>
+      <a class="listing" href="https://www.airbnb.co.kr/rooms/1177681487710917054" target="_blank" rel="noopener">
+        <span class="lt">펜트하우스, 3층 | 6LDDKK, 101㎡, 침대 7개 | 16명 숙박 가능<span class="ext">↗</span></span>
+        <span class="lm">3박 237.5만(최저) · ★4.66 후기 47 · 호스트 Satellite Hotel</span>
+      </a>
       <p class="why">숙소 규칙에 "여관업법에 따라 개인정보를 사전 등록하라"는 문구는 있는데 <b>번호가 없습니다.</b> 건물이 "오래됐다"고만 적혀 있는 것도, 6명이 3층과 4·5층에 어떻게 나뉘는지도 확인이 필요합니다.</p>
       <div class="asks"><span class="ask hot">허가번호</span><span class="ask hot">준공 연도</span><span class="ask">6인 배치·요금</span></div>
     </div>
@@ -277,6 +301,10 @@ pre.krt{margin:0;font-family:inherit;font-size:14.5px;line-height:1.75;color:var
     <div class="card-h">
       <div class="who"><span class="rk">7순위</span><span class="num">3번</span>
         <span class="host">신주쿠구 햐쿠닌초 · 호스트 MeiJon(슈퍼호스트 9년)</span></div>
+      <a class="listing" href="https://www.airbnb.co.kr/rooms/1065064461351025819" target="_blank" rel="noopener">
+        <span class="lt">MeiJon의 콘도<span class="ext">↗</span></span>
+        <span class="lm">3박 168.1만(최저) · ★4.8 후기 54 · 호스트 MeiJon</span>
+      </a>
       <p class="why">샤워 2개·화장실 2개·신오쿠보 도보 3분이 이번에 확인됐습니다. 남은 건 <b>허가번호와 침실 수, 그리고 6인 실제 가격</b>입니다. 표시가격은 "최저"라 6명 기준이 아닙니다.</p>
       <div class="asks"><span class="ask hot">허가번호</span><span class="ask">침실 수</span><span class="ask">6인 총액</span></div>
     </div>
@@ -317,6 +345,10 @@ pre.krt{margin:0;font-family:inherit;font-size:14.5px;line-height:1.75;color:var
     <div class="card-h">
       <div class="who"><span class="rk">4순위</span><span class="num">6번</span>
         <span class="host">신주쿠구 오쿠보 · 저택 통째 · 침실 6개</span></div>
+      <a class="listing" href="https://www.airbnb.co.kr/rooms/30717440" target="_blank" rel="noopener">
+        <span class="lt">신주쿠 고급 빌라 6베드룸 1거실(신축), 욕실 2개, 최대 12명<span class="ext">↗</span></span>
+        <span class="lm">3박 200.5만 · ★4.87 후기 60</span>
+      </a>
       <p class="why"><b>여섯 명 전원 1인 1실이 되는 유일한 집</b>이라 방 배치가 중요한데, 설명문이 자체 모순입니다 — "2층 단독주택"이라면서 1·2·3층이 다 나오고 "1층에 침실 4개"와 "2층에 침실 4개"가 둘 다 적혀 있습니다.</p>
       <div class="asks"><span class="ask hot">층수·방 배치</span><span class="ask">준공 연도</span></div>
     </div>
@@ -346,6 +378,10 @@ pre.krt{margin:0;font-family:inherit;font-size:14.5px;line-height:1.75;color:var
     <div class="card-h">
       <div class="who"><span class="rk">5순위</span><span class="num">5번</span>
         <span class="host">신주쿠구 신오쿠보 북쪽 · 게스트하우스</span></div>
+      <a class="listing" href="https://www.airbnb.co.kr/rooms/1298996204039098347" target="_blank" rel="noopener">
+        <span class="lt">새로 단장했습니다! JR 신오쿠보역 2분! 욕실 2개, 화장실 2개, 세면대 3개!<span class="ext">↗</span></span>
+        <span class="lm">3박 200.4만 · ★4.98 후기 59</span>
+      </a>
       <p class="why">허가(2024)·샤워 2개·세면대 3개는 확인됐습니다. 문제는 <b>침대 7개 중 2개가 2층 라운지의 접이식 소파베드</b>라는 점입니다. 실제 침대가 5개면 여섯 명 중 하나는 거실에서 잡니다.</p>
       <div class="asks"><span class="ask hot">소파베드 여부</span><span class="ask">준공 연도</span></div>
     </div>
