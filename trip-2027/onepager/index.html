@@ -1,0 +1,230 @@
+<title>숙소 아홉 곳 한 장 요약</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700;900&display=swap">
+<style>
+:root{
+  --bg:#FFFFFF; --ink:#111418; --gray:#5A6472; --line:#DCE0E6; --fill:#F4F6F8;
+  --pt:#1F6FEB; --pt-w:#E6F0FE; --ok:#0B7A52; --ok-w:#E2F4EC; --warn:#B32B1C; --warn-w:#FCEBE8;
+}
+*{box-sizing:border-box;margin:0;padding:0;}
+html,body{background:#8A9099;font-family:"Noto Sans KR","Apple SD Gothic Neo",sans-serif;
+  -webkit-font-smoothing:antialiased;font-variant-numeric:tabular-nums;}
+@page{size:A4 landscape;margin:0;}
+
+/* A4 가로 = 1123 x 794 px @96dpi */
+.page{width:1123px;height:794px;background:var(--bg);color:var(--ink);
+  display:flex;flex-direction:column;overflow:hidden;}
+
+/* 화면에서는 화면폭에 맞춰 축소 */
+.fit{transform-origin:top left;}
+
+.hd{flex:0 0 auto;display:flex;align-items:flex-end;justify-content:space-between;
+  gap:16px;padding:14px 18px 11px;border-bottom:3px solid var(--ink);}
+.hd h1{font-size:31px;font-weight:900;letter-spacing:-.035em;line-height:1;}
+.hd h1 span{color:var(--pt);}
+.hd .sub{font-size:14px;font-weight:700;color:var(--gray);letter-spacing:-.02em;line-height:1.35;text-align:right;}
+.hd .sub b{color:var(--ink);}
+
+.grid{flex:1 1 auto;display:grid;grid-template-columns:repeat(3,1fr);grid-template-rows:repeat(3,1fr);}
+.c{border-right:1px solid var(--line);border-bottom:1px solid var(--line);
+  display:flex;flex-direction:column;overflow:hidden;position:relative;}
+.c:nth-child(3n){border-right:0;}
+.c:nth-child(n+7){border-bottom:0;}
+.c.win{background:var(--pt-w);}
+.c.out{background:var(--warn-w);}
+
+.ph{flex:0 0 auto;height:96px;width:100%;object-fit:cover;display:block;
+  border-bottom:1px solid var(--line);}
+.bd{flex:1 1 auto;padding:8px 12px 6px;display:flex;flex-direction:column;}
+
+.tp{display:flex;align-items:center;gap:7px;}
+.rk{flex:0 0 auto;font-size:14px;font-weight:900;letter-spacing:-.03em;
+  padding:2px 8px;border-radius:5px;background:var(--ink);color:#fff;}
+.c.win .rk{background:var(--pt);}
+.c.out .rk{background:var(--warn);}
+.nm{font-size:21px;font-weight:900;letter-spacing:-.04em;line-height:1;}
+.loc{font-size:14px;font-weight:700;color:var(--gray);letter-spacing:-.03em;margin-top:3px;}
+
+ul{list-style:none;margin-top:7px;display:flex;flex-direction:column;gap:3px;}
+li{font-size:16px;font-weight:700;letter-spacing:-.035em;line-height:1.2;
+  display:flex;align-items:baseline;gap:6px;}
+li i{flex:0 0 auto;width:15px;height:15px;border-radius:4px;font-style:normal;
+  font-size:11px;font-weight:900;color:#fff;display:grid;place-items:center;
+  transform:translateY(1px);}
+li.g i{background:var(--ok);} li.b i{background:var(--warn);} li.n i{background:#9AA3AE;}
+li.g{color:#0B7A52;} li.b{color:var(--warn);} li.n{color:var(--gray);}
+
+.pr{position:absolute;right:0;top:96px;background:var(--ink);color:#fff;
+  font-size:13px;font-weight:900;letter-spacing:-.02em;padding:3px 8px;border-bottom-left-radius:7px;}
+.c.win .pr{background:var(--pt);}
+
+.ft{flex:0 0 auto;display:flex;align-items:center;gap:14px;
+  padding:8px 18px;border-top:3px solid var(--ink);font-size:14px;font-weight:700;
+  letter-spacing:-.025em;color:var(--gray);}
+.ft b{color:var(--ink);}
+.ft .k{background:var(--ink);color:#fff;padding:2px 8px;border-radius:5px;font-size:13px;font-weight:900;}
+</style>
+
+<div class="page fit" id="pg">
+
+<div class="hd">
+  <h1>도쿄 숙소 아홉 곳 — <span>안전성 · 접근성 · 편의성</span></h1>
+  <div class="sub">2027.01.14(목)~17(일) · 3박 · 남자 6명 · 예산 제약 없음<br>
+    기준점 <b>오다큐 신주쿠역</b>(1/15 하코네 로망스카 출발) · 가격은 참고용</div>
+</div>
+
+<div class="grid">
+
+  <div class="c win">
+    <img class="ph" src="img/7.jpg" alt="7번 하츠다이 남쪽 침실">
+    <div class="pr">148만</div>
+    <div class="bd">
+      <div class="tp"><span class="rk">1순위</span><span class="nm">7번</span></div>
+      <div class="loc">시부야구 하츠다이 1초메</div>
+      <ul>
+        <li class="g"><i>✓</i>고지대 + 최신식 건물</li>
+        <li class="g"><i>✓</i>역 도보 3분 — 9곳 최단</li>
+        <li class="b"><i>!</i>후기 15개뿐</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="c">
+    <img class="ph" src="img/6.jpg" alt="6번 오쿠보역 인근 거실">
+    <div class="pr">200만</div>
+    <div class="bd">
+      <div class="tp"><span class="rk">2순위</span><span class="nm">6번</span></div>
+      <div class="loc">신주쿠구 오쿠보 · 저택 통째</div>
+      <ul>
+        <li class="g"><i>✓</i>침실 6 — 유일한 1인 1실</li>
+        <li class="g"><i>✓</i>신축 · 코리아타운 도보</li>
+        <li class="b"><i>!</i>저지대 목조밀집</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="c">
+    <img class="ph" src="img/5.jpg" alt="5번 신오쿠보 북쪽 침실">
+    <div class="pr">200만</div>
+    <div class="bd">
+      <div class="tp"><span class="rk">3순위</span><span class="nm">5번</span></div>
+      <div class="loc">신주쿠구 신오쿠보 북쪽</div>
+      <ul>
+        <li class="g"><i>✓</i>역 도보 2분 — 9곳 최단</li>
+        <li class="g"><i>✓</i>욕실 3 · 세면대 3 · 침대 7</li>
+        <li class="b"><i>!</i>저지대 · 토요일 밤 소음</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="c">
+    <img class="ph" src="img/1.jpg" alt="1번 새틀라이트 호텔 외관">
+    <div class="pr">238만</div>
+    <div class="bd">
+      <div class="tp"><span class="rk">4순위</span><span class="nm">1번</span></div>
+      <div class="loc">오쿠보 · 새틀라이트 호텔</div>
+      <ul>
+        <li class="g"><i>✓</i>철근콘크리트 5층</li>
+        <li class="g"><i>✓</i>여관업 소방 기준 적용</li>
+        <li class="b"><i>!</i>301호+401호 층 분리</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="c">
+    <img class="ph" src="img/9.jpg" alt="9번 혼마치 2초메 거실">
+    <div class="pr">207만</div>
+    <div class="bd">
+      <div class="tp"><span class="rk">5순위</span><span class="nm">9번</span></div>
+      <div class="loc">시부야구 혼마치 2초메</div>
+      <ul>
+        <li class="g"><i>✓</i>상위 1% · 후기 203개</li>
+        <li class="g"><i>✓</i>고지대 · 짐 보관 가능</li>
+        <li class="b"><i>!</i>역 8~10분 · 신주쿠 22분</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="c">
+    <img class="ph" src="img/4.jpg" alt="4번 하츠다이 거실">
+    <div class="pr">250만</div>
+    <div class="bd">
+      <div class="tp"><span class="rk">6순위</span><span class="nm">4번</span></div>
+      <div class="loc">시부야구 하츠다이 · 98㎡</div>
+      <ul>
+        <li class="g"><i>✓</i>침실 4 · 한국인 인기</li>
+        <li class="g"><i>✓</i>4.99 · 후기 207개</li>
+        <li class="b"><i>!</i>건물 정보 없음 · 18분</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="c">
+    <img class="ph" src="img/3.jpg" alt="3번 햐쿠닌초 건물 외관">
+    <div class="pr">168만</div>
+    <div class="bd">
+      <div class="tp"><span class="rk">7순위</span><span class="nm">3번</span></div>
+      <div class="loc">신주쿠구 햐쿠닌초</div>
+      <ul>
+        <li class="g"><i>✓</i>슈퍼호스트 9년 · 4.8</li>
+        <li class="b"><i>!</i>좁은 골목 · 외부 철제 계단</li>
+        <li class="n"><i>?</i>인원 · 침실 · 욕실 미확인</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="c out">
+    <img class="ph" src="img/8.jpg" alt="8번 혼마치 서쪽 외관과 정보 배너">
+    <div class="pr">134만</div>
+    <div class="bd">
+      <div class="tp"><span class="rk">탈락</span><span class="nm">8번</span></div>
+      <div class="loc">시부야구 혼마치 서쪽</div>
+      <ul>
+        <li class="b"><i>!</i>표기는 욕실 2 — 실제 샤워 1</li>
+        <li class="b"><i>!</i>평점 4.0 · 후기 3개</li>
+        <li class="b"><i>!</i>정원 8명/10명 표기 불일치</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="c out">
+    <img class="ph" src="img/2.jpg" alt="2번 신오쿠보 카부키초 주방">
+    <div class="pr">185만</div>
+    <div class="bd">
+      <div class="tp"><span class="rk">탈락</span><span class="nm">2번</span></div>
+      <div class="loc">신오쿠보 · 카부키초 인접</div>
+      <ul>
+        <li class="b"><i>!</i>카부키초 — 대피 최악 유형</li>
+        <li class="b"><i>!</i>야간 치안 9곳 중 최하</li>
+        <li class="b"><i>!</i>평점 4.42 · 후기 26개</li>
+      </ul>
+    </div>
+  </div>
+
+</div>
+
+<div class="ft">
+  <span class="k">결론</span>
+  <span><b>안전성을 1순위로 두면 7번</b> — 지반(고지대)과 건물(최신식)을 동시에 확인할 수 있는 유일한 집, 역 도보 3분.</span>
+  <span style="margin-left:auto"><b>확정 전 3가지</b> — ① 준공 연도(2000년 이후?) ② 샤워부스 실제 개수 ③ M13 신고번호</span>
+</div>
+
+</div>
+
+<script>
+(function(){
+  var pg=document.getElementById("pg");
+  function fit(){
+    var s=Math.min(window.innerWidth/1123, 1);
+    pg.style.transform="scale("+s+")";
+    document.body.style.height=(794*s)+"px";
+  }
+  fit(); window.addEventListener("resize",fit);
+  var mq=window.matchMedia("print");
+  mq.addEventListener&&mq.addEventListener("change",function(e){
+    pg.style.transform=e.matches?"none":pg.style.transform; if(!e.matches)fit();});
+  window.addEventListener("beforeprint",function(){pg.style.transform="none";document.body.style.height="";});
+  window.addEventListener("afterprint",fit);
+})();
+</script>
