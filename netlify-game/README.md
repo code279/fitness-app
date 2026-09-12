@@ -7,7 +7,7 @@
 ```
 netlify-game/
 ├─ index.html      게임 화면 전체 (수정 불필요)
-├─ config.js       ← 여기 두 줄만 채우면 됩니다
+├─ config.js       ← 주소·키 두 줄 (index.html에서 복사)
 ├─ supabase.sql    Supabase에 붙여넣을 SQL
 ├─ netlify.toml    Netlify 설정
 └─ _headers        보안 헤더
@@ -25,9 +25,19 @@ Netlify는 화면만 보여주고, 예측·자백 데이터는 전부 Supabase�
 
 ## 순서
 
-1. Supabase 프로젝트 만들기 → `supabase.sql` 붙여넣고 실행
-2. Settings → API 에서 주소·키 복사 → `config.js`에 붙여넣기
+1. **Supabase 프로젝트는 이미 있습니다.** 피트니스 앱이 쓰는 프로젝트를 그대로 씁니다.
+   저장소 `index.html` 64~65줄의 주소·키를 `config.js`에 복사해 넣으세요.
+2. Supabase → SQL Editor 에 `supabase.sql` 붙여넣고 실행
 3. 이 폴더를 통째로 Netlify에 드래그
+
+### 기존 프로젝트와 충돌하지 않습니다
+
+| 표 | 쓰는 곳 |
+|---|---|
+| `fitness_records` | 피트니스 앱 (기존) |
+| `vg_entries` | 투표 추리 게임 (새로 추가) |
+
+같은 프로젝트 안의 별개 표라서 서로 영향을 주지 않습니다.
 
 ## 게임 공정성
 

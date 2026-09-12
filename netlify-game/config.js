@@ -1,12 +1,19 @@
 /* ============================================================
-   여기 두 줄만 바꾸면 됩니다.
-   Supabase → 프로젝트 → Settings → API 에서 복사합니다.
+   이미 쓰고 계신 Supabase 프로젝트를 그대로 씁니다.
+   새 계정도, 새 프로젝트도 만들 필요 없습니다.
+
+   [ 어디서 복사하나 ]
+   저장소의 index.html (피트니스 앱) 64~65번째 줄에
+   똑같은 값이 이미 들어 있습니다. 거기서 복사해 오세요.
+
+       const SUPABASE_URL = 'https://...supabase.co';
+       const SUPABASE_KEY = 'sb_publishable_...';
+
+   아래 두 줄의 따옴표 안에 각각 붙여넣으면 끝입니다.
    ============================================================ */
 
-const SUPABASE_URL      = "여기에_Project_URL_붙여넣기";
-const SUPABASE_ANON_KEY = "여기에_anon_public_key_붙여넣기";
+const SUPABASE_URL      = "";
+const SUPABASE_ANON_KEY = "";
 
-/* 예시 (이렇게 생겼습니다)
-const SUPABASE_URL      = "https://abcdefghijkl.supabase.co";
-const SUPABASE_ANON_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.....";
-*/
+/* 이 키는 브라우저에 노출되도록 설계된 공개용 키입니다.
+   실제 데이터 보호는 Supabase의 RLS 규칙(supabase.sql)이 담당합니다. */
