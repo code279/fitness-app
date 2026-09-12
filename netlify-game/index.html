@@ -1,0 +1,478 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>육룡이 투표 추리</title>
+<meta name="description" content="익명 투표를 거꾸로 추리하는 게임">
+<meta property="og:title" content="육룡이 투표 추리">
+<meta property="og:description" content="누가 뭘 찍었을까">
+<meta property="og:type" content="website">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700;900&display=swap">
+<style>
+html,body{margin:0;padding:0;}
+
+:root{
+  --bg:#FFFFFF; --fill:#F2F4F6; --fill2:#E8EBED; --line:#E5E8EB;
+  --ink:#191F28; --gray:#6B7684; --gray2:#8B95A1;
+  --pt:#3182F6; --pt-w:#E8F3FF;
+  --r:14px;
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
+  --bg:#17171C; --fill:#232329; --fill2:#2E2E36; --line:#33333B;
+  --ink:#F4F4F6; --gray:#9DA3AE; --gray2:#7C818B;
+  --pt:#4E93F7; --pt-w:#1B2740;
+}}
+:root[data-theme="dark"]{
+  --bg:#17171C; --fill:#232329; --fill2:#2E2E36; --line:#33333B;
+  --ink:#F4F4F6; --gray:#9DA3AE; --gray2:#7C818B;
+  --pt:#4E93F7; --pt-w:#1B2740;
+}
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent;}
+body{background:var(--bg);color:var(--ink);
+  font-family:"Noto Sans KR","Apple SD Gothic Neo",sans-serif;
+  font-size:17px;line-height:1.55;font-weight:500;-webkit-font-smoothing:antialiased;
+  font-variant-numeric:tabular-nums;}
+h1,h2,h3{margin:0;font-weight:900;letter-spacing:-.03em;line-height:1.25;text-wrap:balance;}
+p{margin:0;}
+button{font-family:inherit;}
+:focus-visible{outline:3px solid var(--pt);outline-offset:2px;border-radius:8px;}
+@media (prefers-reduced-motion:reduce){*{transition:none!important;}}
+.wrap{max-width:540px;margin:0 auto;padding:0 20px 120px;}
+
+/* --- top --- */
+.top{position:sticky;top:0;z-index:30;background:var(--bg);padding:14px 0 12px;
+  border-bottom:1px solid var(--line);}
+.top .in{max-width:540px;margin:0 auto;padding:0 20px;}
+.top .lb{font-size:14px;color:var(--gray2);font-weight:500;margin-bottom:9px;}
+.who{display:grid;grid-template-columns:repeat(3,1fr);gap:7px;}
+.who button{border:1.5px solid var(--line);background:var(--bg);color:var(--gray);
+  font-size:16px;font-weight:700;padding:11px 4px;border-radius:10px;cursor:pointer;transition:.12s;}
+.who button:hover{border-color:var(--gray2);}
+.who button[aria-pressed="true"]{background:var(--ink);border-color:var(--ink);color:var(--bg);}
+.mine{display:flex;align-items:center;justify-content:space-between;gap:10px;}
+.mine .t{font-size:17px;font-weight:700;}
+.mine .t span{color:var(--gray);font-weight:500;}
+.mine button{background:none;border:none;color:var(--pt);font-size:15px;font-weight:700;
+  cursor:pointer;padding:6px 2px;}
+
+/* --- hero --- */
+.hero{padding:40px 0 8px;}
+.hero h1{font-size:34px;}
+.hero .sub{margin-top:14px;color:var(--gray);font-size:17px;font-weight:500;}
+
+/* --- poll --- */
+.poll{margin-top:28px;background:var(--fill);border-radius:var(--r);padding:22px 20px;}
+.pr{margin-bottom:16px;}
+.pr:last-of-type{margin-bottom:0;}
+.pl{display:flex;justify-content:space-between;align-items:baseline;margin-bottom:8px;}
+.pl b{font-size:18px;font-weight:700;}
+.pl span{font-size:16px;color:var(--gray);font-weight:700;}
+.bar{height:12px;background:var(--fill2);border-radius:99px;overflow:hidden;}
+.bar i{display:block;height:100%;background:var(--ink);border-radius:99px;}
+.bar.dim i{background:var(--gray2);}
+
+.fact{margin-top:22px;padding-top:20px;border-top:1px solid var(--line);}
+.fact .h{font-size:18px;font-weight:900;margin-bottom:14px;}
+.fg{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;}
+.fc{background:var(--bg);border-radius:10px;padding:14px 8px;text-align:center;}
+.fc .n{font-size:30px;font-weight:900;line-height:1;}
+.fc .l{font-size:14px;color:var(--gray);margin-top:6px;font-weight:500;}
+.fact .d{margin-top:14px;font-size:15px;color:var(--gray);line-height:1.6;font-weight:500;}
+.fact .d b{color:var(--ink);font-weight:700;}
+
+/* --- steps --- */
+.steps{display:flex;align-items:center;gap:8px;margin:34px 0 0;}
+.st{flex:1;text-align:center;}
+.st .dot{height:5px;background:var(--line);border-radius:99px;margin-bottom:9px;}
+.st.on .dot,.st.done .dot{background:var(--ink);}
+.st .nm{font-size:15px;color:var(--gray2);font-weight:700;}
+.st.on .nm{color:var(--ink);} .st.done .nm{color:var(--gray);}
+
+/* --- sections --- */
+section{padding-top:44px;}
+.sh{display:flex;align-items:baseline;justify-content:space-between;gap:12px;margin-bottom:8px;}
+.sh h2{font-size:26px;}
+.sh .c{font-size:15px;color:var(--gray2);font-weight:700;white-space:nowrap;}
+.sd{color:var(--gray);font-size:16px;margin-bottom:22px;font-weight:500;}
+.sd b{color:var(--ink);font-weight:700;}
+
+/* --- roster --- */
+.ros{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;}
+.pp{background:var(--fill);border-radius:12px;padding:14px 10px;text-align:center;}
+.pp.me{background:var(--ink);}
+.pp .n{font-size:17px;font-weight:700;}
+.pp.me .n{color:var(--bg);}
+.pp .s{font-size:14px;color:var(--gray2);margin-top:4px;font-weight:500;}
+.pp.me .s{color:var(--gray2);}
+.pp .s.ok{color:var(--pt);font-weight:700;}
+
+/* --- guess --- */
+.hint{background:var(--pt-w);border-radius:12px;padding:15px 17px;font-size:16px;
+  color:var(--ink);margin-bottom:20px;font-weight:500;}
+.gr{margin-bottom:22px;}
+.gr:last-child{margin-bottom:0;}
+.gr .q{font-size:19px;font-weight:700;margin-bottom:10px;}
+.gr .q em{font-style:normal;color:var(--gray2);font-size:15px;font-weight:500;margin-left:6px;}
+.opt{display:grid;grid-template-columns:repeat(3,1fr);gap:7px;}
+.opt button{border:1.5px solid var(--line);background:var(--bg);color:var(--gray);
+  font-size:16px;font-weight:700;height:54px;border-radius:12px;cursor:pointer;transition:.12s;}
+.opt button:hover:not(:disabled){border-color:var(--gray2);}
+.opt button[aria-pressed="true"]{background:var(--ink);border-color:var(--ink);color:var(--bg);}
+.opt button:disabled{opacity:.55;cursor:default;}
+
+.count{display:flex;gap:8px;margin-top:24px;}
+.cb{flex:1;text-align:center;background:var(--fill);border-radius:10px;padding:12px 4px;}
+.cb .v{font-size:19px;font-weight:900;}
+.cb .k{font-size:14px;color:var(--gray);margin-top:3px;font-weight:500;}
+.cb.ok{background:var(--pt-w);} .cb.ok .v{color:var(--pt);}
+
+.go{width:100%;height:58px;border:none;border-radius:14px;background:var(--pt);color:#fff;
+  font-size:18px;font-weight:900;cursor:pointer;margin-top:22px;transition:.12s;}
+.go:hover:not(:disabled){filter:brightness(1.06);}
+.go:disabled{background:var(--fill2);color:var(--gray2);cursor:not-allowed;}
+.go.sub{background:transparent;color:var(--gray);border:1.5px solid var(--line);
+  height:50px;font-size:16px;font-weight:700;}
+.msg{text-align:center;font-size:15px;color:var(--pt);margin-top:12px;font-weight:700;min-height:22px;}
+
+/* --- result --- */
+.rk{display:flex;align-items:center;gap:14px;padding:16px 18px;background:var(--fill);
+  border-radius:14px;margin-bottom:8px;}
+.rk.w{background:var(--ink);}
+.rk .p{font-size:17px;font-weight:900;color:var(--gray2);width:26px;}
+.rk.w .p{color:var(--bg);}
+.rk .n{flex:1;font-size:19px;font-weight:700;}
+.rk.w .n{color:var(--bg);}
+.rk .n em{display:block;font-style:normal;font-size:14px;color:var(--gray);font-weight:500;margin-top:2px;}
+.rk.w .n em{color:var(--gray2);}
+.rk .s{font-size:24px;font-weight:900;}
+.rk.w .s{color:var(--bg);}
+.rk .s i{font-style:normal;font-size:14px;color:var(--gray2);font-weight:700;}
+
+.tr{display:flex;align-items:center;justify-content:space-between;gap:12px;
+  padding:15px 18px;background:var(--fill);border-radius:12px;margin-bottom:8px;}
+.tr .n{font-size:18px;font-weight:700;}
+.tr .r{text-align:right;}
+.tr .r b{font-size:17px;font-weight:900;display:block;}
+.tr .r span{font-size:14px;color:var(--gray);font-weight:500;}
+
+.aw{background:var(--fill);border-radius:14px;padding:18px 20px;margin-bottom:8px;}
+.aw .t{font-size:15px;color:var(--gray);font-weight:700;}
+.aw .v{font-size:22px;font-weight:900;margin-top:5px;}
+.aw .d{font-size:15px;color:var(--gray);margin-top:4px;font-weight:500;}
+.aw .g{display:inline-block;margin-top:11px;font-size:14px;font-weight:700;color:var(--pt);
+  background:var(--pt-w);padding:5px 11px;border-radius:99px;}
+
+.scroll{overflow-x:auto;margin:0 -20px;padding:0 20px;}
+table{border-collapse:collapse;font-size:15px;min-width:100%;}
+th,td{padding:11px 8px;text-align:center;border-bottom:1px solid var(--line);white-space:nowrap;}
+thead th{font-size:14px;color:var(--gray);font-weight:700;}
+tbody th{text-align:left;font-weight:700;padding-left:0;}
+td.o{color:var(--pt);font-weight:900;}
+td.x{color:var(--gray2);font-weight:500;}
+td.me{color:var(--gray2);}
+td.sc{font-weight:900;}
+
+.foot{margin-top:60px;padding-top:20px;border-top:1px solid var(--line);
+  display:flex;justify-content:space-between;font-size:14px;color:var(--gray2);font-weight:500;}
+.none{font-size:16px;color:var(--gray2);font-weight:500;}
+
+.setup{background:#FFF4E5;color:#7A4E00;border-radius:14px;padding:18px 20px;margin-top:24px;
+  font-size:16px;font-weight:500;line-height:1.6;}
+.setup b{font-weight:900;}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]) .setup{background:#3A2E14;color:#F0C674;}}
+:root[data-theme="dark"] .setup{background:#3A2E14;color:#F0C674;}
+img{max-width:100%;}
+</style>
+</head>
+<body>
+
+
+<div class="top"><div class="in">
+  <div id="topBox"></div>
+</div></div>
+
+<div class="wrap">
+
+<div id="setup" class="setup" hidden></div>
+
+<div class="hero">
+  <h1>누가 뭘 찍었을까</h1>
+  <p class="sub">육룡이 여섯 명의 익명 투표를 거꾸로 추리합니다.</p>
+</div>
+
+<div class="poll">
+  <div class="pr">
+    <div class="pl"><b>대만</b><span>3명</span></div>
+    <div class="bar dim"><i style="width:50%"></i></div>
+  </div>
+  <div class="pr">
+    <div class="pl"><b>도쿄</b><span>5명</span></div>
+    <div class="bar"><i style="width:83.3%"></i></div>
+  </div>
+  <div class="fact">
+    <div class="h">집계만으로 이미 정해진 것</div>
+    <div class="fg">
+      <div class="fc"><div class="n">1</div><div class="l">대만만</div></div>
+      <div class="fc"><div class="n">3</div><div class="l">도쿄만</div></div>
+      <div class="fc"><div class="n">2</div><div class="l">둘 다</div></div>
+    </div>
+    <p class="d">3표 더하기 5표는 8표인데 참여는 여섯 명. 복수 선택이었으니 분포가 <b>하나로 정해집니다.</b> 남은 경우의 수는 <b>60가지</b>예요.</p>
+  </div>
+</div>
+
+<div class="steps" id="steps">
+  <div class="st" data-s="guess"><div class="dot"></div><div class="nm">예측</div></div>
+  <div class="st" data-s="confess"><div class="dot"></div><div class="nm">자백</div></div>
+  <div class="st" data-s="result"><div class="dot"></div><div class="nm">결과</div></div>
+</div>
+
+<section>
+  <div class="sh"><h2>참가자</h2><span class="c" id="rc"></span></div>
+  <div class="ros" id="ros"></div>
+</section>
+
+<section id="gSec">
+  <div class="sh"><h2>예측</h2><span class="c" id="gc"></span></div>
+  <p class="sd">여섯 명이 각각 뭘 찍었을지 고르세요. 본인 것도 채우지만 <b>점수에선 빠집니다.</b></p>
+  <div class="hint" id="gHint">맨 위에서 본인을 먼저 고르세요.</div>
+  <div id="gBox"></div>
+  <div class="count" id="gCount"></div>
+  <button class="go" id="gGo" disabled>예측 제출하기</button>
+  <p class="msg" id="gMsg"></p>
+</section>
+
+<section id="cSec" hidden>
+  <div class="sh"><h2>자백</h2><span class="c" id="cc"></span></div>
+  <p class="sd">여섯 명 예측이 모두 잠겼습니다. 이제 본인이 실제로 뭘 찍었는지 밝히세요.</p>
+  <div id="cBox"></div>
+  <button class="go" id="cGo" disabled>자백하기</button>
+  <p class="msg" id="cMsg"></p>
+</section>
+
+<section id="rSec" hidden>
+  <div class="sh"><h2>순위</h2><span class="c">5점 만점</span></div>
+  <div id="rank"></div>
+
+  <div class="sh" style="margin-top:44px"><h2>실제 투표</h2></div>
+  <div id="truth"></div>
+
+  <div class="sh" style="margin-top:44px"><h2>상</h2><span class="c">선물 미정</span></div>
+  <div id="awards"></div>
+
+  <div class="sh" style="margin-top:44px"><h2>대조표</h2></div>
+  <p class="sd">세로가 예측한 사람, 가로가 대상입니다.</p>
+  <div class="scroll"><table id="mx"></table></div>
+
+  <button class="go sub" id="again" style="margin-top:32px">새 판 시작</button>
+</section>
+
+<div class="foot"><span>육룡이 · 도쿄 2027</span><span id="conn">연결 확인 중</span></div>
+</div>
+
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="config.js"></script>
+<script>
+
+(function(){
+"use strict";
+var P=[{id:"m1",n:"일룡이"},{id:"m2",n:"이룡이"},{id:"m3",n:"삼룡이"},
+       {id:"m4",n:"사룡이"},{id:"m5",n:"오룡이"},{id:"m6",n:"육룡이"}];
+var OPT=[["T","대만만"],["J","도쿄만"],["B","둘 다"]];
+var NEED={T:1,J:3,B:2}, L={T:"대만만",J:"도쿄만",B:"둘 다"};
+
+var me=null, G={}, T={}, dG={}, dC=null;
+var $=function(s){return document.querySelector(s);};
+function pOf(id){for(var i=0;i<P.length;i++)if(P[i].id===id)return P[i];return null;}
+function nm(id){var p=pOf(id);return p?p.n:id;}
+function ls(k,v){try{if(v===undefined)return localStorage.getItem(k);localStorage.setItem(k,v);}catch(e){return null;}}
+function phase(){var g=Object.keys(G).length,t=Object.keys(T).length;
+  return g<6?"guess":(t<6?"confess":"result");}
+
+function topBar(){
+  if(me){
+    $("#topBox").innerHTML='<div class="mine"><div class="t">'+nm(me)+
+      ' <span>으로 참여 중</span></div><button id="chg">바꾸기</button></div>';
+    $("#chg").onclick=function(){setMe(null);};
+  }else{
+    $("#topBox").innerHTML='<div class="lb">본인을 골라주세요</div><div class="who">'+
+      P.map(function(p){return '<button data-w="'+p.id+'" aria-pressed="false">'+p.n+'</button>';}).join('')+'</div>';
+    $("#topBox").onclick=function(e){var b=e.target.closest("[data-w]");if(b)setMe(b.getAttribute("data-w"));};
+  }
+}
+function setMe(id){
+  me=(id&&pOf(id))?id:null; ls("vg2.me",me||"");
+  dG = me&&G[me] ? Object.assign({},G[me].picks) : {};
+  dC = me&&T[me] ? T[me].vote : null;
+  draw();
+}
+function draw(){
+  topBar();
+  var ph=phase(), order=["guess","confess","result"], i=order.indexOf(ph);
+  Array.prototype.forEach.call(document.querySelectorAll(".st"),function(el,k){
+    el.className="st"+(k===i?" on":(k<i?" done":""));});
+  $("#gSec").hidden=(ph==="result");
+  $("#cSec").hidden=(ph!=="confess");
+  $("#rSec").hidden=(ph!=="result");
+  $("#gHint").style.display=me?"none":"block";
+
+  $("#rc").textContent=(ph==="guess"?Object.keys(G).length+" / 6명 예측":
+    ph==="confess"?Object.keys(T).length+" / 6명 자백":"완료");
+  $("#ros").innerHTML=P.map(function(p){
+    var done = ph==="guess" ? !!G[p.id] : !!T[p.id];
+    var lab = ph==="result"?"끝":(done?"완료":"대기");
+    return '<div class="pp'+(me===p.id?' me':'')+'"><div class="n">'+p.n+'</div>'+
+      '<div class="s'+(done&&ph!=="result"?' ok':'')+'">'+lab+'</div></div>';}).join('');
+
+  var lock=!!(me&&G[me]);
+  $("#gc").textContent=Object.keys(G).length+" / 6명";
+  $("#gBox").innerHTML=P.map(function(p){
+    return '<div class="gr"><div class="q">'+p.n+(p.id===me?'<em>나</em>':'')+'</div><div class="opt">'+
+      OPT.map(function(o){return '<button data-t="'+p.id+'" data-v="'+o[0]+'" aria-pressed="'+
+        (dG[p.id]===o[0]?'true':'false')+'"'+(lock?' disabled':'')+'>'+o[1]+'</button>';}).join('')+
+      '</div></div>';}).join('');
+  var c={T:0,J:0,B:0}, ok=true;
+  P.forEach(function(p){if(dG[p.id])c[dG[p.id]]++;});
+  $("#gCount").innerHTML=["T","J","B"].map(function(k){
+    var good=c[k]===NEED[k]; if(!good)ok=false;
+    return '<div class="cb'+(good?' ok':'')+'"><div class="v">'+c[k]+' / '+NEED[k]+'</div>'+
+      '<div class="k">'+L[k]+'</div></div>';}).join('');
+  $("#gGo").disabled=!(me&&sb&&ok&&!lock);
+  $("#gGo").textContent=lock?"제출 완료":(ok?"예측 제출하기":"분포를 1·3·2로 맞춰주세요");
+
+  var cl=!!(me&&T[me]);
+  $("#cc").textContent=Object.keys(T).length+" / 6명";
+  if(me){
+    $("#cBox").innerHTML='<div class="gr"><div class="q">'+nm(me)+'<em>내가 찍은 것</em></div>'+
+      '<div class="opt">'+OPT.map(function(o){return '<button data-c="'+o[0]+'" aria-pressed="'+
+      (dC===o[0]?'true':'false')+'"'+(cl?' disabled':'')+'>'+o[1]+'</button>';}).join('')+'</div></div>';
+  } else $("#cBox").innerHTML='<p class="none">맨 위에서 본인을 골라주세요.</p>';
+  $("#cGo").disabled=!(me&&sb&&dC&&!cl);
+  $("#cGo").textContent=cl?"자백 완료":"자백하기";
+
+  if(ph==="result")result();
+}
+function sc(id){var g=G[id];if(!g)return 0;var n=0;
+  P.forEach(function(p){if(p.id!==id&&T[p.id]&&g.picks[p.id]===T[p.id].vote)n++;});return n;}
+function seen(id){var v=(T[id]||{}).vote;
+  return P.filter(function(o){return o.id!==id&&G[o.id]&&G[o.id].picks[id]===v;}).length;}
+
+function result(){
+  var rows=P.map(function(p){return {id:p.id,s:sc(p.id),at:(G[p.id]||{}).at||0};});
+  rows.sort(function(a,b){return b.s-a.s||a.at-b.at;});
+  var top=rows[0].s, low=rows[rows.length-1].s;
+  $("#rank").innerHTML=rows.map(function(r){
+    var pos=rows.findIndex(function(x){return x.s===r.s;})+1;
+    var tie=rows.filter(function(x){return x.s===r.s;}).length>1;
+    return '<div class="rk'+(r.s===top?' w':'')+'"><div class="p">'+pos+'</div>'+
+      '<div class="n">'+nm(r.id)+'<em>'+(tie?'공동 '+pos+'등 · ':'')+'실제로는 '+
+      L[(T[r.id]||{}).vote]+'</em></div><div class="s">'+r.s+'<i> / 5</i></div></div>';}).join('');
+
+  $("#truth").innerHTML=P.map(function(p){
+    return '<div class="tr"><div class="n">'+p.n+'</div><div class="r">'+
+      '<b>'+L[(T[p.id]||{}).vote]+'</b><span>'+seen(p.id)+'명이 맞힘</span></div></div>';}).join('');
+
+  var hs=P.map(function(p){return {id:p.id,h:seen(p.id)};});
+  var mn=Math.min.apply(null,hs.map(function(x){return x.h;}));
+  var mx=Math.max.apply(null,hs.map(function(x){return x.h;}));
+  var join=function(a){return a.join(", ");};
+  var flat = (top===low);
+  var aw=[
+    ["명탐정", flat?"전원 동점":join(rows.filter(function(r){return r.s===top;}).map(function(r){return nm(r.id);})),
+     flat?"여섯 명 모두 "+top+"점입니다":"5점 중 "+top+"점을 맞혔습니다"],
+    ["은둔 고수", join(hs.filter(function(x){return x.h===mn;}).map(function(x){return nm(x.id);})),
+     mn+"명한테만 들켰습니다"],
+    ["투명인간", join(hs.filter(function(x){return x.h===mx;}).map(function(x){return nm(x.id);})),
+     mx+"명이 훤히 꿰뚫어 봤습니다"],
+    ["다음 판 기대주", flat?"해당 없음":join(rows.filter(function(r){return r.s===low;}).map(function(r){return nm(r.id);})),
+     flat?"동점이라 꼴찌가 없습니다":low+"점 · 다음 판에서 만회하면 됩니다"]];
+  $("#awards").innerHTML=aw.map(function(a){
+    return '<div class="aw"><div class="t">'+a[0]+'</div><div class="v">'+a[1]+'</div>'+
+      '<div class="d">'+a[2]+'</div><div class="g">선물 미정</div></div>';}).join('');
+
+  var h='<thead><tr><th style="text-align:left">예측</th>'+
+    P.map(function(p){return '<th>'+p.n+'</th>';}).join('')+'<th>점수</th></tr></thead><tbody>';
+  P.forEach(function(a){
+    h+='<tr><th>'+a.n+'</th>';
+    P.forEach(function(b){
+      if(a.id===b.id){h+='<td class="me">–</td>';return;}
+      var pk=((G[a.id]||{}).picks||{})[b.id], rl=(T[b.id]||{}).vote;
+      h+='<td class="'+(pk===rl?'o':'x')+'">'+(L[pk]||'-')+'</td>';});
+    h+='<td class="sc">'+sc(a.id)+'</td></tr>';});
+  $("#mx").innerHTML=h+'</tbody>';
+}
+
+$("#gBox").addEventListener("click",function(e){
+  var b=e.target.closest("[data-t]"); if(!b||b.disabled)return;
+  dG[b.getAttribute("data-t")]=b.getAttribute("data-v"); draw();});
+$("#cBox").addEventListener("click",function(e){
+  var b=e.target.closest("[data-c]"); if(!b||b.disabled)return;
+  dC=b.getAttribute("data-c"); draw();});
+function say(el,m){el.textContent=m;setTimeout(function(){if(el.textContent===m)el.textContent="";},3200);}
+$("#gGo").onclick=function(){ if(!me||!sb)return;
+  save({guess:Object.assign({},dG), guess_at:new Date().toISOString()}, $("#gMsg"), "제출했습니다"); };
+$("#cGo").onclick=function(){ if(!me||!sb||!dC)return;
+  save({truth:dC, truth_at:new Date().toISOString()}, $("#cMsg"), "자백했습니다"); };
+$("#again").onclick=function(){ if(!sb)return;
+  if(!confirm("모든 예측과 자백을 지웁니다. 계속할까요?"))return;
+  sb.from("vg_entries").delete().neq("player","").then(function(){ dG={}; dC=null; load(); }); };
+
+var _sv=ls("vg2.me"); if(_sv&&pOf(_sv))setMe(_sv);
+draw();
+
+/* ================= Supabase ================= */
+var sb=null, timer=null;
+
+function warn(msg){
+  var el=document.getElementById("setup");
+  el.hidden=false; el.innerHTML=msg;
+  $("#conn").textContent="설정 필요";
+}
+function connect(){
+  if(typeof SUPABASE_URL==="undefined" || !SUPABASE_URL || SUPABASE_URL.indexOf("여기에")===0){
+    warn('<b>config.js를 아직 안 채웠습니다.</b><br>Supabase 주소와 키를 넣고 다시 올려주세요.');
+    return;
+  }
+  if(typeof window.supabase==="undefined"){
+    warn('<b>인터넷 연결을 확인해주세요.</b><br>필요한 파일을 불러오지 못했습니다.');
+    return;
+  }
+  sb = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+  load();
+  try{
+    sb.channel("vg").on("postgres_changes",
+      {event:"*",schema:"public",table:"vg_entries"}, function(){ load(); }).subscribe();
+  }catch(e){}
+  timer = setInterval(load, 5000);
+}
+function load(){
+  if(!sb)return;
+  sb.from("vg_entries").select("player,guess,truth,guess_at").then(function(r){
+    if(r.error){ $("#conn").textContent="연결 오류 — 새로고침"; return; }
+    G={}; T={};
+    (r.data||[]).forEach(function(row){
+      if(row.guess) G[row.player]={picks:row.guess, at:row.guess_at?Date.parse(row.guess_at):0};
+      if(row.truth) T[row.player]={vote:row.truth};
+    });
+    if(me&&G[me]&&!Object.keys(dG).length) dG=Object.assign({},G[me].picks);
+    if(me&&T[me]&&!dC) dC=T[me].vote;
+    $("#conn").textContent="연결됨";
+    draw();
+  });
+}
+function save(row, el, okMsg){
+  if(!sb)return;
+  row.player=me;
+  sb.from("vg_entries").upsert(row,{onConflict:"player"}).then(function(r){
+    if(r.error){ say(el, r.error.message.indexOf("locked")>=0 ? "이미 제출해서 못 바꿉니다" : "저장 실패 — 다시 눌러주세요"); }
+    else { say(el, okMsg); load(); }
+  });
+}
+connect();
+})();
+</script>
+</body>
+</html>
