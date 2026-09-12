@@ -1,0 +1,414 @@
+<title>호스트 문의 메시지</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700&family=Noto+Sans+KR:wght@400;500;700;900&family=Noto+Serif+KR:wght@600;800&display=swap">
+<style>
+:root{
+  --bg:#FBFAF8; --surf:#FFFFFF; --surf2:#F4F2ED; --line:#E4E0D9; --line2:#D3CEC4;
+  --ink:#14181D; --gray:#5B6572; --gray2:#8A8F98;
+  --ac:#2C4A7C; --ac-w:#E8EEF7;
+  --ok:#0B6B4A; --ok-w:#E3F2EA;
+  --mid:#7C5E06; --mid-w:#F9F0D6;
+  --no:#A8291B; --no-w:#FAE9E6;
+  --jp:#FFFDF7;
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
+  --bg:#15171B; --surf:#1D2026; --surf2:#24282F; --line:#2E323A; --line2:#3A3F49;
+  --ink:#F1F3F5; --gray:#A0A8B4; --gray2:#79808B;
+  --ac:#89AEE4; --ac-w:#1B2739;
+  --ok:#4FC095; --ok-w:#14291F;
+  --mid:#D8B85A; --mid-w:#2C2513;
+  --no:#EE8375; --no-w:#331915;
+  --jp:#1B1E23;
+}}
+:root[data-theme="dark"]{
+  --bg:#15171B; --surf:#1D2026; --surf2:#24282F; --line:#2E323A; --line2:#3A3F49;
+  --ink:#F1F3F5; --gray:#A0A8B4; --gray2:#79808B;
+  --ac:#89AEE4; --ac-w:#1B2739;
+  --ok:#4FC095; --ok-w:#14291F;
+  --mid:#D8B85A; --mid-w:#2C2513;
+  --no:#EE8375; --no-w:#331915;
+  --jp:#1B1E23;
+}
+*{box-sizing:border-box;}
+body{background:var(--bg);color:var(--ink);
+  font-family:"Noto Sans KR","Apple SD Gothic Neo",system-ui,sans-serif;
+  font-size:16px;line-height:1.62;font-weight:400;margin:0;
+  -webkit-font-smoothing:antialiased;font-variant-numeric:tabular-nums;}
+.wrap{max-width:780px;margin:0 auto;padding-inline:20px;padding-block:0 88px;}
+
+/* 머리말 */
+.hero{padding-block:44px 8px;}
+.eb{font-size:13px;font-weight:700;letter-spacing:.09em;color:var(--gray2);text-transform:uppercase;}
+h1{font-family:"Noto Serif KR",serif;font-weight:800;font-size:clamp(28px,6vw,40px);
+  letter-spacing:-.03em;line-height:1.2;margin:12px 0 0;text-wrap:balance;}
+.lede{margin-top:16px;color:var(--gray);font-size:17px;}
+.lede b{color:var(--ink);font-weight:700;}
+
+.brief{margin-top:22px;background:var(--ac-w);border-radius:14px;padding:18px 20px;
+  font-size:15.5px;line-height:1.6;color:var(--gray);}
+.brief b{color:var(--ink);font-weight:700;}
+.brief ul{margin:10px 0 0;padding-left:19px;display:flex;flex-direction:column;gap:5px;}
+
+/* 우선순위 묶음 */
+.grp{margin-top:52px;}
+.grp-h{display:flex;align-items:baseline;gap:10px;flex-wrap:wrap;
+  padding-bottom:12px;border-bottom:2px solid var(--ink);}
+.grp-n{font-family:"Noto Serif KR",serif;font-size:22px;font-weight:800;letter-spacing:-.02em;}
+.grp-w{font-size:14px;font-weight:700;color:var(--gray2);}
+
+/* 호스트 카드 */
+.card{margin-top:20px;background:var(--surf);border:1px solid var(--line);
+  border-radius:16px;overflow:hidden;}
+.card-h{padding:16px 20px 14px;border-bottom:1px solid var(--line);display:flex;
+  flex-direction:column;gap:8px;}
+.who{display:flex;align-items:baseline;gap:9px;flex-wrap:wrap;}
+.rk{font-size:12.5px;font-weight:900;letter-spacing:-.02em;padding:3px 9px;
+  border-radius:6px;background:var(--ink);color:var(--bg);}
+.rk.top{background:var(--ac);color:#fff;}
+.num{font-family:"Noto Serif KR",serif;font-size:21px;font-weight:800;letter-spacing:-.02em;}
+.host{font-size:14.5px;font-weight:700;color:var(--gray);}
+.why{font-size:15px;color:var(--gray);}
+.why b{color:var(--ink);font-weight:700;}
+.asks{display:flex;flex-wrap:wrap;gap:5px;}
+.ask{font-size:12.5px;font-weight:700;letter-spacing:-.02em;padding:3px 9px;border-radius:20px;
+  background:var(--surf2);color:var(--gray);}
+.ask.hot{background:var(--no-w);color:var(--no);}
+.ask.mid{background:var(--mid-w);color:var(--mid);}
+
+/* 일본어 블록 */
+.jpbox{background:var(--jp);border-bottom:1px solid var(--line);}
+.bar{display:flex;align-items:center;gap:10px;padding:10px 20px;border-bottom:1px dashed var(--line2);}
+.bar .lbl{font-size:12.5px;font-weight:900;letter-spacing:.04em;color:var(--gray2);}
+.cp{margin-left:auto;font:inherit;font-size:13px;font-weight:700;letter-spacing:-.01em;
+  padding:6px 14px;border-radius:8px;border:1px solid var(--ac);background:transparent;
+  color:var(--ac);cursor:pointer;transition:background .12s,color .12s;}
+.cp:hover{background:var(--ac);color:#fff;}
+.cp:focus-visible{outline:2px solid var(--ac);outline-offset:2px;}
+.cp.done{background:var(--ok);border-color:var(--ok);color:#fff;}
+pre.jp{margin:0;padding:18px 20px 20px;font-family:"Noto Sans JP","Hiragino Sans",sans-serif;
+  font-size:14.5px;line-height:1.85;color:var(--ink);white-space:pre-wrap;word-break:break-word;}
+
+/* 한국어 번역 */
+.kr{padding:16px 20px 18px;background:var(--surf2);}
+.kr .lbl{font-size:12.5px;font-weight:900;letter-spacing:.04em;color:var(--gray2);
+  display:block;margin-bottom:8px;}
+pre.krt{margin:0;font-family:inherit;font-size:14.5px;line-height:1.75;color:var(--gray);
+  white-space:pre-wrap;word-break:break-word;}
+
+/* 꼬리말 */
+.foot{margin-top:56px;padding-top:22px;border-top:1px solid var(--line);
+  font-size:14.5px;color:var(--gray);line-height:1.65;}
+.foot b{color:var(--ink);font-weight:700;}
+.foot p+p{margin-top:12px;}
+@media (max-width:460px){
+  .bar{flex-wrap:wrap;} .cp{margin-left:0;}
+}
+@media (prefers-reduced-motion:reduce){*{transition:none !important;}}
+</style>
+
+<div class="wrap">
+
+<header class="hero">
+  <div class="eb">도쿄 3박 4일 · 2027.01.14~17 · 남자 6명</div>
+  <h1>호스트에게 물을 것,<br>일곱 통</h1>
+  <p class="lede">아홉 곳 리스팅을 전부 원문으로 훑고 남은 빈칸입니다. <b>일본어 원문을 복사해 그대로 보내시고</b>, 아래 한국어는 무슨 말인지 확인용입니다. 탈락한 2번·8번은 뺐습니다.</p>
+
+  <div class="brief">
+    <b>순서대로 보내실 필요는 없지만, 값어치는 확실히 다릅니다.</b>
+    <ul>
+      <li><b>①번 묶음(4·9·7번)이 압도적으로 중요합니다.</b> 셋 다 시부야구 고지대에 같은 보건소의 여관업 허가라 안전성이 동점입니다. <b>준공 연도 하나로 1~3순위가 갈립니다.</b> 세 통을 같은 날 함께 보내세요.</li>
+      <li><b>②번 묶음(1·3번)은 합법성 확인</b>입니다. 허가번호가 없으면 예약 직전에 취소될 수 있습니다.</li>
+      <li><b>③번 묶음(6·5번)은 구성 확인</b>입니다. 순위를 뒤집을 정도는 아니지만 잠자리가 걸려 있습니다.</li>
+    </ul>
+  </div>
+</header>
+
+<section class="grp">
+  <div class="grp-h">
+    <span class="grp-n">① 1~3순위를 가르는 질문</span>
+    <span class="grp-w">4번 · 9번 · 7번 — 셋 다 준공 연도만 비어 있습니다</span>
+  </div>
+
+  <article class="card">
+    <div class="card-h">
+      <div class="who"><span class="rk top">1순위</span><span class="num">4번</span>
+        <span class="host">시부야구 하츠다이 98㎡ · 호스트 Asawa</span></div>
+      <p class="why">허가(2023)·샤워 2개·침실 4개는 확인됐습니다. <b>준공 연도가 확인되면 1순위가 굳고, 안 되면 9번·7번과 동률로 남습니다.</b> 짐 보관이 현관 밖이라는 점과 주방 표기 불일치도 같이 묻습니다.</p>
+      <div class="asks"><span class="ask hot">준공 연도</span><span class="ask">짐 보관 위치</span><span class="ask">주방</span><span class="ask">일시집합장소</span></div>
+    </div>
+    <div class="jpbox">
+      <div class="bar"><span class="lbl">일본어 — 그대로 복사</span>
+        <button class="cp" type="button" data-t="m4">복사</button></div>
+      <pre class="jp" id="m4">はじめまして。2027年1月14日〜17日に成人6名（男性）での宿泊を検討しております。予約前に4点お伺いできますでしょうか。
+
+1. 建物の建築年（築年数）を教えていただけますでしょうか。地震への備えとして、新耐震基準や2000年基準に適合しているかを確認したく存じます。
+
+2. 荷物置き場について、説明文に「玄関前のスーツケース用ロック」とありますが、屋外に置く形でしょうか。1月に6名分のスーツケースを屋外に置くことになるか気になっております。室内での保管は可能でしょうか。
+
+3. キッチンについて、設備一覧では「簡易キッチン」となっている一方、説明文には「メインキッチン（ガスコンロ・食洗機）」とあります。実際はどちらでしょうか。
+
+4. 万一の地震に備え、お住まいから最寄りの「一時集合場所」を教えていただけますでしょうか。
+
+お忙しいところ恐れ入りますが、よろしくお願いいたします。</pre>
+    </div>
+    <div class="kr"><span class="lbl">한국어 확인용</span>
+      <pre class="krt">처음 뵙겠습니다. 2027년 1월 14일~17일에 성인 6명(남성)이 숙박하려고 검토 중입니다. 예약 전에 네 가지만 여쭙고 싶습니다.
+
+1. 건물의 건축 연도(연식)를 알려주실 수 있을까요? 지진 대비 차원에서 신내진기준이나 2000년 기준에 맞는 건물인지 확인하고 싶습니다.
+
+2. 짐 보관에 대해, 설명문에 "현관 앞 캐리어용 잠금장치"라고 되어 있는데 실외에 두는 형태인가요? 1월에 6명분 캐리어를 밖에 두게 되는지 신경이 쓰입니다. 실내 보관도 가능할까요?
+
+3. 주방에 대해, 편의시설 목록에는 "간이 주방"으로 되어 있는데 설명문에는 "메인 주방(가스레인지·식기세척기)"이라고 적혀 있습니다. 실제로는 어느 쪽인가요?
+
+4. 만일의 지진에 대비해, 숙소에서 가장 가까운 "일시집합장소"를 알려주실 수 있을까요?
+
+바쁘신 중에 죄송합니다만 잘 부탁드립니다.</pre>
+    </div>
+  </article>
+
+  <article class="card">
+    <div class="card-h">
+      <div class="who"><span class="rk">2순위</span><span class="num">9번</span>
+        <span class="host">시부야구 혼마치 2초메 · 3층 아파트</span></div>
+      <p class="why">허가(2026)·샤워 2개·도보 8분까지 확인됐습니다. 약점이 <b>도어투도어 21분 하나</b>로 좁혀졌는데, 엘리베이터가 없으면 그 21분이 체감상 더 길어집니다.</p>
+      <div class="asks"><span class="ask hot">준공 연도</span><span class="ask">엘리베이터</span><span class="ask">일시집합장소</span></div>
+    </div>
+    <div class="jpbox">
+      <div class="bar"><span class="lbl">일본어 — 그대로 복사</span>
+        <button class="cp" type="button" data-t="m9">복사</button></div>
+      <pre class="jp" id="m9">はじめまして。2027年1月14日〜17日に成人6名（男性）での宿泊を検討しております。予約前に3点お伺いできますでしょうか。
+
+1. 建物の建築年（築年数）を教えていただけますでしょうか。地震への備えとして、新耐震基準や2000年基準に適合しているかを確認したく存じます。
+
+2. 3階建てとのことですが、エレベーターはございますか。初台駅から徒歩8分とのことですので、スーツケースを持って階段を上ることになるかを確認したく存じます。
+
+3. 万一の地震に備え、お住まいから最寄りの「一時集合場所」を教えていただけますでしょうか。
+
+お忙しいところ恐れ入りますが、よろしくお願いいたします。</pre>
+    </div>
+    <div class="kr"><span class="lbl">한국어 확인용</span>
+      <pre class="krt">처음 뵙겠습니다. 2027년 1월 14일~17일에 성인 6명(남성)이 숙박하려고 검토 중입니다. 예약 전에 세 가지만 여쭙고 싶습니다.
+
+1. 건물의 건축 연도(연식)를 알려주실 수 있을까요? 지진 대비 차원에서 신내진기준이나 2000년 기준에 맞는 건물인지 확인하고 싶습니다.
+
+2. 3층 건물이라고 하셨는데 엘리베이터가 있나요? 하츠다이역에서 도보 8분이라 캐리어를 들고 계단을 올라가게 되는지 확인하고 싶습니다.
+
+3. 만일의 지진에 대비해, 숙소에서 가장 가까운 "일시집합장소"를 알려주실 수 있을까요?
+
+바쁘신 중에 죄송합니다만 잘 부탁드립니다.</pre>
+    </div>
+  </article>
+
+  <article class="card">
+    <div class="card-h">
+      <div class="who"><span class="rk">3순위</span><span class="num">7번</span>
+        <span class="host">시부야구 하츠다이 1초메 · 호스트 千夏(치나쓰)</span></div>
+      <p class="why">허가(2025)는 확인됐고 <b>도어투도어 16분으로 셋 중 가장 가깝습니다.</b> 발목을 잡는 건 샤워 1개인데, 이건 사진 투어로 읽은 값이라 호스트 입으로 확인받을 값어치가 있습니다. <b>준공 연도가 2000년 이후로 나오고 4·9번은 못 받으면 1순위로 돌아옵니다.</b></p>
+      <div class="asks"><span class="ask hot">준공 연도</span><span class="ask mid">샤워 개수 확인</span><span class="ask">일시집합장소</span></div>
+    </div>
+    <div class="jpbox">
+      <div class="bar"><span class="lbl">일본어 — 그대로 복사</span>
+        <button class="cp" type="button" data-t="m7">복사</button></div>
+      <pre class="jp" id="m7">はじめまして。2027年1月14日〜17日に成人6名（男性）での宿泊を検討しております。予約前に3点お伺いできますでしょうか。
+
+1. 建物の建築年（築年数）を教えていただけますでしょうか。説明文に「新築」とございますが、具体的な竣工年を確認したく存じます。
+
+2. シャワーについて、写真ツアーでは「バスルーム」1室と「簡易バスルーム」2室に分かれておりました。実際にシャワーを浴びられるのは1か所という理解で合っておりますでしょうか。また、そのシャワーは1階のみでしょうか。6名で朝の支度をする際の目安にしたく存じます。
+
+3. 万一の地震に備え、お住まいから最寄りの「一時集合場所」を教えていただけますでしょうか。
+
+お忙しいところ恐れ入りますが、よろしくお願いいたします。</pre>
+    </div>
+    <div class="kr"><span class="lbl">한국어 확인용</span>
+      <pre class="krt">처음 뵙겠습니다. 2027년 1월 14일~17일에 성인 6명(남성)이 숙박하려고 검토 중입니다. 예약 전에 세 가지만 여쭙고 싶습니다.
+
+1. 건물의 건축 연도(연식)를 알려주실 수 있을까요? 설명문에 "신축"이라고 되어 있는데 구체적인 준공 연도를 확인하고 싶습니다.
+
+2. 샤워에 대해, 사진 투어에서는 "욕실" 1곳과 "간이 욕실" 2곳으로 나뉘어 있었습니다. 실제로 샤워를 할 수 있는 곳은 1곳이 맞을까요? 그리고 그 샤워는 1층에만 있나요? 6명이 아침에 준비할 때 기준을 잡으려고 합니다.
+
+3. 만일의 지진에 대비해, 숙소에서 가장 가까운 "일시집합장소"를 알려주실 수 있을까요?
+
+바쁘신 중에 죄송합니다만 잘 부탁드립니다.</pre>
+    </div>
+  </article>
+</section>
+
+<section class="grp">
+  <div class="grp-h">
+    <span class="grp-n">② 합법 숙소인지 확인</span>
+    <span class="grp-w">1번 · 3번 — 허가번호가 설명문에 없습니다</span>
+  </div>
+
+  <article class="card">
+    <div class="card-h">
+      <div class="who"><span class="rk">6순위</span><span class="num">1번</span>
+        <span class="host">오쿠보 새틀라이트 호텔 · 301호+401호</span></div>
+      <p class="why">숙소 규칙에 "여관업법에 따라 개인정보를 사전 등록하라"는 문구는 있는데 <b>번호가 없습니다.</b> 건물이 "오래됐다"고만 적혀 있는 것도, 6명이 3층과 4·5층에 어떻게 나뉘는지도 확인이 필요합니다.</p>
+      <div class="asks"><span class="ask hot">허가번호</span><span class="ask hot">준공 연도</span><span class="ask">6인 배치·요금</span></div>
+    </div>
+    <div class="jpbox">
+      <div class="bar"><span class="lbl">일본어 — 그대로 복사</span>
+        <button class="cp" type="button" data-t="m1">복사</button></div>
+      <pre class="jp" id="m1">はじめまして。2027年1月14日〜17日に成人6名（男性）での宿泊を検討しております。予約前に3点お伺いできますでしょうか。
+
+1. 旅館業法の許可番号（または住宅宿泊事業法の届出番号）を教えていただけますでしょうか。ハウスマニュアルに「旅館業法および住宅宿泊事業法に基づき…」との記載はございましたが、番号が見当たりませんでした。
+
+2. 「古い建物をリノベーションした」とのことですが、建物の建築年を教えていただけますでしょうか。
+
+3. 6名で宿泊する場合、301号室と401号室にどのように分かれることになりますか。2部屋分の料金が請求される認識で合っておりますでしょうか。また、どちらか1部屋のみの予約は可能でしょうか。
+
+お忙しいところ恐れ入りますが、よろしくお願いいたします。</pre>
+    </div>
+    <div class="kr"><span class="lbl">한국어 확인용</span>
+      <pre class="krt">처음 뵙겠습니다. 2027년 1월 14일~17일에 성인 6명(남성)이 숙박하려고 검토 중입니다. 예약 전에 세 가지만 여쭙고 싶습니다.
+
+1. 여관업법 허가번호(또는 주택숙박사업법 신고번호)를 알려주실 수 있을까요? 숙소 매뉴얼에 "여관업법 및 주택숙박사업법에 따라…"라는 문구는 있었는데 번호를 찾지 못했습니다.
+
+2. "오래된 건물을 리모델링했다"고 하셨는데, 건물의 건축 연도를 알려주실 수 있을까요?
+
+3. 6명이 숙박할 경우 301호와 401호에 어떻게 나뉘게 되나요? 두 호실 요금이 모두 청구되는 것이 맞을까요? 그리고 둘 중 한 호실만 예약하는 것도 가능한가요?
+
+바쁘신 중에 죄송합니다만 잘 부탁드립니다.</pre>
+    </div>
+  </article>
+
+  <article class="card">
+    <div class="card-h">
+      <div class="who"><span class="rk">7순위</span><span class="num">3번</span>
+        <span class="host">신주쿠구 햐쿠닌초 · 호스트 MeiJon(슈퍼호스트 9년)</span></div>
+      <p class="why">샤워 2개·화장실 2개·신오쿠보 도보 3분이 이번에 확인됐습니다. 남은 건 <b>허가번호와 침실 수, 그리고 6인 실제 가격</b>입니다. 표시가격은 "최저"라 6명 기준이 아닙니다.</p>
+      <div class="asks"><span class="ask hot">허가번호</span><span class="ask">침실 수</span><span class="ask">6인 총액</span></div>
+    </div>
+    <div class="jpbox">
+      <div class="bar"><span class="lbl">일본어 — 그대로 복사</span>
+        <button class="cp" type="button" data-t="m3">복사</button></div>
+      <pre class="jp" id="m3">はじめまして。2027年1月14日〜17日に成人6名（男性）での宿泊を検討しております。予約前に3点お伺いできますでしょうか。
+
+1. 旅館業法の許可番号（または住宅宿泊事業法の届出番号）を教えていただけますでしょうか。
+
+2. 寝室は何部屋ございますか。ベッド6台・定員10名までは確認できたのですが、寝室の数が分かりませんでした。
+
+3. 2027年1月14日〜17日に成人6名で宿泊する場合の総額を教えていただけますでしょうか。表示されている料金が最低料金とのことでしたので、6名での実際の金額を知りたく存じます。
+
+お忙しいところ恐れ入りますが、よろしくお願いいたします。</pre>
+    </div>
+    <div class="kr"><span class="lbl">한국어 확인용</span>
+      <pre class="krt">처음 뵙겠습니다. 2027년 1월 14일~17일에 성인 6명(남성)이 숙박하려고 검토 중입니다. 예약 전에 세 가지만 여쭙고 싶습니다.
+
+1. 여관업법 허가번호(또는 주택숙박사업법 신고번호)를 알려주실 수 있을까요?
+
+2. 침실은 몇 개인가요? 침대 6개·정원 10명까지는 확인했는데 침실 수를 알 수 없었습니다.
+
+3. 2027년 1월 14일~17일에 성인 6명이 숙박할 경우 총액을 알려주실 수 있을까요? 표시된 요금이 최저 요금이라고 되어 있어서 6명 기준 실제 금액을 알고 싶습니다.
+
+바쁘신 중에 죄송합니다만 잘 부탁드립니다.</pre>
+    </div>
+  </article>
+</section>
+
+<section class="grp">
+  <div class="grp-h">
+    <span class="grp-n">③ 잠자리 구성 확인</span>
+    <span class="grp-w">6번 · 5번 — 표기가 어긋나 있습니다</span>
+  </div>
+
+  <article class="card">
+    <div class="card-h">
+      <div class="who"><span class="rk">4순위</span><span class="num">6번</span>
+        <span class="host">신주쿠구 오쿠보 · 저택 통째 · 침실 6개</span></div>
+      <p class="why"><b>여섯 명 전원 1인 1실이 되는 유일한 집</b>이라 방 배치가 중요한데, 설명문이 자체 모순입니다 — "2층 단독주택"이라면서 1·2·3층이 다 나오고 "1층에 침실 4개"와 "2층에 침실 4개"가 둘 다 적혀 있습니다.</p>
+      <div class="asks"><span class="ask hot">층수·방 배치</span><span class="ask">준공 연도</span></div>
+    </div>
+    <div class="jpbox">
+      <div class="bar"><span class="lbl">일본어 — 그대로 복사</span>
+        <button class="cp" type="button" data-t="m6">복사</button></div>
+      <pre class="jp" id="m6">はじめまして。2027年1月14日〜17日に成人6名（男性）での宿泊を検討しております。予約前に2点お伺いできますでしょうか。
+
+1. 説明文に「2階建ての一戸建て」とある一方で、1階・2階・3階それぞれの記載があり、「1階に寝室4部屋」と「2階に寝室4部屋」の両方が書かれておりました。実際の階数と、寝室6部屋が各階にどのように配置されているかを教えていただけますでしょうか。6名が1人1部屋で泊まれるかを確認したく存じます。
+
+2. 建物の建築年（築年数）を教えていただけますでしょうか。「新築」とございますが、具体的な竣工年を確認したく存じます。
+
+お忙しいところ恐れ入りますが、よろしくお願いいたします。</pre>
+    </div>
+    <div class="kr"><span class="lbl">한국어 확인용</span>
+      <pre class="krt">처음 뵙겠습니다. 2027년 1월 14일~17일에 성인 6명(남성)이 숙박하려고 검토 중입니다. 예약 전에 두 가지만 여쭙고 싶습니다.
+
+1. 설명문에 "2층 단독주택"이라고 되어 있는 한편으로 1층·2층·3층 이야기가 각각 나오고, "1층에 침실 4개"와 "2층에 침실 4개"가 둘 다 적혀 있었습니다. 실제 층수와, 침실 6개가 각 층에 어떻게 배치되어 있는지 알려주실 수 있을까요? 6명이 1인 1실로 묵을 수 있는지 확인하고 싶습니다.
+
+2. 건물의 건축 연도(연식)를 알려주실 수 있을까요? "신축"이라고 되어 있는데 구체적인 준공 연도를 확인하고 싶습니다.
+
+바쁘신 중에 죄송합니다만 잘 부탁드립니다.</pre>
+    </div>
+  </article>
+
+  <article class="card">
+    <div class="card-h">
+      <div class="who"><span class="rk">5순위</span><span class="num">5번</span>
+        <span class="host">신주쿠구 신오쿠보 북쪽 · 게스트하우스</span></div>
+      <p class="why">허가(2024)·샤워 2개·세면대 3개는 확인됐습니다. 문제는 <b>침대 7개 중 2개가 2층 라운지의 접이식 소파베드</b>라는 점입니다. 실제 침대가 5개면 여섯 명 중 하나는 거실에서 잡니다.</p>
+      <div class="asks"><span class="ask hot">소파베드 여부</span><span class="ask">준공 연도</span></div>
+    </div>
+    <div class="jpbox">
+      <div class="bar"><span class="lbl">일본어 — 그대로 복사</span>
+        <button class="cp" type="button" data-t="m5">복사</button></div>
+      <pre class="jp" id="m5">はじめまして。2027年1月14日〜17日に成人6名（男性）での宿泊を検討しております。予約前に2点お伺いできますでしょうか。
+
+1. ベッド7台のうち2台は2階ラウンジのソファベッドという理解で合っておりますでしょうか。6名で宿泊する場合、実際のベッドは5台で、1名はソファベッドを使うことになりますか。全員がベッドで寝られるかを確認したく存じます。
+
+2. 建物の建築年（築年数）を教えていただけますでしょうか。「リノベーション済み」とございますが、建物自体の竣工年を確認したく存じます。
+
+お忙しいところ恐れ入りますが、よろしくお願いいたします。</pre>
+    </div>
+    <div class="kr"><span class="lbl">한국어 확인용</span>
+      <pre class="krt">처음 뵙겠습니다. 2027년 1월 14일~17일에 성인 6명(남성)이 숙박하려고 검토 중입니다. 예약 전에 두 가지만 여쭙고 싶습니다.
+
+1. 침대 7개 중 2개가 2층 라운지의 소파베드가 맞을까요? 6명이 숙박할 경우 실제 침대는 5개이고 1명은 소파베드를 쓰게 되나요? 전원이 침대에서 잘 수 있는지 확인하고 싶습니다.
+
+2. 건물의 건축 연도(연식)를 알려주실 수 있을까요? "리모델링 완료"라고 되어 있는데 건물 자체의 준공 연도를 확인하고 싶습니다.
+
+바쁘신 중에 죄송합니다만 잘 부탁드립니다.</pre>
+    </div>
+  </article>
+</section>
+
+<div class="foot">
+  <p><b>답이 오면 순위가 이렇게 움직입니다.</b> 4·9·7번 중 <b>한 곳만 "2000년 이후"로 답하면 그 집이 1순위</b>입니다. 셋 다 답하면 지금 순서(4 → 9 → 7)가 그대로 유지되고, 셋 다 답을 못 하면 역시 지금 순서입니다. 1번·3번은 허가번호가 안 나오면 후보에서 빼는 게 맞습니다.</p>
+  <p><b>왜 "일시집합장소"를 묻는가.</b> 광역대피장소는 네 곳 다 신주쿠 중앙공원이지만, 실제로 지진 직후 먼저 모이는 곳은 동네마다 지정된 一時集合場所(잇지슈고바쇼)입니다. 답을 받으면 여섯 분 단톡에 미리 공유해 두세요.</p>
+  <p><b>보내는 요령.</b> 에어비앤비 메시지는 예약 전에도 보낼 수 있고, 응답률·응답시간이 호스트 지표에 잡혀서 대개 하루 안에 답이 옵니다. 일본어 원문을 그대로 붙여넣으시면 됩니다 — 번역기를 거친 티가 나지 않게 경어로 써 두었습니다.</p>
+  <p style="color:var(--gray2);font-size:13.5px;">2번(카부키초 인접)과 8번(평점 4.0·후기 3개)은 탈락이라 뺐습니다. 다시 후보에 넣으실 거면 말씀해 주세요.</p>
+</div>
+
+</div>
+
+<script>
+(function () {
+  document.querySelectorAll('.cp').forEach(function (btn) {
+    btn.addEventListener('click', function () {
+      var el = document.getElementById(btn.dataset.t);
+      if (!el) return;
+      var text = el.textContent;
+      var done = function () {
+        var old = btn.textContent;
+        btn.textContent = '복사됨';
+        btn.classList.add('done');
+        setTimeout(function () { btn.textContent = old; btn.classList.remove('done'); }, 1600);
+      };
+      var fallback = function () {
+        var ta = document.createElement('textarea');
+        ta.value = text;
+        ta.setAttribute('readonly', '');
+        ta.style.cssText = 'position:fixed;top:0;left:0;opacity:0;';
+        document.body.appendChild(ta);
+        ta.select();
+        try { document.execCommand('copy'); done(); }
+        catch (e) { btn.textContent = '복사 실패'; setTimeout(function () { btn.textContent = '복사'; }, 1600); }
+        document.body.removeChild(ta);
+      };
+      if (navigator.clipboard && navigator.clipboard.writeText) {
+        navigator.clipboard.writeText(text).then(done, fallback);
+      } else { fallback(); }
+    });
+  });
+})();
+</script>

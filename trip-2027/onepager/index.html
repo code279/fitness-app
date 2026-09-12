@@ -1,220 +1,194 @@
-<title>숙소 아홉 곳 한 장 요약</title>
+<!doctype html>
+<html lang="ko"><head><meta charset="utf-8">
+<title>도쿄 숙소 아홉 곳 한 장 요약</title>
+<meta name="viewport" content="width=device-width,initial-scale=1">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700;900&display=swap">
 <style>
-:root{
-  --bg:#FFFFFF; --ink:#111418; --gray:#5A6472; --line:#DCE0E6; --fill:#F4F6F8;
-  --pt:#1F6FEB; --pt-w:#E6F0FE; --ok:#0B7A52; --ok-w:#E2F4EC; --warn:#B32B1C; --warn-w:#FCEBE8;
-}
+:root{--bg:#FFFFFF;--ink:#111418;--gray:#5A6472;--gray2:#828C99;--line:#DCE0E6;
+  --pt:#1F6FEB;--pt-w:#E9F1FE;--ok:#0B7A52;--ok-w:#E2F4EC;--mid:#8A6A08;--mid-w:#FBF1D8;
+  --warn:#B32B1C;--warn-w:#FCEBE8;}
 *{box-sizing:border-box;margin:0;padding:0;}
-html,body{background:#8A9099;font-family:"Noto Sans KR","Apple SD Gothic Neo",sans-serif;
+html,body{background:#8A9099;font-family:"Noto Sans KR","Noto Sans CJK KR","Apple SD Gothic Neo",sans-serif;
   -webkit-font-smoothing:antialiased;font-variant-numeric:tabular-nums;}
 @page{size:A4 landscape;margin:0;}
-
-/* A4 가로 = 1123 x 794 px @96dpi */
 .page{width:1123px;height:794px;background:var(--bg);color:var(--ink);
   display:flex;flex-direction:column;overflow:hidden;}
-
-/* 화면에서는 화면폭에 맞춰 축소 */
 .fit{transform-origin:top left;}
 
-.hd{flex:0 0 auto;display:flex;align-items:flex-end;justify-content:space-between;
-  gap:16px;padding:14px 18px 11px;border-bottom:3px solid var(--ink);}
-.hd h1{font-size:31px;font-weight:900;letter-spacing:-.035em;line-height:1;}
+.hd{flex:0 0 auto;display:flex;align-items:flex-end;justify-content:space-between;gap:16px;
+  padding:12px 18px 9px;border-bottom:3px solid var(--ink);}
+.hd h1{font-size:28px;font-weight:900;letter-spacing:-.04em;line-height:1;}
 .hd h1 span{color:var(--pt);}
-.hd .sub{font-size:14px;font-weight:700;color:var(--gray);letter-spacing:-.02em;line-height:1.35;text-align:right;}
+.hd .sub{font-size:13px;font-weight:700;color:var(--gray);letter-spacing:-.02em;line-height:1.4;text-align:right;}
 .hd .sub b{color:var(--ink);}
 
 .grid{flex:1 1 auto;display:grid;grid-template-columns:repeat(3,1fr);grid-template-rows:repeat(3,1fr);}
 .c{border-right:1px solid var(--line);border-bottom:1px solid var(--line);
   display:flex;flex-direction:column;overflow:hidden;position:relative;}
-.c:nth-child(3n){border-right:0;}
-.c:nth-child(n+7){border-bottom:0;}
-.c.win{background:var(--pt-w);}
-.c.out{background:var(--warn-w);}
+.c:nth-child(3n){border-right:0;} .c:nth-child(n+7){border-bottom:0;}
+.c.win{background:var(--pt-w);} .c.out{background:var(--warn-w);}
 
-.ph{flex:0 0 auto;height:96px;width:100%;object-fit:cover;display:block;
-  border-bottom:1px solid var(--line);}
-.bd{flex:1 1 auto;padding:8px 12px 6px;display:flex;flex-direction:column;}
+.ph{flex:0 0 auto;height:84px;width:100%;object-fit:cover;display:block;border-bottom:1px solid var(--line);}
+.bd{flex:1 1 auto;padding:7px 12px 6px;display:flex;flex-direction:column;gap:5px;}
+.tp{display:flex;align-items:baseline;gap:6px;flex-wrap:wrap;}
+.rk{flex:0 0 auto;font-size:12.5px;font-weight:900;letter-spacing:-.03em;
+  padding:2px 7px;border-radius:5px;background:var(--ink);color:#fff;}
+.c.win .rk{background:var(--pt);} .c.out .rk{background:var(--warn);}
+.nm{font-size:19px;font-weight:900;letter-spacing:-.04em;color:inherit;text-decoration:none;}
+a.nm.lk{color:var(--pt);}
+a.nm.lk:hover{text-decoration:underline;}
+.ext{font-size:12px;font-weight:700;margin-left:2px;vertical-align:2px;}
+.phl{display:block;flex:0 0 auto;line-height:0;}
+.foot-lk{color:var(--pt);text-decoration:none;font-weight:900;}
+.foot-lk:hover{text-decoration:underline;}
+.loc{font-size:12.5px;font-weight:700;color:var(--gray);letter-spacing:-.03em;}
 
-.tp{display:flex;align-items:center;gap:7px;}
-.rk{flex:0 0 auto;font-size:14px;font-weight:900;letter-spacing:-.03em;
-  padding:2px 8px;border-radius:5px;background:var(--ink);color:#fff;}
-.c.win .rk{background:var(--pt);}
-.c.out .rk{background:var(--warn);}
-.nm{font-size:21px;font-weight:900;letter-spacing:-.04em;line-height:1;}
-.loc{font-size:14px;font-weight:700;color:var(--gray);letter-spacing:-.03em;margin-top:3px;}
+.chips{display:flex;flex-wrap:wrap;gap:4px;}
+.ch{font-size:11.5px;font-weight:900;letter-spacing:-.03em;padding:2px 6px;border-radius:4px;
+  background:#EDF0F3;color:var(--gray);white-space:nowrap;}
+.ch.ok{background:var(--ok-w);color:var(--ok);}
+.ch.mid{background:var(--mid-w);color:var(--mid);}
+.ch.no{background:var(--warn-w);color:var(--warn);}
+.ch.dim{background:#EDF0F3;color:var(--gray2);}
 
-ul{list-style:none;margin-top:7px;display:flex;flex-direction:column;gap:3px;}
-li{font-size:16px;font-weight:700;letter-spacing:-.035em;line-height:1.2;
-  display:flex;align-items:baseline;gap:6px;}
-li i{flex:0 0 auto;width:15px;height:15px;border-radius:4px;font-style:normal;
-  font-size:11px;font-weight:900;color:#fff;display:grid;place-items:center;
-  transform:translateY(1px);}
-li.g i{background:var(--ok);} li.b i{background:var(--warn);} li.n i{background:#9AA3AE;}
-li.g{color:#0B7A52;} li.b{color:var(--warn);} li.n{color:var(--gray);}
+ul{list-style:none;display:flex;flex-direction:column;gap:3px;}
+li{font-size:13.5px;font-weight:700;letter-spacing:-.035em;line-height:1.25;
+  display:flex;align-items:baseline;gap:5px;color:var(--gray);}
+li i{flex:0 0 auto;width:13px;height:13px;border-radius:3px;font-style:normal;font-size:9px;
+  font-weight:900;color:#fff;display:grid;place-items:center;transform:translateY(1px);}
+li.g i{background:var(--ok);} li.b i{background:var(--warn);}
+li.g{color:#0B7A52;} li.b{color:var(--warn);}
 
-.pr{position:absolute;right:0;top:96px;background:var(--ink);color:#fff;
-  font-size:13px;font-weight:900;letter-spacing:-.02em;padding:3px 8px;border-bottom-left-radius:7px;}
+.pr{position:absolute;right:0;top:84px;background:var(--ink);color:#fff;font-size:12.5px;
+  font-weight:900;letter-spacing:-.02em;padding:2px 7px;border-bottom-left-radius:7px;}
 .c.win .pr{background:var(--pt);}
 
-.ft{flex:0 0 auto;display:flex;align-items:center;gap:14px;
-  padding:8px 18px;border-top:3px solid var(--ink);font-size:14px;font-weight:700;
-  letter-spacing:-.025em;color:var(--gray);}
-.ft b{color:var(--ink);}
-.ft .k{background:var(--ink);color:#fff;padding:2px 8px;border-radius:5px;font-size:13px;font-weight:900;}
-</style>
+.ft{flex:0 0 auto;display:flex;align-items:center;gap:12px;padding:8px 18px;
+  border-top:3px solid var(--ink);font-size:12.5px;font-weight:700;letter-spacing:-.035em;color:var(--gray);}
+.ft b{color:var(--ink);} .ft .k{flex:0 0 auto;background:var(--ink);color:#fff;padding:2px 8px;
+  border-radius:5px;font-size:12px;font-weight:900;}
+.ft .r{margin-left:auto;flex:0 0 auto;}
+@media print{html,body{background:#fff;} .fit{transform:none !important;}}
+</style></head><body>
 
 <div class="page fit" id="pg">
-
 <div class="hd">
   <h1>도쿄 숙소 아홉 곳 — <span>안전성 · 접근성 · 편의성</span></h1>
-  <div class="sub">2027.01.14(목)~17(일) · 3박 · 남자 6명 · 예산 제약 없음<br>
-    기준점 <b>오다큐 신주쿠역</b>(1/15 하코네 로망스카 출발) · 가격은 참고용</div>
+  <div class="sub">2027.01.14~17 · 3박 · 남자 6명 · 예산 제약 없음<br>
+    기준점 <b>오다큐 신주쿠역</b>(1/15 하코네 로망스카 출발) · 가격은 순위에 반영 안 함</div>
 </div>
 
 <div class="grid">
   <div class="c win">
-    <img class="ph" src="img/4.jpg" alt="4번 하츠다이 거실">
+    <a class="phl" href="https://www.airbnb.co.kr/rooms/909834219389134686" target="_blank" rel="noopener"><img class="ph" src="img/4.jpg" alt="4번 숙소 사진"></a>
     <div class="pr">250만</div>
     <div class="bd">
-      <div class="tp"><span class="rk">1순위</span><span class="nm">4번</span></div>
-      <div class="loc">시부야구 하츠다이 · 98㎡</div>
-      <ul>
-        <li class="g"><i>✓</i>여관업 허가 2023 · 고지대</li>
-        <li class="g"><i>✓</i>샤워 2 · 침실 4 · 4.99/207</li>
-        <li class="n"><i>?</i>준공 미표기 · 짐은 현관 밖</li>
-      </ul>
+      <div class="tp"><span class="rk">1순위</span><a class="nm lk" href="https://www.airbnb.co.kr/rooms/909834219389134686" target="_blank" rel="noopener">4번<span class="ext">↗</span></a>
+        <span class="loc">시부야구 하츠다이 · 98㎡</span></div>
+      <div class="chips"><span class="ch ok">여관업 허가 2023</span><span class="ch ok">샤워 2개</span><span class="ch plain">침실 4</span><span class="ch plain">18분</span></div>
+      <ul><li class="g"><i>✓</i>★4.99 · 후기 207 · 슈퍼호스트 7년 · “조용함” 37회</li><li class="b"><i>!</i>짐 보관이 현관 밖 잠금장치 · 준공 연도 미표기</li></ul>
     </div>
   </div>
   <div class="c">
-    <img class="ph" src="img/9.jpg" alt="9번 혼마치 2초메 거실">
-    <div class="pr">207만</div>
+    <a class="phl" href="https://www.airbnb.co.kr/rooms/46201691" target="_blank" rel="noopener"><img class="ph" src="img/9.jpg" alt="9번 숙소 사진"></a>
+    <div class="pr">206만</div>
     <div class="bd">
-      <div class="tp"><span class="rk">2순위</span><span class="nm">9번</span></div>
-      <div class="loc">시부야구 혼마치 2초메</div>
-      <ul>
-        <li class="g"><i>✓</i>여관업 허가 2026 · 고지대</li>
-        <li class="g"><i>✓</i>샤워 2 · 상위 1% · 후기 203</li>
-        <li class="b"><i>!</i>역 8분 · 신주쿠 21분</li>
-      </ul>
+      <div class="tp"><span class="rk">2순위</span><a class="nm lk" href="https://www.airbnb.co.kr/rooms/46201691" target="_blank" rel="noopener">9번<span class="ext">↗</span></a>
+        <span class="loc">시부야구 혼마치 2초메</span></div>
+      <div class="chips"><span class="ch ok">여관업 허가 2026</span><span class="ch ok">샤워 2개</span><span class="ch plain">침실 3</span><span class="ch no">21분</span></div>
+      <ul><li class="g"><i>✓</i>★4.99 · 후기 203 · 상위 1% · 짐 보관 · 무료 주차</li><li class="b"><i>!</i>도어투도어 21분 — 아홉 곳 중 가장 멀다</li></ul>
     </div>
   </div>
   <div class="c">
-    <img class="ph" src="img/7.jpg" alt="7번 하츠다이 남쪽 침실">
-    <div class="pr">148만</div>
+    <a class="phl" href="https://www.airbnb.co.kr/rooms/1706427922093171198" target="_blank" rel="noopener"><img class="ph" src="img/7.jpg" alt="7번 숙소 사진"></a>
+    <div class="pr">147만</div>
     <div class="bd">
-      <div class="tp"><span class="rk">3순위</span><span class="nm">7번</span></div>
-      <div class="loc">시부야구 하츠다이 1초메</div>
-      <ul>
-        <li class="g"><i>✓</i>여관업 허가 2025 · 고지대</li>
-        <li class="g"><i>✓</i>역 도보 3분 · 신주쿠 16분</li>
-        <li class="b"><i>!</i>후보 중 유일 샤워 1개</li>
-      </ul>
+      <div class="tp"><span class="rk">3순위</span><a class="nm lk" href="https://www.airbnb.co.kr/rooms/1706427922093171198" target="_blank" rel="noopener">7번<span class="ext">↗</span></a>
+        <span class="loc">시부야구 하츠다이 1초메</span></div>
+      <div class="chips"><span class="ch ok">여관업 허가 2025</span><span class="ch no">샤워 1개</span><span class="ch plain">침실 3</span><span class="ch plain">16분</span></div>
+      <ul><li class="g"><i>✓</i>하츠다이 셋 중 가장 가깝고 침대 6개가 전부 실제 침대</li><li class="b"><i>!</i>후보 중 유일하게 샤워 1개. 샤워는 1층, 침실 둘은 3층</li></ul>
     </div>
   </div>
   <div class="c">
-    <img class="ph" src="img/6.jpg" alt="6번 오쿠보역 인근 거실">
+    <a class="phl" href="https://www.airbnb.co.kr/rooms/30717440" target="_blank" rel="noopener"><img class="ph" src="img/6.jpg" alt="6번 숙소 사진"></a>
     <div class="pr">200만</div>
     <div class="bd">
-      <div class="tp"><span class="rk">4순위</span><span class="nm">6번</span></div>
-      <div class="loc">신주쿠구 오쿠보 · 저택 통째</div>
-      <ul>
-        <li class="g"><i>✓</i>침실 6 — 1인 1실 + 샤워 2</li>
-        <li class="g"><i>✓</i>신오쿠보 3분 · 신주쿠 12분</li>
-        <li class="n"><i>?</i>M13 민박 · 저지대 목조밀집</li>
-      </ul>
+      <div class="tp"><span class="rk">4순위</span><a class="nm lk" href="https://www.airbnb.co.kr/rooms/30717440" target="_blank" rel="noopener">6번<span class="ext">↗</span></a>
+        <span class="loc">신주쿠구 오쿠보 · 저택 통째</span></div>
+      <div class="chips"><span class="ch mid">M13 민박 신고</span><span class="ch ok">샤워 2개</span><span class="ch ok">침실 6 · 1인 1실</span><span class="ch ok">12분</span></div>
+      <ul><li class="g"><i>✓</i>침실 6개 = 여섯 명 전원 1인 1실. 아홉 곳 중 유일</li><li class="b"><i>!</i>오쿠보 저지대 목조밀집 · 민박 신고라 허가 등급이 낮다</li></ul>
     </div>
   </div>
   <div class="c">
-    <img class="ph" src="img/5.jpg" alt="5번 신오쿠보 북쪽 침실">
+    <a class="phl" href="https://www.airbnb.co.kr/rooms/1298996204039098347" target="_blank" rel="noopener"><img class="ph" src="img/5.jpg" alt="5번 숙소 사진"></a>
     <div class="pr">200만</div>
     <div class="bd">
-      <div class="tp"><span class="rk">5순위</span><span class="nm">5번</span></div>
-      <div class="loc">신주쿠구 신오쿠보 북쪽</div>
-      <ul>
-        <li class="g"><i>✓</i>여관업 허가 2024 · 신주쿠구 유일</li>
-        <li class="g"><i>✓</i>샤워 2 · 세면대 3 · 12분</li>
-        <li class="n"><i>?</i>침대 7 중 2개는 소파베드</li>
-      </ul>
+      <div class="tp"><span class="rk">5순위</span><a class="nm lk" href="https://www.airbnb.co.kr/rooms/1298996204039098347" target="_blank" rel="noopener">5번<span class="ext">↗</span></a>
+        <span class="loc">신주쿠구 신오쿠보 북쪽</span></div>
+      <div class="chips"><span class="ch ok">여관업 허가 2024</span><span class="ch ok">샤워 2개</span><span class="ch plain">침실 3</span><span class="ch ok">12분</span></div>
+      <ul><li class="g"><i>✓</i>샤워 2 · 화장실 2 · 세면대 3. 아침 준비가 가장 빠르다</li><li class="b"><i>!</i>침대 7개 중 2개가 라운지 소파베드 · 토요일 밤 소음</li></ul>
     </div>
   </div>
   <div class="c">
-    <img class="ph" src="img/1.jpg" alt="1번 새틀라이트 호텔 외관">
-    <div class="pr">238만</div>
+    <a class="phl" href="https://www.airbnb.co.kr/rooms/1177681487710917054" target="_blank" rel="noopener"><img class="ph" src="img/1.jpg" alt="1번 숙소 사진"></a>
+    <div class="pr">237만</div>
     <div class="bd">
-      <div class="tp"><span class="rk">6순위</span><span class="nm">1번</span></div>
-      <div class="loc">오쿠보 · 새틀라이트 호텔</div>
-      <ul>
-        <li class="g"><i>✓</i>샤워 2 (301·401호 각 1)</li>
-        <li class="b"><i>!</i>오래된 건물 · 엘리베이터 없음</li>
-        <li class="b"><i>!</i>301호+401호 층 분리 묶음</li>
-      </ul>
+      <div class="tp"><span class="rk">6순위</span><a class="nm lk" href="https://www.airbnb.co.kr/rooms/1177681487710917054" target="_blank" rel="noopener">1번<span class="ext">↗</span></a>
+        <span class="loc">오쿠보 · 새틀라이트 호텔</span></div>
+      <div class="chips"><span class="ch no">허가 없음</span><span class="ch ok">샤워 2개</span><span class="ch plain">침실 6</span><span class="ch plain">14분</span></div>
+      <ul><li class="g"><i>✓</i>301호+401호 묶음이라 호실마다 샤워가 하나씩 있다</li><li class="b"><i>!</i>“오래된 건물에 리모델링” · 층 분리 · 엘리베이터 없음</li></ul>
     </div>
   </div>
   <div class="c">
-    <img class="ph" src="img/3.jpg" alt="3번 햐쿠닌초 건물 외관">
+    <a class="phl" href="https://www.airbnb.co.kr/rooms/1065064461351025819" target="_blank" rel="noopener"><img class="ph" src="img/3.jpg" alt="3번 숙소 사진"></a>
     <div class="pr">168만</div>
     <div class="bd">
-      <div class="tp"><span class="rk">7순위</span><span class="nm">3번</span></div>
-      <div class="loc">햐쿠닌초 · 패밀리 아파트</div>
-      <ul>
-        <li class="g"><i>✓</i>샤워 2 + 화장실 2</li>
-        <li class="g"><i>✓</i>신오쿠보 3분 · 신주쿠 12분</li>
-        <li class="b"><i>!</i>좁은 골목 · 철제 계단 · 허가 없음</li>
-      </ul>
+      <div class="tp"><span class="rk">7순위</span><a class="nm lk" href="https://www.airbnb.co.kr/rooms/1065064461351025819" target="_blank" rel="noopener">3번<span class="ext">↗</span></a>
+        <span class="loc">신주쿠구 햐쿠닌초</span></div>
+      <div class="chips"><span class="ch no">허가 없음</span><span class="ch ok">샤워 2개</span><span class="ch dim">침실 ?</span><span class="ch ok">12분</span></div>
+      <ul><li class="g"><i>✓</i>샤워 2 + 화장실 2 · 신오쿠보 도보 3분 · 슈퍼호스트 9년</li><li class="b"><i>!</i>좁은 골목 · 외부 철제 계단 · 침실 수와 6인 가격 미확인</li></ul>
     </div>
   </div>
   <div class="c out">
-    <img class="ph" src="img/8.jpg" alt="8번 혼마치 서쪽 외관과 정보 배너">
-    <div class="pr">134만</div>
+    <img class="ph" src="img/8.jpg" alt="8번 숙소 사진">
+    <div class="pr">133만</div>
     <div class="bd">
-      <div class="tp"><span class="rk">탈락</span><span class="nm">8번</span></div>
-      <div class="loc">시부야구 혼마치 서쪽</div>
-      <ul>
-        <li class="b"><i>!</i>표기는 욕실 2 — 실제 샤워 1</li>
-        <li class="b"><i>!</i>평점 4.0 · 후기 3개</li>
-        <li class="b"><i>!</i>정원 8명/10명 표기 불일치</li>
-      </ul>
+      <div class="tp"><span class="rk">탈락</span><span class="nm">8번</span>
+        <span class="loc">시부야구 혼마치 서쪽</span></div>
+      <div class="chips"><span class="ch no">허가 없음</span><span class="ch no">샤워 1개</span><span class="ch plain">침실 3</span><span class="ch dim">동선 ?</span></div>
+      <ul><li class="b"><i>!</i>요약은 “욕실 2개”인데 실제 샤워는 1개</li><li class="b"><i>!</i>평점 4.0 · 후기 3개 · 정원 8명/10명 표기 불일치</li></ul>
     </div>
   </div>
   <div class="c out">
-    <img class="ph" src="img/2.jpg" alt="2번 신오쿠보 카부키초 주방">
+    <img class="ph" src="img/2.jpg" alt="2번 숙소 사진">
     <div class="pr">185만</div>
     <div class="bd">
-      <div class="tp"><span class="rk">탈락</span><span class="nm">2번</span></div>
-      <div class="loc">신오쿠보 · 카부키초 인접</div>
-      <ul>
-        <li class="b"><i>!</i>카부키초 — 대피 최악 유형</li>
-        <li class="b"><i>!</i>야간 치안 9곳 중 최하</li>
-        <li class="b"><i>!</i>평점 4.42 · 후기 26개</li>
-      </ul>
+      <div class="tp"><span class="rk">탈락</span><span class="nm">2번</span>
+        <span class="loc">신오쿠보 · 카부키초 인접</span></div>
+      <div class="chips"><span class="ch no">허가 없음</span><span class="ch ok">샤워 2개</span><span class="ch plain">침실 3</span><span class="ch plain">14분</span></div>
+      <ul><li class="b"><i>!</i>카부키초 인접 — 지진 대피 조건으로 가장 나쁜 유형</li><li class="b"><i>!</i>야간 치안 아홉 곳 중 최하 · 평점 4.42</li></ul>
     </div>
   </div>
 </div>
 
 <div class="ft">
   <span class="k">결론</span>
-  <span><b>9곳 전부 확인</b> — 허가는 5곳뿐(4·5·7·9 여관업법, 6번 M13). 시부야구 고지대 셋(4·7·9)은 안전성 동점이라 <b>샤워 2개 대 1개</b>로 갈렸습니다.</span>
-  <span style="margin-left:auto"><b>확정 전 3가지</b> — ① 4·7·9번 준공 연도(셋 다 미표기) ② 1·2·3·8번 허가번호 ③ 1번 준공 연도·6인 배치</span>
+  <span><b>시부야구 고지대 셋(4·7·9번)은 지반·허가가 같고 준공 연도도 셋 다 미표기 — 안전성 동점.</b> 갈린 건 <b>샤워 2개 대 1개</b>.</span>
+  <span class="r"><b>확정 전</b> ① 4·7·9번 준공 연도 ② 1·2·3·8번 허가번호 ③ 4번 짐 보관 위치
+    &nbsp;·&nbsp; <a class="foot-lk" href="https://claude.ai/code/artifact/833571ab-ceab-4eb0-8013-4971068a8881" target="_blank" rel="noopener">전체 비교 ↗</a></span>
 </div>
-
 </div>
 
 <script>
 (function(){
   var pg=document.getElementById("pg");
-  function fit(){
-    var s=Math.min(window.innerWidth/1123, 1);
-    pg.style.transform="scale("+s+")";
-    document.body.style.height=(794*s)+"px";
-  }
-  fit(); window.addEventListener("resize",fit);
-  var mq=window.matchMedia("print");
-  mq.addEventListener&&mq.addEventListener("change",function(e){
-    pg.style.transform=e.matches?"none":pg.style.transform; if(!e.matches)fit();});
+  function fit(){var s=Math.min(window.innerWidth/1123,1);
+    pg.style.transform="scale("+s+")";document.body.style.height=(794*s)+"px";}
+  fit();window.addEventListener("resize",fit);
   window.addEventListener("beforeprint",function(){pg.style.transform="none";document.body.style.height="";});
   window.addEventListener("afterprint",fit);
 })();
 </script>
+</body></html>
