@@ -1,4 +1,4 @@
-<title>숙소 아홉 곳 비교</title>
+<title>안전성 접근성 편의성 비교</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700;900&display=swap">
@@ -41,7 +41,7 @@ section{padding-top:46px;}
 .sh .c{font-size:15px;color:var(--gray2);font-weight:700;}
 
 .scroll{overflow-x:auto;margin:0 -20px;padding:0 20px 6px;}
-table{border-collapse:collapse;font-size:15px;min-width:980px;}
+table{border-collapse:collapse;font-size:15px;min-width:1180px;}
 th,td{padding:12px 10px;text-align:center;border-bottom:1px solid var(--line);white-space:nowrap;}
 thead th{font-size:14px;font-weight:700;color:var(--gray);}
 thead th.win{color:var(--pt);}
@@ -50,6 +50,8 @@ td.g{color:var(--ok);font-weight:700;}
 td.b{color:var(--warn);font-weight:700;}
 td.n{color:var(--gray2);}
 td.win{background:var(--pt-w);font-weight:700;}
+th.grp{background:var(--fill2);color:var(--ink);font-size:14px;font-weight:900;text-align:left;padding:10px 10px;letter-spacing:-.01em;}
+.note.pt{background:var(--pt-w);}
 
 .card{background:var(--fill);border-radius:16px;padding:20px;margin-bottom:10px;}
 .card.top{background:var(--pt-w);}
@@ -75,8 +77,8 @@ td.win{background:var(--pt-w);font-weight:700;}
 
 <div class="hero">
   <div class="eb">에어비앤비 후보 9곳 · 2027.01.14~17 · 6명</div>
-  <h1>숙소 아홉 곳 비교</h1>
-  <p class="s">일정의 기준점은 <b>신주쿠역</b>입니다. 1/15 하코네행 로망스카가 오다큐 신주쿠역에서 출발하고, 나리타 왕복 N'EX도 신주쿠에 섭니다.</p>
+  <h1>안전성 · 접근성 ·<br>편의성으로 다시</h1>
+  <p class="s">예산은 제약이 아니므로 <b>가격은 순위에서 뺐습니다</b>(표 맨 아래에 참고용으로만 남겼습니다). 기준점은 <b>오다큐 신주쿠역</b> — 1/15 아침 하코네행 로망스카가 여기서 출발합니다.</p>
 </div>
 
 <figure>
@@ -166,39 +168,149 @@ td.win{background:var(--pt-w);font-weight:700;}
 <figcaption><b>아홉 곳이 두 방향으로 갈립니다.</b> 1·2·3·5·6번은 신주쿠역 북쪽 오쿠보 일대에 서로 걸어서 10분 안쪽으로 몰려 있고, <b>4·7·8·9번은 반대편 하츠다이·시부야구 혼마치 일대</b>입니다. 이쪽이 시부야구 서쪽 고지대 주택가로 지진 안전 조건에 맞습니다.<br><br><b>다만 "신주쿠역 한 정거장"에는 함정이 있습니다.</b> 하츠다이·혼마치 쪽에서 타는 게이오신선·도에이 신주쿠선의 신주쿠역은 <b>JR·오다큐 신주쿠역과 다른 지하 승강장</b>이라, 1/15 아침 로망스카를 타려면 지하 통로로 5~7분을 더 걸어야 합니다. 전철 3분이 아니라 실질 10분으로 잡으세요. 4·7·8번에 똑같이 적용되므로 순위는 바뀌지 않습니다. 지도는 근사치입니다.</figcaption>
 </figure>
 
+<figure>
+<svg viewBox="0 0 820 580" role="img"
+     aria-label="아홉 숙소를 안전성과 접근성 두 축에 놓은 산점도. 하츠다이·혼마치 쪽은 안전하지만 신주쿠역까지 오래 걸리고, 오쿠보 쪽은 빠르지만 안전성이 낮다. 6번, 1번, 7번만 이 상충 관계의 경계선에 있고 4번과 9번은 7번에 완전히 밀린다.">
+  <!-- 축 -->
+  <line x1="110" y1="470" x2="760" y2="470" stroke="currentColor" stroke-width="2" opacity=".4"/>
+  <line x1="110" y1="470" x2="110" y2="70" stroke="currentColor" stroke-width="2" opacity=".4"/>
+  <!-- 격자 -->
+  <line x1="110" y1="167" x2="760" y2="167" stroke="currentColor" stroke-width="1" opacity=".12"/>
+  <line x1="110" y1="297" x2="760" y2="297" stroke="currentColor" stroke-width="1" opacity=".12"/>
+  <line x1="110" y1="427" x2="760" y2="427" stroke="currentColor" stroke-width="1" opacity=".12"/>
+
+  <text x="104" y="172" font-size="13" font-weight="700" fill="currentColor" opacity=".6" text-anchor="end">높음</text>
+  <text x="104" y="302" font-size="13" font-weight="700" fill="currentColor" opacity=".6" text-anchor="end">보통</text>
+  <text x="104" y="432" font-size="13" font-weight="700" fill="currentColor" opacity=".6" text-anchor="end">낮음</text>
+  <text x="30" y="60" font-size="14" font-weight="700" fill="currentColor" opacity=".75">안전성 ↑</text>
+  <text x="30" y="79" font-size="12" fill="currentColor" opacity=".45">지반·건물·주변</text>
+
+  <text x="167" y="494" font-size="12" fill="currentColor" opacity=".5" text-anchor="middle">13분</text>
+  <text x="282" y="494" font-size="12" fill="currentColor" opacity=".5" text-anchor="middle">15분</text>
+  <text x="396" y="494" font-size="12" fill="currentColor" opacity=".5" text-anchor="middle">17분</text>
+  <text x="511" y="494" font-size="12" fill="currentColor" opacity=".5" text-anchor="middle">19분</text>
+  <text x="625" y="494" font-size="12" fill="currentColor" opacity=".5" text-anchor="middle">21분</text>
+  <text x="740" y="494" font-size="12" fill="currentColor" opacity=".5" text-anchor="middle">23분</text>
+  <text x="435" y="524" font-size="14" font-weight="700" fill="currentColor" opacity=".75" text-anchor="middle">← 접근성 (오다큐 신주쿠역까지 도어투도어)</text>
+
+  <!-- 파레토 경계 -->
+  <polyline points="167,297 224,271 339,123" fill="none" stroke="#3182F6" stroke-width="2"
+            stroke-dasharray="6 5" opacity=".55"/>
+  <text x="196" y="208" font-size="13" font-weight="700" fill="#3182F6" opacity=".85">경계선</text>
+  <text x="196" y="226" font-size="12" fill="#3182F6" opacity=".6">이 셋만 교환 성립</text>
+
+  <!-- 점 : 원 크기 = 편의·신뢰도 -->
+  <circle cx="339" cy="123" r="20" fill="#3182F6"/>
+  <text x="339" y="130" font-size="16" font-weight="900" fill="#fff" text-anchor="middle">7</text>
+  <text x="366" y="120" font-size="13" font-weight="700" fill="#3182F6">하츠다이 남</text>
+  <text x="366" y="137" font-size="12" fill="currentColor" opacity=".5">최신식 · 역 3분</text>
+
+  <circle cx="453" cy="184" r="19" fill="none" stroke="currentColor" stroke-width="2.5" opacity=".55"/>
+  <text x="453" y="191" font-size="15" font-weight="900" fill="currentColor" opacity=".55" text-anchor="middle">4</text>
+  <text x="453" y="220" font-size="12" fill="currentColor" opacity=".45" text-anchor="middle">하츠다이</text>
+
+  <circle cx="682" cy="184" r="22" fill="none" stroke="currentColor" stroke-width="2.5" opacity=".55"/>
+  <text x="682" y="191" font-size="15" font-weight="900" fill="currentColor" opacity=".55" text-anchor="middle">9</text>
+  <text x="682" y="223" font-size="12" fill="currentColor" opacity=".45" text-anchor="middle">혼마치 2초메</text>
+
+  <circle cx="224" cy="271" r="16" fill="none" stroke="currentColor" stroke-width="2.5"/>
+  <text x="224" y="277" font-size="14" font-weight="900" fill="currentColor" text-anchor="middle">1</text>
+  <text x="246" y="276" font-size="12" fill="currentColor" opacity=".5">오쿠보 · RC 건물</text>
+
+  <circle cx="167" cy="297" r="23" fill="#3182F6" opacity=".85"/>
+  <text x="167" y="304" font-size="17" font-weight="900" fill="#fff" text-anchor="middle">6</text>
+  <text x="167" y="336" font-size="13" font-weight="700" fill="#3182F6" text-anchor="middle">오쿠보역</text>
+  <text x="167" y="353" font-size="12" fill="currentColor" opacity=".5" text-anchor="middle">침실 6 · 13분</text>
+
+  <circle cx="396" cy="357" r="21" fill="none" stroke="currentColor" stroke-width="2.5" opacity=".55"/>
+  <text x="396" y="364" font-size="15" font-weight="900" fill="currentColor" opacity=".55" text-anchor="middle">5</text>
+  <text x="422" y="362" font-size="12" fill="currentColor" opacity=".45">신오쿠보 북</text>
+
+  <circle cx="224" cy="383" r="15" fill="none" stroke="currentColor" stroke-width="2.5" opacity=".5"/>
+  <text x="224" y="389" font-size="14" font-weight="900" fill="currentColor" opacity=".5" text-anchor="middle">3</text>
+  <text x="246" y="388" font-size="12" fill="currentColor" opacity=".45">햐쿠닌초</text>
+
+  <circle cx="224" cy="427" r="18" fill="none" stroke="#C0392B" stroke-width="2.5" opacity=".6"/>
+  <text x="224" y="434" font-size="15" font-weight="900" fill="#C0392B" opacity=".7" text-anchor="middle">2</text>
+  <text x="248" y="432" font-size="12" fill="#C0392B" opacity=".6">카부키초</text>
+
+  <text x="760" y="440" font-size="12" fill="currentColor" opacity=".45" text-anchor="end">원 크기 = 편의성 + 후기 신뢰도</text>
+  <text x="760" y="458" font-size="12" fill="#C0392B" opacity=".6" text-anchor="end">8번 = 도어투도어 미확인 · 샤워 1개 · 탈락</text>
+</svg>
+<figcaption><b>안전성과 접근성이 정반대를 가리킵니다.</b> 하츠다이·혼마치 쪽(4·7·9번)은 시부야구 고지대라 안전하지만 게이오신선 신주쿠역이 오다큐와 별개 승강장이어서 지하통로 6분이 붙습니다. 오쿠보 쪽(1·3·6번)은 JR로 신주쿠역 본체에 바로 들어가 빠르지만 저지대 목조밀집지입니다.<br><br><b>이 상충 관계의 경계선에 있는 건 6번·1번·7번 셋뿐입니다.</b> 나머지는 이 셋 중 하나에게 두 축 모두 밀립니다 — <b>특히 4번과 9번은 7번보다 안전성이 낮으면서 더 멉니다.</b> 가격을 아예 안 봐도 탈락이라는 뜻입니다. 안전성 점수와 도보 시간은 지도 위치·리스팅 표기에 근거한 제 판단이며, 물음표가 붙은 값은 호스트 확인이 필요합니다.</figcaption>
+</figure>
+
 <section>
-  <div class="sh"><h2>조건 대조</h2><span class="c">← 옆으로 밀어보세요</span></div>
+  <div class="sh"><h2>세 기준으로 대조</h2><span class="c">← 옆으로 밀어보세요</span></div>
   <div class="scroll">
   <table>
-    <thead><tr><th></th><th>1번</th><th>2번</th><th>3번</th>
-      <th>4번</th><th>5번</th><th>6번</th><th>7번</th><th>8번</th><th class="win">9번</th></tr></thead>
+    <thead><tr><th></th><th>1번</th><th>2번</th><th>3번</th><th>4번</th><th>5번</th>
+      <th>6번</th><th class="win">7번</th><th>8번</th><th>9번</th></tr></thead>
     <tbody>
-      <tr><th>동네</th><td>오쿠보역 도보 5분</td><td>신오쿠보·카부키초</td><td>햐쿠닌초</td>
-        <td class="g">하츠다이</td><td>신오쿠보</td><td>오쿠보</td><td>하츠다이</td><td>시부야 혼마치</td><td class="win">하츠다이 서쪽</td></tr>
-      <tr><th>평점</th><td>4.66</td><td class="b">4.42</td><td>4.8</td>
-        <td class="g">4.99</td><td class="g">4.98</td><td>4.87</td><td>4.87</td><td class="b">4.0</td><td class="win">4.99</td></tr>
-      <tr><th>후기</th><td>47</td><td class="b">26</td><td>54</td>
-        <td class="g">207</td><td>59</td><td>60</td><td class="win b">15</td><td class="b">3</td><td class="win">203</td></tr>
-      <tr><th>정원</th><td>16명</td><td>12명</td><td class="n">미확인</td>
-        <td>8명</td><td>8명</td><td>12명</td><td>10명</td><td>8명</td><td class="win">8명</td></tr>
-      <tr><th>침실</th><td class="b">6 (두 호실 분리)</td><td>3 (2인 1실)</td><td class="n">미확인</td>
-        <td class="n">미확인</td><td class="n">미확인</td><td class="g">6 (1인 1실)</td><td>3 (2인 1실)</td><td>3 (2인 1실)</td><td class="win">3 (2인 1실)</td></tr>
-      <tr><th>침대</th><td>7</td><td>6</td><td class="n">미확인</td>
-        <td>6</td><td class="g">7</td><td>6</td><td>6</td><td>6</td><td class="win">6</td></tr>
-      <tr><th>욕실</th><td class="n">미확인</td><td class="g">2.5 (샤워 2·화장실 2)</td><td class="n">미확인</td>
-        <td>2</td><td class="g">3</td><td>2</td><td>2</td><td class="b">화장실 2<br>샤워 1</td><td class="win">2</td></tr>
-      <tr><th>한 채 통째</th><td class="b">301호+401호</td><td class="g">예</td><td>아파트 1개</td><td class="g">예</td><td class="g">예</td><td class="g">예</td><td>예</td><td class="g">예</td><td class="win">예</td></tr>
-      <tr><th>3박 총액</th><td class="b">238만</td><td>185만</td><td class="g">168만<br>(최저)</td>
-        <td class="b">250만</td><td>200만</td><td>200만</td><td>148만</td><td class="g">134만</td><td class="win">207만</td></tr>
-      <tr><th>1인 부담</th><td class="b">39.6만</td><td>30.9만</td><td class="g">28.0만<br>(최저)</td>
-        <td class="b">41.8만</td><td>33.4만</td><td>33.4만</td><td>24.6만</td><td class="g">22.3만</td><td class="win">34.5만</td></tr>
-      <tr><th>건물</th><td>호텔형 임대</td><td>콘도미니엄</td><td>3층 소형</td>
-        <td class="n">미확인</td><td class="n">미확인</td><td class="g">신축</td><td>최신식</td><td>3층 빌라</td><td class="win n">미확인</td></tr>
-      <tr><th>게스트 선호</th><td class="n">—</td><td class="n">—</td><td class="g">슈퍼호스트<br>9년</td><td class="g">상위 5%</td><td class="g">예</td><td class="g">예</td><td>예</td><td class="n">—</td><td class="win">상위 1%</td></tr>
-      <tr><th>조용함</th><td>보통</td><td class="b">낮음</td><td>보통</td>
-        <td class="g">높음</td><td class="b">낮음</td><td>보통</td><td>높음</td><td>높음</td><td class="win">높음</td></tr>
-      <tr><th>지진 안전</th><td>보통</td><td>보통</td><td>보통</td>
-        <td class="g">좋음</td><td>보통</td><td>지반 보통<br>건물 신축</td><td>좋음</td><td class="g">좋음</td><td class="win">좋음</td></tr>
+      <tr><th class="grp" colspan="10">안전성</th></tr>
+      <tr><th>지반</th><td class="b">저지대</td><td class="b">저지대</td><td class="b">저지대</td>
+        <td class="g">고지대</td><td class="b">저지대</td><td class="b">저지대</td>
+        <td class="win g">고지대</td><td class="g">고지대</td><td class="g">고지대</td></tr>
+      <tr><th>건물</th><td class="g">RC 5층</td><td>콘도미니엄</td><td class="b">3층 소형</td>
+        <td class="n">미확인</td><td class="n">미확인</td><td class="g">신축</td>
+        <td class="win g">최신식</td><td>3층 빌라</td><td class="n">미확인</td></tr>
+      <tr><th>주변 환경</th><td>상가 · 대로</td><td class="b">유흥가</td><td class="b">좁은 골목</td>
+        <td class="g">주택가</td><td class="b">번화가 인근</td><td>주택 · 상가</td>
+        <td class="win g">주택가</td><td class="g">주택가</td><td class="g">주택가</td></tr>
+      <tr><th>야간 소음</th><td>보통</td><td class="b">매우 낮음</td><td>보통</td>
+        <td class="g">조용</td><td class="b">낮음</td><td>보통</td>
+        <td class="win g">조용</td><td class="g">조용</td><td class="g">조용</td></tr>
+
+      <tr><th class="grp" colspan="10">접근성</th></tr>
+      <tr><th>가장 가까운 역</th><td>오쿠보</td><td>신오쿠보</td><td>오쿠보</td>
+        <td>하츠다이</td><td>신오쿠보</td><td>오쿠보</td>
+        <td class="win">하츠다이</td><td class="n">미상</td><td>하츠다이</td></tr>
+      <tr><th>노선</th><td class="g">JR 츄오소부</td><td class="g">JR 야마노테</td><td class="g">JR 츄오소부</td>
+        <td>게이오신선</td><td class="g">JR 야마노테</td><td class="g">JR 츄오소부</td>
+        <td class="win">게이오신선</td><td class="n">미상</td><td>게이오신선</td></tr>
+      <tr><th>역까지 도보</th><td class="g">5분</td><td class="g">5분</td><td>5분?</td>
+        <td>5분?</td><td class="b">7~8분?</td><td class="g">4분?</td>
+        <td class="win g">3분</td><td>2분(표기)</td><td class="b">8~10분?</td></tr>
+      <tr><th>신주쿠 도어투도어</th><td class="g">약 14분</td><td class="g">약 14분</td><td class="g">약 14분?</td>
+        <td>약 18분?</td><td>약 17분?</td><td class="g">약 13분</td>
+        <td class="win">약 16분</td><td class="n">미확인</td><td class="b">약 22분?</td></tr>
+      <tr><th>도쿄도청 전망대</th><td>도보 20분</td><td>도보 20분</td><td>도보 20분</td>
+        <td class="g">도보 15분</td><td>도보 22분</td><td>도보 20분</td>
+        <td class="win g">도보 15분</td><td class="g">도보 15분</td><td>도보 20분</td></tr>
+
+      <tr><th class="grp" colspan="10">편의성</th></tr>
+      <tr><th>침실</th><td class="b">6 (두 호실)</td><td>3 (2인 1실)</td><td class="n">미확인</td>
+        <td class="n">미확인</td><td class="n">미확인</td><td class="g">6 (1인 1실)</td>
+        <td class="win">3 (2인 1실)</td><td>3 (2인 1실)</td><td>3 (2인 1실)</td></tr>
+      <tr><th>침대</th><td class="g">7</td><td>6</td><td class="n">미확인</td>
+        <td>6</td><td class="g">7</td><td>6</td>
+        <td class="win">6</td><td>6</td><td>6</td></tr>
+      <tr><th>욕실</th><td class="n">미확인</td><td class="g">2.5</td><td class="n">미확인</td>
+        <td>2</td><td class="g">3</td><td>2</td>
+        <td class="win">2</td><td class="b">샤워 1</td><td>2</td></tr>
+      <tr><th>한 채 통째</th><td class="b">301+401 분리</td><td class="g">예</td><td>아파트 1개</td>
+        <td class="g">예</td><td class="g">예</td><td class="g">예</td>
+        <td class="win g">예</td><td class="g">예</td><td class="g">예</td></tr>
+      <tr><th>후기 신뢰도</th><td>4.66 / 47</td><td class="b">4.42 / 26</td><td>4.8 / 54</td>
+        <td class="g">4.99 / 207</td><td class="g">4.98 / 59</td><td class="g">4.87 / 60</td>
+        <td class="win b">4.87 / 15</td><td class="b">4.0 / 3</td><td class="g">4.99 / 203</td></tr>
+      <tr><th>호스트</th><td>업체 2년</td><td class="n">—</td><td class="g">슈퍼호스트 9년</td>
+        <td class="g">상위 5%</td><td class="g">게스트 선호</td><td class="g">게스트 선호</td>
+        <td class="win g">게스트 선호</td><td class="b">없음</td><td class="g">상위 1%</td></tr>
+      <tr><th>짐 보관</th><td class="n">미확인</td><td class="n">미확인</td><td class="n">미확인</td>
+        <td class="n">미확인</td><td class="n">미확인</td><td class="n">미확인</td>
+        <td class="win n">미확인</td><td class="n">미확인</td><td class="g">가능</td></tr>
+      <tr><th>주변 편의</th><td class="g">코리아타운</td><td class="g">코리아타운</td><td class="g">코리아타운</td>
+        <td>로컬 주택가</td><td class="g">코리아타운</td><td class="g">코리아타운</td>
+        <td class="win">로손·마이바스켓</td><td>천원샵·세븐</td><td>천원샵·세븐</td></tr>
+
+      <tr><th class="grp" colspan="10">참고 · 가격 (순위에 반영 안 함)</th></tr>
+      <tr><th>3박 총액</th><td class="n">238만</td><td class="n">185만</td><td class="n">168만(최저)</td>
+        <td class="n">250만</td><td class="n">200만</td><td class="n">200만</td>
+        <td class="win n">148만</td><td class="n">134만</td><td class="n">207만</td></tr>
+      <tr><th>1인 부담</th><td class="n">39.6만</td><td class="n">30.9만</td><td class="n">28.0만</td>
+        <td class="n">41.8만</td><td class="n">33.4만</td><td class="n">33.4만</td>
+        <td class="win n">24.6만</td><td class="n">22.3만</td><td class="n">34.5만</td></tr>
     </tbody>
   </table>
   </div>
@@ -209,91 +321,93 @@ td.win{background:var(--pt-w);font-weight:700;}
 
   <div class="card top">
     <div class="r">1순위</div>
-    <h3>9번 · 하츠다이 서쪽 (혼마치 2초메)</h3>
-    <p class="m"><b>지금까지 나온 아홉 곳 중 가장 강합니다.</b> ★4.99에 후기 <b>203개</b>, <b>상위 1% 숙소</b>. 하츠다이 고지대 주택가, 집 한 채 통째, 침실 3·침대 6·욕실 2. <b>207만원(1인 34.5만)</b>으로 오쿠보의 5·6번(1인 33.4만)과 <b>1인당 1만원 차이</b>인데 동네·평점·등급이 전부 위입니다. <b>여행 가방 보관</b>까지 되니 1/14 나리타에서 14시쯤 도착해 체크인 전에 알펜도쿄 쇼핑을 가도 짐이 안 걸립니다.</p>
-    <div class="tags"><span class="tag g">상위 1%</span><span class="tag g">4.99 · 후기 203</span><span class="tag g">하츠다이 고지대</span><span class="tag g">짐 보관</span><span class="tag">207만원</span></div>
+    <h3>7번 · 하츠다이 남쪽</h3>
+    <p class="m"><b>안전성을 첫 기준으로 두면 답이 하나로 좁혀집니다.</b> 아홉 곳 중 <b>지반(시부야구 고지대)과 건물(최신식) 양쪽을 동시에 확인할 수 있는 유일한 집</b>입니다. 조용한 로컬 주택가라 야간 위험도 낮고, <b>역까지 도보 3분</b>으로 아홉 곳 중 가장 짧습니다. 도쿄도청 전망대는 걸어서 15분.<br><br>접근성은 도어투도어 16분으로 2등급입니다. 게이오신선 신주쿠역이 오다큐와 별개 승강장이라 지하통로 6분이 붙기 때문인데, <b>하츠다이를 고르는 대가</b>라 4·9번도 똑같이 안고 있습니다. 대신 7번은 역까지 3분이라 그 손실을 가장 적게 봅니다.<br><br><b>약점은 후기 15개 하나입니다.</b> 안전성·접근성에는 영향이 없고, 편의성의 "기대대로일 확률"만 깎습니다.</p>
+    <div class="tags"><span class="tag g">고지대 + 최신식</span><span class="tag g">역 도보 3분</span><span class="tag g">가장 조용</span><span class="tag g">도쿄도청 15분</span><span class="tag b">후기 15개</span></div>
   </div>
 
   <div class="card">
     <div class="r">2순위</div>
-    <h3>7번 · 하츠다이 남쪽</h3>
-    <p class="m"><b>59만원(1인 9.9만) 싼 같은 조건의 집입니다.</b> 동네·침실 3·침대 6·욕실 2·최신식 건물까지 9번과 판박이인데 <b>148만원</b>. 유일한 차이는 <b>후기가 15개뿐</b>이라는 것입니다.<br><br><b>확인할 게 하나 있습니다 — 7번과 9번의 호스트가 같은 사람인지 보세요.</b> 둘 다 하츠다이, 침실 3·침대 6·욕실 2, 사진 74장, 셀프 체크인으로 구성이 지나치게 비슷합니다. <b>같은 호스트가 운영하는 다른 채라면</b> 7번의 후기 15개는 단지 최근에 열었다는 뜻이지 운영이 부실하다는 뜻이 아닙니다. 그러면 59만원 아끼는 7번이 정답이 됩니다.</p>
-    <div class="tags"><span class="tag g">148만원 · 1인 24.6만</span><span class="tag g">최신식 건물</span><span class="tag b">후기 15개</span></div>
+    <h3>6번 · 오쿠보역 인근</h3>
+    <p class="m"><b>접근성과 편의성만 보면 6번이 1등입니다.</b> 도어투도어 <b>13분으로 아홉 곳 중 최단</b>이고, JR 츄오소부선이라 신주쿠역 본체로 바로 들어가 환승 손실이 없습니다. <b>침실 6개 = 1인 1실</b>은 6번만 됩니다 — 42~59세 남자 여섯이 3박을 보내는 데 이건 실질적인 차이입니다. 코리아타운이 도보권이라 야식·술·한식 조달도 가장 편합니다.<br><br><b>밀리는 건 안전성 한 축입니다.</b> 건물은 신축이라 붕괴 위험이 낮은데, 오쿠보 일대의 진짜 리스크는 <b>목조주택 밀집지의 화재 연소 확대</b>라 내 집 한 채가 새것이어도 상쇄되지 않습니다.<br><br><b>안전성을 2순위로 내리는 순간 6번이 1순위가 됩니다.</b> 순서를 어떻게 두시느냐가 전부입니다.</p>
+    <div class="tags"><span class="tag g">도어투도어 13분</span><span class="tag g">1인 1실</span><span class="tag g">신축</span><span class="tag g">코리아타운</span><span class="tag b">저지대 · 목조밀집</span></div>
   </div>
 
   <div class="card">
     <div class="r">3순위</div>
-    <h3>6번 · 오쿠보역 인근</h3>
-    <p class="m"><b>침실 6개 — 여섯 명이 각자 방을 씁니다.</b> 신축 저택 한 채 통째에 200만원. 코골이를 원천 차단하는 유일한 집입니다. 다만 <b>9번과 1인 1만원 차이</b>인데 오쿠보 저지대로 내려오고 평점도 4.87(60개)입니다. 잠자리 독립을 최우선으로 두실 때만 의미가 있습니다.</p>
-    <div class="tags"><span class="tag g">1인 1실</span><span class="tag g">신축</span><span class="tag b">오쿠보 저지대</span><span class="tag">200만원</span></div>
+    <h3>1번 · 오쿠보 (새틀라이트 호텔)</h3>
+    <p class="m"><b>가격을 빼니 오히려 올라왔습니다. 안전성에서 다시 봐야 할 요소가 두 개 있습니다.</b> 건물이 <b>철근콘크리트 5층</b>이라 오쿠보의 목조 소형 건물들보다 구조적으로 훨씬 안전하고, 호스트가 숙박업체로 <b>여관업 기준의 소방 설비(스프링클러·유도등·방화문)</b>가 적용됐을 가능성이 큽니다. 민박보다 엄격한 기준입니다. 오쿠보역 도보 5분에 도어투도어 14분으로 접근성도 상위권입니다.<br><br><b>발목을 잡는 건 편의성입니다. 301호와 401호로 층이 갈립니다.</b> 밤에 모여 한잔하는 여행에서 여섯이 두 층에 흩어지는 건 치명적이고, 평점 4.66도 낮습니다. <b>그리고 "최저" 238만원 표기와 "아파트 선택" 버튼이라 6인 구성의 실제 조건을 아직 모릅니다.</b></p>
+    <div class="tags"><span class="tag g">RC 5층 · 호텔 소방</span><span class="tag g">도어투도어 14분</span><span class="tag b">301+401 분리</span><span class="tag b">평점 4.66</span></div>
   </div>
 
   <div class="card">
     <div class="r">4순위</div>
-    <h3>5번 · 신오쿠보 북쪽</h3>
-    <p class="m">욕실 3개·세면대 3개·침대 7개에 전용 파티오, ★4.98. 아침 세면 속도는 여기가 1등입니다. 다만 <b>9번과 1인 1만원 차이</b>에 신오쿠보 한복판이라 1/16 토요일 밤이 시끄럽습니다.</p>
-    <div class="tags"><span class="tag g">욕실 3개</span><span class="tag b">주말 소음</span><span class="tag">200만원</span></div>
+    <h3>9번 · 혼마치 2초메</h3>
+    <p class="m"><b>편의성과 신뢰도는 아홉 곳 중 최고입니다</b> — 4.99에 후기 203개, 상위 1%, 짐 보관까지. 지반도 고지대로 좋습니다.<br><br><b>그런데 두 축에서 7번에 완전히 밀립니다.</b> 같은 시부야구 고지대인데 <b>건물 정보가 없고</b>, 역까지 <b>도보 8~10분</b>으로 추정돼 도어투도어가 <b>22분 — 아홉 곳 중 최악</b>입니다. 6명이 캐리어를 끌고 1월 도쿄를 매일 오가는 조건에서 7번보다 6분 더 걷는 건 작지 않습니다.<br><br><b>단, 도보 시간은 추정입니다.</b> 호스트에게 물어 <b>5분 이내로 확인되면 7번과 다시 붙습니다.</b></p>
+    <div class="tags"><span class="tag g">상위 1% · 후기 203</span><span class="tag g">짐 보관</span><span class="tag b">도어투도어 22분</span><span class="tag b">건물 미확인</span></div>
   </div>
 
   <div class="card">
     <div class="r">5순위</div>
-    <h3>3번 · 햐쿠닌초 (MeiJon의 콘도)</h3>
-    <p class="m"><b>가격이 나왔는데 의외로 좋습니다 — 168만원, 1인 28만원.</b> 7번(148만) 다음으로 싸고 5·6번(200만)보다 <b>32만원 쌉니다.</b> ★4.8에 후기 54개, 게다가 호스트가 <b>슈퍼호스트 · 경력 9년</b>입니다. 9년을 슈퍼호스트로 버틴 건 운영이 안정적이라는 뜻입니다.<br><br><b>그런데 정원·침실·침대·욕실이 아직도 전부 미확인입니다.</b> 버튼이 "예약하기"가 아니라 <b>"아파트 선택"</b>이고 금액도 <b>"최저"</b> 168만원입니다 — 여러 유닛 중 가장 싼 것의 가격이라는 뜻이라, <b>여섯 명이 들어가는 유닛은 이보다 비쌀 수 있습니다.</b> "아파트 선택"을 눌러 6인 기준 가격을 확인하는 데 30초면 됩니다.<br><br>확인 결과 <b>6명 한 유닛이 정말 168만이라면 5·6번을 제칠 후보</b>입니다. 다만 위치가 햐쿠닌초 저지대라 지진 조건에서는 하츠다이 쪽(7·9번)에 밀리고, 건물 사진을 보면 <b>좁은 골목의 3층 소형 건물</b>이라 목조밀집지 성격이 그대로 보입니다.</p>
-    <div class="tags"><span class="tag g">168만원 · 1인 28만</span><span class="tag g">슈퍼호스트 9년</span><span class="tag b">인원 미확인</span><span class="tag b">저지대 · 골목</span></div>
+    <h3>4번 · 하츠다이</h3>
+    <p class="m">지반은 고지대로 좋고 후기 207개에 4.99입니다. 그런데 <b>7번과 같은 동네인데 건물 정보가 없고 역에서 더 멀어(도보 5분 추정) 도어투도어가 18분</b>입니다. <b>안전성·접근성 두 축 모두 7번 아래</b>라 7번이 예약 가능한 동안에는 고를 이유가 없습니다.</p>
+    <div class="tags"><span class="tag g">4.99 · 후기 207</span><span class="tag b">두 축 모두 7번 아래</span></div>
   </div>
 
   <div class="card">
     <div class="r">6순위</div>
-    <h3>4번 · 하츠다이</h3>
-    <p class="m"><b>9번이 나오면서 설 자리가 없어졌습니다.</b> 같은 하츠다이에 같은 ★4.99인데 후기는 207 대 203으로 사실상 같고, 등급은 <b>상위 5%로 9번(상위 1%)보다 낮은데 43만원 더 비쌉니다.</b> 9번이 예약 가능한 한 4번을 고를 이유가 없습니다.</p>
-    <div class="tags"><span class="tag">4.99 · 후기 207</span><span class="tag b">9번보다 43만원 비쌈</span></div>
+    <h3>5번 · 신오쿠보 북쪽</h3>
+    <p class="m"><b>욕실 3개·세면대 3개·침대 7개로 편의성은 상위권</b>이고 평점 4.98입니다. 하지만 <b>신오쿠보 저지대 번화가 인근이라 안전성이 낮고</b>, 역까지 7~8분으로 <b>같은 저지대인 6번보다 접근성도 떨어집니다.</b> 6번에 두 축 모두 밀립니다. 1/16 토요일 밤 소음도 그대로입니다.</p>
+    <div class="tags"><span class="tag g">욕실 3개</span><span class="tag b">저지대 · 주말 소음</span><span class="tag b">6번에 두 축 밀림</span></div>
+  </div>
+
+  <div class="card">
+    <div class="r">7순위</div>
+    <h3>3번 · 햐쿠닌초 (MeiJon의 콘도)</h3>
+    <p class="m">슈퍼호스트 경력 9년은 아홉 곳 중 가장 긴 운영 이력입니다. 하지만 <b>안전성에서 최하위권</b>입니다 — 저지대에 <b>좁은 골목의 3층 소형 건물</b>, 외부 철제 계단으로 올라가는 구조입니다. 지진 시 대피와 짐 운반 둘 다 불리합니다. <b>정원·침실·침대·욕실이 전부 미확인</b>이라 편의성 평가도 불가능합니다.</p>
+    <div class="tags"><span class="tag g">슈퍼호스트 9년</span><span class="tag b">좁은 골목 · 철제 계단</span><span class="tag b">구성 전부 미확인</span></div>
   </div>
 
   <div class="card">
     <div class="r">탈락</div>
-    <h3>1번 · 오쿠보 (새틀라이트 호텔)</h3>
-    <p class="m"><b>가격이 나오면서 보류에서 탈락으로 내려갑니다. 238만원, 1인 39.6만원.</b> 같은 오쿠보 동네의 6번(200만)보다 <b>37만원 비싼데 평점은 4.66 대 4.87로 낮습니다.</b> 6번이 완전한 상위호환입니다.<br><br><b>"아파트 2개"의 정체도 확인됐습니다 — 301호와 401호입니다.</b> 같은 층 옆방이 아니라 <b>위아래 층으로 갈라집니다.</b> 방 구성이 "6LDDKK"로 거실·부엌이 두 벌인 것도 두 집이라는 증거입니다. 밤에 모여 한잔하는 여행에서 층이 갈리는 건 치명적입니다.<br><br><b>가격도 액면 그대로 보면 안 됩니다.</b> 버튼이 "예약하기"가 아니라 <b>"아파트 선택"</b>이고 금액도 <b>"최저"</b> 238만원입니다. 두 호실을 다 잡으면 더 비싸질 수 있습니다.</p>
-    <div class="tags"><span class="tag b">238만원 · 1인 39.6만</span><span class="tag b">301호+401호 분리</span><span class="tag b">평점 4.66</span><span class="tag b">"최저" 표시가</span></div>
-  </div>
-
-  <div class="card">
-    <div class="r">탈락</div>
-    <h3>8번 · 시부야 혼마치 서쪽</h3>
-    <p class="m"><b>가장 싸지만(134만) 평점 4.0에 후기 3개입니다.</b> 에어비앤비 평점은 후하게 매겨져 4.7도 평균 이하인데 <b>4.0은 실제로 문제가 있었다는 신호</b>이고, 후기 3개로는 그게 뭔지 확인할 방법도 없습니다.<br><br>게다가 <b>리스팅 안에서 숫자가 어긋납니다.</b> 요약은 "욕실 2개"인데 상단 배너는 <b>"2 toilet 1 bathroom"</b> — 화장실만 둘, <b>샤워는 하나</b>입니다. 정원도 요약 8명, 배너 10명으로 다릅니다.</p>
-    <div class="tags"><span class="tag b">평점 4.0</span><span class="tag b">후기 3개</span><span class="tag b">샤워 1개</span><span class="tag b">정보 불일치</span></div>
+    <h3>8번 · 혼마치 서쪽</h3>
+    <p class="m">고지대에 조용한 주택가로 안전성은 괜찮습니다. 그런데 <b>편의성이 최하위입니다</b> — 요약은 "욕실 2개"인데 배너는 <b>"2 toilet 1 bathroom"</b>, 즉 <b>여섯 명이 샤워 하나</b>를 씁니다. 정원 표기도 8명·10명으로 어긋나고, <b>평점 4.0에 후기 3개</b>입니다. 4.7도 평균 이하인 에어비앤비에서 4.0은 실제로 문제가 있었다는 신호입니다.</p>
+    <div class="tags"><span class="tag b">샤워 1개</span><span class="tag b">평점 4.0 / 후기 3</span><span class="tag b">정보 불일치</span></div>
   </div>
 
   <div class="card">
     <div class="r">탈락</div>
     <h3>2번 · 신오쿠보 · 카부키초</h3>
-    <p class="m"><b>가격이 나왔는데도 자리가 없습니다. 185만원, 1인 30.9만원.</b> 어느 축에서도 1등이 아닙니다 — <b>가격은 7번(148만)에 37만원 지고, 품질은 5번(4.98)에 집니다.</b> 5번이 15만원 비싸지만 그 돈으로 평점 4.42 → 4.98을 삽니다. 1인 2.5만원 차이입니다.<br><br>구조 자체는 나쁘지 않습니다. <b>욕실 2.5개를 "욕실 2개 + 화장실 2개"로 제목에 정확히 써놓은 건 8번과 반대로 정직한 표기</b>이고, 여섯 명 아침 동선에는 충분합니다.<br><br>문제는 성격입니다. 제목이 <b>"한국 거리 / 카부키초"</b>를 앞세우는 집이라 단체 파티 손님을 받아온 곳으로 보이고, 평점 4.42가 쌓인 맥락도 그쪽일 가능성이 큽니다. 42~59세 여섯이 조용히 쉬려는 여행과는 결이 다릅니다. <b>카부키초 인접은 지진 대피 관점에서도 최악</b>입니다 — 좁은 골목, 유흥가 밀집, 야간 인구밀도.</p>
-    <div class="tags"><span class="tag b">평점 4.42</span><span class="tag b">카부키초 인접</span><span class="tag">185만원</span><span class="tag g">욕실 표기 정직</span></div>
+    <p class="m"><b>안전성 최하위입니다.</b> 리스팅이 <b>"한국 거리 / 카부키초"</b>를 앞세우는 집입니다. 카부키초 인접은 좁은 골목, 유흥가 밀집, 야간 인구밀도 — <b>지진 대피 조건으로는 도쿄에서 가장 나쁜 유형</b>이고 야간 치안도 아홉 곳 중 최하입니다. 평점 4.42가 쌓인 맥락도 단체 파티 손님 쪽으로 보입니다. 욕실 2.5개를 정확히 표기한 점은 인정하지만 그걸로 덮이지 않습니다.</p>
+    <div class="tags"><span class="tag b">카부키초 인접</span><span class="tag b">야간 치안 최하</span><span class="tag b">평점 4.42</span></div>
   </div>
 </section>
 
 <section>
-  <div class="sh"><h2>결정은 여기서 갈립니다</h2></div>
-  <div class="note">
-    <b>9번이 나오면서 싸움이 둘로 좁혀졌습니다. 9번과 7번, 차이는 59만원입니다.</b>
+  <div class="sh"><h2>그래서 결론</h2></div>
+  <div class="note pt">
+    <b>가격을 빼자 9곳이 두 곳으로 줄었습니다. 7번과 6번입니다.</b> 나머지 일곱은 이 둘 중 하나에게 두 축 이상 밀립니다.
     <ul>
-      <li><b>9번(207만 · 1인 34.5만)</b> — 후기 203개에 4.99, 상위 1%. 하츠다이 고지대. 실패 확률이 사실상 없습니다. 짐 보관도 됩니다.</li>
-      <li><b>7번(148만 · 1인 24.6만)</b> — 같은 동네, 같은 침실 3·침대 6·욕실 2, 최신식 건물. 후기가 15개뿐인 것만 다릅니다.</li>
+      <li><b>7번</b> — 안전성 1등, 접근성 3등, 편의성 4등. <b>안전성을 첫 기준으로 두면 여기입니다.</b> 고지대와 최신식 건물을 동시에 확인할 수 있는 유일한 집이고, 역 도보 3분으로 하츠다이의 환승 손실을 가장 적게 봅니다.</li>
+      <li><b>6번</b> — 접근성 1등(13분), 편의성 1등(1인 1실), 안전성 5등. <b>안전성을 2순위로 내리면 여기입니다.</b></li>
     </ul>
-    <b>저는 9번을 권합니다.</b> 오쿠보의 5·6번(1인 33.4만)과 <b>1인 1만원 차이</b>로 지진 조건에 맞는 고지대와 상위 1% 등급을 동시에 가져옵니다. 처음에 "지진 안전이 가장 중요하다"고 하신 기준에서 지금까지 나온 것 중 가장 깔끔한 답입니다. 4번은 9번의 상위호환에 밀려 사실상 탈락입니다.<br><br>
-    <b>단, 예약 전에 이것부터 하세요 — 7번과 9번의 호스트 프로필을 열어 같은 사람인지 확인.</b> 두 집은 구성이 지나치게 비슷합니다. 같은 호스트라면 7번의 후기 15개는 "최근 오픈"이라는 뜻이고, 그러면 <b>59만원(1인 9.9만) 아끼는 7번이 답</b>입니다. 다른 호스트라면 9번으로 가세요.
+    <b>저는 7번을 권합니다.</b> 처음부터 "가장 중요한 부분은 지진에 안전한 지역, 대피가 용이하고 안전한 곳"이라고 하셨고, 지금도 안전성을 첫 번째로 두셨습니다. 그 기준을 그대로 적용하면 7번입니다. 접근성 3분 손실과 2인 1실은 안전성을 위해 낼 만한 값입니다.<br><br>
+    <b>다만 6번을 완전히 접지는 마세요.</b> 6명이 3박 내내 각자 방에서 자는 것과 도어투도어 13분은 실제로 큰 편의이고, 6번도 <b>신축</b>이라 건물 붕괴 위험 자체는 낮습니다. 오쿠보의 위험은 "내 집"이 아니라 "옆집이 낡은 목조"라는 데 있습니다. 그 차이를 감수할 만하다고 보시면 6번이 더 즐거운 여행이 됩니다.
   </div>
+
   <div class="note warn" style="margin-top:12px">
-    <b>예약 전에 반드시 확인할 것</b>
+    <b>7번으로 가기 전 확인 (안전성 · 접근성 · 편의성 순)</b>
     <ul>
-      <li><b>3번은 "아파트 선택"부터</b> — 표시된 168만원은 <b>최저가</b>입니다. 6인 기준 유닛의 실제 금액을 먼저 확인하세요. 1번도 같은 방식이라 238만원이 최종가가 아닐 수 있습니다.</li>
-      <li><b>신고번호</b> — 리스팅 하단에 <b>M13</b>으로 시작하는 번호가 있어야 합법입니다. 없으면 예약 직전에 취소될 수 있습니다. 아홉 곳 전부 아직 확인 안 됐습니다. <b>1번처럼 숙박업체가 호스트인 곳은 여관업 허가로 운영돼 번호 형식이 다를 수 있습니다.</b></li>
-      <li><b>표기된 "욕실 2개"를 그대로 믿지 마세요</b> — 8번은 요약이 "욕실 2개"인데 실제로는 화장실 2 + 샤워 1이었습니다. 4·6·7·9번도 똑같이 "욕실 2개"로 표기돼 있으니 <b>사진에서 샤워부스를 직접 세어보세요.</b> 여섯 명 아침 동선이 여기서 갈립니다.</li>
-      <li><b>침실 3개에 침대 6개 = 2인 1실</b> — 7·9번 모두 해당합니다. 사진에서 <b>매트리스를 붙여놓은 방</b>인지 침대 두 개가 떨어져 있는 방인지 보세요. 붙여놓은 방이면 성인 남자 둘이 한 침대에 눕는 구조입니다.</li>
-      <li><b>1/15 하코네 1박 동안 짐</b> — 3박 연박으로 잡아 짐을 두고 갑니다. 4·5·6·7·9번 모두 1/14~1/17 3박 가격이 표시돼 있으니 그대로 예약하면 됩니다.</li>
-      <li><b>취소 수수료 없음</b> — 5·6·7·9번 모두 해당하고 <b>7·9번은 오늘 결제 ₩0</b>입니다. 둘 다 "보통 예약이 가득 찬다"고 뜨니, <b>일단 9번을 잡아두고</b> 호스트 확인과 사진 검토 뒤에 7번으로 바꾸셔도 손해가 없습니다.</li>
+      <li><b>① 내진 기준 연도</b> — "최신식"이 정확히 몇 년에 지어졌는지 호스트에게 물으세요. <b>2000년 이후 신축이면 개정 내진기준(목조 접합부 금물 보강)이 적용된 건물</b>이고, 이게 이번 여행 안전성의 핵심 근거입니다.</li>
+      <li><b>② 가장 가까운 광역대피장소</b> — 7·9번 쪽은 <b>신주쿠 중앙공원</b>, 6번 쪽도 같습니다. 호스트에게 "집에서 가장 가까운 一時集合場所(일시집합장소)"를 물어두고 6명 단톡에 공유하세요.</li>
+      <li><b>③ 샤워부스 개수</b> — 7번도 "욕실 2개" 표기입니다. 8번이 같은 표기로 실제 샤워 1개였으니, <b>사진 74장에서 샤워부스를 직접 세어보세요.</b> 하나면 편의성이 6번에 크게 밀립니다.</li>
+      <li><b>④ 침실 3개의 침대 배치</b> — 매트리스를 붙여놓은 방이면 성인 남자 둘이 한 침대에 눕는 구조입니다. 그게 여러 방이면 6번(1인 1실)을 다시 보셔야 합니다.</li>
+      <li><b>⑤ 7번·9번 호스트 동일 여부</b> — 구성이 지나치게 닮았습니다. 같은 호스트면 7번의 후기 15개는 "최근 오픈"이라는 뜻이 되어 유일한 약점이 사라집니다.</li>
+      <li><b>⑥ M13 신고번호</b> — 아홉 곳 전부 미확인입니다. 없으면 합법 숙소가 아니고 예약 직전 취소될 수 있습니다. 1번은 업체 운영이라 여관업 허가로 번호 형식이 다를 수 있습니다.</li>
     </ul>
+    7번과 9번 모두 <b>오늘 결제 ₩0, 취소 수수료 없음</b>입니다. 둘 다 "보통 예약이 가득 찬다"고 뜨니 <b>일단 7번을 잡아두고</b> 위 항목을 확인하면서 결정하셔도 손해가 없습니다.
   </div>
 </section>
 
-<div class="foot">숙소 위치는 에어비앤비가 예약 전 대략 위치만 공개하므로 지도는 근사치입니다. 평점·가격은 캡처 시점 기준입니다.</div>
+<div class="foot">안전성 점수는 지반(무사시노 대지 고지대 대 신주쿠구 저지대), 건물 구조·연식, 주변 밀집도와 야간 환경을 근거로 한 제 판단입니다. 도보 시간과 도어투도어는 에어비앤비가 예약 전 대략 위치만 공개하므로 지도 기준 추정치이며, 물음표가 붙은 값은 호스트 확인이 필요합니다. 평점·가격은 캡처 시점 기준입니다.</div>
 </div>
