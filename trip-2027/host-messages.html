@@ -85,6 +85,8 @@ a.listing:focus-visible{outline:2px solid var(--ac);outline-offset:2px;}
 .got-l b{color:var(--ink);font-weight:700;}
 .ask.done{background:var(--ok-w);color:var(--ok);}
 .badge.warn{background:var(--mid-w);color:var(--mid);}
+.badge.no{background:var(--no-w);color:var(--no);}
+.rk.out{background:var(--no);color:#fff;}
 .gap{background:var(--mid-w);border-radius:10px;padding:12px 14px;}
 .gap-h{display:block;font-size:12.5px;font-weight:900;letter-spacing:.04em;color:var(--mid);margin-bottom:6px;}
 .why{font-size:15px;color:var(--gray);}
@@ -139,8 +141,9 @@ pre.krt{margin:0;font-family:inherit;font-size:14.5px;line-height:1.75;color:var
       <li><b>4번에서 답이 왔습니다 — 준공 2019년.</b> 2000년 개정 내진기준 이후 건물이고 아홉 곳 중 유일하게 준공 연도가 확인됐습니다. <b>안전성 동점이 깨져 1순위가 굳었습니다.</b> 4번 카드는 이제 <b>남은 세 가지만 묻는 답장용</b>으로 바꿔 두었습니다.</li>
       <li><b>9번도 답했습니다 — 2017년 목조 단독주택.</b> 4번과 안전성 5.0 동점이 됐고, <b>일시집합장소(도보 100m 학교)와 비상 물자</b>까지 답한 유일한 집입니다. 더 물을 것이 없습니다.</li>
       <li><b>7번은 연도를 피했습니다.</b> "일본 기준에 따라 설계"라는 말뿐이었고, <b>"리노베이션을 방금 마쳤다"</b>고 해 리스팅의 "신축"과 충돌합니다. 안전성 4.8 → 4.2. <b>재문의 메시지를 새로 넣어 두었습니다.</b></li>
-      <li><b>②번 묶음(1·3번)은 합법성 확인</b>입니다. 허가번호가 없으면 예약 직전에 취소될 수 있습니다.</li>
-      <li><b>③번 묶음(6·5번)은 구성 확인</b>입니다. 순위를 뒤집을 정도는 아니지만 잠자리가 걸려 있습니다.</li>
+      <li><b>3번은 탈락했습니다.</b> 공동 호스트가 <b>"새로운 내진 기준을 충족하지 않습니다"</b>라고 직접 답했습니다. 정직한 답변이지만 지진 안전이 첫 기준인 이상 탈락 사유입니다.</li>
+      <li><b>1번은 AI 봇이 받았습니다.</b> 허가번호·건축 연도·내진·대피장소를 전부 "찾을 수 없다"고 했고 직원 회신 대기 중입니다.</li>
+      <li><b>5번도 답했습니다 — 2006년 준공 + 2024.12 리노베이션 · 대피소 도보 1분.</b> 6번을 제치고 4순위가 됐습니다. <b>이제 답이 없는 곳은 6번뿐입니다.</b></li>
     </ul>
   </div>
 </header>
@@ -248,7 +251,7 @@ pre.krt{margin:0;font-family:inherit;font-size:14.5px;line-height:1.75;color:var
 <section class="grp">
   <div class="grp-h">
     <span class="grp-n">② 합법 숙소인지 확인</span>
-    <span class="grp-w">1번 · 3번 — 허가번호가 설명문에 없습니다</span>
+    <span class="grp-w">3번은 답변 후 탈락 · 1번은 직원 회신 대기</span>
   </div>
 
   <article class="card">
@@ -300,46 +303,30 @@ pre.krt{margin:0;font-family:inherit;font-size:14.5px;line-height:1.75;color:var
 
   <article class="card">
     <div class="card-h">
-      <div class="who"><span class="rk">7순위</span><span class="num">3번</span>
-        <span class="host">신주쿠구 햐쿠닌초 · 호스트 MeiJon(슈퍼호스트 9년)</span></div>
+      <div class="who"><span class="rk out">탈락</span><span class="num">3번</span>
+        <span class="host">신주쿠구 햐쿠닌초 · 호스트 MeiJon (공동 호스트 Scott Hoo)</span>
+        <span class="badge no">답변 완료 · 탈락</span></div>
       <a class="listing" href="https://www.airbnb.co.kr/rooms/1065064461351025819" target="_blank" rel="noopener">
         <span class="lt">MeiJon의 콘도<span class="ext">↗</span></span>
-        <span class="lm">3박 168.1만(최저) · ★4.8 후기 54 · 호스트 MeiJon</span>
+        <span class="lm">3박 168.1만(최저) · ★4.8 후기 54 · 東京都新宿区百人町2-11-13</span>
       </a>
-      <p class="why">샤워 2개·화장실 2개·신오쿠보 도보 3분이 이번에 확인됐습니다. 남은 건 <b>허가번호와 침실 수, 그리고 6인 실제 가격</b>입니다. 표시가격은 "최저"라 6명 기준이 아닙니다.</p>
-      <div class="asks"><span class="ask hot">허가번호</span><span class="ask hot">준공 연도 · 내진</span><span class="ask hot">일시집합장소</span><span class="ask">침실 수</span><span class="ask">6인 총액</span></div>
-    </div>
-    <div class="jpbox">
-      <div class="bar"><span class="lbl">일본어 — 그대로 복사</span>
-        <button class="cp" type="button" data-t="m3">복사</button></div>
-      <pre class="jp" id="m3">はじめまして。2027年1月14日〜17日に成人6名（男性）での宿泊を検討しております。予約前に5点お伺いできますでしょうか。
-
-1. 旅館業法の許可番号（または住宅宿泊事業法の届出番号）を教えていただけますでしょうか。
-
-2. 建物の建築年（築年数）を教えていただけますでしょうか。地震への備えとして、新耐震基準や2000年基準に適合しているかを確認したく存じます。
-
-3. 万一の地震に備え、お住まいから最寄りの「一時集合場所」を教えていただけますでしょうか。外階段から出入りする建物とのことですので、避難経路もあわせて伺えますと助かります。
-
-4. 寝室は何部屋ございますか。ベッド6台・定員10名までは確認できたのですが、寝室の数が分かりませんでした。
-
-5. 2027年1月14日〜17日に成人6名で宿泊する場合の総額を教えていただけますでしょうか。表示されている料金が最低料金とのことでしたので、6名での実際の金額を知りたく存じます。
-
-お忙しいところ恐れ入りますが、よろしくお願いいたします。</pre>
-    </div>
-    <div class="kr"><span class="lbl">한국어 확인용</span>
-      <pre class="krt">처음 뵙겠습니다. 2027년 1월 14일~17일에 성인 6명(남성)이 숙박하려고 검토 중입니다. 예약 전에 다섯 가지만 여쭙고 싶습니다.
-
-1. 여관업법 허가번호(또는 주택숙박사업법 신고번호)를 알려주실 수 있을까요?
-
-2. 건물의 건축 연도(연식)를 알려주실 수 있을까요? 지진 대비 차원에서 신내진기준이나 2000년 기준에 맞는 건물인지 확인하고 싶습니다.
-
-3. 만일의 지진에 대비해, 숙소에서 가장 가까운 "일시집합장소"를 알려주실 수 있을까요? 외부 계단으로 드나드는 건물이라고 하셔서 대피 동선도 함께 알려주시면 도움이 되겠습니다.
-
-4. 침실은 몇 개인가요? 침대 6개·정원 10명까지는 확인했는데 침실 수를 알 수 없었습니다.
-
-5. 2027년 1월 14일~17일에 성인 6명이 숙박할 경우 총액을 알려주실 수 있을까요? 표시된 요금이 최저 요금이라고 되어 있어서 6명 기준 실제 금액을 알고 싶습니다.
-
-바쁘신 중에 죄송합니다만 잘 부탁드립니다.</pre>
+      <div class="gap" style="background:var(--no-w)">
+        <span class="gap-h" style="color:var(--no)">탈락 사유 — 호스트가 직접 답한 내용</span>
+        <ul class="got-l">
+          <li><b>"건물은 리모델링한 오래된 숙소이므로 새로운 내진 기준을 충족하지 않습니다."</b> 1981년 신내진기준 미충족은 <b>그 이전 건물</b>이라는 뜻입니다. 신주쿠구 저지대 + 좁은 골목 + 외부 철제 계단과 겹칩니다. 안전성 2.0 → <b>1.2</b>.</li>
+          <li>허가번호를 <b>"에어비앤비 숙소 페이지에서 확인하실 수 있습니다"</b>라고 했지만 <b>리스팅에는 없습니다.</b></li>
+          <li>일시집합장소도 <b>"구글 지도를 통해 확인하실 수 있습니다"</b>라며 지정해 주지 않았습니다.</li>
+        </ul>
+      </div>
+      <div class="got">
+        <span class="got-h">그래도 확인된 것</span>
+        <ul class="got-l">
+          <li><b>침실 4개 · 화장실 2개 · 욕실 2개 · 거실 2개</b> — 편의성 3.4 → 3.8</li>
+          <li>주소 <b>東京都新宿区百人町2-11-13</b> · 신오쿠보역 도보 3분 · 도어투도어 12분</li>
+        </ul>
+      </div>
+      <p class="why"><b>더 물을 것이 없습니다.</b> 정직하게 답해 준 덕분에 걸러낼 수 있었습니다 — 지진 안전이 첫 기준인 이상 침실 4개와 12분으로는 상쇄되지 않습니다.</p>
+      <div class="asks"><span class="ask hot">신내진기준 미충족</span><span class="ask done">침실 수 ✓</span><span class="ask">허가번호 없음</span></div>
     </div>
   </article>
 </section>
@@ -347,7 +334,7 @@ pre.krt{margin:0;font-family:inherit;font-size:14.5px;line-height:1.75;color:var
 <section class="grp">
   <div class="grp-h">
     <span class="grp-n">③ 잠자리 구성 확인</span>
-    <span class="grp-w">6번 · 5번 — 표기가 어긋나 있습니다</span>
+    <span class="grp-w">5번은 답변 완료 · 6번만 아직입니다</span>
   </div>
 
   <article class="card">

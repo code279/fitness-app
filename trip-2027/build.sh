@@ -51,7 +51,8 @@ for m in re.finditer(r'<circle cx="(\d+)" cy="(\d+)"[^/]*/>\s*<text[^>]*>(\d)</t
 
 # 순위 카드 번호가 연속인지
 ranks = re.findall(r'<div class="r">(.*?)</div>', s)
-expect = [f'{n}순위' for n in range(1, 8)] + ['탈락', '탈락']
+nrank = sum(1 for x in led.values() if x['rank'])
+expect = [f'{n}순위' for n in range(1, nrank + 1)] + ['탈락'] * (len(led) - nrank)
 if ranks != expect:
     bad += 1
     print(f'  X 순위 카드 {ranks}')
