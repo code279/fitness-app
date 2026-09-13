@@ -38,7 +38,7 @@ for row in re.findall(r'<tr>.*?</tr>', tb, re.S):
         print(f'  X 표 [{lab}] 칸 {len(tds)}개, 강조 {wins} (기대 {want})')
 
 # 산점도: x=d2dMin, y=safety. 12분 동률 3곳은 겹침을 피해 좌우로 벌려 둔 값.
-VIS = {6: 188, 5: 232, 3: 210}
+VIS = {6: 150, 5: 232, 3: 210}
 sc = s.split('접근성 (오다큐 신주쿠역까지 도어투도어)')[1]
 for m in re.finditer(r'<circle cx="(\d+)" cy="(\d+)"[^/]*/>\s*<text[^>]*>(\d)</text>', sc):
     x, y, i = int(m.group(1)), int(m.group(2)), int(m.group(3))
