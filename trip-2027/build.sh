@@ -9,6 +9,9 @@ CHROME=/opt/pw-browsers/chromium-1194/chrome-linux/chrome
 echo "── 1. 한 장 요약 생성 ──────────────────────────────"
 python3 trip-2027/build-onepager.py
 
+echo "── 1b. 여행 안내 사이트 숙소 섹션 ──────────────────"
+python3 trip-2027/build-site.py
+
 echo "── 2. PDF 렌더 ─────────────────────────────────────"
 ( cd trip-2027/onepager
   timeout 120 "$CHROME" --headless --disable-gpu --no-sandbox --hide-scrollbars \
