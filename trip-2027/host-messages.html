@@ -84,6 +84,9 @@ a.listing:focus-visible{outline:2px solid var(--ac);outline-offset:2px;}
   font-size:14.5px;line-height:1.5;color:var(--gray);}
 .got-l b{color:var(--ink);font-weight:700;}
 .ask.done{background:var(--ok-w);color:var(--ok);}
+.badge.warn{background:var(--mid-w);color:var(--mid);}
+.gap{background:var(--mid-w);border-radius:10px;padding:12px 14px;}
+.gap-h{display:block;font-size:12.5px;font-weight:900;letter-spacing:.04em;color:var(--mid);margin-bottom:6px;}
 .why{font-size:15px;color:var(--gray);}
 .why b{color:var(--ink);font-weight:700;}
 .asks{display:flex;flex-wrap:wrap;gap:5px;}
@@ -134,7 +137,8 @@ pre.krt{margin:0;font-family:inherit;font-size:14.5px;line-height:1.75;color:var
     <b>순서대로 보내실 필요는 없지만, 값어치는 확실히 다릅니다.</b>
     <ul>
       <li><b>4번에서 답이 왔습니다 — 준공 2019년.</b> 2000년 개정 내진기준 이후 건물이고 아홉 곳 중 유일하게 준공 연도가 확인됐습니다. <b>안전성 동점이 깨져 1순위가 굳었습니다.</b> 4번 카드는 이제 <b>남은 세 가지만 묻는 답장용</b>으로 바꿔 두었습니다.</li>
-      <li><b>9번·7번은 아직입니다.</b> 두 곳이 "2000년 이후"로 답해도 4번을 넘지는 못하지만, 답이 없으면 격차가 그대로 굳습니다.</li>
+      <li><b>9번도 답했습니다 — 2017년 목조 단독주택.</b> 4번과 안전성 5.0 동점이 됐고, <b>일시집합장소(도보 100m 학교)와 비상 물자</b>까지 답한 유일한 집입니다. 더 물을 것이 없습니다.</li>
+      <li><b>7번은 연도를 피했습니다.</b> "일본 기준에 따라 설계"라는 말뿐이었고, <b>"리노베이션을 방금 마쳤다"</b>고 해 리스팅의 "신축"과 충돌합니다. 안전성 4.8 → 4.2. <b>재문의 메시지를 새로 넣어 두었습니다.</b></li>
       <li><b>②번 묶음(1·3번)은 합법성 확인</b>입니다. 허가번호가 없으면 예약 직전에 취소될 수 있습니다.</li>
       <li><b>③번 묶음(6·5번)은 구성 확인</b>입니다. 순위를 뒤집을 정도는 아니지만 잠자리가 걸려 있습니다.</li>
     </ul>
@@ -144,7 +148,7 @@ pre.krt{margin:0;font-family:inherit;font-size:14.5px;line-height:1.75;color:var
 <section class="grp">
   <div class="grp-h">
     <span class="grp-n">① 1~3순위를 가르는 질문</span>
-    <span class="grp-w">4번은 2019년으로 답이 왔습니다 · 9번 · 7번은 아직</span>
+    <span class="grp-w">셋 다 답이 왔습니다 — 4번 2019년 · 9번 2017년 · 7번은 연도 없이 “리노베이션 완료”</span>
   </div>
 
   <article class="card">
@@ -195,74 +199,70 @@ pre.krt{margin:0;font-family:inherit;font-size:14.5px;line-height:1.75;color:var
   <article class="card">
     <div class="card-h">
       <div class="who"><span class="rk">2순위</span><span class="num">9번</span>
-        <span class="host">시부야구 혼마치 2초메 · 3층 아파트</span></div>
+        <span class="host">시부야구 혼마치 2초메 · 호스트 Eikin</span>
+        <span class="badge">답변 완료</span></div>
       <a class="listing" href="https://www.airbnb.co.kr/rooms/46201691" target="_blank" rel="noopener">
         <span class="lt">풀하우스 / 신주쿠까지 2분 / 조용한 지역<span class="ext">↗</span></span>
-        <span class="lm">3박 207.0만 · ★4.99 후기 203 · 상위 1%</span>
+        <span class="lm">3박 207.0만 · ★4.99 후기 203 · 상위 1% · 호스트 Eikin</span>
       </a>
-      <p class="why">허가(2026)·샤워 2개·도보 8분까지 확인됐습니다. 약점이 <b>도어투도어 21분 하나</b>로 좁혀졌는데, 엘리베이터가 없으면 그 21분이 체감상 더 길어집니다.</p>
-      <div class="asks"><span class="ask hot">준공 연도</span><span class="ask">엘리베이터</span><span class="ask">일시집합장소</span></div>
-    </div>
-    <div class="jpbox">
-      <div class="bar"><span class="lbl">일본어 — 그대로 복사</span>
-        <button class="cp" type="button" data-t="m9">복사</button></div>
-      <pre class="jp" id="m9">はじめまして。2027年1月14日〜17日に成人6名（男性）での宿泊を検討しております。予約前に3点お伺いできますでしょうか。
-
-1. 建物の建築年（築年数）を教えていただけますでしょうか。地震への備えとして、新耐震基準や2000年基準に適合しているかを確認したく存じます。
-
-2. 3階建てとのことですが、エレベーターはございますか。初台駅から徒歩8分とのことですので、スーツケースを持って階段を上ることになるかを確認したく存じます。
-
-3. 万一の地震に備え、お住まいから最寄りの「一時集合場所」を教えていただけますでしょうか。
-
-お忙しいところ恐れ入りますが、よろしくお願いいたします。</pre>
-    </div>
-    <div class="kr"><span class="lbl">한국어 확인용</span>
-      <pre class="krt">처음 뵙겠습니다. 2027년 1월 14일~17일에 성인 6명(남성)이 숙박하려고 검토 중입니다. 예약 전에 세 가지만 여쭙고 싶습니다.
-
-1. 건물의 건축 연도(연식)를 알려주실 수 있을까요? 지진 대비 차원에서 신내진기준이나 2000년 기준에 맞는 건물인지 확인하고 싶습니다.
-
-2. 3층 건물이라고 하셨는데 엘리베이터가 있나요? 하츠다이역에서 도보 8분이라 캐리어를 들고 계단을 올라가게 되는지 확인하고 싶습니다.
-
-3. 만일의 지진에 대비해, 숙소에서 가장 가까운 "일시집합장소"를 알려주실 수 있을까요?
-
-바쁘신 중에 죄송합니다만 잘 부탁드립니다.</pre>
+      <div class="got">
+        <span class="got-h">호스트가 답한 것 — 물은 셋을 다 답했습니다</span>
+        <ul class="got-l">
+          <li><b>준공 2017년, 목조 단독주택</b> — 2000년 개정 내진기준 이후입니다. 안전성 4.8 → <b>5.0</b>으로 4번과 동점이 됐습니다.</li>
+          <li><b>일시집합장소는 도보 약 100m 인근 학교</b> — 지역 커뮤니티가 공지하고, <b>1층 창고에 식수와 간식을 상비</b>한다고 합니다. 아홉 곳 중 재난 대비를 이만큼 답한 집은 없습니다.</li>
+          <li><b>엘리베이터 없음</b> — "계단으로 짐을 옮겨야 합니다". 도보 8분에 3층 계단이 붙습니다.</li>
+        </ul>
+      </div>
+      <p class="why"><b>더 물을 것이 없습니다.</b> 2순위에 머무는 이유는 안전성이 아니라 <b>도어투도어 21분</b> 하나입니다 — 4번보다 3분 멀고, 그 3분은 도보 8분이라는 확정값에서 나옵니다.</p>
+      <div class="asks"><span class="ask done">준공 연도 ✓</span><span class="ask done">일시집합장소 ✓</span><span class="ask done">엘리베이터 ✓</span></div>
     </div>
   </article>
 
   <article class="card">
     <div class="card-h">
       <div class="who"><span class="rk">3순위</span><span class="num">7번</span>
-        <span class="host">시부야구 하츠다이 1초메 · 호스트 千夏(치나쓰)</span></div>
+        <span class="host">시부야구 하츠다이 1초메 · 호스트 千夏(치나쓰)</span>
+        <span class="badge warn">일부 답변 · 재문의 필요</span></div>
       <a class="listing" href="https://www.airbnb.co.kr/rooms/1706427922093171198" target="_blank" rel="noopener">
         <span class="lt">신주쿠 1정거장 / 하츠다이역까지 3분 / 침실 3개, 최신식 주택<span class="ext">↗</span></span>
         <span class="lm">3박 147.6만 · ★4.87 후기 15 · 호스트 千夏</span>
       </a>
-      <p class="why">허가(2025)는 확인됐고 <b>도어투도어 16분으로 셋 중 가장 가깝습니다.</b> 발목을 잡는 건 샤워 1개인데, 이건 사진 투어로 읽은 값이라 호스트 입으로 확인받을 값어치가 있습니다. <b>준공 연도가 2000년 이후로 나오고 4·9번은 못 받으면 1순위로 돌아옵니다.</b></p>
-      <div class="asks"><span class="ask hot">준공 연도 · 내진</span><span class="ask mid">샤워 개수 확인</span><span class="ask hot">일시집합장소</span></div>
+      <div class="got">
+        <span class="got-h">호스트가 답한 것</span>
+        <ul class="got-l">
+          <li><b>샤워 1개(1층), 화장실 2개(1층·3층)</b> — "샤워실은 1층에 있으며 화장실은 2개 있습니다." 사진 투어로 읽은 값이 확정됐습니다.</li>
+        </ul>
+      </div>
+      <div class="gap">
+        <span class="gap-h">답하지 않은 것</span>
+        <ul class="got-l">
+          <li><b>준공 연도</b> — "일본 기준에 따라 지진에 견딜 수 있도록 설계되었으므로 걱정 안 하셔도 됩니다"라는 말만 왔습니다. 연도도, 1981년 신내진기준인지 2000년 기준인지도 없습니다.</li>
+          <li><b>더 큰 문제 — "리노베이션을 방금 마쳤다"</b>고 했습니다. 리스팅은 <b>"신축"</b>입니다. 신축과 리모델링은 다릅니다.</li>
+          <li><b>일시집합장소</b> — 답이 없습니다.</li>
+        </ul>
+      </div>
+      <p class="why">이 답으로 <b>안전성 4.8 → 4.2</b>로 내렸습니다. 4번(2019)·9번(2017)이 숫자로 답한 것과 대비됩니다. <b>재질문할 값어치는 있습니다</b> — 신축인지 리모델링인지 못 박고, 리모델링이면 원 건물의 건축 연도를 따로 물으면 됩니다.</p>
+      <div class="asks"><span class="ask done">샤워 개수 ✓</span><span class="ask hot">신축 vs 리모델링</span><span class="ask hot">원 건물 건축 연도</span><span class="ask hot">일시집합장소</span></div>
     </div>
     <div class="jpbox">
-      <div class="bar"><span class="lbl">일본어 — 그대로 복사</span>
-        <button class="cp" type="button" data-t="m7">복사</button></div>
-      <pre class="jp" id="m7">はじめまして。2027年1月14日〜17日に成人6名（男性）での宿泊を検討しております。予約前に3点お伺いできますでしょうか。
+      <div class="bar"><span class="lbl">일본어 — 답장에 그대로 복사</span>
+        <button class="cp" type="button" data-t="m7b">복사</button></div>
+      <pre class="jp" id="m7b">ご回答ありがとうございます。シャワーが1階に1か所、トイレが1階と3階に1つずつという点は承知いたしました。恐れ入りますが、あと2点だけ確認させてください。
 
-1. 建物の建築年（築年数）を教えていただけますでしょうか。説明文に「新築」とございますが、具体的な竣工年を確認したく存じます。地震への備えとして、2000年基準に適合しているかも知りたく存じます。
+1. リスティングには「新築」と記載がございますが、今回「リノベーションを終えたばかり」ともご説明いただきました。建て替えた新築でしょうか、それとも既存の建物をリノベーションされたのでしょうか。リノベーションの場合、元の建物の建築年（西暦）を教えていただけますでしょうか。他の候補と築年数を数字で揃えて比較しておりますので、西暦でお答えいただけると助かります。
 
-2. シャワーについて、写真ツアーでは「バスルーム」1室と「簡易バスルーム」2室に分かれておりました。実際にシャワーを浴びられるのは1か所という理解で合っておりますでしょうか。また、そのシャワーは1階のみでしょうか。6名で朝の支度をする際の目安にしたく存じます。
+2. 万一の地震に備え、お住まいから最寄りの「一時集合場所」を教えていただけますでしょうか。6名で事前に共有しておきたく存じます。
 
-3. 万一の地震に備え、お住まいから最寄りの「一時集合場所」を教えていただけますでしょうか。
-
-お忙しいところ恐れ入りますが、よろしくお願いいたします。</pre>
+お手数をおかけしますが、よろしくお願いいたします。</pre>
     </div>
     <div class="kr"><span class="lbl">한국어 확인용</span>
-      <pre class="krt">처음 뵙겠습니다. 2027년 1월 14일~17일에 성인 6명(남성)이 숙박하려고 검토 중입니다. 예약 전에 세 가지만 여쭙고 싶습니다.
+      <pre class="krt">답변 감사합니다. 샤워실이 1층에 한 곳, 화장실이 1층과 3층에 하나씩 있다는 점은 알겠습니다. 죄송하지만 두 가지만 더 확인하고 싶습니다.
 
-1. 건물의 건축 연도(연식)를 알려주실 수 있을까요? 설명문에 "신축"이라고 되어 있는데 구체적인 준공 연도를 확인하고 싶습니다. 지진 대비 차원에서 2000년 기준에 맞는지도 알고 싶습니다.
+1. 리스팅에는 "신축"이라고 적혀 있는데, 이번에 "리노베이션을 방금 마쳤다"고도 말씀해 주셨습니다. 새로 지은 신축인가요, 아니면 기존 건물을 리모델링하신 건가요? 리모델링이라면 원래 건물의 건축 연도(서기)를 알려주실 수 있을까요? 다른 후보들과 연식을 숫자로 맞춰 비교하고 있어서 서기 연도로 답해 주시면 도움이 되겠습니다.
 
-2. 샤워에 대해, 사진 투어에서는 "욕실" 1곳과 "간이 욕실" 2곳으로 나뉘어 있었습니다. 실제로 샤워를 할 수 있는 곳은 1곳이 맞을까요? 그리고 그 샤워는 1층에만 있나요? 6명이 아침에 준비할 때 기준을 잡으려고 합니다.
+2. 만일의 지진에 대비해, 숙소에서 가장 가까운 "일시집합장소"를 알려주실 수 있을까요? 6명이 미리 공유해 두려고 합니다.
 
-3. 만일의 지진에 대비해, 숙소에서 가장 가까운 "일시집합장소"를 알려주실 수 있을까요?
-
-바쁘신 중에 죄송합니다만 잘 부탁드립니다.</pre>
+번거롭게 해서 죄송합니다만 잘 부탁드립니다.</pre>
     </div>
   </article>
 </section>
