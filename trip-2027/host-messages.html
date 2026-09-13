@@ -76,6 +76,14 @@ a.listing:focus-visible{outline:2px solid var(--ac);outline-offset:2px;}
 .lt{font-size:14.5px;font-weight:700;color:var(--ac);line-height:1.4;}
 .lm{font-size:13px;font-weight:500;color:var(--gray2);}
 .ext{font-size:11px;margin-left:3px;vertical-align:2px;}
+.badge{font-size:12px;font-weight:900;letter-spacing:-.02em;padding:3px 9px;border-radius:6px;
+  background:var(--ok-w);color:var(--ok);}
+.got{background:var(--ok-w);border-radius:10px;padding:12px 14px;}
+.got-h{display:block;font-size:12.5px;font-weight:900;letter-spacing:.04em;color:var(--ok);margin-bottom:6px;}
+.got-l{margin:0;padding-left:17px;display:flex;flex-direction:column;gap:4px;
+  font-size:14.5px;line-height:1.5;color:var(--gray);}
+.got-l b{color:var(--ink);font-weight:700;}
+.ask.done{background:var(--ok-w);color:var(--ok);}
 .why{font-size:15px;color:var(--gray);}
 .why b{color:var(--ink);font-weight:700;}
 .asks{display:flex;flex-wrap:wrap;gap:5px;}
@@ -125,7 +133,8 @@ pre.krt{margin:0;font-family:inherit;font-size:14.5px;line-height:1.75;color:var
   <div class="brief">
     <b>순서대로 보내실 필요는 없지만, 값어치는 확실히 다릅니다.</b>
     <ul>
-      <li><b>①번 묶음(4·9·7번)이 압도적으로 중요합니다.</b> 셋 다 시부야구 고지대에 같은 보건소의 여관업 허가라 안전성이 동점입니다. <b>준공 연도 하나로 1~3순위가 갈립니다.</b> 세 통을 같은 날 함께 보내세요.</li>
+      <li><b>4번에서 답이 왔습니다 — 준공 2019년.</b> 2000년 개정 내진기준 이후 건물이고 아홉 곳 중 유일하게 준공 연도가 확인됐습니다. <b>안전성 동점이 깨져 1순위가 굳었습니다.</b> 4번 카드는 이제 <b>남은 세 가지만 묻는 답장용</b>으로 바꿔 두었습니다.</li>
+      <li><b>9번·7번은 아직입니다.</b> 두 곳이 "2000년 이후"로 답해도 4번을 넘지는 못하지만, 답이 없으면 격차가 그대로 굳습니다.</li>
       <li><b>②번 묶음(1·3번)은 합법성 확인</b>입니다. 허가번호가 없으면 예약 직전에 취소될 수 있습니다.</li>
       <li><b>③번 묶음(6·5번)은 구성 확인</b>입니다. 순위를 뒤집을 정도는 아니지만 잠자리가 걸려 있습니다.</li>
     </ul>
@@ -135,47 +144,51 @@ pre.krt{margin:0;font-family:inherit;font-size:14.5px;line-height:1.75;color:var
 <section class="grp">
   <div class="grp-h">
     <span class="grp-n">① 1~3순위를 가르는 질문</span>
-    <span class="grp-w">4번 · 9번 · 7번 — 셋 다 준공 연도만 비어 있습니다</span>
+    <span class="grp-w">4번은 2019년으로 답이 왔습니다 · 9번 · 7번은 아직</span>
   </div>
 
   <article class="card">
     <div class="card-h">
       <div class="who"><span class="rk top">1순위</span><span class="num">4번</span>
-        <span class="host">시부야구 하츠다이 98㎡ · 호스트 Asawa</span></div>
+        <span class="host">시부야구 하츠다이 98㎡ · 호스트 Asawa</span>
+        <span class="badge">답장 받음 · 추가 문의</span></div>
       <a class="listing" href="https://www.airbnb.co.kr/rooms/909834219389134686" target="_blank" rel="noopener">
         <span class="lt">신주쿠 1역 · 4BR 집 전체 · 고급 지역 · 98㎡<span class="ext">↗</span></span>
         <span class="lm">3박 250.5만 · ★4.99 후기 207 · 호스트 Asawa</span>
       </a>
-      <p class="why">허가(2023)·샤워 2개·침실 4개는 확인됐습니다. <b>준공 연도가 확인되면 1순위가 굳고, 안 되면 9번·7번과 동률로 남습니다.</b> 짐 보관이 현관 밖이라는 점과 주방 표기 불일치도 같이 묻습니다.</p>
-      <div class="asks"><span class="ask hot">준공 연도</span><span class="ask">짐 보관 위치</span><span class="ask">주방</span><span class="ask">일시집합장소</span></div>
+      <div class="got">
+        <span class="got-h">호스트가 답한 것</span>
+        <ul class="got-l">
+          <li><b>준공 2019년</b> — "저희 숙소는 2019년에 지어졌습니다". 2000년 개정 내진기준 이후 건물이고, <b>아홉 곳 중 준공 연도가 확인된 유일한 집</b>입니다.</li>
+          <li><b>여관업법 허가</b> 시부야구 보건소 <b>5渋保生環第295号</b> — 리스팅 표기와 일치합니다.</li>
+        </ul>
+      </div>
+      <p class="why"><b>이 답 하나로 1순위가 굳었습니다.</b> 7번·9번은 준공 연도가 여전히 미표기라 안전성 동점이 깨졌습니다(4.8 → 5.0). <b>남은 셋은 순위를 뒤집을 항목이 아니라 실무 확인</b>입니다.</p>
+      <div class="asks"><span class="ask done">준공 연도 ✓</span><span class="ask done">허가번호 ✓</span><span class="ask hot">짐 보관 위치</span><span class="ask hot">주방</span><span class="ask hot">일시집합장소</span></div>
     </div>
     <div class="jpbox">
-      <div class="bar"><span class="lbl">일본어 — 그대로 복사</span>
-        <button class="cp" type="button" data-t="m4">복사</button></div>
-      <pre class="jp" id="m4">はじめまして。2027年1月14日〜17日に成人6名（男性）での宿泊を検討しております。予約前に4点お伺いできますでしょうか。
+      <div class="bar"><span class="lbl">일본어 — 답장에 그대로 복사</span>
+        <button class="cp" type="button" data-t="m4b">복사</button></div>
+      <pre class="jp" id="m4b">ご丁寧なご回答をありがとうございます。許可番号と2019年築であることを確認できました。恐れ入りますが、あと3点だけお伺いできますでしょうか。
 
-1. 建物の建築年（築年数）を教えていただけますでしょうか。地震への備えとして、新耐震基準や2000年基準に適合しているかを確認したく存じます。
+1. 荷物置き場について、説明文に「玄関前のスーツケース用ロック」とありますが、こちらは屋外でしょうか。1月に6名分のスーツケースを屋外に置くことになるか気になっております。室内での保管は可能でしょうか。
 
-2. 荷物置き場について、説明文に「玄関前のスーツケース用ロック」とありますが、屋外に置く形でしょうか。1月に6名分のスーツケースを屋外に置くことになるか気になっております。室内での保管は可能でしょうか。
+2. キッチンについて、設備一覧では「簡易キッチン」となっている一方、説明文には「メインキッチン（ガスコンロ・食洗機）」とあります。実際にはどちらでしょうか。ガスコンロと食洗機は使用できますでしょうか。
 
-3. キッチンについて、設備一覧では「簡易キッチン」となっている一方、説明文には「メインキッチン（ガスコンロ・食洗機）」とあります。実際はどちらでしょうか。
+3. 万一の地震に備え、お住まいから最寄りの「一時集合場所」を教えていただけますでしょうか。6名で事前に共有しておきたく存じます。
 
-4. 万一の地震に備え、お住まいから最寄りの「一時集合場所」を教えていただけますでしょうか。
-
-お忙しいところ恐れ入りますが、よろしくお願いいたします。</pre>
+お手数をおかけしますが、よろしくお願いいたします。</pre>
     </div>
     <div class="kr"><span class="lbl">한국어 확인용</span>
-      <pre class="krt">처음 뵙겠습니다. 2027년 1월 14일~17일에 성인 6명(남성)이 숙박하려고 검토 중입니다. 예약 전에 네 가지만 여쭙고 싶습니다.
+      <pre class="krt">정성스러운 답변 감사합니다. 허가번호와 2019년 준공인 점 확인했습니다. 죄송하지만 세 가지만 더 여쭙고 싶습니다.
 
-1. 건물의 건축 연도(연식)를 알려주실 수 있을까요? 지진 대비 차원에서 신내진기준이나 2000년 기준에 맞는 건물인지 확인하고 싶습니다.
+1. 짐 보관에 대해, 설명문에 "현관 앞 캐리어용 잠금장치"라고 되어 있는데 이것은 실외인가요? 1월에 6명분 캐리어를 밖에 두게 되는지 신경이 쓰입니다. 실내 보관도 가능할까요?
 
-2. 짐 보관에 대해, 설명문에 "현관 앞 캐리어용 잠금장치"라고 되어 있는데 실외에 두는 형태인가요? 1월에 6명분 캐리어를 밖에 두게 되는지 신경이 쓰입니다. 실내 보관도 가능할까요?
+2. 주방에 대해, 편의시설 목록에는 "간이 주방"으로 되어 있는 한편 설명문에는 "메인 주방(가스레인지·식기세척기)"이라고 적혀 있습니다. 실제로는 어느 쪽인가요? 가스레인지와 식기세척기를 쓸 수 있나요?
 
-3. 주방에 대해, 편의시설 목록에는 "간이 주방"으로 되어 있는데 설명문에는 "메인 주방(가스레인지·식기세척기)"이라고 적혀 있습니다. 실제로는 어느 쪽인가요?
+3. 만일의 지진에 대비해, 숙소에서 가장 가까운 "일시집합장소"를 알려주실 수 있을까요? 6명이 미리 공유해 두려고 합니다.
 
-4. 만일의 지진에 대비해, 숙소에서 가장 가까운 "일시집합장소"를 알려주실 수 있을까요?
-
-바쁘신 중에 죄송합니다만 잘 부탁드립니다.</pre>
+번거롭게 해서 죄송합니다만 잘 부탁드립니다.</pre>
     </div>
   </article>
 
