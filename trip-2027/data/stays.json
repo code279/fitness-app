@@ -1,7 +1,7 @@
 {
   "_meta": {
     "purpose": "도쿄 3박4일 숙소 후보 원장. HTML 페이지의 값은 모두 이 파일에서 나온다. 값을 고칠 때는 HTML이 아니라 여기를 먼저 고친다.",
-    "updatedAt": "2026-09-13",
+    "updatedAt": "2026-10-05",
     "trip": {
       "city": "도쿄",
       "checkIn": "2027-01-14",
@@ -458,9 +458,9 @@
       },
       "trust": {
         "rating": 4.99,
-        "reviews": 207,
+        "reviews": 210,
         "badges": [
-          "상위 5%",
+          "상위 10%",
           "한국인 인기 숙소",
           "게스트 선호"
         ],
@@ -483,10 +483,11 @@
         }
       },
       "price": {
-        "total3n": 2505172,
-        "perPerson": 417529,
+        "total3n": 2351568,
+        "perPerson": 391928,
         "isFloor": false,
-        "freeCancel": true
+        "freeCancel": true,
+        "note": "2026-10-05 캡처 ₩2,351,568 (이전 ₩2,505,172에서 −15.4만). 엔화 약세(1엔≈8.49원) 영향으로 보인다"
       },
       "scores": {
         "safety": 5.0,
