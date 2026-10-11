@@ -1,0 +1,16 @@
+# Netlify 에서 이 폴더(trip-2027/budget-app/web)를 "Base directory" 로 지정하면 된다. 빌드 과정은 없다.
+[build]
+  publish = "."
+
+[[headers]]
+  for = "/*"
+  [headers.values]
+    X-Content-Type-Options = "nosniff"
+    Referrer-Policy = "no-referrer"
+    X-Robots-Tag = "noindex, nofollow"
+    Permissions-Policy = "geolocation=(), microphone=()"
+
+[[headers]]
+  for = "/sw.js"
+  [headers.values]
+    Cache-Control = "no-cache"
