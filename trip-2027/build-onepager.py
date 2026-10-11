@@ -11,7 +11,7 @@ trip = d['_meta']['trip']
 
 # 카드마다 핵심 두 줄 (+ 는 강점, - 는 약점)
 NOTES = {
- 4: [('+', '★4.99 · 후기 210 · 슈퍼호스트 7년 · “조용함” 37회'),
+ 4: [('+', '★4.99 · 후기 213 · 슈퍼호스트 7년 · “조용함” 37회'),
      ('+', '짐 실내 보관 · 메인 주방 · 대피소 주소 확보 — 빈칸 없음')],
  9: [('+', '★4.99 · 후기 203 · 상위 1% · 짐 보관 · 무료 주차'),
      ('+', '대피소 도보 100m 학교 · 1층에 비상 식수·간식 상비'),
@@ -87,7 +87,7 @@ for i, sid in enumerate(ORDER):
                  for k, t in NOTES[sid])
     cards.append(f'''  <div class="{cls}">
     {img}
-    <div class="pr">{s['price']['total3n']//10000}만</div>
+    <div class="pr">{round(s['price']['total3n']/10000)}만</div>
     <div class="bd">
       <div class="tp"><span class="rk">{rank}</span>{nm}
         <span class="loc">{html.escape(AREA[sid])}</span></div>
